@@ -1,0 +1,43 @@
+## SETTINGS
+
+set linenumbers
+set multibuffer
+set tabsize 4
+set tabstospaces
+set mouse
+set smooth
+set tempfile
+set softwrap
+set noconvert
+set suspend
+set locking
+set historylog
+# set emptyline
+# set boldtext
+# set backup
+set autoindent
+# set atblanks
+set nonewlines
+set positionlog
+# set nohelp
+
+## APPEARANCE
+
+## by default there are no colors, except for errorcolor.
+set titlecolor brightblack
+set statuscolor brightwhite
+# set errorcolor brightred
+# set selectedcolor brightwhite,magenta
+# set stripecolor ,yellow
+set numbercolor brightblack
+# set keycolor cyan
+# set functioncolor green
+## In root's .nanorc you might want to use:
+# set titlecolor brightwhite,magenta
+# set statuscolor brightwhite,magenta
+# set errorcolor brightwhite,red
+# set selectedcolor brightwhite,cyan
+# set stripecolor ,yellow
+# set numbercolor magenta
+# set keycolor brightmagenta
+# set functioncolor magenta

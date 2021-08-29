@@ -1,31 +1,31 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-      "outDir": "./dist/out-tsc",
-      "module": "ESNext",
-      "target": "es2015",
-      "moduleResolution": "node",
-      "sourceMap": true,
-      "declaration": false,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "noEmitHelpers": true,
-      "noEmitOnError": true,
-      "skipLibCheck": true,
-      "lib": [
-          "es2017",
-          "dom",
-          "es6"
-      ],
-      "baseUrl": ".",
-      "paths": {
-          "@src/*": [
-              "src/*.android.ts",
-              "src/*.ios.ts",
-              "src/*.tns.ts",
-              "src/*.web.ts",
-              "src/*.ts"
-          ]
-      }
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@src/*": [
+        "src/*.android.ts",
+        "src/*.ios.ts",
+        "src/*.tns.ts",
+        "src/*.web.ts",
+        "src/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false
   }
 }

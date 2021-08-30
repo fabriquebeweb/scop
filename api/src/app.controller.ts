@@ -1,19 +1,19 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Controller, Get, Param, Post } from '@nestjs/common'
 import { AppService } from './app.service'
 
-@Controller()
+@Controller('reunion')
 export class AppController {
   constructor(
     private readonly appService: AppService
   ) {}
 
   @Get()
-  getAll() {
-    return this.appService.getAll()
+  home() {
+    return this.appService.getAllEnterprises()
   }
 
   @Get(':id')
-  set(@Param('id') id: string) {
+  newEnterprise(@Param('id') id: string) {
     this.appService.set(id)
     return `${id} is saved`
   }

@@ -5,7 +5,7 @@ import { Enterprise } from '../db/entities/enterprise.entity'
 export class AppService {
   constructor() {}
 
-  async getAll(): Promise<Enterprise[]> {
+  async getAllEnterprises() : Promise<Enterprise[]> {
     return await Enterprise.find()
   }
 

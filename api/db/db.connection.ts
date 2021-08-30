@@ -10,7 +10,7 @@ export const connection: TypeOrmModuleOptions = {
   synchronize: true,
   autoLoadEntities: true,
   cli: {
-    entitiesDir: 'src/entities',
-    migrationsDir: 'src/migrations'
+    entitiesDir: 'db/entities',
+    migrationsDir: 'db/migrations'
   }
 }

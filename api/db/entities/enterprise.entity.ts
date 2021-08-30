@@ -1,22 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
 @Entity()
 export class Enterprise extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  name: string
+  name: string;
 
   @Column({ nullable: true })
-  logo: string
+  logo: string;
 
   @Column({ nullable: true })
-  primary: string
+  primary: string;
 
   @Column({ nullable: true })
-  secondary: string
+  secondary: string;
 
   @Column({ nullable: true })
-  ternary: string
+  ternary: string;
 }

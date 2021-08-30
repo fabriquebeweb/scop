@@ -1,5 +1,5 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinTable } from "typeorm"
-import { Meeting } from './Meeting.entity'
+import { Meeting } from "./Meeting.entity"
 import { Question } from "./Question.entity"
 
 @Entity()

@@ -1,4 +1,4 @@
-import { Entity, Column, BaseEntity, PrimaryColumn, PrimaryGeneratedColumn, OneToOne, ManyToOne, ManyToMany, JoinTable, OneToMany } from "typeorm"
+import { Entity, Column, BaseEntity, PrimaryColumn, OneToOne, ManyToOne, ManyToMany, JoinTable, OneToMany } from "typeorm"
 import { Answer } from "./Answer.entity"
 import { Choice } from "./Choice.entity"
 import { Subject } from "./Subject.entity"

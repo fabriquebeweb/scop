@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, BaseEntity, ManyToMany, ManyToOne, Index } from "typeorm"
+import { Entity, Column, PrimaryColumn, BaseEntity, ManyToOne, Index } from "typeorm"
 import { Enterprise } from "./Enterprise.entity"
 import { MeetingType } from "./MeetingType.entity"
 

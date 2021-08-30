@@ -1,10 +1,13 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToMany, ManyToOne, OneToOne, JoinColumn, OneToMany } from "typeorm"
 import { Admin } from "./Admin.entity"
+import { Answer } from "./Answer.entity"
 import { Enterprise } from "./Enterprise.entity"
 import { Participation } from "./Participation.entity"
 
 @Entity()
-export class User extends BaseEntity {
+export class User extends BaseEntity
+{
+
   @PrimaryGeneratedColumn()
   readonly id: number
 
@@ -20,7 +23,7 @@ export class User extends BaseEntity {
   @ManyToOne(type => Enterprise, enterprise => enterprise.users)
   enterprise: Enterprise
 
-  @OneToOne(type => Admin)
+  @OneToOne(type => Admin, { nullable: true })
   @JoinColumn()
   admin: Admin
 
@@ -29,4 +32,8 @@ export class User extends BaseEntity {
 
   @OneToMany(type => Participation, participation => participation.procuration, { nullable: true })
   procurations: Participation[]
+
+  @OneToMany(type => Answer, answer => answer.user)
+  answers: Answer[]
+
 }

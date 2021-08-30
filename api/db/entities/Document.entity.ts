@@ -1,9 +1,12 @@
-import { Entity, Column, PrimaryColumn, BaseEntity, OneToOne } from "typeorm"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
+import { Meeting } from "./Meeting.entity"
 
 @Entity()
-export class Document extends BaseEntity {
-  @Column()
-  id: number
+export class Document extends BaseEntity
+{
+
+  @PrimaryGeneratedColumn()
+  readonly id: number
 
   @Column()
   path: string
@@ -11,8 +14,7 @@ export class Document extends BaseEntity {
   @Column({ nullable: true })
   name: string
 
-  @OneToOne(type => meeting)
-  @PrimaryColumn()
-  meeting:meeting
+  @ManyToOne(type => Meeting, meeting => meeting.documents)
+  meeting: Meeting
 
 }

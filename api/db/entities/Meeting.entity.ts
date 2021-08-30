@@ -1,10 +1,14 @@
-import { Entity, Column, PrimaryColumn, BaseEntity, PrimaryGeneratedColumn, ManyToMany, ManyToOne, OneToMany } from "typeorm"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm"
+import { Document } from "./Document.entity"
 import { Enterprise } from "./Enterprise.entity"
 import { MeetingType } from "./MeetingType.entity"
 import { Participation } from "./Participation.entity"
+import { Subject } from "./Subject.entity"
 
 @Entity()
-export class Meeting extends BaseEntity {
+export class Meeting extends BaseEntity
+{
+
   @PrimaryGeneratedColumn()
   readonly id: number
 
@@ -25,4 +29,11 @@ export class Meeting extends BaseEntity {
 
   @OneToMany(type => Participation, participation => participation.user)
   participations: Participation[]
+
+  @OneToMany(type => Document, document => document.meeting)
+  documents: Document[]
+
+  @OneToMany(type => Subject, subject => subject.meeting)
+  subjects: Subject[]
+
 }

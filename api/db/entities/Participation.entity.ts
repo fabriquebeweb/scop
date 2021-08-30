@@ -3,7 +3,9 @@ import { Meeting } from "./Meeting.entity"
 import { User } from "./User.entity"
 
 @Entity()
-export class Participation extends BaseEntity {
+export class Participation extends BaseEntity
+{
+
   @ManyToOne(type => Meeting, meeting => meeting.participations)
   @PrimaryColumn()
   meeting: Meeting 
@@ -13,11 +15,12 @@ export class Participation extends BaseEntity {
   user: User
 
   @Column({ unique: true })
-  code: string
+  password: string
 
   @Column({ nullable: true })
   isPresent: boolean
 
   @ManyToOne(type => User, user => user.procurations, { nullable: true })
   procuration: User
+
 }

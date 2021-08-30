@@ -3,7 +3,9 @@ import { Enterprise } from "./Enterprise.entity"
 import { MeetingType } from "./MeetingType.entity"
 
 @Entity()
-export class Status extends BaseEntity {
+export class Status extends BaseEntity
+{
+
   @ManyToOne(type => Enterprise, enterprise => enterprise.status)
   @PrimaryColumn()
   enterprise: Enterprise
@@ -25,4 +27,5 @@ export class Status extends BaseEntity {
   
   @Column({ nullable: true })
   power: number
+
 }

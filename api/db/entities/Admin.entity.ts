@@ -3,8 +3,8 @@ import { User } from "./User.entity"
 
 @Entity()
 export class Admin extends BaseEntity {
-  @PrimaryColumn()
   @OneToOne(type => User)
+  @PrimaryColumn()
   user: User
 
   @Column({ nullable: true })

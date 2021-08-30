@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm"
-import { Enterprise } from "./entities/enterprise.entity"
+import { Enterprise } from "./entities/Enterprise.entity"
 
 export const connection: TypeOrmModuleOptions = {
   type: 'sqlite',

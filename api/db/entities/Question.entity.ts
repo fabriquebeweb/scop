@@ -1,18 +1,20 @@
-import { Entity, Column, BaseEntity, PrimaryColumn } from "typeorm"
+import { Entity, Column, BaseEntity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
 export class Question extends BaseEntity {
-  @Column()
+  @PrimaryGeneratedColumn()
   id: number
 
   @Column()
   title: number
 
+  @OneToOne(type => IdChoice)
   @PrimaryColumn({ nullable: true })
-  fk_result: 
+  idchoice:IdChoice
 
+  @OneToOne(type => IdChapter)
   @PrimaryColumn()
-  fk_chapter: 
+  idChapter:IdChapter 
 
   @Column()
   nb_answer: number

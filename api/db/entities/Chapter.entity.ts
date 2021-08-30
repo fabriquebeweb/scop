@@ -1,9 +1,10 @@
-import { Entity, Column, PrimaryColumn, BaseEntity } from "typeorm"
+import { Entity, Column, PrimaryColumn, BaseEntity, OneToMany } from "typeorm"
 
 @Entity()
 export class Chapter extends BaseEntity {
-  @Column()
-  id: number
+  @OneToOne(type => Id)
+  @PrimaryColumn()
+  id: id
 
   @Column({ nullable: true })
   description: string
@@ -11,6 +12,6 @@ export class Chapter extends BaseEntity {
   @Column({ nullable: true })
   summary: string
 
-  @PrimaryColumn()
-  fk_meeting: 
+  @OneToMany(type => Meeting, meeting => meeting.Id)
+  id: meeting
 }

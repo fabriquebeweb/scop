@@ -1,14 +1,18 @@
-import { Entity, PrimaryColumn, BaseEntity } from "typeorm"
+import { Entity, PrimaryColumn, BaseEntity, OneToOne } from "typeorm"
+import { Question } from "./Question.entity"
 
 @Entity()
 export class Answer extends BaseEntity {
+  @OneToOne(type => Question)
   @PrimaryColumn()
-  fk_question: 
+  question:Question
 
+  @OneToOne(type => User)
   @PrimaryColumn()
-  fk_user: 
+  user:User 
 
+  @OneToOne(type => Choice)
   @PrimaryColumn({ nullable: true })
-  fk_choice: 
+  choice:Choice 
 
 }

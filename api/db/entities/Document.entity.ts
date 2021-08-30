@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, BaseEntity } from "typeorm"
+import { Entity, Column, PrimaryColumn, BaseEntity, OneToOne } from "typeorm"
 
 @Entity()
 export class Document extends BaseEntity {
@@ -11,7 +11,8 @@ export class Document extends BaseEntity {
   @Column({ nullable: true })
   name: string
 
+  @OneToOne(type => meeting)
   @PrimaryColumn()
-  fk_meeting: 
+  meeting:meeting
 
 }

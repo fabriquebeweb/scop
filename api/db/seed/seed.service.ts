@@ -1,7 +1,7 @@
 import * as Faker from 'faker';
 import { Injectable } from '@nestjs/common';
 import { Connection } from 'typeorm';
-import { Enterprise } from '../entities/enterprise.entity';
+import { Enterprise } from '../entities/Enterprise.entity';
 
 @Injectable()
 export class SeedService {

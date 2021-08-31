@@ -3,7 +3,9 @@ import { Meeting } from "./Meeting.entity"
 import { Status } from "./Status.entity"
 
 @Entity()
-export class MeetingType extends BaseEntity {
+export class MeetingType extends BaseEntity
+{
+
   @PrimaryGeneratedColumn()
   readonly id: number
 
@@ -15,4 +17,5 @@ export class MeetingType extends BaseEntity {
 
   @OneToMany(type => Meeting, meeting => meeting.meetingType)
   meetings: MeetingType[]
+
 }

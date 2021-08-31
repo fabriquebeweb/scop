@@ -3,7 +3,6 @@ import {
   Column,
   PrimaryColumn,
   BaseEntity,
-  ManyToMany,
   ManyToOne,
   Index,
 } from 'typeorm';
@@ -12,9 +11,9 @@ import { MeetingType } from './MeetingType.entity';
 
 @Entity()
 export class Status extends BaseEntity {
-  //@ManyToOne((type) => Enterprise, (enterprise) => enterprise.status)
-  //@PrimaryColumn()
-  //enterprise: Enterprise;
+  @ManyToOne((type) => Enterprise, (enterprise) => enterprise.status)
+  @PrimaryColumn()
+  enterprise: Enterprise;
 
   @ManyToOne((type) => MeetingType, (meetingType) => meetingType.status, {
     primary: true,

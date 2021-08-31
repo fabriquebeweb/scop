@@ -1,19 +1,27 @@
-import { Entity, Column, BaseEntity, PrimaryColumn } from "typeorm"
+import { Entity, Column, BaseEntity, PrimaryColumn, OneToOne, ManyToOne, ManyToMany, JoinTable, OneToMany } from "typeorm"
+import { Answer } from "./Answer.entity"
+import { Choice } from "./Choice.entity"
+import { Subject } from "./Subject.entity"
 
 @Entity()
-export class Question extends BaseEntity {
-  @Column()
-  id: number
+export class Question extends BaseEntity
+{
 
-  @Column()
-  title: number
-
-  @PrimaryColumn({ nullable: true })
-  fk_result: 
-
+  @OneToOne(type => Subject)
   @PrimaryColumn()
-  fk_chapter: 
+  subject: Subject
 
   @Column()
-  nb_answer: number
+  title: string
+
+  @ManyToOne(type => Choice, choice => choice.results, { nullable: true })
+  result: Choice
+
+  @ManyToMany(type => Choice)
+  @JoinTable()
+  choices: Choice[]
+
+  @OneToMany(type => Answer, answer => answer.question)
+  answers: Answer[]
+
 }

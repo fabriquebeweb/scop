@@ -2,7 +2,9 @@ import { Entity, Column, BaseEntity, OneToMany, PrimaryGeneratedColumn } from "t
 import { Enterprise } from "./Enterprise.entity"
 
 @Entity()
-export class Provider extends BaseEntity {
+export class Provider extends BaseEntity
+{
+
   @PrimaryGeneratedColumn()
   readonly id: number
 
@@ -11,4 +13,5 @@ export class Provider extends BaseEntity {
 
   @OneToMany(type => Enterprise, enterprise => enterprise.provider)
   enterprises: Enterprise[]
+
 }

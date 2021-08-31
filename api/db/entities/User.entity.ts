@@ -26,7 +26,7 @@ export class User extends BaseEntity
   isAdmin: boolean
 
   @Index('user_enterprise_idx')
-  @ManyToOne(type => Enterprise, enterprise => enterprise.users)
+  @ManyToOne(type => Enterprise, enterprise => enterprise.users, { nullable: false })
   enterprise: Enterprise
 
   @OneToMany(type => Participation, participation => participation.user)

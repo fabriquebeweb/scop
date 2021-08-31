@@ -2,16 +2,17 @@ import * as Faker from 'faker'
 import { Injectable } from '@nestjs/common'
 import { Connection } from 'typeorm'
 import { Enterprise } from '../entities/Enterprise.entity'
+import { Provider } from '../entities/Provider.entity'
 
 @Injectable()
 export class SeedService {
   constructor(private connection: Connection) {}
 
   async loop(loops: number, callback: any) : Promise<void> {
-    const loop = counter => callback => {
+    const loop = (counter: number) => (func: any) => {
       if (counter > 0) {
         callback()
-        loop (counter - 1) (callback)
+        loop (counter - 1) (func)
       }
     }
 
@@ -26,20 +27,21 @@ export class SeedService {
      */
 
     await this.loop(3, async () => {
-      const mdr = await Enterprise.find()
-      console.log(mdr)
-      let enterprise = new Enterprise()
-      enterprise.name = Faker.name.firstName()
-      enterprise.logo = Faker.internet.url()
-      enterprise.primary = Faker.commerce.color()
-      enterprise.secondary = Faker.commerce.color()
-      enterprise.ternary = Faker.commerce.color()
-      enterprise.save()
+      Provider.create({
+        name: Faker.company.companyName()
+      }).save()
     })
 
-    // const lol = await Enterprise.find()
-
-    // console.log(lol)
+    await this.loop(3, async () => {
+      Enterprise.create({
+        name: Faker.company.companyName(),
+        logo: Faker.internet.url(),
+        primary: Faker.commerce.color(),
+        secondary: Faker.commerce.color(),
+        ternary: Faker.commerce.color(),
+        provider: await Provider.findOne()
+      }).save()
+    })
 
     /**
      * SEED END

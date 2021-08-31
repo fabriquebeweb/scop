@@ -15,7 +15,7 @@ export class Document extends BaseEntity
   name: string
 
   @Index('document_meeting_idx')
-  @ManyToOne(type => Meeting, meeting => meeting.documents)
+  @ManyToOne(type => Meeting, meeting => meeting.documents, { nullable: false })
   meeting: Meeting
 
 }

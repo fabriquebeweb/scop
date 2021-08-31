@@ -6,14 +6,14 @@ import { User } from './User.entity'
 export class Participation extends BaseEntity
 {
 
-  @ManyToOne(type => Meeting, meeting => meeting.participations, { primary: true })
+  @ManyToOne(type => Meeting, meeting => meeting.participations, { primary: true, nullable: false })
   meeting: Meeting
 
-  @ManyToOne(type => User, user => user.participations, { primary: true })
+  @ManyToOne(type => User, user => user.participations, { primary: true, nullable: false })
   user: User
 
   @Column({ unique: true })
-  password: string
+  code: string
 
   @Column({ nullable: true })
   isPresent: boolean

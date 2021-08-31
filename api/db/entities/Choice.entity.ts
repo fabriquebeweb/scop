@@ -13,7 +13,7 @@ export class Choice extends BaseEntity
   @Column()
   title: string
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.choices)
+  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { nullable: false })
   enterprise: Enterprise
 
   @ManyToMany(type => Chapter)

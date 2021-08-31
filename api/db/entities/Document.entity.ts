@@ -1,5 +1,5 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
-import { Meeting } from "./Meeting.entity"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, Index } from 'typeorm'
+import { Meeting } from './Meeting.entity'
 
 @Entity()
 export class Document extends BaseEntity
@@ -14,7 +14,8 @@ export class Document extends BaseEntity
   @Column({ nullable: true })
   name: string
 
-  @ManyToOne(type => Meeting, meeting => meeting.documents)
+  @Index('document_meeting_idx')
+  @ManyToOne(type => Meeting, meeting => meeting.documents, { nullable: false })
   meeting: Meeting
 
 }

@@ -1,8 +1,7 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn, OneToMany } from "typeorm"
-import { Admin } from "./Admin.entity"
-import { Answer } from "./Answer.entity"
-import { Enterprise } from "./Enterprise.entity"
-import { Participation } from "./Participation.entity"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Index } from 'typeorm'
+import { Answer } from './Answer.entity'
+import { Enterprise } from './Enterprise.entity'
+import { Participation } from './Participation.entity'
 
 @Entity()
 export class User extends BaseEntity
@@ -20,12 +19,15 @@ export class User extends BaseEntity
   @Column()
   email: string
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.users)
-  enterprise: Enterprise
+  @Column({ nullable: true })
+  password: string
 
-  @OneToOne(type => Admin, { nullable: true })
-  @JoinColumn()
-  admin: Admin
+  @Column({ default: false })
+  isAdmin: boolean
+
+  @Index('user_enterprise_idx')
+  @ManyToOne(type => Enterprise, enterprise => enterprise.users, { nullable: false })
+  enterprise: Enterprise
 
   @OneToMany(type => Participation, participation => participation.user)
   participations: Participation[]

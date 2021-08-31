@@ -1,4 +1,4 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinTable, ManyToMany, OneToMany } from 'typeorm'
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinTable, ManyToMany, OneToMany, Index } from 'typeorm'
 import { Answer } from './Answer.entity'
 import { Choice } from './Choice.entity'
 import { Meeting } from './Meeting.entity'
@@ -32,6 +32,7 @@ export class Chapter extends BaseEntity
   @OneToMany(type => Answer, answer => answer.chapter, { nullable: true })
   answers: Answer[]
 
+  @Index('chapter_meeting_idx')
   @ManyToOne(type => Meeting, meeting => meeting.chapters)
   meeting: Meeting
 

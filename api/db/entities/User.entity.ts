@@ -1,4 +1,4 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm'
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Index } from 'typeorm'
 import { Answer } from './Answer.entity'
 import { Enterprise } from './Enterprise.entity'
 import { Participation } from './Participation.entity'
@@ -25,6 +25,7 @@ export class User extends BaseEntity
   @Column({ default: false })
   isAdmin: boolean
 
+  @Index('user_enterprise_idx')
   @ManyToOne(type => Enterprise, enterprise => enterprise.users)
   enterprise: Enterprise
 

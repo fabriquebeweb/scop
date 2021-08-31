@@ -1,6 +1,6 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, OneToMany } from "typeorm"
-import { Meeting } from "./Meeting.entity"
-import { Status } from "./Status.entity"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import { Meeting } from './Meeting.entity'
+import { Status } from './Status.entity'
 
 @Entity()
 export class MeetingType extends BaseEntity

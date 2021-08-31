@@ -1,9 +1,9 @@
-import { Entity, Column, BaseEntity, ManyToOne, PrimaryGeneratedColumn, OneToMany } from "typeorm"
-import { Choice } from "./Choice.entity"
-import { Meeting } from "./Meeting.entity"
-import { Provider } from "./Provider.entity"
-import { Status } from "./Status.entity"
-import { User } from "./User.entity"
+import { Entity, Column, BaseEntity, ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import { Choice } from './Choice.entity'
+import { Meeting } from './Meeting.entity'
+import { Provider } from './Provider.entity'
+import { Status } from './Status.entity'
+import { User } from './User.entity'
 
 @Entity()
 export class Enterprise extends BaseEntity
@@ -27,7 +27,7 @@ export class Enterprise extends BaseEntity
   @Column({ nullable: true })
   ternary: string
 
-  @ManyToOne(type => Provider, provider => provider.enterprises)
+  @ManyToOne(type => Provider, provider => provider.enterprises, { nullable: false })
   provider: Provider
 
   @OneToMany(type => Status, status => status.enterprise)

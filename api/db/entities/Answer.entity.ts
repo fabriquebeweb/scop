@@ -1,18 +1,16 @@
-import { Entity, PrimaryColumn, BaseEntity, ManyToOne } from "typeorm"
-import { Choice } from "./Choice.entity"
-import { Question } from "./Question.entity"
-import { User } from "./User.entity"
+import { Entity, BaseEntity, ManyToOne } from 'typeorm'
+import { Chapter } from './Chapter.entity'
+import { Choice } from './Choice.entity'
+import { User } from './User.entity'
 
 @Entity()
 export class Answer extends BaseEntity
 {
 
-  @ManyToOne(type => Question, question => question.answers)
-  @PrimaryColumn()
-  question: Question
+  @ManyToOne(type => Chapter, chapter => chapter.answers, { primary: true })
+  chapter: Chapter
 
-  @ManyToOne(type => User, user => user.answers)
-  @PrimaryColumn()
+  @ManyToOne(type => User, user => user.answers, { primary: true })
   user: User
 
   @ManyToOne(type => Choice, choice => choice.answers, { nullable: true })

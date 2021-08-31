@@ -7,10 +7,10 @@ import { User } from './User.entity'
 export class Answer extends BaseEntity
 {
 
-  @ManyToOne(type => Chapter, chapter => chapter.answers, { primary: true })
+  @ManyToOne(type => Chapter, chapter => chapter.answers, { primary: true, nullable: false })
   chapter: Chapter
 
-  @ManyToOne(type => User, user => user.answers, { primary: true })
+  @ManyToOne(type => User, user => user.answers, { primary: true, nullable: false })
   user: User
 
   @ManyToOne(type => Choice, choice => choice.answers, { nullable: true })

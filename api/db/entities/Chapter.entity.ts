@@ -33,7 +33,7 @@ export class Chapter extends BaseEntity
   answers: Answer[]
 
   @Index('chapter_meeting_idx')
-  @ManyToOne(type => Meeting, meeting => meeting.chapters)
+  @ManyToOne(type => Meeting, meeting => meeting.chapters, { nullable: false })
   meeting: Meeting
 
 }

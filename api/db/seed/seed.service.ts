@@ -18,10 +18,10 @@ export class SeedService {
   };
 
   async loop(loops: number, callback: any) : Promise<void> {
-    const loop = counter => callback => {
+    const loop = (counter: number) => (func: any) => {
       if (counter > 0) {
         callback()
-        loop (counter - 1) (callback)
+        loop (counter - 1) (func)
       }
     };
 

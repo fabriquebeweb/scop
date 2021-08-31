@@ -5,6 +5,7 @@ import { AppRoutesModule } from './app.routes.module.tns';
 import { AppComponent } from '@src/app/app.component';
 import { HomeComponent } from './home/home.component';
 import { LolComponent } from '@src/app/lol/lol.component';
+import { MeetingModule } from './meeting/meeting.module.tns';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding and/or HTTP wrapper
 // import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular';
@@ -17,7 +18,8 @@ import { LolComponent } from '@src/app/lol/lol.component';
   ],
   imports: [
     NativeScriptModule,
-    AppRoutesModule
+    AppRoutesModule,
+    MeetingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

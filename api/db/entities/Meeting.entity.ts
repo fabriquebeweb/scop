@@ -18,7 +18,7 @@ export class Meeting extends BaseEntity
   @Column({ nullable: true })
   location: string
 
-  @Index('enterprise_idx')
+  @Index('meeting_enterprise_idx')
   @ManyToOne(type => Enterprise, enterprise => enterprise.meetings)
   enterprise: Enterprise
 

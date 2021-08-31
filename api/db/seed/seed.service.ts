@@ -12,82 +12,87 @@ import { Provider } from '../entities/Provider.entity';
 export class SeedService {
   constructor(private connection: Connection) {}
 
-  async seed(): Promise<void> {
-    const loop = (counter) => (callback) => {
+  //Création d'une fonction qui obtient un élément aléatoire d'un tableau
+  random(entities:any[]){
+    return entities[Math.floor(Math.random() * entities.length)]
+  };
+
+  async loop(loops: number, callback: any) : Promise<void> {
+    const loop = counter => callback => {
       if (counter > 0) {
-        callback();
-        loop(counter - 1)(callback);
+        callback()
+        loop (counter - 1) (callback)
       }
     };
 
-    await this.connection.transaction(async (db) => {
-      /**
-       * SEED START
-       */
+    await this.connection.transaction(async db => {
+      loop (loops) (callback)
+    })
+  };
 
-      loop(1)(() => {
-        let enterprise = new Enterprise();
-        enterprise.name = Faker.name.firstName();
-        enterprise.logo = Faker.internet.url();
-        enterprise.primary = Faker.commerce.color();
-        enterprise.secondary = Faker.commerce.color();
-        enterprise.ternary = Faker.commerce.color();
-        enterprise.save();
-      });
-
-      Enterprise.find().then((e) => console.log(e));
-
-      loop(3)(() => {
-        let status = new Status();
-        //status.enterprise = Enterprise.id();
-        //status.meetingType = ;
-        status.majorityMin = Faker.datatype.number();
-        status.majorityMax = Faker.datatype.number();
-        status.quorumMin = Faker.datatype.number();
-        status.quorumMax = Faker.datatype.number();
-        status.power = Faker.datatype.number();
-        status.save();
-      });
-
-      // loop(1)(()=>{
-      //   let meetingType = new MeetingType();
-      //   meetingType.name = ;
-      //   meetingType.save();
-      // });
-
-      // loop(1)(()=>{
-      //   let meeting = new Meeting;
-      //   meeting.date = Faker.datatype.datetime();
-      //   meeting.location = Faker.address.streetAddress() + ' ' + Faker.address.city();
-      //   meeting.enterprise = ;
-      //   meeting.meetingType = ;
-      //   meeting.state = Faker.datatype.boolean();
-      //   meeting.save();
-      // });
-
-      // loop(10)(()=>{
-      //   let user = new User();
-      //   user.firstName = Faker.name.firstName();
-      //   user.lastName = Faker.name.lastName();
-      //   user.email = Faker.internet.email();
-      //   user.enterprise = ;
-      //   user.save();
-      // });
-
-      // loop(1)(()=>{
-      //   let provider = new Provider();
-      //   provider.name = Faker.internet.;
-      //   provider.save();
-      // });
-
-
-
-
-
-
-      /**
-       * SEED END
-       */
+  async seed(): Promise<void> {
+    /**
+     * SEED START
+     * Boucles qui génèrent de la fake data pour chaque entité
+     */
+    await this.loop(3, async () => {
+      Provider.create({
+        name: Faker.company.companyName()
+      }).save();
     });
+
+    await this.loop(3, async () => {
+      Enterprise.create({
+        name: Faker.company.companyName(),
+        logo: Faker.internet.url(),
+        primary: Faker.commerce.color(),
+        secondary: Faker.commerce.color(),
+        ternary: Faker.commerce.color(),
+        provider: this.random(await Provider.find())
+      }).save();
+    });
+
+    await this.loop(1, async()=>{
+      MeetingType.create({
+      name : Faker.lorem.word()
+      }).save(); 
+    });
+
+    // await this.loop(3, async() => {
+    //   Status.create({
+    //   enterprise : await Enterprise.fin,
+    //   meetingType : ,
+    //   majorityMin : Faker.datatype.number(),
+    //   majorityMax : Faker.datatype.number(),
+    //   quorumMin : Faker.datatype.number(),
+    //   quorumMax : Faker.datatype.number(),
+    //   power : Faker.datatype.number()}).save();
+    // });
+
+    
+
+    //await this.loop(1, async()=>{
+    //   let meeting = new Meeting;
+    //   meeting.date = Faker.datatype.datetime();
+    //   meeting.location = Faker.address.streetAddress() + ' ' + Faker.address.city();
+    //   meeting.enterprise = ;
+    //   meeting.meetingType = ;
+    //   meeting.state = Faker.datatype.boolean();
+    //   meeting.save();
+    // });
+
+    //await this.loop(10, async()=>{
+    //   let user = new User();
+    //   user.firstName = Faker.name.firstName();
+    //   user.lastName = Faker.name.lastName();
+    //   user.email = Faker.internet.email();
+    //   user.enterprise = ;
+    //   user.save();
+    // });
+
+    /**
+     * SEED END
+     */
+  };
+  
   }
-}

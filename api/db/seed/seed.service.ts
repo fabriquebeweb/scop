@@ -8,11 +8,10 @@ import { Meeting } from '../entities/Meeting.entity';
 import { User } from '../entities/User.entity';
 import { Provider } from '../entities/Provider.entity';
 import { Choice } from '../entities/Choice.entity';
-import { Participation } from 'db/entities/Participation.entity';
-import { Document } from 'db/entities/Document.entity';
-import { Chapter } from 'db/entities/Chapter.entity';
-import { resourceLimits } from 'worker_threads';
-import { Answer } from 'db/entities/Answer.entity';
+import { Participation } from '../entities/Participation.entity';
+import { Document } from '../entities/Document.entity';
+import { Chapter } from '../entities/Chapter.entity';
+import { Answer } from '../entities/Answer.entity';
 
 @Injectable()
 export class SeedService {

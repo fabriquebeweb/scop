@@ -1,4 +1,4 @@
-import * as Faker from 'faker';
+import * as Faker from 'faker/locale/fr';
 import { Injectable } from '@nestjs/common';
 import { Connection } from 'typeorm';
 import { Enterprise } from '../entities/Enterprise.entity';
@@ -7,6 +7,12 @@ import { MeetingType } from '../entities/MeetingType.entity';
 import { Meeting } from '../entities/Meeting.entity';
 import { User } from '../entities/User.entity';
 import { Provider } from '../entities/Provider.entity';
+import { Choice } from '../entities/Choice.entity';
+import { Participation } from 'db/entities/Participation.entity';
+import { Document } from 'db/entities/Document.entity';
+import { Chapter } from 'db/entities/Chapter.entity';
+import { resourceLimits } from 'worker_threads';
+import { Answer } from 'db/entities/Answer.entity';
 
 @Injectable()
 export class SeedService {
@@ -35,12 +41,22 @@ export class SeedService {
      * SEED START
      * Boucles qui génèrent de la fake data pour chaque entité
      */
+
+    //Provider
     await this.loop(3, async () => {
       Provider.create({
-        name: Faker.company.companyName()
+        name: Faker.company.companyName(),
       }).save();
     });
 
+    //Meeting Type
+    await this.loop(1, async () => {
+      MeetingType.create({
+        name: Faker.lorem.word(),
+      }).save();
+    });
+
+    //Enterprise
     await this.loop(3, async () => {
       Enterprise.create({
         name: Faker.company.companyName(),
@@ -48,47 +64,97 @@ export class SeedService {
         primary: Faker.commerce.color(),
         secondary: Faker.commerce.color(),
         ternary: Faker.commerce.color(),
-        provider: this.random(await Provider.find())
+        provider: this.random(await Provider.find()),
       }).save();
     });
 
-    await this.loop(1, async()=>{
-      MeetingType.create({
-      name : Faker.lorem.word()
-      }).save(); 
+    //User
+    await this.loop(20, async () => {
+      User.create({
+        firstName: Faker.name.firstName(),
+        lastName: Faker.name.lastName(),
+        email: Faker.internet.email(),
+        enterprise: this.random(await Enterprise.find()),
+      }).save();
     });
 
-    // await this.loop(3, async() => {
-    //   Status.create({
-    //   enterprise : await Enterprise.fin,
-    //   meetingType : ,
-    //   majorityMin : Faker.datatype.number(),
-    //   majorityMax : Faker.datatype.number(),
-    //   quorumMin : Faker.datatype.number(),
-    //   quorumMax : Faker.datatype.number(),
-    //   power : Faker.datatype.number()}).save();
-    // });
+    //Choice
+    await this.loop(3, async () => {
+      Choice.create({
+        title: Faker.lorem.sentence(),
+        enterprise: this.random(await Enterprise.find()),
+      }).save();
+    });
 
-    
+    //Status
+    await this.loop(3, async () => {
+      Status.create({
+        enterprise: this.random(await Enterprise.find()),
+        meetingType: this.random(await MeetingType.find()),
+        majorityMin: Faker.datatype.number(),
+        majorityMax: Faker.datatype.number(),
+        quorumMin: Faker.datatype.number(),
+        quorumMax: Faker.datatype.number(),
+        power: Faker.datatype.number(),
+      }).save();
+    });
 
-    //await this.loop(1, async()=>{
-    //   let meeting = new Meeting;
-    //   meeting.date = Faker.datatype.datetime();
-    //   meeting.location = Faker.address.streetAddress() + ' ' + Faker.address.city();
-    //   meeting.enterprise = ;
-    //   meeting.meetingType = ;
-    //   meeting.state = Faker.datatype.boolean();
-    //   meeting.save();
-    // });
+    //Meeting
+    await this.loop(1, async () => {
+      Meeting.create({
+        date: Faker.datatype.datetime(),
+        location: Faker.address.streetAddress() + ' ' + Faker.address.city(),
+        enterprise: this.random(await Enterprise.find()),
+        meetingType: this.random(await MeetingType.find()),
+        state: Faker.datatype.boolean(),
+      }).save();
+    });
 
-    //await this.loop(10, async()=>{
-    //   let user = new User();
-    //   user.firstName = Faker.name.firstName();
-    //   user.lastName = Faker.name.lastName();
-    //   user.email = Faker.internet.email();
-    //   user.enterprise = ;
-    //   user.save();
-    // });
+    //Participation
+    await this.loop(20, async () => {
+      Participation.create({
+        code: Faker.internet.password(),
+        isPresent: Faker.datatype.boolean(),
+        procuration: this.random(await User.find()),
+        user: this.random(await User.find()),
+        meeting: this.random(await Meeting.find()),
+      });
+    });
+
+    //Document
+    await this.loop(2, async () => {
+      Document.create({
+        path: Faker.internet.url(),
+        name: Faker.lorem.words(),
+        meeting: this.random(await Meeting.find()),
+      });
+    });
+
+    //Chapter
+    await this.loop(20, async () => {
+      Chapter.create({
+        title: Faker.lorem.sentence(),
+        description: Faker.lorem.paragraph(),
+        summary: Faker.lorem.words(),
+        question: Faker.lorem.sentence() + '?',
+        choices: [
+          this.random(await Choice.find()),
+          this.random(await Choice.find()),
+        ],
+        result: this.random(await Choice.find()),
+        answers: this.random(await Answer.find()),
+        meeting: this.random(await Meeting.find()),
+      });
+    });
+
+    //Answer
+    await this.loop(20, async () => {
+      Answer.create({
+        chapter: this.random(await Chapter.find()),
+        user: this.random(await User.find()),
+        choice: this.random(await Choice.find()),
+      });
+    });
 
     /**
      * SEED END

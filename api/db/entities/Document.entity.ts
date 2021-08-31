@@ -1,5 +1,5 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
-import { Meeting } from "./Meeting.entity"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
+import { Meeting } from './Meeting.entity'
 
 @Entity()
 export class Document extends BaseEntity

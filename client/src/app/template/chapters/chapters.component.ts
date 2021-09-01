@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-chapters',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chapters.component.css']
 })
 export class ChaptersComponent implements OnInit {
+@Input() chapterId = '';
+@Input() chapterDesc = '';
+@Input() chapterQuest = '';
 
   constructor() { }
 

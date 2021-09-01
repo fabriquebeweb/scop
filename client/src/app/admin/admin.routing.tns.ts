@@ -5,4 +5,4 @@ import { NativeScriptRouterModule } from '@nativescript/angular';
   imports: [NativeScriptRouterModule.forChild([])],
   exports: [NativeScriptRouterModule]
 })
-export class AdminRouterModule { }
+export class AdminRoutingModule { }

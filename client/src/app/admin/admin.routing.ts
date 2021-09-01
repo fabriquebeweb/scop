@@ -5,4 +5,4 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule.forChild([])],
   exports: [RouterModule]
 })
-export class AdminRouterModule { }
+export class AdminRoutingModule { }

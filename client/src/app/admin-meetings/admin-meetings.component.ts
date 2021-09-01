@@ -10,17 +10,17 @@ export class AdminMeetingsComponent implements OnInit {
     {
       id: 1,
       title: 'Assemblée Générale Ordinaire',
-      data: '12 JAN 2021',
+      date: '12 JAN 2021',
     },
     {
       id: 2,
       title: 'Assemblée Générale Extraordinaire',
-      data: '12 JUIN 2021',
+      date: '12 JUIN 2021',
     },
     {
       id: 3,
       title: 'Réunion',
-      data: '17 JUIN 2021',
+      date: '17 JUIN 2021',
     }
   ];
 

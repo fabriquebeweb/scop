@@ -1,10 +1,10 @@
-import { Routes } from "@angular/router";
-import { AdminComponent } from "./admin/admin.component";
-import { ErrorComponent } from "./misc/error/error.component";
-import { HomeComponent } from "./misc/home/home.component";
-import { MeetingComponent } from "./meeting/meeting.component";
-import { LoginComponent } from "./misc/login/login.component";
-import { AdminMeetingsComponent } from "./admin/meetings/meetings.component";
+import { Routes } from "@angular/router"
+import { AdminComponent } from "./admin/admin.component"
+import { ErrorComponent } from "./misc/error/error.component"
+import { HomeComponent } from "./misc/home/home.component"
+import { MeetingComponent } from "./meeting/meeting.component"
+import { LoginComponent } from "./misc/login/login.component"
+import { AdminMeetingsComponent } from "./admin/meetings/meetings.component"
 
 export const routes: Routes = [
   {

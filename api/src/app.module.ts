@@ -3,8 +3,8 @@ import { RouterModule } from '@nestjs/core'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { AdminModule } from './admin/admin.module';
-import { MeetingModule } from './meeting/meeting.module';
+import { AdminModule } from './admin/admin.module'
+import { MeetingModule } from './meeting/meeting.module'
 import { connection } from '../db/db.connection'
 import { routes } from './app.routes'
 

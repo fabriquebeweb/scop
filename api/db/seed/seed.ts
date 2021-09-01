@@ -1,7 +1,7 @@
-import { Logger } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
-import { SeedModule } from "./seed.module";
-import { SeedService } from "./seed.service";
+import { Logger } from "@nestjs/common"
+import { NestFactory } from "@nestjs/core"
+import { SeedModule } from "./seed.module"
+import { SeedService } from "./seed.service"
 
 NestFactory.createApplicationContext(SeedModule)
   .then(app => {
@@ -13,10 +13,10 @@ NestFactory.createApplicationContext(SeedModule)
       })
       .catch(error => {
         logger.error('Seeding failed!')
-        throw error;
+        throw error
       })
       .finally(() => app.close())
   })
   .catch(error => {
-    throw error;
+    throw error
   })

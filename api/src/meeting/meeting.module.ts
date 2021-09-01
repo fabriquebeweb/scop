@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { MeetingController } from './meeting.controller';
+import { Module } from '@nestjs/common'
+import { MeetingController } from './meeting.controller'
 
 @Module({
   controllers: [MeetingController]

@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common'
 
 @Controller()
 export class MeetingController
@@ -9,6 +9,6 @@ export class MeetingController
     return `id : ${id}`
   }
 
-  
+
 
 }

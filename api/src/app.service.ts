@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Enterprise } from '../db/entities/Enterprise.entity';
+import { Injectable } from '@nestjs/common'
+import { Enterprise } from '../db/entities/Enterprise.entity'
 
 @Injectable()
 export class AppService {

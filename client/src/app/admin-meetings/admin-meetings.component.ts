@@ -21,7 +21,17 @@ export class AdminMeetingsComponent implements OnInit {
       id: 3,
       title: 'Réunion',
       date: '17 JUIN 2021',
-    }
+    },
+    {
+      id: 4,
+      title: "Conseil d'administration",
+      date: '22 AOUT 2021',
+    },
+    {
+      id: 5,
+      title: 'Réunion',
+      date: '1 SEPT 2021',
+    },
   ];
 
   constructor() {}

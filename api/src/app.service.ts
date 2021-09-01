@@ -6,14 +6,12 @@ export class AppService {
   constructor() {}
 
   async getAllEnterprises(): Promise<Enterprise[]> {
-    return await Enterprise.find();
+    return await Enterprise.find()
   }
 
   async set(id: string): Promise<void> {
-    await Enterprise.save(
-      Enterprise.create({
-        name: id,
-      }),
-    );
+    await Enterprise.create({
+      name: id,
+    }).save()
   }
 }

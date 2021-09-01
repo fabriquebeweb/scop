@@ -1,26 +1,27 @@
-import * as Faker from 'faker/locale/fr';
-import { Injectable } from '@nestjs/common';
-import { Connection } from 'typeorm';
-import { Enterprise } from '../entities/Enterprise.entity';
-import { Status } from '../entities/Status.entity';
-import { MeetingType } from '../entities/MeetingType.entity';
-import { Meeting } from '../entities/Meeting.entity';
-import { User } from '../entities/User.entity';
-import { Provider } from '../entities/Provider.entity';
-import { Choice } from '../entities/Choice.entity';
-import { Participation } from '../entities/Participation.entity';
-import { Document } from '../entities/Document.entity';
-import { Chapter } from '../entities/Chapter.entity';
-import { Answer } from '../entities/Answer.entity';
+import * as Faker from 'faker/locale/fr'
+import { Injectable } from '@nestjs/common'
+import { Connection } from 'typeorm'
+import { Enterprise } from '../entities/Enterprise.entity'
+import { Status } from '../entities/Status.entity'
+import { MeetingType } from '../entities/MeetingType.entity'
+import { Meeting } from '../entities/Meeting.entity'
+import { User } from '../entities/User.entity'
+import { Provider } from '../entities/Provider.entity'
+import { Choice } from '../entities/Choice.entity'
+import { Participation } from '../entities/Participation.entity'
+import { Document } from '../entities/Document.entity'
+import { Chapter } from '../entities/Chapter.entity'
+import { Answer } from '../entities/Answer.entity'
 
 @Injectable()
 export class SeedService {
-  constructor(private connection: Connection) {}
+  constructor(
+    private connection: Connection
+  ) {}
 
-  //Création d'une fonction qui obtient un élément aléatoire d'un tableau
-  random(entities:any[]){
+  random(entities: any[]) : any {
     return entities[Math.floor(Math.random() * entities.length)]
-  };
+  }
 
   async loop(loops: number, callback: any) : Promise<void> {
     const loop = (counter: number) => (func: any) => {
@@ -28,12 +29,12 @@ export class SeedService {
         callback()
         loop (counter - 1) (func)
       }
-    };
+    }
 
     await this.connection.transaction(async db => {
       loop (loops) (callback)
     })
-  };
+  }
 
   async seed(): Promise<void> {
     /**
@@ -41,21 +42,21 @@ export class SeedService {
      * Boucles qui génèrent de la fake data pour chaque entité
      */
 
-    //Provider
+    // Provider
     await this.loop(3, async () => {
       Provider.create({
         name: Faker.company.companyName(),
-      }).save();
-    });
+      }).save()
+    })
 
-    //Meeting Type
+    // Meeting Type
     await this.loop(1, async () => {
       MeetingType.create({
         name: Faker.lorem.word(),
-      }).save();
-    });
+      }).save()
+    })
 
-    //Enterprise
+    // Enterprise
     await this.loop(3, async () => {
       Enterprise.create({
         name: Faker.company.companyName(),
@@ -64,28 +65,28 @@ export class SeedService {
         secondary: Faker.commerce.color(),
         ternary: Faker.commerce.color(),
         provider: this.random(await Provider.find()),
-      }).save();
-    });
+      }).save()
+    })
 
-    //User
+    // User
     await this.loop(20, async () => {
       User.create({
         firstName: Faker.name.firstName(),
         lastName: Faker.name.lastName(),
         email: Faker.internet.email(),
         enterprise: this.random(await Enterprise.find()),
-      }).save();
-    });
+      }).save()
+    })
 
-    //Choice
+    // Choice
     await this.loop(3, async () => {
       Choice.create({
         title: Faker.lorem.sentence(),
         enterprise: this.random(await Enterprise.find()),
-      }).save();
-    });
+      }).save()
+    })
 
-    //Status
+    // Status
     await this.loop(3, async () => {
       Status.create({
         enterprise: this.random(await Enterprise.find()),
@@ -95,10 +96,10 @@ export class SeedService {
         quorumMin: Faker.datatype.number(),
         quorumMax: Faker.datatype.number(),
         power: Faker.datatype.number(),
-      }).save();
-    });
+      }).save()
+    })
 
-    //Meeting
+    // Meeting
     await this.loop(1, async () => {
       Meeting.create({
         date: Faker.datatype.datetime(),
@@ -106,10 +107,10 @@ export class SeedService {
         enterprise: this.random(await Enterprise.find()),
         meetingType: this.random(await MeetingType.find()),
         state: Faker.datatype.boolean(),
-      }).save();
-    });
+      }).save()
+    })
 
-    //Participation
+    // Participation
     await this.loop(20, async () => {
       Participation.create({
         code: Faker.internet.password(),
@@ -117,19 +118,19 @@ export class SeedService {
         procuration: this.random(await User.find()),
         user: this.random(await User.find()),
         meeting: this.random(await Meeting.find()),
-      });
-    });
+      })
+    })
 
-    //Document
+    // Document
     await this.loop(2, async () => {
       Document.create({
         path: Faker.internet.url(),
         name: Faker.lorem.words(),
         meeting: this.random(await Meeting.find()),
-      });
-    });
+      })
+    })
 
-    //Chapter
+    // Chapter
     await this.loop(20, async () => {
       Chapter.create({
         title: Faker.lorem.sentence(),
@@ -143,21 +144,21 @@ export class SeedService {
         result: this.random(await Choice.find()),
         answers: this.random(await Answer.find()),
         meeting: this.random(await Meeting.find()),
-      });
-    });
+      })
+    })
 
-    //Answer
+    // Answer
     await this.loop(20, async () => {
       Answer.create({
         chapter: this.random(await Chapter.find()),
         user: this.random(await User.find()),
         choice: this.random(await Choice.find()),
-      });
-    });
+      })
+    })
 
     /**
      * SEED END
      */
-  };
+  }
   
   }

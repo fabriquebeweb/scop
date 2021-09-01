@@ -13,7 +13,7 @@ import { User } from './entities/User.entity'
 
 export const connection: TypeOrmModuleOptions = {
   type: 'sqlite',
-  database: 'scop.db',
+  database: 'db/db.sqlite',
   entities: [
     Answer,
     Chapter,
@@ -28,9 +28,5 @@ export const connection: TypeOrmModuleOptions = {
     User
   ],
   synchronize: true,
-  autoLoadEntities: true,
-  cli: {
-    entitiesDir: './db/entities',
-    migrationsDir: './db/migrations',
-  }
+  autoLoadEntities: true
 }

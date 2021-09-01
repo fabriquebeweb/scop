@@ -1,6 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule, NativeScriptModule } from '@nativescript/angular';
-
 import { AppRoutingModule } from '@src/app/app.routing.tns';
 import { AppComponent } from '@src/app/app.component';
 import { HomeComponent } from '@src/app/misc/home/home.component';

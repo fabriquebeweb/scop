@@ -46,6 +46,14 @@ export class AdminMeetingsComponent implements OnInit {
         title: 'Réunion'
       },
       date: new Date('2021-09-01')
+    },
+    {
+      id: 6,
+      meetingType: {
+        id: 3,
+        title: 'Réunion'
+      },
+      date: new Date('2021-09-01')
     }
   ]
 

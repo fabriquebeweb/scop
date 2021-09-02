@@ -9,7 +9,6 @@
     "start": "ng serve",
     "build:dev": "ng build",
     "build:prod": "cross-env NODE_ENV=production ng build --prod",
-
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -27,7 +26,9 @@
     "@nativescript/angular": "~10.1.0",
     "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~2.5.0",
+    "chart.js": "^2.9.3",
     "nativescript": "^8.0.2",
+    "ng2-charts": "^2.2.3",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -41,6 +42,7 @@
     "@nativescript/schematics": "^11.2.0",
     "@nativescript/tslint-rules": "~0.0.5",
     "@nativescript/webpack": "~3.0.0",
+    "@types/chart.js": "^2.9.34",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "autoprefixer": "^10.2.5",

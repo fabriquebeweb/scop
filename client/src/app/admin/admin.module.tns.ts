@@ -3,9 +3,9 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AdminComponent } from '@src/app/admin/admin.component';
 import { AdminRoutingModule } from '@src/app/admin/admin.routing.tns';
 import { AdminMeetingsComponent } from '@src/app/admin/meetings/meetings.component';
-import { MembersComponent } from '@src/app/admin/members/members.component';
-import { StatusComponent } from '@src/app/admin/status/status.component';
-import { ThemeComponent } from '@src/app/admin/theme/theme.component';
+import { AdminMembersComponent } from '@src/app/admin/members/members.component';
+import { AdminStatusComponent } from '@src/app/admin/status/status.component';
+import { AdminThemeComponent } from '@src/app/admin/theme/theme.component';
 import { AdminMeetingDetailsComponent } from '@src/app/admin/meetings/details/details.component';
 import { AdminMeetingSummaryComponent } from '@src/app/admin/meetings/summary/summary.component';
 import { AdminMeetingChaptersComponent } from './meetings/chapters/chapters.component';
@@ -17,11 +17,17 @@ import { AdminMeetingQuestionComponent } from './meetings/question/question.comp
     AdminMeetingsComponent,
     AdminMeetingDetailsComponent,
     AdminMeetingSummaryComponent,
+<<<<<<< HEAD
     AdminMeetingChaptersComponent,
     AdminMeetingQuestionComponent,
     MembersComponent,
     StatusComponent,
     ThemeComponent
+=======
+    AdminMembersComponent,
+    AdminStatusComponent,
+    AdminThemeComponent
+>>>>>>> 8647a998d7c271f35ebadd33924a02f42ee8388c
   ],
   imports: [
     NativeScriptCommonModule,

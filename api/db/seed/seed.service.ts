@@ -36,23 +36,16 @@ export class SeedService {
     })
   }
 
-  async seed(): Promise<void> {
+  async seed() : Promise<void> {
     /**
      * SEED START
-     * Boucles qui génèrent de la fake data pour chaque entité
+     * Boucles génèrant des fixtures pour chaque entité
      */
 
     // Provider
     await this.loop(3, async () => {
       Provider.create({
         name: Faker.company.companyName(),
-      }).save()
-    })
-
-    // Meeting Type
-    await this.loop(1, async () => {
-      MeetingType.create({
-        name: Faker.lorem.word(),
       }).save()
     })
 
@@ -86,6 +79,13 @@ export class SeedService {
       }).save()
     })
 
+    // Meeting Type
+    await this.loop(4, async () => {
+      MeetingType.create({
+        title: Faker.lorem.word()
+      }).save()
+    })
+    
     // Status
     await this.loop(3, async () => {
       Status.create({
@@ -98,7 +98,7 @@ export class SeedService {
         power: Faker.datatype.number(),
       }).save()
     })
-
+    
     // Meeting
     await this.loop(1, async () => {
       Meeting.create({
@@ -111,14 +111,14 @@ export class SeedService {
     })
 
     // Participation
-    await this.loop(20, async () => {
+    await this.loop(1, async () => {
       Participation.create({
         code: Faker.internet.password(),
         isPresent: Faker.datatype.boolean(),
         procuration: this.random(await User.find()),
         user: this.random(await User.find()),
         meeting: this.random(await Meeting.find()),
-      })
+      }).save()
     })
 
     // Document
@@ -127,7 +127,7 @@ export class SeedService {
         path: Faker.internet.url(),
         name: Faker.lorem.words(),
         meeting: this.random(await Meeting.find()),
-      })
+      }).save()
     })
 
     // Chapter
@@ -136,15 +136,14 @@ export class SeedService {
         title: Faker.lorem.sentence(),
         description: Faker.lorem.paragraph(),
         summary: Faker.lorem.words(),
-        question: Faker.lorem.sentence() + '?',
+        question: `${Faker.lorem.sentence()} ?`,
         choices: [
           this.random(await Choice.find()),
-          this.random(await Choice.find()),
+          this.random(await Choice.find())
         ],
         result: this.random(await Choice.find()),
-        answers: this.random(await Answer.find()),
-        meeting: this.random(await Meeting.find()),
-      })
+        meeting: this.random(await Meeting.find())
+      }).save()
     })
 
     // Answer
@@ -152,8 +151,8 @@ export class SeedService {
       Answer.create({
         chapter: this.random(await Chapter.find()),
         user: this.random(await User.find()),
-        choice: this.random(await Choice.find()),
-      })
+        choice: this.random(await Choice.find())
+      }).save()
     })
 
     /**
@@ -161,4 +160,4 @@ export class SeedService {
      */
   }
   
-  }
+}

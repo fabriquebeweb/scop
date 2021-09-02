@@ -12,10 +12,10 @@ export class MeetingType extends BaseEntity
   @Column()
   title: string
 
-  @OneToMany(type => Status, status => status.meetingType)
+  @OneToMany(type => Status, status => status.meetingType, { nullable: true })
   status: Status[]
 
-  @OneToMany(type => Meeting, meeting => meeting.meetingType)
-  meetings: MeetingType[]
+  @OneToMany(type => Meeting, meeting => meeting.meetingType, { nullable: true })
+  meetings: Meeting[]
 
 }

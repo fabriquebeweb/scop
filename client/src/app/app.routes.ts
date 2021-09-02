@@ -33,7 +33,14 @@ export const routes: Routes = [
   },
   {
     path: 'meeting',
-    component: MeetingComponent
+    component: MeetingComponent,
+    children: [
+      // {
+      //   path: '',
+      //   pathMatch: 'full',
+      //   redirectTo: '/meeting/chapters'
+      // }
+    ]
   },
   {
     path: '**',

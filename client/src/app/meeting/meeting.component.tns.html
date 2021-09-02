@@ -1,1 +1,15 @@
-<Button text="meeting works!" class="btn btn-primary"></Button>
+<section class="h-1/8 bg-green-600 shadow-lg flex justify-center items-center">
+  <section class="md:h-20 py-20 md:py-0 flex justify-center items-center">
+    <section class="md:space-x-20 space-y-10 md:space-y-0">
+      <img class="inline h-20" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
+      <button [routerLink]="['/admin/meetings']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">RÉUNIONS</button>
+      <button href="#" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">MEMBRES</button>
+      <button href="#" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">STATUS</button>
+      <button href="#" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">THÈME</button>
+    </section>
+  </section>
+</section>
+
+<section class="h-7/8">
+<router-outlet></router-outlet>
+</section>

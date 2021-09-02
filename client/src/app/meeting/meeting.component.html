@@ -1,4 +1,5 @@
-<section class="h-1/8 bg-green-600 shadow-lg flex justify-center items-center">
+<div class="flex flex-col h-screen justify-between">
+<section class="h-1/8 bg-green-600 shadow-lg flex justify-center items-center w-full fixed top-0 z-50">
   <section class="md:h-20 py-20 md:py-0 flex justify-center items-center">
     <section class="md:space-x-20 space-y-10 md:space-y-0">
       <img class="inline h-20" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
@@ -8,8 +9,9 @@
 </section>
 
 
-<section class="h-7/8">
+<section class="h-full mt-24">
 <router-outlet></router-outlet>
+<!-- <div style="height:96px; width:100%;"></div> -->
 </section>
 
 <section class="h-1/8 bg-white shadow-lg flex justify-center items-center w-full fixed bottom-0 z-50">
@@ -19,3 +21,4 @@
       <button [routerLink]="['/meeting/presence']" routerLinkActive="bg-yellow-500" class="py-3 px-6 text-white bg-yellow-300 block md:inline-block rounded">PROCURATIONS ET PRÉSENCE</button>
     </section>
 </section>
+</div>

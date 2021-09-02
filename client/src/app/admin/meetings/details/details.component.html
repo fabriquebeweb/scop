@@ -1,1 +1,7 @@
-<meeting-chapters></meeting-chapters>
+<meeting-chapters *ngFor="let chapter of chapters" [chapterId] = "chapter.id" [chapterDesc] = "chapter.description" [chapterQuest] = "chapter.question"></meeting-chapters>
+<div class="w-3/5 p-8 mx-auto">
+    <button type="button" (click)="toggleChild()" id="addChapter" class="w-full my-5 text-3xl bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+        +
+    </button>
+</div>
+<meeting-question [showQuestion]="showVar"></meeting-question>

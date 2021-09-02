@@ -9,6 +9,7 @@ import { ThemeComponent } from '@src/app/admin/theme/theme.component';
 import { AdminMeetingDetailsComponent } from '@src/app/admin/meetings/details/details.component';
 import { AdminMeetingSummaryComponent } from '@src/app/admin/meetings/summary/summary.component';
 import { AdminMeetingChaptersComponent } from './meetings/chapters/chapters.component';
+import { AdminMeetingQuestionComponent } from './meetings/question/question.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AdminMeetingChaptersComponent } from './meetings/chapters/chapters.comp
     AdminMeetingDetailsComponent,
     AdminMeetingSummaryComponent,
     AdminMeetingChaptersComponent,
+    AdminMeetingQuestionComponent,
     MembersComponent,
     StatusComponent,
     ThemeComponent

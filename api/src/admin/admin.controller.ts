@@ -8,7 +8,7 @@ export class AdminController {
     private readonly adminService: AdminService
   ) {}
 
-  @Get()
+  @Get('login')
   login() {
     return 'ADMIN'
   }

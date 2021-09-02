@@ -6,6 +6,11 @@ import { Chapter } from '@src/app/misc/entities/Chapter'
   templateUrl: './details.component.html'
 })
 export class AdminMeetingDetailsComponent implements OnInit {
+  showForm: boolean = false;
+  toggleForm() {
+    this.showForm = !this.showForm
+  }
+  
   chapters : Chapter[] = [
     {
       id: 1,

@@ -17,17 +17,11 @@ import { AdminMeetingQuestionComponent } from './meetings/question/question.comp
     AdminMeetingsComponent,
     AdminMeetingDetailsComponent,
     AdminMeetingSummaryComponent,
-<<<<<<< HEAD
     AdminMeetingChaptersComponent,
     AdminMeetingQuestionComponent,
-    MembersComponent,
-    StatusComponent,
-    ThemeComponent
-=======
     AdminMembersComponent,
     AdminStatusComponent,
     AdminThemeComponent
->>>>>>> 8647a998d7c271f35ebadd33924a02f42ee8388c
   ],
   imports: [
     NativeScriptCommonModule,

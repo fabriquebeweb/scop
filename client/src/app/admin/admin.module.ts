@@ -5,16 +5,22 @@ import { AdminMeetingsComponent } from '@src/app/admin/meetings/meetings.compone
 import { MembersComponent } from '@src/app/admin/members/members.component';
 import { StatusComponent } from '@src/app/admin/status/status.component';
 import { ThemeComponent } from '@src/app/admin/theme/theme.component';
+import { AdminMeetingDetailsComponent } from '@src/app/admin/meetings/details/details.component';
+import { AdminMeetingSummaryComponent } from '@src/app/admin/meetings/summary/summary.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AdminComponent,
     AdminMeetingsComponent,
+    AdminMeetingDetailsComponent,
+    AdminMeetingSummaryComponent,
     MembersComponent,
     StatusComponent,
     ThemeComponent
   ],
   imports: [
+    CommonModule,
     AdminRoutingModule
   ],
   schemas: [

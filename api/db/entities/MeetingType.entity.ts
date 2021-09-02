@@ -10,7 +10,7 @@ export class MeetingType extends BaseEntity
   readonly id: number
 
   @Column()
-  name: string
+  title: string
 
   @OneToMany(type => Status, status => status.meetingType)
   status: Status[]

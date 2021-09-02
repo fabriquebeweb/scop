@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'admin-members',
   templateUrl: './members.component.html',
 })
-export class MembersComponent implements OnInit {
+export class AdminMembersComponent implements OnInit {
 
   constructor() { }
 

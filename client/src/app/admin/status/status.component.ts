@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'admin-status',
   templateUrl: './status.component.html',
 })
-export class StatusComponent implements OnInit {
+export class AdminStatusComponent implements OnInit {
 
   constructor() { }
 

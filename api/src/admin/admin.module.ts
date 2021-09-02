@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common'
-import { RouterModule } from '@nestjs/core'
 import { AdminController } from './admin.controller'
-import { routes } from './admin.routes'
 import { AdminService } from './admin.service'
-import { AdminMeetingsModule } from './meetings/meetings.module'
+import { AdminMeetingsController } from './meetings/meetings.controller'
 
 @Module({
-  imports: [
-    // RouterModule.f(routes),
-    AdminMeetingsModule,
+  imports: [],
+  controllers: [
+    AdminController,
+    AdminMeetingsController
   ],
-  controllers: [AdminController],
-  providers: [AdminService]
+  providers: [
+    AdminService
+  ]
 })
 export class AdminModule {}

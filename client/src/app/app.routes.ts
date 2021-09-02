@@ -5,6 +5,12 @@ import { HomeComponent } from "./home/home.component"
 import { MeetingComponent } from "./meeting/meeting.component"
 import { LoginComponent } from "./login/login.component"
 import { AdminMeetingsComponent } from "./admin/meetings/meetings.component"
+import { AdminStatusComponent } from "./admin/status/status.component"
+import { AdminMembersComponent } from "./admin/members/members.component"
+import { AdminThemeComponent } from "./admin/theme/theme.component"
+import { MeetingDocumentsComponent } from "./meeting/documents/documents.component"
+import { MeetingChaptersComponent } from "./meeting/chapters/chapters.component"
+import { MeetingPresenceComponent } from "./meeting/presence/presence.component"
 
 export const routes: Routes = [
   {
@@ -27,13 +33,44 @@ export const routes: Routes = [
       },
       {
         path: 'meetings',
-        component: AdminMeetingsComponent,
+        component: AdminMeetingsComponent
+      },
+      {
+        path: 'members',
+        component: AdminMembersComponent
+      },
+      {
+        path: 'status',
+        component: AdminStatusComponent
+      },
+      {
+        path: 'theme',
+        component: AdminThemeComponent
       }
     ]
   },
   {
     path: 'meeting',
-    component: MeetingComponent
+    component: MeetingComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/meeting/chapters'
+      },
+      {
+        path: 'documents',
+        component: MeetingDocumentsComponent
+      },
+      {
+        path: 'chapters',
+        component: MeetingChaptersComponent
+      },
+      {
+        path: 'presence',
+        component: MeetingPresenceComponent
+      }
+    ]
   },
   {
     path: '**',

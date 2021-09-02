@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common'
 
-@Controller()
+@Controller('meetings')
 export class AdminMeetingsController {
 
   @Get()

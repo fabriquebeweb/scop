@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'admin-theme',
   templateUrl: './theme.component.html',
 })
-export class ThemeComponent implements OnInit {
+export class AdminThemeComponent implements OnInit {
 
   constructor() { }
 

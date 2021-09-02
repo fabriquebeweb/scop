@@ -1,11 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MeetingComponent } from '@src/app/meeting/meeting.component';
-import { MeetingRoutingModule } from './meeting.routing';
+import { MeetingRoutingModule } from '@src/app/meeting/meeting.routing';
+import { MeetingDocumentsComponent } from '@src/app/meeting/documents/documents.component';
+import { MeetingChaptersComponent } from '@src/app/meeting/chapters/chapters.component';
+import { MeetingPresenceComponent } from '@src/app/meeting/presence/presence.component';
 
 @NgModule({
   declarations: [
-    MeetingComponent
+    MeetingComponent,
+    MeetingDocumentsComponent,
+    MeetingChaptersComponent,
+    MeetingPresenceComponent
   ],
   imports: [
     CommonModule,

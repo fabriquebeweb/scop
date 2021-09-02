@@ -1,32 +1,36 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptModule } from '@nativescript/angular';
-
-import { AppRoutesModule } from '@src/app/app.routes.module.tns';
-import { AppComponent } from '@src/app/app.component';
-import { HomeComponent } from '@src/app/home/home.component';
-import { LolComponent } from '@src/app/lol/lol.component';
-import { ChaptersComponent } from '@src/app/template/chapters/chapters.component';
-import { QuestionComponent } from '@src/app/template/question/question.component';
-import { TemplateComponent } from '@src/app/template/template.component';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
+import { NativeScriptCommonModule, NativeScriptModule } from '@nativescript/angular'
+import { AppRoutingModule } from '@src/app/app.routing.tns'
+import { AppComponent } from '@src/app/app.component'
+import { HomeComponent } from '@src/app/home/home.component'
+import { MeetingModule } from '@src/app/meeting/meeting.module.tns'
+import { AdminModule } from '@src/app/admin/admin.module.tns'
+import { ErrorComponent } from '@src/app/error/error.component'
+import { LoginComponent } from '@src/app/login/login.component'
 
 // Uncomment and add to NgModule imports if you need to use two-way binding and/or HTTP wrapper
-// import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular';
+// import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LolComponent,
-    ChaptersComponent,
-    QuestionComponent,
-    TemplateComponent
+    LoginComponent,
+    ErrorComponent
   ],
   imports: [
     NativeScriptModule,
-    AppRoutesModule
+    NativeScriptCommonModule,
+    AdminModule,
+    MeetingModule,
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  bootstrap: [
+    AppComponent
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }

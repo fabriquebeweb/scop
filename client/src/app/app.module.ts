@@ -1,28 +1,31 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutesModule } from '@src/app/app.routes.module';
-import { AppComponent } from '@src/app/app.component';
-import { HomeComponent } from '@src/app/home/home.component';
-import { LolComponent } from '@src/app/lol/lol.component';
-import { ChaptersComponent } from '@src/app/template/chapters/chapters.component';
-import { QuestionComponent } from '@src/app/template/question/question.component';
-import { TemplateComponent } from '@src/app/template/template.component';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { AppComponent } from '@src/app/app.component'
+import { AdminModule } from '@src/app/admin/admin.module'
+import { MeetingModule } from '@src/app/meeting/meeting.module'
+import { ErrorComponent } from '@src/app/error/error.component'
+import { LoginComponent } from '@src/app/login/login.component'
+import { HomeComponent } from './home/home.component'
+import { CommonModule } from '@angular/common'
+import { AppRoutingModule } from '@src/app/app.routing'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LolComponent,
-    ChaptersComponent,
-    QuestionComponent,
-    TemplateComponent
+    LoginComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutesModule
+    CommonModule,
+    AdminModule,
+    MeetingModule,
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

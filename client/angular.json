@@ -122,6 +122,7 @@
   },
   "defaultProject": "scop-client",
   "cli": {
+    "analytics": "e205b08a-31c3-4f5f-b74a-e6da5dcbef8c",
     "defaultCollection": "@nativescript/schematics"
   }
 }

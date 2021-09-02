@@ -6,7 +6,7 @@ export class AppController
 
   @Get()
   home() {
-    return 'Hello World!'
+    return null
   }
 
   @Post('login')

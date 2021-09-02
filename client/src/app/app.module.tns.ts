@@ -1,32 +1,36 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptModule } from '@nativescript/angular';
-
-import { AppRoutesModule } from '@src/app/app.routes.module.tns';
-import { AppComponent } from '@src/app/app.component';
-import { HomeComponent } from '@src/app/home/home.component';
-import { LolComponent } from '@src/app/lol/lol.component';
-import { AdminMeetingsComponent } from '@src/app/admin-meetings/admin-meetings.component';
-import { AdminMeetingsElementComponent } from '@src/app/admin-meetings/admin-meetings-element/admin-meetings-element.component';
-import { AdminMeetingDetailComponent } from '@src/app/admin-meetings/admin-meeting-detail/admin-meeting-detail.component';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
+import { NativeScriptCommonModule, NativeScriptModule } from '@nativescript/angular'
+import { AppRoutingModule } from '@src/app/app.routing.tns'
+import { AppComponent } from '@src/app/app.component'
+import { HomeComponent } from '@src/app/home/home.component'
+import { MeetingModule } from '@src/app/meeting/meeting.module.tns'
+import { AdminModule } from '@src/app/admin/admin.module.tns'
+import { ErrorComponent } from '@src/app/error/error.component'
+import { LoginComponent } from '@src/app/login/login.component'
 
 // Uncomment and add to NgModule imports if you need to use two-way binding and/or HTTP wrapper
-// import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular';
+// import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LolComponent,
-    AdminMeetingsComponent,
-    AdminMeetingsElementComponent,
-    AdminMeetingDetailComponent
+    LoginComponent,
+    ErrorComponent
   ],
   imports: [
     NativeScriptModule,
-    AppRoutesModule
+    NativeScriptCommonModule,
+    AdminModule,
+    MeetingModule,
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+  bootstrap: [
+    AppComponent
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
 })
 export class AppModule { }

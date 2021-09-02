@@ -1,5 +1,5 @@
-import { Entity, Column, BaseEntity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { Enterprise } from "./Enterprise.entity"
+import { Entity, Column, BaseEntity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Enterprise } from './Enterprise.entity'
 
 @Entity()
 export class Provider extends BaseEntity

@@ -1,5 +1,8 @@
+# Environment Variables
+.env
+
 # Database
-scop.db
+db/db.sqlite
 
 # compiled output
 /dist

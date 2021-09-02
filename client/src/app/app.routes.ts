@@ -1,20 +1,42 @@
-import { Routes } from "@angular/router";
-import { AdminMeetingsComponent } from "./admin-meetings/admin-meetings.component";
-
-import { HomeComponent } from "./home/home.component";
-import { LolComponent } from "./lol/lol.component";
+import { Routes } from "@angular/router"
+import { AdminComponent } from "./admin/admin.component"
+import { ErrorComponent } from "./error/error.component"
+import { HomeComponent } from "./home/home.component"
+import { MeetingComponent } from "./meeting/meeting.component"
+import { LoginComponent } from "./login/login.component"
+import { AdminMeetingsComponent } from "./admin/meetings/meetings.component"
 
 export const routes: Routes = [
   {
-    path: 'home',
+    path: '',
+    pathMatch: 'full',
     component: HomeComponent
   },
   {
-    path: 'lol',
-    component: LolComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path: 'meetings',
-    component: AdminMeetingsComponent
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/admin/meetings'
+      },
+      {
+        path: 'meetings',
+        component: AdminMeetingsComponent,
+      }
+    ]
   },
+  {
+    path: 'meeting',
+    component: MeetingComponent
+  },
+  {
+    path: '**',
+    component: ErrorComponent
+  }
 ]

@@ -1,9 +1,9 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm"
-import { Document } from "./Document.entity"
-import { Enterprise } from "./Enterprise.entity"
-import { MeetingType } from "./MeetingType.entity"
-import { Participation } from "./Participation.entity"
-import { Subject } from "./Subject.entity"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Index } from 'typeorm'
+import { Document } from './Document.entity'
+import { Enterprise } from './Enterprise.entity'
+import { MeetingType } from './MeetingType.entity'
+import { Participation } from './Participation.entity'
+import { Chapter } from './Chapter.entity'
 
 @Entity()
 export class Meeting extends BaseEntity
@@ -18,10 +18,11 @@ export class Meeting extends BaseEntity
   @Column({ nullable: true })
   location: string
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.meetings)
+  @Index('meeting_enterprise_idx')
+  @ManyToOne(type => Enterprise, enterprise => enterprise.meetings, { nullable: false })
   enterprise: Enterprise
 
-  @ManyToOne(type => MeetingType, meetingType => meetingType.meetings)
+  @ManyToOne(type => MeetingType, meetingType => meetingType.meetings, { nullable: false })
   meetingType: MeetingType
 
   @Column({ nullable: true })
@@ -33,7 +34,7 @@ export class Meeting extends BaseEntity
   @OneToMany(type => Document, document => document.meeting)
   documents: Document[]
 
-  @OneToMany(type => Subject, subject => subject.meeting)
-  subjects: Subject[]
+  @OneToMany(type => Chapter, chapter => chapter.meeting)
+  chapters: Chapter[]
 
 }

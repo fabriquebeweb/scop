@@ -5,15 +5,13 @@ import { Enterprise } from '../db/entities/Enterprise.entity'
 export class AppService {
   constructor() {}
 
-  async getAllEnterprises() : Promise<Enterprise[]> {
+  async getAllEnterprises(): Promise<Enterprise[]> {
     return await Enterprise.find()
   }
 
-  async set(id: string) : Promise<void> {
-    await Enterprise.save(
-      Enterprise.create({
-        name: id
-      })
-    )
+  async set(id: string): Promise<void> {
+    await Enterprise.create({
+      name: id,
+    }).save()
   }
 }

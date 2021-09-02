@@ -1,7 +1,7 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany } from "typeorm"
-import { Answer } from "./Answer.entity"
-import { Enterprise } from "./Enterprise.entity"
-import { Question } from "./Question.entity"
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany } from 'typeorm'
+import { Answer } from './Answer.entity'
+import { Chapter } from './Chapter.entity'
+import { Enterprise } from './Enterprise.entity'
 
 @Entity()
 export class Choice extends BaseEntity
@@ -13,14 +13,14 @@ export class Choice extends BaseEntity
   @Column()
   title: string
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.choices)
+  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { nullable: false })
   enterprise: Enterprise
 
-  @ManyToMany(type => Question)
-  questions: Question[]
+  @ManyToMany(type => Chapter)
+  chapters: Chapter[]
 
-  @OneToMany(type => Question, question => question.result)
-  results: Question[]
+  @OneToMany(type => Chapter, chapter => chapter.result)
+  results: Chapter[]
 
   @OneToMany(type => Answer, answer => answer.choice)
   answers: Answer[]

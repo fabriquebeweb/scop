@@ -1,9 +1,9 @@
-<div class="flex wrap">
-    <div class= "w-3/12 bg-white-400 h-full space-y-6 shadow-2xl">
+<section class="flex wrap">
+    <section class= "w-3/12 h-full space-y-6 shadow-2xl">
         <button class="bg-yellow-300 hover:bg-yellow-500 text-white font-bold w-full h-12 rounded">
         NOUVELLE REUNION
         </button>
         <meeting-summary *ngFor="let meeting of meetings" [meeting]="meeting"></meeting-summary>
-    </div>
-    <meeting-details class= "w-9/12 bg-green-400 h-full"></meeting-details>
-</div>
+    </section>
+    <meeting-details class= "w-9/12 h-full"></meeting-details>
+</section>

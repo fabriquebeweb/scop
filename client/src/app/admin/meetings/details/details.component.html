@@ -1,32 +1,52 @@
 <div class="ml-20 mr-20">
-    <div class="flex flex-wrap h-20">
-        <div class="w-6/12 bg-white text-gray-700 font-bold  ml-10" >
-            <p>{{meeting.meetingType.title}}</p>
-        </div>
-        <div class="w-4/12 bg-white text-gray-700 font-bold text-right">
-            <p>{{meeting.date.toLocaleString()}}</p>
-        </div>
+  <div class="flex flex-wrap h-20">
+    <div class="w-6/12 bg-white text-gray-700 font-bold ml-10">
+      <p>{{ meeting.meetingType.title }}</p>
     </div>
-    <div class="w-12/12 bg-blue-600">
-        SIDNEY
+    <div class="w-4/12 bg-white text-gray-700 font-bold text-right">
+      <p>{{ meeting.date.toLocaleString() }}</p>
     </div>
-    <div class="flex flex-wrap text-center">
-        <div class="w-4/12 space-y-6 h-28" >
-        <button class="bg-green-600 hover:bg-green-500 text-white font-bold w-1/2 h-12 rounded mt-10">
+  </div>
+  <div class="w-12/12 overflow-y-scroll h-96">
+    <meeting-chapters
+      *ngFor="let chapter of chapters"
+      [chapterId]="chapter.id"
+      [chapterDesc]="chapter.description"
+      [chapterQuest]="chapter.question"
+    ></meeting-chapters>
+    <div class="w-3/5 p-8 mx-auto">
+      <button
+        type="button"
+        (click)="toggleForm()"
+        id="addChapter"
+        class="w-full my-5 text-3xl bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+      >
+        +
+      </button>
+    </div>
+    <meeting-question [showQuestion]="showForm"></meeting-question>
+  </div>
+  <div class="flex flex-wrap text-center">
+    <div class="w-4/12 space-y-6 h-28">
+      <button
+        class="bg-green-600 hover:bg-green-500 text-white font-bold w-1/2 h-12 rounded mt-10"
+      >
         LANCER
-        </button>
+      </button>
     </div>
     <div class="w-4/12">
-        <button class="bg-yellow-300 hover:bg-yellow-500 text-white font-bold w-1/2 h-12 rounded mt-10">
+      <button
+        class="bg-yellow-300 hover:bg-yellow-500 text-white font-bold w-1/2 h-12 rounded mt-10"
+      >
         CONVOQUER
-        </button>
+      </button>
     </div>
     <div class="w-4/12">
-        <button class="bg-red-600 hover:bg-red-400 text-white font-bold w-1/2 h-12 rounded mt-10">
+      <button
+        class="bg-red-600 hover:bg-red-400 text-white font-bold w-1/2 h-12 rounded mt-10"
+      >
         ANNULER
-        </button>
+      </button>
     </div>
-
-    </div>
+  </div>
 </div>
-

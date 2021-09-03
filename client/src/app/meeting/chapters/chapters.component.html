@@ -1,8 +1,52 @@
-<section class="md: h-7/8 md: w-full -lg flex justify-center items-center">
-  <div class="h-full w-3/8">
-      <chapter-result></chapter-result>
-  </div>
-</section>
-
-
-
+<main class="w-3/5 p-1 mx-auto" *ngFor="let chapter of chapters">
+  <section class="shadow row">
+      <div class="tabs">
+          <div class="border-b tab">
+              <div class="border-l-2 border-transparent relative">
+                  <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
+                  <header class="flex justify-between items-center p-2 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck1">
+                      <span class="text-grey-darkest font-thin text-xl">
+                          Chapitre <span id="chapter">{{ chapter.id }}</span>
+                      </span>
+                      <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
+                          <!-- icon by feathericons.com -->
+                          <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                              <polyline points="6 9 12 15 18 9">
+                              </polyline>
+                          </svg>
+                      </div>
+                  </header>
+                  <div class="tab-content">
+                      <div class="pl-8 pr-8 pb-5 text-grey-darkest">
+                          <div id="description" class="flex justify-between m-5">
+                              <div>
+                                {{ chapter.description }}
+                              </div>
+                              <div class="rounded-full border border-grey text-gray-400 w-7 h-7 flex items-center justify-center test">
+                                  <button>
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                      </svg>
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="m-5 divide-y divide-grey-400">
+                              <div id="question" class="font-medium">
+                                {{ chapter.summary }}
+                              </div>
+                              <div class="m-5">
+                                  <form class="flex flex-col">
+                                      <section class="inline-flex items-center mt-3" *ngFor="let choice of chapter.choices">
+                                          <input type="radio" class="form-radio h-5 w-5" name="question">
+                                          <label class="ml-2 text-gray-700">{{ choice.title }}</label>
+                                      </section>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</main>

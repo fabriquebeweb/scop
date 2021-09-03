@@ -5,17 +5,21 @@ import { MeetingRoutingModule } from '@src/app/meeting/meeting.routing';
 import { MeetingDocumentsComponent } from '@src/app/meeting/documents/documents.component';
 import { MeetingChaptersComponent } from '@src/app/meeting/chapters/chapters.component';
 import { MeetingPresenceComponent } from '@src/app/meeting/presence/presence.component';
+import { MeetingChaptersResultComponent } from '@src/app/meeting/chapters/result/result.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     MeetingComponent,
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
-    MeetingPresenceComponent
+    MeetingPresenceComponent,
+    MeetingChaptersResultComponent
   ],
   imports: [
-    CommonModule,
-    MeetingRoutingModule
-  ]
+    CommonModule, 
+    MeetingRoutingModule,
+    ChartsModule
+  ],
 })
-export class MeetingModule { }
+export class MeetingModule {}

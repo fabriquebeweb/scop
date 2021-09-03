@@ -1,1 +1,15 @@
-<Button text="admin works!" class="btn btn-primary"></Button>
+<GridLayout class="sticky top-0 z-50 h-1/8 bg-green-600 shadow-lg flex justify-center items-center">
+  <GridLayout class="md:h-20 py-20 md:py-0 flex justify-center items-center">
+    <GridLayout class="md:space-x-20 space-y-10 md:space-y-0">
+      <Image class="inline h-20" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png"></Image>
+      <Button [nsRouterLink]="['/admin/meetings']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">RÉUNIONS</Button>
+      <Button [nsRouterLink]="['/admin/members']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">MEMBRES</Button>
+      <Button [nsRouterLink]="['/admin/status']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">STATUS</Button>
+      <Button [nsRouterLink]="['/admin/theme']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">THÈME</Button>
+    </GridLayout>
+  </GridLayout>
+</GridLayout>
+
+<GridLayout class="h-7/8 w-full">
+  <router-outlet></router-outlet>
+</GridLayout>

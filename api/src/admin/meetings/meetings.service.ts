@@ -4,9 +4,9 @@ import { Meeting } from 'db/entities/Meeting.entity';
 @Injectable()
 export class AdminMeetingsService {
 
-  async getAllMeetings() {
+  async getAllMeetings(enterpriseId: number) {
     return await Meeting.find({
-      // where: { enterprise: { id: enterpriseId } },
+      where: { enterprise: { id: enterpriseId } },
       relations: [
         "meetingType"
       ]

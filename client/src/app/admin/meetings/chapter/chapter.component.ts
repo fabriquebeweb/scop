@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Chapter } from '@src/app/misc/entities/Chapter';
 
 @Component({
-  selector: 'meeting-chapters',
-  templateUrl: './chapters.component.html',
-  styleUrls: ['./chapters.component.css']
+  selector: 'meeting-chapter',
+  templateUrl: './chapter.component.html',
+  styleUrls: ['./chapter.component.css']
 })
-export class AdminMeetingChaptersComponent implements OnInit {
+export class AdminMeetingChapterComponent implements OnInit {
   @Input() chapter: Chapter
 
   constructor() { }

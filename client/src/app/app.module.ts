@@ -7,7 +7,8 @@ import { ErrorComponent } from '@src/app/error/error.component'
 import { LoginComponent } from '@src/app/login/login.component'
 import { HomeComponent } from './home/home.component'
 import { CommonModule } from '@angular/common'
-import { AppRoutingModule } from '@src/app/app.routing'
+import { RouterModule } from '@angular/router'
+import { routes } from './app.routes'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { AppRoutingModule } from '@src/app/app.routing'
     CommonModule,
     AdminModule,
     MeetingModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [

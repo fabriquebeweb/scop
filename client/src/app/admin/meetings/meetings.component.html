@@ -1,13 +1,13 @@
 <section class="flex w-full h-full">
     <section class= "w-3/12 bg-white h-full">
-        <button class="bg-yellow-300 hover:bg-yellow-500 text-white font-bold w-full h-12 rounded">
-          NOUVELLE REUNION
-        </button>
-        <div class="overflow-y-scroll max-h-full">
-          <meeting-summary *ngFor="let meeting of meetings" [meeting]="meeting"></meeting-summary>
-        </div>
+      <button class="bg-yellow-300 hover:bg-yellow-500 text-white font-bold w-full h-12 rounded">
+        NOUVELLE REUNION
+      </button>
+      <section class="overflow-y-scroll max-h-full bg-gray-100">
+        <meeting-summary *ngFor="let meeting of meetings" [meeting]="meeting"></meeting-summary>
       </section>
+    </section>
     <section class="h-full w-full sticky right-0 bottom-0">
-      <meeting-details [meeting]="meetings[0]"></meeting-details>
+      <router-outlet></router-outlet>
     </section>
 </section>

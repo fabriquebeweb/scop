@@ -1,10 +1,10 @@
 
-<div [routerLink]="['/admin/meetings/' + meeting.id]" routerLinkActive="router-link-active" class=" w-full ">
-    <button class="bg-white hover:bg-green-200 text-gray-800 font-bold w-full h-20 rounded-lg">
+<article [routerLink]="['/admin/meetings/' + meeting.id]" routerLinkActive="bg-green-200" class="w-full bg-white hover:bg-green-200 rounded-lg h-20">
+  <button class="text-gray-800 font-bold w-full h-full flex flex-col justify-center items-center">
     <p>{{ meeting.meetingType.title }}</p>
     <p>{{ meeting.date.toLocaleString() }}</p>
-    </button>
-</div>
+  </button>
+</article>
 
 
 

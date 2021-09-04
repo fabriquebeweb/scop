@@ -8,9 +8,9 @@
     </div>
   </div>
 
-  <div class="w-5/6 overflow-y-auto h-96 p-8">
+  <div class="w-5/6 overflow-y-auto h-96 p-8 m-4">
 
-    <meeting-chapters *ngFor="let chapter of meeting.chapters" [chapter]="chapter"></meeting-chapters>
+    <meeting-chapter *ngFor="let chapter of meeting.chapters" [chapter]="chapter"></meeting-chapter>
 
     <div class="w-full text-center">
       <button

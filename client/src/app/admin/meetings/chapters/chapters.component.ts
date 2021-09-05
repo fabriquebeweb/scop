@@ -1,14 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Chapter } from 'src/app/misc/entities/Chapter';
 
 @Component({
   selector: 'meeting-chapters',
-  templateUrl: './chapters.component.html',
-  styleUrls: ['./chapters.component.css']
+  templateUrl: './chapters.component.html'
 })
-export class AdminMeetingChaptersComponent implements OnInit {
-  @Input() chapterId = '';
-  @Input() chapterDesc = '';
-  @Input() chapterQuest = '';
+export class AdminMeetingsChaptersComponent implements OnInit {
+  @Input() chapters?: Chapter[]
 
   constructor() { }
 

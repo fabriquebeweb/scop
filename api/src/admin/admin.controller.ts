@@ -13,9 +13,4 @@ export class AdminController {
     return 'ADMIN'
   }
 
-  @Get('/lol/:enterprise')
-  admin(@Param('enterprise') enterprise: number) {
-    return this.adminService.getEnterprise(enterprise)
-  }
-
 }

@@ -1,11 +1,4 @@
-
-<div class=" w-full ">
-    <button class="bg-white hover:bg-green-200 text-green-800 font-bold w-full h-20 rounded-full mb-10">
-    <p>{{ meeting.id }}</p>
-    <p>{{ meeting.meetingType.title }}</p>
-    <p>{{ meeting.date.toLocaleString() }}</p>
-    </button>
-</div>
-
-
-
+<button [routerLink]="['/admin/meetings/' + meeting.id]" routerLinkActive="bg-basic" class="h-20 w-full bg-white hover:bg-basic rounded-lg flex flex-col justify-center items-center shadow-raised my-1">
+  <p>{{ meeting.meetingType.title }}</p>
+  <p>{{ meeting.date.toLocaleString() }}</p>
+</button>

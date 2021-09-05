@@ -1,0 +1,34 @@
+@use '~@angular/material' as mat;
+
+@include mat.core();
+
+$scop-primary: mat.define-palette(mat.$teal-palette);
+$scop-accent: mat.define-palette(mat.$light-green-palette);
+$scop-warn: mat.define-palette(mat.$amber-palette);
+
+$scop-theme: mat.define-light-theme((
+  color: (
+    primary: $scop-primary,
+    accent: $scop-accent,
+    warn: $scop-warn,
+  )
+));
+
+@include mat.all-component-themes($scop-theme);
+
+@import "~@fontsource/material-icons/base.css";
+@import "~@fontsource/roboto/300.css";
+@import "~@fontsource/roboto/400.css";
+@import "~@fontsource/roboto/500.css";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+* {
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;  /* Firefox */
+}

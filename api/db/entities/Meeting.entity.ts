@@ -34,7 +34,7 @@ export class Meeting extends BaseEntity
   @OneToMany(type => Document, document => document.meeting)
   documents: Document[]
 
-  @OneToMany(type => Chapter, chapter => chapter.meeting)
+  @OneToMany(type => Chapter, chapter => chapter.meeting, { cascade: true })
   chapters: Chapter[]
 
 }

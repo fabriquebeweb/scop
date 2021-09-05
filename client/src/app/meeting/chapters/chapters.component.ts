@@ -1,58 +1,161 @@
 import { Component, OnInit } from '@angular/core';
-import { Chapter } from '@src/app/misc/entities/Chapter';
-import { Meeting } from '@src/app/misc/entities/Meeting';
+import { Chapter } from 'src/app/misc/entities/Chapter';
 
 @Component({
   selector: 'meeting-chapters',
   templateUrl: './chapters.component.html'
 })
 export class MeetingChaptersComponent implements OnInit {
-
-  meeting: Meeting;
-
-  chapters : Chapter[] = [
+  chapters: Chapter[] = [
     {
       id: 1,
-      title: 'titre 1',
-      description: ' 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      summary: 'Résumé 1',
-      choices: [{id: 1, title: 'Pour'}, {id: 2, title: 'Contre'}],
-      result: {id: 1, title: 'Pour'}
+      title: "CHANGEMENT D'HOMME DE MÉNAGE",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lalala",
+      choices: [
+        {
+          id: 1,
+          title: "oui"
+        },
+        {
+          id: 2,
+          title: "non"
+        }
+      ]
     },
     {
       id: 2,
-      title: 'titre 2',
-      description:  ' 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      summary: 'Résumé 2',
-      choices: [{id: 1, title: 'Pour'}, {id: 2, title: 'Contre'}],
-      result: {id: 2, title: 'Contre'}
+      title: "VALIDATION DU BUDGET ANNUEL",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lololo",
+      choices: [
+        {id: 3,
+          title: "oui"},
+          {
+            id: 4,
+            title: "non"
+          }
+      ],
     },
-    {
-      id: 3,
-      title: 'titre 3',
-      description:  ' 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      summary: 'Résumé 3',
-      choices: [{id: 1, title: 'Pour'}, {id: 2, title: 'Contre'}],
-      result: {id: 2, title: 'Contre'}
+
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
     },
-    {
-      id: 4,
-      title: 'titre 4',
-      description:  ' 4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      summary: 'Résumé 4',
-      choices: [{id: 1, title: 'Pour'}, {id: 2, title: 'Contre'}],
-      result: {id: 1, title: 'Pour'}
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
     },
-    {
-      id: 5,
-      title: 'titre 5',
-      description:  ' 5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      summary: 'Résumé 5',
-      choices: [{id: 1, title: 'Pour'}, {id: 2, title: 'Contre'}],
-      result: {id: 1, title: 'Pour'}
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
+    },
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
+    },
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
+    },
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
+    },
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
+    },
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
+    },
+    {id: 3,
+      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
+      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
+      summary: "summary lilili",
+      choices: [
+        {id: 5,
+          title: "oui"},
+          {
+            id: 6,
+            title: "non"
+          }
+      ],
     },
   ]
-
 
   constructor() { }
 

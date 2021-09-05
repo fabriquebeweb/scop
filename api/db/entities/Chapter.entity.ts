@@ -22,7 +22,7 @@ export class Chapter extends BaseEntity
   @Column({ nullable: true })
   question: string
 
-  @ManyToMany(type => Choice, { nullable: true })
+  @ManyToMany(type => Choice, { nullable: true, cascade: true })
   @JoinTable()
   choices: Choice[]
 

@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { MeetingComponent } from '@src/app/meeting/meeting.component';
-import { MeetingRoutingModule } from '@src/app/meeting/meeting.routing';
-import { MeetingDocumentsComponent } from '@src/app/meeting/documents/documents.component';
-import { MeetingChaptersComponent } from '@src/app/meeting/chapters/chapters.component';
-import { MeetingPresenceComponent } from '@src/app/meeting/presence/presence.component';
-import { MeetingChaptersResultComponent } from '@src/app/meeting/chapters/result/result.component';
-import { ChartsModule } from 'ng2-charts';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { RouterModule } from '@angular/router'
+import { MeetingComponent } from './meeting.component'
+import { MeetingDocumentsComponent } from './documents/documents.component'
+import { MeetingChaptersComponent } from './chapters/chapters.component'
+import { MeetingPresenceComponent } from './presence/presence.component'
+import { MeetingChaptersResultComponent } from './chapters/result/result.component'
+import { ChartsModule } from 'ng2-charts'
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import { ChartsModule } from 'ng2-charts';
     MeetingChaptersResultComponent
   ],
   imports: [
-    CommonModule, 
-    MeetingRoutingModule,
+    CommonModule,
     ChartsModule,
+    RouterModule.forChild([])
   ],
 })
 export class MeetingModule {}

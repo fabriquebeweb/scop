@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { Meeting } from '@src/app/misc/entities/Meeting'
+import { ActivatedRoute } from '@angular/router'
+import { Meeting } from 'src/app/misc/entities/Meeting'
 
 @Component({
   selector: 'admin-meetings',
@@ -10,10 +11,266 @@ export class AdminMeetingsComponent implements OnInit {
     {
       id: 1,
       meetingType: {
-        id: 1,
-        title: 'Assemblée Générale Ordinaire',
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
       },
-      date: new Date('2021-01-12'),
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
     },
     {
       id: 2,
@@ -71,7 +328,31 @@ export class AdminMeetingsComponent implements OnInit {
       },
       date: new Date('2021-09-01'),
     },
-  ];
+    {
+      id: 9,
+      meetingType: {
+        id: 3,
+        title: 'Réunion',
+      },
+      date: new Date('2021-09-01'),
+    },
+    {
+      id: 10,
+      meetingType: {
+        id: 3,
+        title: 'Réunion',
+      },
+      date: new Date('2021-09-01'),
+    },
+    {
+      id: 11,
+      meetingType: {
+        id: 3,
+        title: 'Réunion',
+      },
+      date: new Date('2021-09-01'),
+    },
+  ]
 
   constructor() {}
 

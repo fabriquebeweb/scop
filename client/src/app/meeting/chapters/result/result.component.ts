@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Chapter } from '@src/app/misc/entities/Chapter';
+import { Meeting } from '@src/app/misc/entities/Meeting';
 import { Chart } from 'chart.js';
+//import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 @Component({
   selector: 'chapter-result',
@@ -7,12 +11,19 @@ import { Chart } from 'chart.js';
 })
 export class MeetingChaptersResultComponent implements OnInit {
 
+  @Input() chapter: Chapter;
   
 
-  constructor() { }
+  constructor() {
+  //   Chart.plugins.unregister(ChartDataLabels);
+    }
 
   ngOnInit(): void {
 
+    // Chart.defaults.set('plugins.datalabels',{
+    //   color: '#FE777B'
+    // });
+    
     const canvas = <HTMLCanvasElement>document.getElementById('myChart');
     const ctx = canvas.getContext('2d');
     var myChart = new Chart(ctx, {
@@ -34,7 +45,11 @@ export class MeetingChaptersResultComponent implements OnInit {
         ],
         
       },
+      //plugins: [ChartDataLabels],
       options: {
+        // plugins:{
+        //   datalabels:{color:'#F36A2EB'},
+        // },
         responsive : false,
         legend:
         {

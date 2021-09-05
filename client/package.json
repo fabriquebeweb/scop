@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:prod": "cross-env NODE_ENV=production ng build --configuration production",
-    "build:gh": "cross-env NODE_ENV=production ng build --configuration production --baseHref=\"https://fabriquebeweb.github.io/scop/\""
+    "deploy": "ng deploy --baseHref=\"https://fabriquebeweb.github.io/scop/\""
   },
   "private": true,
   "dependencies": {
@@ -39,6 +39,7 @@
     "@types/chart.js": "^2.9.34",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "angular-cli-ghpages": "^1.0.0-rc.2",
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
     "jasmine-core": "~3.8.0",

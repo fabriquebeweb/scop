@@ -1,28 +1,16 @@
 <section class="h-full w-full flex flex-col justify-center items-center">
-  <section class="w-5/6 flex justify-between h-1/10">
-    <section class="w-1/2 text-gray-900 text-lg tracking-widest flex justify-center items-center">
+  <section class="w-5/6 flex justify-between items-end h-1/10">
+    <section class="w-1/2 text-lg tracking-widest flex justify-center items-center">
       <p>{{ meeting.meetingType.title }}</p>
     </section>
-    <section class="w-1/2 text-gray-900 text-lg tracking-widest flex justify-center items-center">
+    <section class="w-1/2 text-lg tracking-widest flex justify-center items-center">
       <p>{{ meeting.date.toLocaleString() }}</p>
     </section>
   </section>
 
-  <section class="w-5/6 overflow-y-auto h-99 rounded-lg">
+  <section class="w-5/6 overflow-y-auto h-8/10 rounded-lg">
 
     <meeting-chapters [chapters]="meeting.chapters"></meeting-chapters>
-
-    <!-- <section class="w-full text-center sticky bottom-0">
-      <button mat-flat-button
-        type="button"
-        (click)="toggleForm()"
-        class="w-full text-3xl bg-gray-400 hover:bg-gray-600 text-white font-bold px-4 rounded"
-      >
-        +
-      </button>
-    </section> -->
-
-    <!-- <meeting-question [showQuestion]="showForm"></meeting-question> -->
 
   </section>
 
@@ -30,7 +18,7 @@
     <button mat-raised-button class="h-4/6 w-64 tracking-widest text-gray-900" color="primary">
       LANCER
     </button>
-    <button mat-raised-button class="h-4/6 w-64 tracking-widest text-gray-900" color="accent" [style.color]="'#F2F2F2'">
+    <button mat-raised-button class="h-4/6 w-64 tracking-widest text-gray-900" color="accent">
       CONVOQUER
     </button>
     <button mat-raised-button class="h-4/6 w-64 tracking-widest text-gray-900" color="warn">

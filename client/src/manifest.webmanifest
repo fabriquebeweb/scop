@@ -1,8 +1,8 @@
 {
-  "name": "scop-client",
-  "short_name": "scop-client",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "WeSCOP",
+  "short_name": "WeSCOP",
+  "theme_color": "#009688",
+  "background_color": "#FAFAFA",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

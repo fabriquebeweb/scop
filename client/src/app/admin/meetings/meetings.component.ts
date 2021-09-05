@@ -9,6 +9,270 @@ import { Meeting } from '@src/app/misc/entities/Meeting'
 export class AdminMeetingsComponent implements OnInit {
   meetings: Meeting[] = [
     {
+      id: 1,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
+      id: 2,
+      meetingType: {
+        id: 2,
+        title: 'Assemblée Générale Extraordinaire',
+      },
+      date: new Date('2021-06-12'),
+    },
+    {
       id: 2,
       meetingType: {
         id: 2,

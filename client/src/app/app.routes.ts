@@ -11,8 +11,8 @@ import { AdminThemeComponent } from "./admin/theme/theme.component"
 import { MeetingDocumentsComponent } from "./meeting/documents/documents.component"
 import { MeetingChaptersComponent } from "./meeting/chapters/chapters.component"
 import { MeetingPresenceComponent } from "./meeting/presence/presence.component"
-import { AdminMeetingDetailsComponent } from "./admin/meetings/details/details.component"
-import { AdminMeetingFormComponent } from "./admin/meetings/form/form.component"
+import { AdminMeetingsDetailsComponent } from "./admin/meetings/details/details.component"
+import { AdminMeetingsFormComponent } from "./admin/meetings/form/form.component"
 
 export const routes: Routes = [
   {
@@ -39,11 +39,11 @@ export const routes: Routes = [
         children: [
           {
             path: 'new',
-            component: AdminMeetingFormComponent
+            component: AdminMeetingsFormComponent
           },
           {
             path: ':meeting',
-            component: AdminMeetingDetailsComponent
+            component: AdminMeetingsDetailsComponent
           }
         ]
       },

@@ -6,7 +6,7 @@ import { Meeting } from '@src/app/misc/entities/Meeting'
   selector: 'meeting-details',
   templateUrl: './details.component.html'
 })
-export class AdminMeetingDetailsComponent implements OnInit {
+export class AdminMeetingsDetailsComponent implements OnInit {
   meeting: Meeting = {
     id: 1,
     meetingType: {

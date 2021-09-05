@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'meeting-form',
   templateUrl: './form.component.html'
 })
-export class AdminMeetingFormComponent implements OnInit {
+export class AdminMeetingsFormComponent implements OnInit {
 
   constructor() { }
 

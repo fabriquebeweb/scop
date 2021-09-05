@@ -6,7 +6,8 @@ export interface Chapter {
   title: string
   description: string
   summary: string
-  choices: Choice[]
+  question? : string
+  choices?: Choice[]
   result?: Choice
 
 }

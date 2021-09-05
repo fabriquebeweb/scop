@@ -1,0 +1,21 @@
+<div class="mt-6" *ngFor="let chapter of chapters">
+    <div class="text-2xl">Chapitre {{chapter.id}}</div>
+    <div>{{chapter.summary}}</div><br>
+    <div class="ml-12">{{chapter.question}}</div><br>
+    <div>
+        <form>
+            <div class="ml-16">
+                <div *ngFor="let choice of chapter.choices">
+                    <input type="radio" name="{{chapter.id}}" value="{{choice.id}}" class="form-radio h-5 w-5 text-gray-600">
+                    <label>
+                        {{choice.title}}
+                    </label>
+                </div>
+            </div><br><br>
+            <div class="flex justify-center">
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Valider">
+            </div>
+
+        </form>
+    </div>
+</div>

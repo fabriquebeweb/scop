@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Meeting } from '@src/app/misc/entities/Meeting'
+import { Meeting } from 'src/app/misc/entities/Meeting'
 
 @Component({
   selector: 'admin-meetings',

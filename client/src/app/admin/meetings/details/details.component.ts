@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router'
-import { Meeting } from '@src/app/misc/entities/Meeting'
+import { Meeting } from 'src/app/misc/entities/Meeting'
 
 @Component({
   selector: 'meeting-details',
@@ -14,7 +14,7 @@ export class AdminMeetingsDetailsComponent implements OnInit {
       title: 'Assemblée Générale Ordinaire',
     },
     date: new Date('2021-01-12'),
-    chapters : [
+    chapters: [
       {
         id: 1,
         title: 'titre 1',

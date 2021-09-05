@@ -11,7 +11,6 @@ import { MatExpansionModule } from '@angular/material/expansion'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import { RouterModule } from '@angular/router'
-// import { AccordionModule } from 'primeng/accordion'
 
 @NgModule({
   declarations: [

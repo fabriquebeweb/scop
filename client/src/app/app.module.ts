@@ -1,17 +1,17 @@
+import { routes } from './app.routes'
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { environment } from '@src/environments/environment'
-import { AppComponent } from '@src/app/app.component'
-import { HomeComponent } from '@src/app/home/home.component'
-import { LoginComponent } from '@src/app/login/login.component'
-import { ErrorComponent } from '@src/app/error/error.component'
-import { AdminModule } from '@src/app/admin/admin.module'
-import { MeetingModule } from '@src/app/meeting/meeting.module'
-import { routes } from '@src/app/app.routes'
+import { environment } from '../environments/environment'
+import { AppComponent } from './app.component'
+import { HomeComponent } from './home/home.component'
+import { LoginComponent } from './login/login.component'
+import { ErrorComponent } from './error/error.component'
+import { AdminModule } from './admin/admin.module'
+import { MeetingModule } from './meeting/meeting.module';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,6 @@ import { routes } from '@src/app/app.routes'
     RouterModule.forRoot(routes),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],

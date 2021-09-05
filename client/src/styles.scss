@@ -1,35 +1,25 @@
 @use '~@angular/material' as mat;
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$scop-client-primary: mat.define-palette(mat.$teal-palette);
-$scop-client-accent: mat.define-palette(mat.$light-green-palette);
-$scop-client-warn: mat.define-palette(mat.$amber-palette);
+$scop-primary: mat.define-palette(mat.$teal-palette);
+$scop-accent: mat.define-palette(mat.$light-green-palette);
+$scop-warn: mat.define-palette(mat.$amber-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$scop-client-theme: mat.define-light-theme((
+$scop-theme: mat.define-light-theme((
   color: (
-    primary: $scop-client-primary,
-    accent: $scop-client-accent,
-    warn: $scop-client-warn,
+    primary: $scop-primary,
+    accent: $scop-accent,
+    warn: $scop-warn,
   )
 ));
 
-@include mat.all-component-themes($scop-client-theme);
+@include mat.all-component-themes($scop-theme);
 
+@import "~@fontsource/material-icons/base.css";
 @import "~@fontsource/roboto/300.css";
 @import "~@fontsource/roboto/400.css";
 @import "~@fontsource/roboto/500.css";
-
-@import "~@fontsource/material-icons/base.css";
-
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';

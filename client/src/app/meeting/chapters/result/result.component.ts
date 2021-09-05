@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, OnInit } from '@angular/core'
+import { Chart } from 'chart.js'
 
 @Component({
   selector: 'chapter-result',
@@ -7,14 +7,12 @@ import { Chart } from 'chart.js';
 })
 export class MeetingChaptersResultComponent implements OnInit {
 
-  
-
   constructor() { }
 
   ngOnInit(): void {
 
-    const canvas = <HTMLCanvasElement>document.getElementById('myChart');
-    const ctx = canvas.getContext('2d');
+    const canvas = <HTMLCanvasElement>document.getElementById('myChart')
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
     var myChart = new Chart(ctx, {
       type: 'horizontalBar',
       data: {
@@ -32,7 +30,7 @@ export class MeetingChaptersResultComponent implements OnInit {
             ]
           },
         ],
-        
+
       },
       options: {
         responsive : false,
@@ -53,18 +51,18 @@ export class MeetingChaptersResultComponent implements OnInit {
             yAxes: [{
                 ticks: {
                     beginAtZero:true,
-                    
+
                 },
                 gridLines: {
                 display: false,
             }
             }]
         }
-          
+
       }
-      
-    });
-    
+
+    })
+
 
   }
 

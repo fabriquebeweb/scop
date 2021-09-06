@@ -83,7 +83,7 @@ export class MeetingFormComponent implements OnInit {
 
   valueElement(choice: any): void {
     this.choice = choice;
-    console.log(this.choice)
+
     
   }
 

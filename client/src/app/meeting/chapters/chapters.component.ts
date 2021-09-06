@@ -16,31 +16,31 @@ export class MeetingChaptersComponent implements OnInit {
       choices: [
         {
           id: 1,
-          title: "oui"
+          title: "Loic Derrieux"
         },
         {
           id: 2,
-          title: "non"
+          title: "Blanche Neige"
         },
         {
           id: 3,
-          title: "oui"
+          title: "Federico Garcia-Lorca"
         },
         {
           id: 4,
-          title: "oui"
+          title: "Severine Saint-Martin"
         },
         {
           id: 5,
-          title: "oui"
+          title: "Karl Marx"
         },
         {
           id: 6,
-          title: "oui"
+          title: "Frida Kahlo"
         },
         {
           id: 7,
-          title: "oui"
+          title: "Federica Montseny"
         },
       ],
       result: {

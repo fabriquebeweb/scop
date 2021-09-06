@@ -2,13 +2,13 @@
     <!-- Boucle sur l'entité chapitre afin de récupérer les choix -->
     <div class="w-full" *ngFor="let choice of chapter.choices">
         <!-- <canvas id="myChart" width="400"  height="300"></canvas> -->
-        <!-- Nombre de votes pour chaque choix -->
-        <p> {{ chapter.id }} {{ choice.title }}</p>
+        <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
+        <p> {{ chapter.id }}% {{ choice.title }} ({{ chapter.id }} votes)</p>
         <!-- Graphe sous forme de barre horizontale et récupération du nombre de votes dans value -->
         <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
     </div>
     <!-- Récupération du nombre total de votes par chapitre -->
-    <div class="sticky bottom-0">Nombre total de votes : {{ 54 }}</div>
+    <div class="sticky bottom-0 bg-basic w-full text-center">Nombre total de votes : {{ 54 }}</div>
     <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
     <div class="fixed bottom-20">
         <a class="w-fill flex p-3 pl-3 bg-gray-200 rounded-lg ">

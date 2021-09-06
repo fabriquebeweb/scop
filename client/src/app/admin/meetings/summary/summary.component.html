@@ -1,4 +1,4 @@
-<button [routerLink]="['/admin/meetings/' + meeting.id]" routerLinkActive="bg-basic" class="h-20 w-full bg-white hover:bg-basic rounded-lg flex flex-col justify-center items-center shadow-raised my-1">
+<button [routerLink]="['/admin/meetings/' + meeting.id]" routerLinkActive="bg-basic-light" class="h-20 w-full bg-white hover:bg-basic-light rounded-lg flex flex-col justify-center items-center shadow-raised my-1">
   <p>{{ meeting.meetingType.title }}</p>
   <p>{{ meeting.date.toLocaleString() }}</p>
 </button>

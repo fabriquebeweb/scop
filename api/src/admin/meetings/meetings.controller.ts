@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common'
+import { Body, Controller, Get, Headers, HttpCode, Param, Post } from '@nestjs/common'
 import { Meeting } from 'db/entities/Meeting.entity'
 import { AdminMeetingsService } from './meetings.service'
 
@@ -11,7 +11,7 @@ export class AdminMeetingsController {
 
   @Get()
   meetingList() {
-    return this.meetingsService.getAllMeetings()
+    return this.meetingsService.getAllMeetings(1)
   }
 
   @Get('/:meeting')

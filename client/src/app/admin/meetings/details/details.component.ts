@@ -1,12 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { ActivatedRoute, Router, RouterLinkActive } from '@angular/router'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Meeting } from 'src/app/misc/entities/Meeting'
+import { Subscription } from 'rxjs'
+import { AdminMeetingsService } from '../meetings.service'
+import { HttpClient } from '@angular/common/http'
+import { API } from 'src/app/app.common'
 
 @Component({
   selector: 'meeting-details',
   templateUrl: './details.component.html'
 })
-export class AdminMeetingsDetailsComponent implements OnInit {
+export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
+  observer!: Subscription
   meeting: Meeting = {
     id: 1,
     meetingType: {
@@ -109,18 +114,25 @@ export class AdminMeetingsDetailsComponent implements OnInit {
     ]
   }
 
-  showForm: boolean = false
-
-  toggleForm() {
-    this.showForm = !this.showForm
-  }
 
   constructor(
-    private route: ActivatedRoute
+    private readonly service: AdminMeetingsService,
+    private readonly route: ActivatedRoute,
+    private readonly http: HttpClient,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params.meeting)
+    this.observer = this.route.params.subscribe(params => {
+      this.service.getMeeting(params.meeting)
+        // .then(response => this.meeting = response)
+        .then(response => console.log(response))
+        // .catch(() => this.router.navigate(['/error']))
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.observer.unsubscribe()
   }
 
 }

@@ -14,7 +14,7 @@ export class AdminMeetingsService {
   }
 
   async getOneMeeting(meetingId: number) {
-    return await Meeting.find({
+    return await Meeting.findOne({
       where: { id: meetingId },
       relations: [
         "meetingType",

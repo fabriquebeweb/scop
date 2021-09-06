@@ -3,22 +3,18 @@
     <div>{{chapter.summary}}</div><br>
     <div class="ml-12">{{chapter.question}}</div><br>
     <div>
-        <form>
-            <div class="ml-16">
-                
 
+            <div class="ml-16">            
                 <div >
-                    <mat-radio-group>
-                        <mat-radio-button *ngFor="let choice of chapter.choices" value="{{choice.id}}">{{choice.title}}</mat-radio-button>
+                    <mat-radio-group >
+                        <mat-radio-button *ngFor="let choice of chapter.choices" value="{{choice.id}}" name="{{chapter.id}}" (click)="valueElement(choice.id)">{{choice.title}}</mat-radio-button>
                     <!-- name="{{chapter.id}}"  -->
                     </mat-radio-group>
                 </div>
             </div><br><br>
-            <div class="flex justify-center">
-                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    value="Valider">
-            </div>
+            <mat-card-actions class="flex justify-center">
+                <button mat-raised-button (click)="save()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
+            </mat-card-actions>
 
-        </form>
     </div>
 </div>

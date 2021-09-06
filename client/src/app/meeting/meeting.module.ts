@@ -8,7 +8,10 @@ import { MeetingPresenceComponent } from './presence/presence.component'
 import { MeetingChaptersResultComponent } from './chapters/result/result.component'
 import { ChartsModule } from 'ng2-charts'
 import { MeetingFormComponent } from './form/form.component'
-import {MatRadioModule} from '@angular/material/radio';
+import {MatRadioModule} from '@angular/material/radio'
+import { ReactiveFormsModule } from '@angular/forms'
+import {MatButtonModule} from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import {MatRadioModule} from '@angular/material/radio';
     CommonModule,
     ChartsModule,
     MatRadioModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
     RouterModule.forChild([])
     
   ],

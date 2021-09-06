@@ -7,7 +7,6 @@ import { MeetingChaptersComponent } from './chapters/chapters.component'
 import { MeetingPresenceComponent } from './presence/presence.component'
 import { MeetingChaptersResultComponent } from './chapters/result/result.component'
 import {MatProgressBarModule} from '@angular/material/progress-bar'
-//import { ChartsModule } from 'ng2-charts'
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
   ],
   imports: [
     CommonModule,
-    //ChartsModule,
     MatProgressBarModule,
     RouterModule.forChild([])
   ],

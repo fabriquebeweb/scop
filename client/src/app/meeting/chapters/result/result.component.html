@@ -1,7 +1,6 @@
 <section class="flex flex-col items-center mt-20"> 
-    <!-- Boucle sur l'entité chapitre afin de récupérer les choix -->
+    <!-- Boucle sur l'entité chapter afin de récupérer les choix -->
     <div class="w-full" *ngFor="let choice of chapter.choices">
-        <!-- <canvas id="myChart" width="400"  height="300"></canvas> -->
         <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
         <p> {{ chapter.id }}% {{ choice.title }} ({{ chapter.id }} votes)</p>
         <!-- Graphe sous forme de barre horizontale et récupération du nombre de votes dans value -->

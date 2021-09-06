@@ -6,7 +6,8 @@ import { MeetingDocumentsComponent } from './documents/documents.component'
 import { MeetingChaptersComponent } from './chapters/chapters.component'
 import { MeetingPresenceComponent } from './presence/presence.component'
 import { MeetingChaptersResultComponent } from './chapters/result/result.component'
-import { ChartsModule } from 'ng2-charts'
+import { ChartsModule } from 'ng2-charts';
+import { MeetingChaptersDetailsComponent } from './chapters/details/details.component'
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ChartsModule } from 'ng2-charts'
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
     MeetingPresenceComponent,
-    MeetingChaptersResultComponent
+    MeetingChaptersResultComponent,
+    MeetingChaptersDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -6,12 +6,12 @@ import { Chapter } from '../../misc/entities/Chapter';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
-  @Input() chapter : Chapter
-  @Input() question
-  @Input() choice
-  @Input() summary
-  @Input() id
+export class MeetingFormComponent implements OnInit {
+  // @Input() chapter : Chapter
+  // @Input() question
+  // @Input() choice
+  // @Input() summary
+  // @Input() id
 
   chapters : Chapter[] = 
   [

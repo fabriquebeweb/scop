@@ -5,15 +5,18 @@
     <div>
         <form>
             <div class="ml-16">
-                <div *ngFor="let choice of chapter.choices">
-                    <input type="radio" name="{{chapter.id}}" value="{{choice.id}}" class="form-radio h-5 w-5 text-gray-600">
-                    <label>
-                        {{choice.title}}
-                    </label>
+                
+
+                <div >
+                    <mat-radio-group>
+                        <mat-radio-button *ngFor="let choice of chapter.choices" value="{{choice.id}}">{{choice.title}}</mat-radio-button>
+                    <!-- name="{{chapter.id}}"  -->
+                    </mat-radio-group>
                 </div>
             </div><br><br>
             <div class="flex justify-center">
-                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Valider">
+                <input type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    value="Valider">
             </div>
 
         </form>

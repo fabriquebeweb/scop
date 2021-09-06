@@ -3,7 +3,6 @@
     <div>{{chapter.summary}}</div><br>
     <div class="ml-12">{{chapter.question}}</div><br>
     <div>
-
             <div class="ml-16">            
                 <div >
                     <mat-radio-group >
@@ -13,9 +12,11 @@
                     </mat-radio-group>
                 </div>
             </div>
-            <mat-card-actions class="flex justify-center mt-10">
-                <button (click)="save()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
-            </mat-card-actions>
-
+            
+            <div>
+                <mat-card-actions class="flex justify-center mt-10">
+                    <button (click)="save()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
+                </mat-card-actions>
+            </div>
     </div>
 </div>

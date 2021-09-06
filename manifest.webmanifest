@@ -1,7 +1,7 @@
 {
   "name": "WeSCOP",
   "short_name": "WeSCOP",
-  "theme_color": "#1976D2",
+  "theme_color": "#009688",
   "background_color": "#FAFAFA",
   "display": "standalone",
   "scope": "./",

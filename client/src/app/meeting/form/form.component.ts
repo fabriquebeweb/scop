@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Chapter } from '../../misc/entities/Chapter';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-form',
@@ -68,23 +69,16 @@ export class MeetingFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
   }
 
+  
   save(): void {
     console.log(this.choice);
   }
 
-  // save(): void {
-  //   let choiceValue = this.voteFormGroup.get('choice-{{chapter.id}}')?.value;
-  //   console.log(choiceValue);
-  // }
-
   valueElement(choice: any): void {
-    this.choice = choice;
-
-    
+    this.choice = choice;  
   }
 
 }

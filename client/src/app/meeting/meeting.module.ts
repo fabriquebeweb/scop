@@ -11,7 +11,8 @@ import { MeetingFormComponent } from './form/form.component'
 import {MatRadioModule} from '@angular/material/radio'
 import { ReactiveFormsModule } from '@angular/forms'
 import {MatButtonModule} from '@angular/material/button'
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card'
+
 
 @NgModule({
   declarations: [

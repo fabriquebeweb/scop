@@ -6,6 +6,7 @@ import { MeetingDocumentsComponent } from './documents/documents.component'
 import { MeetingChaptersComponent } from './chapters/chapters.component'
 import { MeetingPresenceComponent } from './presence/presence.component'
 import { MeetingChaptersResultComponent } from './chapters/result/result.component'
+import { MatTabsModule } from '@angular/material/tabs'
 import { ChartsModule } from 'ng2-charts'
 
 @NgModule({
@@ -19,6 +20,7 @@ import { ChartsModule } from 'ng2-charts'
   imports: [
     CommonModule,
     ChartsModule,
+    MatTabsModule,
     RouterModule.forChild([])
   ],
 })

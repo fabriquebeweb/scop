@@ -7,6 +7,7 @@ import { Meeting } from 'src/app/misc/entities/Meeting'
   templateUrl: './details.component.html'
 })
 export class AdminMeetingsDetailsComponent implements OnInit {
+  
   meeting: Meeting = {
     id: 1,
     meetingType: {

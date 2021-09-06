@@ -58,7 +58,7 @@ module.exports = {
         },
         basic: {
           light: '#F4F4F4',
-          DEFAULT: '#F4F4F4'
+          DEFAULT: '#EEEEEE'
         }
       },
       boxShadow: {

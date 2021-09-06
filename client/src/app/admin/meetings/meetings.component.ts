@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
 import { Meeting } from 'src/app/misc/entities/Meeting'
 
 @Component({
@@ -7,6 +6,7 @@ import { Meeting } from 'src/app/misc/entities/Meeting'
   templateUrl: './meetings.component.html',
 })
 export class AdminMeetingsComponent implements OnInit {
+
   meetings: Meeting[] = [
     {
       id: 1,
@@ -357,4 +357,5 @@ export class AdminMeetingsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
 }

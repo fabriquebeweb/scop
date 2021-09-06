@@ -1,1 +1,9 @@
-<p class="uppercase">{{ message }}</p>
+<section class="w-screen h-screen flex flex-col justify-center items-center space-y-12">
+  <img [routerLink]="['/']" class="inline h-44 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
+  <section class="w-screen space-x-5 flex justify-center items-center">
+    <a mat-raised-button color="primary" [routerLink]="['/login']">LOGIN</a>
+    <a mat-raised-button color="primary" [routerLink]="['/error']">ERROR</a>
+    <a mat-raised-button color="primary" [routerLink]="['/admin']">ADMIN</a>
+    <a mat-raised-button color="primary" [routerLink]="['/meeting']">MEETING</a>  
+  </section>
+</section>

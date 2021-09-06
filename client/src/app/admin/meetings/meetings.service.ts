@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { API } from 'src/app/app.common'
 import { Meeting } from 'src/app/misc/entities/Meeting'
+import { API } from 'src/app/app.common'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -10,8 +10,14 @@ export class AdminMeetingsService {
     private readonly http: HttpClient
   ) {}
 
-  getMeeting(id: string|number): Promise<Meeting> {
-    return this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
+  async getMeetingsSummary() : Promise<Meeting[]>
+  {
+    return await this.http.get<Meeting[]>(API.path(`/admin/meetings`), API.options()).toPromise()
+  }
+
+  async getMeetingDetails(id: string|number) : Promise<Meeting>
+  {
+    return await this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
   }
 
 }

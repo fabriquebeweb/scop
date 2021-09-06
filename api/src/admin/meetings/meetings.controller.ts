@@ -26,8 +26,8 @@ export class AdminMeetingsController {
 
   @Get('/test')
   meetingTest() {
-    this.meetingsService.test()
-    return true
+    // this.meetingsService.test()
+    return []
   }
 
 }

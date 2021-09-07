@@ -1,12 +1,24 @@
 import { Controller, Get, Param } from '@nestjs/common'
+import { MeetingService } from './meeting.service'
 
 @Controller()
 export class MeetingController
 {
 
+  constructor(
+    private readonly service: MeetingService
+  ) {}
+
   @Get()
-  meeting(@Param('meeting') id: string) {
-    return `id : ${id}`
+  meeting()
+  {
+    return 'MEETING'
+  }
+
+  @Get('/:meeting')
+  getMeeting(@Param('meeting') id: number)
+  {
+    return this.service.getMeeting(id)
   }
 
 

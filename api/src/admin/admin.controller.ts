@@ -5,7 +5,7 @@ import { AdminService } from './admin.service'
 export class AdminController {
 
   constructor(
-    private readonly adminService: AdminService
+    private readonly service: AdminService
   ) {}
 
   @Get('login')

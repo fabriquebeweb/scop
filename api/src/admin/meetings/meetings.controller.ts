@@ -6,37 +6,37 @@ import { AdminMeetingsService } from './meetings.service'
 export class AdminMeetingsController {
 
   constructor(
-    private readonly meetings: AdminMeetingsService
+    private readonly service: AdminMeetingsService
   ) {}
 
   @Get()
   meetingsList()
   {
-    return this.meetings.getMeetings()
+    return this.service.getMeetings()
   }
 
   @Post()
   newMeeting(@Body() meeting: Meeting)
   {
-    return this.meetings.setMeeting(meeting)
+    return this.service.setMeeting(meeting)
   }
 
   @Get('/:meeting')
   meetingDetails(@Param('meeting') id: number)
   {
-    return this.meetings.getMeeting(id)
+    return this.service.getMeeting(id)
   }
 
   @Put('/:meeting')
   updateMeeting(@Param('meeting') id: number, @Body() meeting: Meeting)
   {
-    return (meeting.id == id) ? this.meetings.updateMeeting(meeting) : null
+    return (meeting.id == id) ? this.service.updateMeeting(meeting) : null
   }
 
   @Delete('/:meeting')
   destroyMeeting(@Param('meeting') id: number)
   {
-    return this.meetings.unsetMeeting(id)
+    return this.service.unsetMeeting(id)
   }
 
 }

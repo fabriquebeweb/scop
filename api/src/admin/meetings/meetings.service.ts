@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import { Enterprise } from 'db/entities/Enterprise.entity'
 import { Meeting } from 'db/entities/Meeting.entity'
 import { InsertResult } from 'typeorm'
 

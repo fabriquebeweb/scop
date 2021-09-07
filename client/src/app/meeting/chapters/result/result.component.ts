@@ -6,14 +6,12 @@ import { Chapter } from 'src/app/misc/entities/Chapter'
   templateUrl: './result.component.html'
 })
 export class MeetingChaptersResultComponent implements OnInit {
-  //Appel de l'entité Chapter
+  
   @Input() chapter!: Chapter
 
   constructor() { }
 
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit() : void
+  {}
 
 }

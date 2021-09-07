@@ -6,9 +6,9 @@ import { MeetingDocumentsComponent } from './documents/documents.component'
 import { MeetingChaptersComponent } from './chapters/chapters.component'
 import { MeetingPresenceComponent } from './presence/presence.component'
 import { MeetingChaptersResultComponent } from './chapters/result/result.component'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MeetingChaptersDetailsComponent } from './chapters/details/details.component'
 import { MatTabsModule } from '@angular/material/tabs'
-import { ChartsModule } from 'ng2-charts'
 import { MeetingFormComponent } from './chapters/form/form.component'
 import { MatRadioModule } from '@angular/material/radio'
 import { ReactiveFormsModule } from '@angular/forms'
@@ -27,7 +27,7 @@ import { MatCardModule } from '@angular/material/card'
   ],
   imports: [
     CommonModule,
-    ChartsModule,
+    MatProgressBarModule,
     ReactiveFormsModule,
     MatRadioModule,
     MatButtonModule,

@@ -26,16 +26,16 @@ export class User extends BaseEntity
   isAdmin: boolean
 
   @Index('user_enterprise_idx')
-  @ManyToOne(type => Enterprise, enterprise => enterprise.users, { nullable: false })
+  @ManyToOne(type => Enterprise, enterprise => enterprise.users, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   enterprise: Enterprise
 
-  @OneToMany(type => Participation, participation => participation.user)
+  @OneToMany(type => Participation, participation => participation.user, { cascade: true })
   participations: Participation[]
 
-  @OneToMany(type => Participation, participation => participation.procuration, { nullable: true })
+  @OneToMany(type => Participation, participation => participation.procuration, { nullable: true, cascade: true })
   procurations: Participation[]
 
-  @OneToMany(type => Answer, answer => answer.user)
+  @OneToMany(type => Answer, answer => answer.user, { cascade: true })
   answers: Answer[]
 
 }

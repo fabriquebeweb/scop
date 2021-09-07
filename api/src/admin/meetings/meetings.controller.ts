@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Headers, HttpCode, Param, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Headers, HttpCode, HttpStatus, Param, Post, Put, Res } from '@nestjs/common'
 import { Meeting } from 'db/entities/Meeting.entity'
 import { AdminMeetingsService } from './meetings.service'
 
@@ -6,28 +6,37 @@ import { AdminMeetingsService } from './meetings.service'
 export class AdminMeetingsController {
 
   constructor(
-    private readonly meetingsService: AdminMeetingsService
+    private readonly meetings: AdminMeetingsService
   ) {}
 
   @Get()
-  meetingList() {
-    return this.meetingsService.getAllMeetings(1)
-  }
-
-  @Get('/:meeting')
-  meetingDetails(@Param('meeting') meetingId: number) {
-    return this.meetingsService.getOneMeeting(meetingId)
+  meetingsList()
+  {
+    return this.meetings.getMeetings()
   }
 
   @Post()
-  newMeeting(@Body() meeting: Meeting) {
-    this.meetingsService.saveOneMeeting(meeting)
+  newMeeting(@Body() meeting: Meeting)
+  {
+    return this.meetings.setMeeting(meeting)
   }
 
-  @Get('/test')
-  meetingTest() {
-    // this.meetingsService.test()
-    return []
+  @Get('/:meeting')
+  meetingDetails(@Param('meeting') id: number)
+  {
+    return this.meetings.getMeeting(id)
+  }
+
+  @Put('/:meeting')
+  updateMeeting(@Param('meeting') id: number, @Body() meeting: Meeting)
+  {
+    return (meeting.id == id) ? this.meetings.updateMeeting(meeting) : null
+  }
+
+  @Delete('/:meeting')
+  destroyMeeting(@Param('meeting') id: number)
+  {
+    return this.meetings.unsetMeeting(id)
   }
 
 }

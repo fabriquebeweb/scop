@@ -19,7 +19,7 @@ export class Meeting extends BaseEntity
   location: string
 
   @Index('meeting_enterprise_idx')
-  @ManyToOne(type => Enterprise, enterprise => enterprise.meetings, { nullable: false })
+  @ManyToOne(type => Enterprise, enterprise => enterprise.meetings, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   enterprise: Enterprise
 
   @ManyToOne(type => MeetingType, meetingType => meetingType.meetings, { nullable: false })
@@ -28,13 +28,13 @@ export class Meeting extends BaseEntity
   @Column({ nullable: true })
   state: boolean
 
-  @OneToMany(type => Participation, participation => participation.user)
+  @OneToMany(type => Participation, participation => participation.user, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   participations: Participation[]
 
-  @OneToMany(type => Document, document => document.meeting)
+  @OneToMany(type => Document, document => document.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   documents: Document[]
 
-  @OneToMany(type => Chapter, chapter => chapter.meeting, { cascade: true })
+  @OneToMany(type => Chapter, chapter => chapter.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   chapters: Chapter[]
 
 }

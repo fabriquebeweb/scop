@@ -20,15 +20,15 @@ import { MatCardModule } from '@angular/material/card'
     MeetingComponent,
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
-    MeetingPresenceComponent,
     MeetingChaptersResultComponent,
     MeetingChaptersDetailsComponent,
+    MeetingPresenceComponent,
     MeetingFormComponent
   ],
   imports: [
     CommonModule,
-    MatProgressBarModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
     MatRadioModule,
     MatButtonModule,
     MatCardModule,

@@ -7,6 +7,13 @@ import { MeetingChaptersComponent } from './chapters/chapters.component'
 import { MeetingPresenceComponent } from './presence/presence.component'
 import { MeetingChaptersResultComponent } from './chapters/result/result.component'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MeetingChaptersDetailsComponent } from './chapters/details/details.component'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MeetingFormComponent } from './chapters/form/form.component'
+import { MatRadioModule } from '@angular/material/radio'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   declarations: [
@@ -14,12 +21,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
     MeetingPresenceComponent,
-    MeetingChaptersResultComponent
+    MeetingChaptersResultComponent,
+    MeetingChaptersDetailsComponent,
+    MeetingFormComponent
   ],
   imports: [
     CommonModule,
     MatProgressBarModule,
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTabsModule,
     RouterModule.forChild([])
-  ],
+  ]
 })
 export class MeetingModule {}

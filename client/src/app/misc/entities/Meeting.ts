@@ -1,5 +1,5 @@
-import { Chapter } from "./Chapter";
-import { MeetingType } from "./MeetingType";
+import { Chapter } from "./Chapter"
+import { MeetingType } from "./MeetingType"
 
 export interface Meeting {
 

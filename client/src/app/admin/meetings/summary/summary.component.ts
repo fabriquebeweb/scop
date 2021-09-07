@@ -6,9 +6,12 @@ import { Meeting } from 'src/app/misc/entities/Meeting'
   templateUrl: './summary.component.html'
 })
 export class AdminMeetingSummaryComponent implements OnInit {
+  
   @Input() meeting!: Meeting
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() : void
+  {}
+  
 }

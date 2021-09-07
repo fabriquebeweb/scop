@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { AdminMeetingsService } from './meetings.service'
 import { AdminMeetingsFormComponent } from './form/form.component'
 import { AdminMeetingsDetailsComponent } from './details/details.component'
 import { AdminMeetingsChaptersComponent } from './chapters/chapters.component'
@@ -26,6 +27,9 @@ import { RouterModule } from '@angular/router'
     MatButtonModule,
     MatExpansionModule,
     RouterModule.forChild([])
+  ],
+  providers: [
+    AdminMeetingsService
   ]
 })
-export class AdminMeetingsModule { }
+export class AdminMeetingsModule {}

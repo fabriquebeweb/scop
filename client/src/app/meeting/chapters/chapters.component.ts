@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Chapter } from 'src/app/misc/entities/Chapter';
+import { Component, OnInit } from '@angular/core'
+import { Chapter } from 'src/app/misc/entities/Chapter'
 
 @Component({
   selector: 'meeting-chapters',
   templateUrl: './chapters.component.html'
 })
 export class MeetingChaptersComponent implements OnInit {
+  
   chapters: Chapter[] = [
     {
       id: 1,
@@ -69,8 +70,8 @@ export class MeetingChaptersComponent implements OnInit {
           title: "oui"
         }
     },
-
-    {id: 3,
+    {
+      id: 3,
       title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
       description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
       summary: "summary lilili",
@@ -90,27 +91,8 @@ export class MeetingChaptersComponent implements OnInit {
           title: "non"
         }
     },
-    {id: 4,
-      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
-      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-      summary: "summary lilili",
-      question: "Voulez-vous changer le logo de Fondespierre?",
-      choices: [
-        {
-          id: 7,
-          title: "oui"
-        },
-        {
-          id: 8,
-          title: "non"
-        }
-      ],
-      result: {
-          id: 7,
-          title: "oui"
-        }
-    },
-    {id: 5,
+    {
+      id: 4,
       title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
       description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
       summary: "summary lilili",
@@ -130,7 +112,8 @@ export class MeetingChaptersComponent implements OnInit {
           title: "oui"
         }
     },
-    {id: 6,
+    {
+      id: 5,
       title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
       description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
       summary: "summary lilili",
@@ -150,7 +133,8 @@ export class MeetingChaptersComponent implements OnInit {
           title: "oui"
         }
     },
-    {id: 7,
+    {
+      id: 7,
       title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
       description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
       summary: "summary lilili",
@@ -169,92 +153,12 @@ export class MeetingChaptersComponent implements OnInit {
           id: 1,
           title: "oui"
         }
-    },
-    {id: 3,
-      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
-      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-      summary: "summary lilili",
-      question: "Voulez-vous changer le logo de Fondespierre?",
-      choices: [
-        {
-          id: 1,
-          title: "oui"
-        },
-        {
-          id: 2,
-          title: "non"
-        }
-      ],
-      result: {
-          id: 1,
-          title: "oui"
-        }
-    },
-    {id: 3,
-      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
-      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-      summary: "summary lilili",
-      question: "Voulez-vous changer le logo de Fondespierre?",
-      choices: [
-        {
-          id: 1,
-          title: "oui"
-        },
-        {
-          id: 2,
-          title: "non"
-        }
-      ],
-      result: {
-          id: 1,
-          title: "oui"
-        }
-    },
-    {id: 3,
-      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
-      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-      summary: "summary lilili",
-      question: "Voulez-vous changer le logo de Fondespierre?",
-      choices: [
-        {
-          id: 1,
-          title: "oui"
-        },
-        {
-          id: 2,
-          title: "non"
-        }
-      ],
-      result: {
-          id: 1,
-          title: "oui"
-        }
-    },
-    {id: 3,
-      title: "TRAVAUX D'AMÉLIORATION DES LOCAUX",
-      description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-      summary: "summary lilili",
-      question: "Voulez-vous changer le logo de Fondespierre?",
-      choices: [
-        {
-          id: 1,
-          title: "oui"
-        },
-        {
-          id: 2,
-          title: "non"
-        }
-      ],
-      result: {
-          id: 1,
-          title: "oui"
-        }
-    },
+    }
   ]
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit() : void
+  {}
 
 }

@@ -1,6 +1,6 @@
 import { routes } from './app.routes'
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { LOCALE_ID, NgModule } from '@angular/core'
+import { CommonModule, registerLocaleData } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { BrowserModule } from '@angular/platform-browser'
 import { ServiceWorkerModule } from '@angular/service-worker'
@@ -11,7 +11,10 @@ import { HomeComponent } from './home/home.component'
 import { LoginComponent } from './login/login.component'
 import { ErrorComponent } from './error/error.component'
 import { AdminModule } from './admin/admin.module'
-import { MeetingModule } from './meeting/meeting.module';
+import { MeetingModule } from './meeting/meeting.module'
+import { HttpClientModule } from '@angular/common/http'
+import FR from '@angular/common/locales/fr'
+registerLocaleData(FR)
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { MeetingModule } from './meeting/meeting.module';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    HttpClientModule,
     AdminModule,
     MeetingModule,
     RouterModule.forRoot(routes),
@@ -32,9 +36,11 @@ import { MeetingModule } from './meeting/meeting.module';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' }
+  ],
   bootstrap: [
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {}

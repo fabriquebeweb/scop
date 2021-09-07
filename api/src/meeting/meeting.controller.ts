@@ -21,6 +21,12 @@ export class MeetingController
     return this.service.getMeeting(id)
   }
 
+  @Get('/:meeting/chapters')
+  getMeetingChapters(@Param('meeting') id: number)
+  {
+    return this.service.getMeetingChapters(id)
+  }
+
 
 
 }

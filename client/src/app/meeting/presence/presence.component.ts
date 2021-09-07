@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Chapter } from '../../misc/entities/Chapter';
+import { Component, OnInit } from '@angular/core'
+import { Chapter } from '../../misc/entities/Chapter'
 
 @Component({
   selector: 'meeting-presence',
@@ -56,9 +56,9 @@ export class MeetingPresenceComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit() : void
+  {}
 
 }

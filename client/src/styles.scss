@@ -3,8 +3,8 @@
 @include mat.core();
 
 $scop-primary: mat.define-palette(mat.$teal-palette);
-$scop-accent: mat.define-palette(mat.$light-green-palette);
-$scop-warn: mat.define-palette(mat.$amber-palette);
+$scop-accent: mat.define-palette(mat.$amber-palette);
+$scop-warn: mat.define-palette(mat.$red-palette);
 
 $scop-theme: mat.define-light-theme((
   color: (

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Chapter } from 'src/app/misc/entities/Chapter';
+import { Component, OnInit } from '@angular/core'
+import { Chapter } from 'src/app/misc/entities/Chapter'
 
 @Component({
   selector: 'meeting-chapters',
   templateUrl: './chapters.component.html'
 })
 export class MeetingChaptersComponent implements OnInit {
+  
   chapters: Chapter[] = [
     {
       id: 1,
@@ -157,9 +158,9 @@ export class MeetingChaptersComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit() : void
+  {}
 
 }

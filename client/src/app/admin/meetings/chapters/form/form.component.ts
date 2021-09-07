@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'chapter-form',
@@ -6,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AdminMeetingsChaptersFormComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit() : void
+  {}
 
 }

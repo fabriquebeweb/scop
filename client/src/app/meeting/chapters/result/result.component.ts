@@ -7,10 +7,10 @@ import { Chart } from 'chart.js'
 })
 export class MeetingChaptersResultComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-
+  ngOnInit() : void
+  {
     const canvas = <HTMLCanvasElement>document.getElementById('myChart')
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
     var myChart = new Chart(ctx, {
@@ -62,8 +62,6 @@ export class MeetingChaptersResultComponent implements OnInit {
       }
 
     })
-
-
   }
 
 }

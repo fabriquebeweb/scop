@@ -1,17 +1,18 @@
-<section class="flex flex-col h-screen justify-between">
-  <nav class="h-1/8 bg-green-600 shadow-lg flex justify-center items-center w-full fixed top-0 z-50">
-    <section class="md:h-20 py-20 md:py-0 flex justify-center items-center">
-      <section class="md:space-x-20 space-y-10 md:space-y-0">
-        <img [routerLink]="['/']" class="inline h-20 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
-        <button [routerLink]="['/meeting/documents']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">DOCUMENTS</button>
-        <button [routerLink]="['/meeting/chapters']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">ORDRE DU JOUR</button>
-        <button [routerLink]="['/meeting/presence']" routerLinkActive="border-b-4" class="border-b-2 border-white py-3 px-6 text-white bg-green-600 block md:inline-block">PROCURATIONS ET PRÉSENCE</button>
-      </section>
-    </section>
-  </nav>
+<nav mat-tab-nav-bar class="fixed top-0 z-50 h-1/8 w-full bg-primary-500 shadow-lg flex justify-center items-center">
+  <section class="flex justify-center items-center w-full md:space-x-10 space-y-5 md:space-y-0">
+    <img [routerLink]="['/']" class="inline h-20 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
+    <button mat-tab-link [routerLink]="['/meeting/chapters']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      CHAPITRES
+    </button>
+    <button mat-tab-link [routerLink]="['/meeting/documents']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      DOCUMENTS
+    </button>
+    <button mat-tab-link [routerLink]="['/meeting/presence']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      PRÉSENCE
+    </button>
+  </section>
+</nav>
 
-
-  <main class="h-full p-24">
-    <router-outlet></router-outlet>
-  </main>
-</section>
+<main class="h-7/8 w-full fixed bottom-0">
+  <router-outlet></router-outlet>
+</main>

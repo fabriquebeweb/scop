@@ -1,45 +1,37 @@
-<main class="w-3/5 p-1 mx-auto" *ngFor="let chapter of chapters">
-  <section class="shadow row">
+<div class="flex w-full h-6/8 m-0 top-10 p-10">
+  <aside class="sticky w-3/12 h-full flex flex-col left-0 bottom-0 pt-2 px-2">
+
+<!-- boucle sur les chapitres = affichage des données souhaitées -->
+  <main *ngFor="let chapter of chapters">
+    <section class="w-8/8 shadow bg-white rounded">
       <div class="tabs">
-          <div class="border-b tab">
-              <div class="border-l-2 border-transparent relative">
-                  <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
-                  <header class="flex justify-between items-center p-2 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck1">
-                      <span class="text-grey-darkest font-thin text-xl">
-                          Chapitre <span id="chapter">{{ chapter.id }}</span>
-                      </span>
-                      <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
-                          <!-- icon by feathericons.com -->
-                          <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                              <polyline points="6 9 12 15 18 9">
-                              </polyline>
-                          </svg>
-                      </div>
-                  </header>
-                  <div class="tab-content">
-                      <div class="pl-8 pr-8 pb-5 text-grey-darkest">
-                          <div id="description" class="flex justify-between m-5">
-                              <div>
-                                {{ chapter.description }}
-                              </div>
-                          </div>
-                          <!-- <div class="m-5 divide-y divide-grey-400">
-                              <div id="question" class="font-medium">
-                                {{ chapter.summary }}
-                              </div>
-                              <div class="m-5">
-                                  <form class="flex flex-col">
-                                      <section class="inline-flex items-center mt-3" *ngFor="let choice of chapter.choices">
-                                          <input type="radio" class="form-radio h-5 w-5" name="question">
-                                          <label class="ml-2 text-gray-700">{{ choice.title }}</label>
-                                      </section>
-                                  </form>
-                              </div>
-                          </div> -->
-                      </div>
+        <div class="border-b tab">
+          <div class="border-l-2 border-transparent relative">
+            <input class="absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
+
+              <header class="flex justify-between items-center p-2 pl-8 pr-8 cursor-pointer select-none tab-label" for="chck1">
+                <span class="text-grey-darkest font-thin text-xl">Chapitre <span id="chapter">{{ chapter.id }}</span>
+                </span>
+                  <div [routerLink]="['/meeting/chapters/' + chapter.id]" class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
+<!-- icon by feathericons.com -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                      <polyline points="9 18 15 12 9 6">
+                      </polyline>
+                    </svg>
                   </div>
-              </div>
+              </header>
+
+                <div class="tab-content">
+                  <div class="pl-8 pr-8 pb-5 text-grey-darkest">
+                    <div id="description" class="flex justify-between m-2">
+                      <div>
+                        {{ chapter.description }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
           </div>
+        </div>
       </div>
   </section>
 </main>

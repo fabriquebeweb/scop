@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'admin-theme',
@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminThemeComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit() : void
+  {}
 
 }

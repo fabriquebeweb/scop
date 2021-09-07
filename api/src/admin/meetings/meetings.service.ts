@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Meeting } from 'db/entities/Meeting.entity';
+import { Injectable } from '@nestjs/common'
+import { Meeting } from 'db/entities/Meeting.entity'
 
 @Injectable()
 export class AdminMeetingsService {

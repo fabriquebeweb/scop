@@ -23,7 +23,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
   {
     this.observer = this.route.params.subscribe(params => {
       this.service.getMeetingDetails(params.meeting)
-        .then(meeting => { (meeting) ? this.meeting = meeting : this.router.navigate(['/admin/meetings']) })
+        .then(meeting => { (meeting) ? this.meeting = meeting : this.router.navigate(['/admin/meetings/new']) })
         .catch(() => this.router.navigate(['/error']))
     })
   }

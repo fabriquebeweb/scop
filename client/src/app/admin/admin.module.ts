@@ -24,4 +24,4 @@ import { MatTabsModule } from '@angular/material/tabs'
   schemas: [
   ]
 })
-export class AdminModule { }
+export class AdminModule {}

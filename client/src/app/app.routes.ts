@@ -67,11 +67,6 @@ export const routes: Routes = [
     component: MeetingComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/meeting/chapters'
-      },
-      {
         path: 'documents',
         component: MeetingDocumentsComponent
       },

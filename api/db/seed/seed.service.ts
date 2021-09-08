@@ -155,7 +155,7 @@ export class SeedService {
             this.random(await Choice.find())
           ],
           result: this.random(await Choice.find()),
-          meeting: this.random(await Meeting.find())
+          meeting: await Meeting.findOne(1)
         })
       )
     })

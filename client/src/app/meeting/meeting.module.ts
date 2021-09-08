@@ -14,6 +14,7 @@ import { MatRadioModule } from '@angular/material/radio'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
+import { MeetingService } from './meeting.service'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,9 @@ import { MatCardModule } from '@angular/material/card'
     MatCardModule,
     MatTabsModule,
     RouterModule.forChild([])
+  ],
+  providers: [
+    MeetingService
   ]
 })
 export class MeetingModule {}

@@ -7,14 +7,44 @@ import { Answer } from 'db/entities/Answer.entity';
 @Injectable()
 export class ChapterService {
 
-    //Fonction test
-    async getResult(meetingId:string, chapterId:string){
-        return await Answer.find({
+    //Récupérer les résultats par chapitre
+    async getResult(meetingId, chapterId){
+        return await Answer.findAndCount({
             //select:["id","title"],
             where:{
-                chapter:{id:1},
+                chapter: {meetingId:meetingId, id:chapterId}
             },
-            relations:["choice"],
+            relations:["choice","chapter"],
+            })
+    }
+
+// //Afficher les info d'un meeting
+//     async getMeeting(meetingId){
+//         return await Meeting.find({
+//             where:{
+//                 id:meetingId,
+//             },
+//             //relations:["choice"],
+//             })
+//     }
+
+//     async getChapter(meetingId, chapterId){
+//         return await Chapter.find({
+//             where:{
+//                 id:meetingId,
+//                 id:chapterId,
+//             },
+//             relations:["meeting"],
+//             })
+//     }
+
+//Requête Sidney
+    async getAnswer(chapterId){
+        return await Chapter.find({
+            where:{
+                id:chapterId,
+            },
+            relations:["choices","meeting"],
             })
     }
 }

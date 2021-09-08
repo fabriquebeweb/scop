@@ -161,7 +161,7 @@ export class SeedService {
     })
 
     // Answer
-    await this.loop(1, async () => {
+    await this.loop(200, async () => {
       Answer.save(
         Answer.create({
           chapter: this.random(await Chapter.find()),

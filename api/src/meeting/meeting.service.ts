@@ -12,7 +12,21 @@ export class MeetingService {
 
   async getMeetingChapters(meetingId: number) : Promise<Chapter[]>
   {
-    return await Chapter.find({ where: { meeting: { id: meetingId }}})
+    return await Chapter.find({ where: { meeting: { id: meetingId } } })
+  }
+
+  async getMeetingChapter(meetingId: number, chapterId: number) : Promise<Chapter>
+  {
+    return await Chapter.findOne({
+      where: {
+        meeting: { id: meetingId },
+        id: chapterId
+      },
+      relations: [
+        "choices",
+        "result"
+      ]
+    })
   }
 
 }

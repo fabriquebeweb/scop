@@ -1,0 +1,23 @@
+<!-- navbar du component admin -->
+<nav mat-tab-nav-bar class="fixed top-0 z-50 h-1/8 w-full bg-primary-500 shadow-lg flex justify-center items-center">
+  <section class="flex justify-center items-center w-full md:space-x-10 space-y-5 md:space-y-0">
+    <img [routerLink]="['/']" class="inline h-20 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
+    <button mat-tab-link [routerLink]="['/admin/meetings']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      RÉUNIONS
+    </button>
+    <button mat-tab-link [routerLink]="['/admin/members']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      MEMBRES
+    </button>
+    <button mat-tab-link [routerLink]="['/admin/status']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      STATUS
+    </button>
+    <button mat-tab-link [routerLink]="['/admin/theme']" routerLinkActive="border-b-4" class="border-b-2 border-white text-white">
+      THÈME
+    </button>
+  </section>
+</nav>
+
+<!-- emplacement du component meetings et ses enfants -->
+<main class="h-7/8 w-full fixed bottom-0">
+  <router-outlet></router-outlet>
+</main>

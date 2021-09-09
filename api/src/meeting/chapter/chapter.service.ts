@@ -30,7 +30,6 @@ export class ChapterService {
             })
     }
 
-
 // //Afficher les info d'un meeting
 //     async getMeeting(meetingId){
 //         return await Meeting.find({
@@ -62,15 +61,28 @@ export class ChapterService {
     }
 
      //Récupérer un chapitre d'un meeting
-    async getMeetingChapter(meetingId,chapterId){
-        return await Chapter.find({
-            where:{
-                meeting: {id:meetingId},
-                id:chapterId,
-            },
-            relations:["meeting"],
-            })
+    // async getMeetingChapter(meetingId,chapterId){
+    //     return await Chapter.find({
+    //         where:{
+    //             meeting: {id:meetingId},
+    //             id:chapterId,
+    //         },
+    //         relations:["meeting","choices"],
+    //         })
+    // }
+
+    //Récupérer un chapitre d'un meeting
+    async getMeetingChapterResult(meetingId,chapterId){
+      let chapter = await Chapter.findOne({
+              where:{
+                  meeting: {id:meetingId},
+                  id:chapterId,
+              },
+              relations:["choices","answers"],
+              })
+      // chapter.choices.forEach(choice=>{
+      // console.log( chapter.answers.filter(answer=>answer.choice.id === choice.id).length)
+      // })
+      console.log(chapter)
     }
-
-
 }

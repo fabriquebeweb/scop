@@ -39,11 +39,18 @@ export class MeetingController{
     return this.chapterService.getAnswer(id)
   }
 
-  //Récupérer un chapitre d'un meeting
+  // //Récupérer un chapitre d'un meeting
+  // @Get('/:meeting/:chapter/chapter')
+  // chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
+  //   return this.chapterService.getMeetingChapter(meetingId, chapterId)
+  // }
+
+  //Récupérer le résultat d'un vote d'un chapitre d'un meeting
   @Get('/:meeting/:chapter/chapter')
   chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
-    return this.chapterService.getMeetingChapter(meetingId, chapterId)
+    return this.chapterService.getMeetingChapterResult(meetingId, chapterId)
   }
+
 
 
 

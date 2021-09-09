@@ -46,7 +46,7 @@ export class SeedService {
     })
 
     // Enterprise
-    await this.loop(3, async () => {
+    await this.loop(1, async () => {
       Enterprise.insert(
         Enterprise.create({
           name: Faker.company.companyName(),
@@ -72,7 +72,7 @@ export class SeedService {
     })
 
     // Choice
-    await this.loop(200, async () => {
+    await this.loop(3, async () => {
       Choice.insert(
         Choice.create({
           title: Faker.lorem.sentence(),
@@ -106,7 +106,7 @@ export class SeedService {
     })
 
     // Meeting
-    await this.loop(200, async () => {
+    await this.loop(2, async () => {
       Meeting.insert(
         Meeting.create({
           date: Faker.datatype.datetime(),
@@ -132,7 +132,7 @@ export class SeedService {
     })
 
     // Document
-    await this.loop(200, async () => {
+    await this.loop(3, async () => {
       Document.insert(
         Document.create({
           path: Faker.internet.url(),
@@ -143,7 +143,7 @@ export class SeedService {
     })
 
     // Chapter
-    await this.loop(200, async () => {
+    await this.loop(20, async () => {
       Chapter.save(
         Chapter.create({
           title: Faker.lorem.sentence(),

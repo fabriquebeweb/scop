@@ -39,6 +39,12 @@ export class MeetingController{
     return this.chapterService.getAnswer(id)
   }
 
+  //Récupérer un chapitre d'un meeting
+  @Get('/:meeting/:chapter/chapter')
+  chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
+    return this.chapterService.getMeetingChapter(meetingId, chapterId)
+  }
+
 
 
 }

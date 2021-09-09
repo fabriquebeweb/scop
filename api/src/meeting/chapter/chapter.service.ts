@@ -7,16 +7,29 @@ import { Answer } from 'db/entities/Answer.entity';
 @Injectable()
 export class ChapterService {
 
-    //Récupérer les résultats par chapitre
+    // //Récupérer les résultats par chapitre
+    // async getResult(meetingId, chapterId){
+    //     return await Chapter.find({
+    //         select:["id","title","question"],
+    //         where:{
+    //             meeting: {id:meetingId},
+    //             id:chapterId
+    //         },
+    //         relations:["choices","answers"]
+    //         })
+    // }
+
+//Récupérer les résultats par chapitre
     async getResult(meetingId, chapterId){
         return await Answer.findAndCount({
             //select:["id","title"],
             where:{
-                chapter: {meetingId:meetingId, id:chapterId}
+                chapter: {id:chapterId},
             },
-            relations:["choice","chapter"],
+            relations:["chapter","choice"],
             })
     }
+
 
 // //Afficher les info d'un meeting
 //     async getMeeting(meetingId){
@@ -47,4 +60,17 @@ export class ChapterService {
             relations:["choices","meeting"],
             })
     }
+
+     //Récupérer un chapitre d'un meeting
+    async getMeetingChapter(meetingId,chapterId){
+        return await Chapter.find({
+            where:{
+                meeting: {id:meetingId},
+                id:chapterId,
+            },
+            relations:["meeting"],
+            })
+    }
+
+
 }

@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
 import { MeetingService } from './meeting.service';
-import { LobbyComponent } from './lobby/lobby.component'
+import { MeetingLobbyComponent } from './lobby/lobby.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { LobbyComponent } from './lobby/lobby.component'
     MeetingChaptersDetailsComponent,
     MeetingPresenceComponent,
     MeetingFormComponent,
-    LobbyComponent
+    MeetingLobbyComponent
   ],
   imports: [
     CommonModule,

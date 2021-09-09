@@ -25,8 +25,11 @@ export class SeedService {
     },
     MEETING : {
       TYPES: 4,
+      DOCUMENTS: 5,
       CHAPTERS: 20,
-      DOCUMENTS: 5
+      CHAPTER: {
+        CHOICES: 3
+      }
     }
   }
 
@@ -40,9 +43,21 @@ export class SeedService {
     return this.pick(await entity.find())
   }
 
+  async list(loops: number, entity: any, conditions?: any) : Promise<any[]>
+  {
+    const entities = await entity.find((conditions) ? conditions : {}); const result: any[] = []
+    for(let i: number = 0; i < loops; i++)
+    {
+      let tmp: any
+      do { tmp = this.pick(entities) } while (result.includes(tmp))
+      result.push(tmp)
+    }
+    return result
+  }
+
   async loop(loops: number, callback: any) : Promise<void>
   {
-    for(let i = 1; i < (loops + 1); i++)
+    for(let i: number = 1; i < (loops + 1); i++)
     {
       await callback(i)
     }
@@ -186,6 +201,8 @@ export class SeedService {
             // CHAPTER
             await this.loop(this.LOOPS.MEETING.CHAPTERS, async chapterID => {
 
+              const choices = await this.list(this.LOOPS.MEETING.CHAPTER.CHOICES, Choice, { where: { enterprise: { id: enterpriseID } }})
+
               await this.save({
 
                 id: chapterID,
@@ -193,8 +210,8 @@ export class SeedService {
                 description: Faker.lorem.paragraph(),
                 summary: Faker.lorem.words(),
                 question: `${Faker.lorem.sentence()} ?`,
-                choices: [],
-                result: await this.random(Choice),
+                choices: choices,
+                result: this.pick([ null, ...choices ]),
                 meeting: await Meeting.findOne(meetingID)
 
               }, Chapter)
@@ -206,7 +223,7 @@ export class SeedService {
 
                   chapter: await Chapter.findOne(chapterID),
                   user: await User.findOne(userID),
-                  choice: await this.random(Choice)
+                  choice: this.pick([ null, ...choices ])
 
                 }, Answer)
 

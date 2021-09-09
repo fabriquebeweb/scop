@@ -16,23 +16,21 @@ export class MeetingController
   }
 
   @Get('/:meeting')
-  getMeeting(@Param('meeting') id: number)
+  getMeeting( @Param('meeting') id: number )
   {
     return this.service.getMeeting(id)
   }
 
   @Get('/:meeting/chapters')
-  getMeetingChapters(@Param('meeting') id: number)
+  getMeetingChapters( @Param('meeting') id: number )
   {
     return this.service.getMeetingChapters(id)
   }
 
   @Get('/:meeting/chapter/:chapter')
-  getMeetingChapter(@Param('meeting') meetingId: number, @Param('chapter') chapterId: number)
+  getMeetingChapter( @Param('meeting') meetingId: number, @Param('chapter') chapterId: number )
   {
     return this.service.getMeetingChapter(meetingId, chapterId)
   }
-
-
 
 }

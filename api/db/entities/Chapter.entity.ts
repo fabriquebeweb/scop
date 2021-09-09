@@ -22,18 +22,21 @@ export class Chapter extends BaseEntity
   @Column({ nullable: true })
   question: string
 
-  @ManyToMany(type => Choice, { nullable: true, cascade: true })
+  @Column({ nullable: true })
+  state: boolean
+
+  @ManyToMany(type => Choice, { nullable: true, cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   @JoinTable()
   choices: Choice[]
 
-  @ManyToOne(type => Choice, choice => choice.results, { nullable: true })
+  @ManyToOne(type => Choice, choice => choice.results, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'nullify' })
   result: Choice
 
-  @OneToMany(type => Answer, answer => answer.chapter, { nullable: true })
+  @OneToMany(type => Answer, answer => answer.chapter, { nullable: true, cascade: true })
   answers: Answer[]
 
   @Index('chapter_meeting_idx')
-  @ManyToOne(type => Meeting, meeting => meeting.chapters, { nullable: false })
+  @ManyToOne(type => Meeting, meeting => meeting.chapters, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   meeting: Meeting
 
 }

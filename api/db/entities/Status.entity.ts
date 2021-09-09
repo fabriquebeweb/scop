@@ -6,7 +6,7 @@ import { MeetingType } from './MeetingType.entity'
 export class Status extends BaseEntity
 {
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.status, { primary: true })
+  @ManyToOne(type => Enterprise, enterprise => enterprise.status, { primary: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   enterprise: Enterprise
 
   @ManyToOne(type => MeetingType, meetingType => meetingType.status, { primary: true, nullable: true })

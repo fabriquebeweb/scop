@@ -1,23 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Chapter } from 'src/app/misc/entities/Chapter';
+import { MeetingService } from '../../meeting.service'
+
 
 @Component({
   selector: 'chapter-details',
   templateUrl: './details.component.html'
 })
-export class MeetingChaptersDetailsComponent implements OnInit {
-  @Input() chapter: Chapter =
-    {
-    id: 1,
-    title: "CHANGEMENT D'HOMME DE MÉNAGE",
-    description: "Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum",
-    summary: "summary lalala",
-    question: "on l'enterre où ?"
+export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
+
+  observer!: Subscription
+  chapter!: Chapter
+
+  constructor(
+    private readonly service: MeetingService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
+  ) {}
+
+  ngOnInit() : void
+  {
+    this.observer = this.route.params.subscribe(params => {
+      this.service.getMeetingChapter(params.chapter)
+        .then(chapter => {
+          this.chapter = chapter
+        })
+        .catch(() => this.router.navigate(['/meeting']))
+    })
   }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnDestroy() : void
+  {
+    this.observer.unsubscribe()
   }
 
 }

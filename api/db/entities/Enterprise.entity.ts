@@ -30,16 +30,16 @@ export class Enterprise extends BaseEntity
   @ManyToOne(type => Provider, provider => provider.enterprises, { nullable: false })
   provider: Provider
 
-  @OneToMany(type => Status, status => status.enterprise)
+  @OneToMany(type => Status, status => status.enterprise, { cascade: true })
   status: Status[]
 
-  @OneToMany(type => User, user => user.enterprise)
+  @OneToMany(type => User, user => user.enterprise, { cascade: true })
   users: User[]
 
-  @OneToMany(type => Meeting, meeting => meeting.enterprise)
+  @OneToMany(type => Meeting, meeting => meeting.enterprise, { cascade: true })
   meetings: Meeting[]
 
-  @OneToMany(type => Choice, choice => choice.enterprise)
+  @OneToMany(type => Choice, choice => choice.enterprise, { cascade: true })
   choices: Choice[]
 
 }

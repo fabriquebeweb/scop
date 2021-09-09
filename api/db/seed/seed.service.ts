@@ -30,10 +30,6 @@ export class SeedService {
     }
   }
 
-  constructor(
-    private readonly logger: Logger
-  ) {}
-
   pick(entities: any[]) : any
   {
     return entities[Math.floor(Math.random() * entities.length)]
@@ -115,9 +111,6 @@ export class SeedService {
           }, User)
 
         }) // USER
-
-        console.log(Faker.commerce.productDescription())
-        console.log(Faker.company.companyName())
 
         // CHOICE
         await this.loop(this.LOOPS.ENTERPRISE.CHOICES, async choiceID => {
@@ -209,13 +202,13 @@ export class SeedService {
               // ANSWER
               await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
 
-                // await this.save({
+                await this.save({
 
-                //   chapter: await Chapter.findOne(chapterID),
-                //   user: await User.findOne(userID),
-                //   choice: await this.random(Choice)
+                  chapter: await Chapter.findOne(chapterID),
+                  user: await User.findOne(userID),
+                  choice: await this.random(Choice)
 
-                // }, Answer)
+                }, Answer)
 
               }) // ANSWER
             }) // CHAPTER

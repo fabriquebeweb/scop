@@ -9,10 +9,10 @@ NestFactory.createApplicationContext(SeedModule)
     app.get(SeedService)
       .seed()
       .then(() => {
-        logger.log('SEEDING COMPLETE')
+        logger.log('SEEDING COMPLETE', SeedService.name)
       })
       .catch(error => {
-        logger.error('SEEDING FAILED')
+        logger.error('SEEDING FAILED', SeedService.name)
         throw error
       })
       .finally(() => app.close())

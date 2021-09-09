@@ -3,6 +3,7 @@
 
 # Database
 db/db.sqlite
+db/db.sqlite-journal
 
 # compiled output
 /dist

@@ -7,6 +7,9 @@ import { SeedService } from './seed.service'
   imports: [
     TypeOrmModule.forRoot(connection)
   ],
-  providers: [SeedService, Logger]
+  providers: [
+    SeedService,
+    Logger
+  ]
 })
 export class SeedModule {}

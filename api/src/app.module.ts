@@ -15,7 +15,11 @@ import { routes } from './app.routes'
     AdminModule,
     MeetingModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    AppController
+  ],
+  providers: [
+    AppService
+  ]
 })
 export class AppModule {}

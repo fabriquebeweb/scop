@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Headers, HttpCode, HttpStatus, Param, Post, Put, Res } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { Meeting } from 'db/entities/Meeting.entity'
 import { AdminMeetingsService } from './meetings.service'
 
@@ -16,25 +16,25 @@ export class AdminMeetingsController {
   }
 
   @Post()
-  newMeeting(@Body() meeting: Meeting)
+  newMeeting( @Body() meeting: Meeting )
   {
     return this.service.setMeeting(meeting)
   }
 
   @Get('/:meeting')
-  meetingDetails(@Param('meeting') id: number)
+  meetingDetails( @Param('meeting') id: number )
   {
     return this.service.getMeeting(id)
   }
 
   @Put('/:meeting')
-  updateMeeting(@Param('meeting') id: number, @Body() meeting: Meeting)
+  updateMeeting( @Param('meeting') id: number, @Body() meeting: Meeting )
   {
     return (meeting.id == id) ? this.service.updateMeeting(meeting) : null
   }
 
   @Delete('/:meeting')
-  destroyMeeting(@Param('meeting') id: number)
+  destroyMeeting( @Param('meeting') id: number )
   {
     return this.service.unsetMeeting(id)
   }

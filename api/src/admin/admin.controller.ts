@@ -9,7 +9,8 @@ export class AdminController {
   ) {}
 
   @Get('login')
-  login() {
+  login()
+  {
     return 'ADMIN'
   }
 

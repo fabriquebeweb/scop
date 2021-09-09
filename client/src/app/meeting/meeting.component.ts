@@ -18,7 +18,6 @@ export class MeetingComponent implements OnInit, OnDestroy {
   ngOnInit() : void
   {
     this.service.getMeeting(this.route.snapshot.queryParams.meeting)
-    // this.service.getMeeting(5)
       .then(meeting => {
         (meeting) ? this.service.meeting = meeting : this.error()
         if (/^\/meeting\/?\??.*$/.test(this.router.url)) this.redirect()

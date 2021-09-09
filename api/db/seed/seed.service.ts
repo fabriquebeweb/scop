@@ -1,6 +1,5 @@
-import * as Faker from 'faker/locale/fr'
-import { Injectable } from '@nestjs/common'
-import { Connection } from 'typeorm'
+import * as Faker from 'faker'
+import { Injectable, Logger } from '@nestjs/common'
 import { Enterprise } from '../entities/Enterprise.entity'
 import { Status } from '../entities/Status.entity'
 import { MeetingType } from '../entities/MeetingType.entity'
@@ -15,165 +14,230 @@ import { Answer } from '../entities/Answer.entity'
 
 @Injectable()
 export class SeedService {
-  constructor(
-    private connection: Connection
-  ) {}
 
-  random(entities: any[]) : any {
-    return entities[Math.floor(Math.random() * entities.length)]
-  }
-
-  async loop(loops: number, callback: any) : Promise<void> {
-    for(let i = 0; i < loops; i++) {
-      await this.connection.transaction(async db => {
-        await callback(db)
-      })
+  LOOPS = {
+    PROVIDERS : 1,
+    ENTERPRISES : 1,
+    ENTERPRISE : {
+      USERS: 10,
+      MEETINGS: 5,
+      CHOICES: 10
+    },
+    MEETING : {
+      TYPES: 4,
+      DOCUMENTS: 5,
+      CHAPTERS: 20,
+      CHAPTER: {
+        CHOICES: 3
+      }
     }
   }
 
-  async seed() : Promise<void> {
+  pick(entities: any[]) : any
+  {
+    return entities[Math.floor(Math.random() * entities.length)]
+  }
+
+  async random(entity: any) : Promise<any>
+  {
+    return this.pick(await entity.find())
+  }
+
+  async list(loops: number, entity: any, conditions?: any) : Promise<any[]>
+  {
+    const entities = await entity.find((conditions) ? conditions : {}); const result: any[] = []
+    for(let i: number = 0; i < loops; i++)
+    {
+      let tmp: any
+      do { tmp = this.pick(entities) } while (result.includes(tmp))
+      result.push(tmp)
+    }
+    return result
+  }
+
+  async loop(loops: number, callback: any) : Promise<void>
+  {
+    for(let i: number = 1; i < (loops + 1); i++)
+    {
+      await callback(i)
+    }
+  }
+
+  async save(content: object, entity: any) : Promise<any>
+  {
+    return await entity.create(content).save()
+  }
+
+  async seed() : Promise<void>
+  {
+
     /**
-     * SEED START
+     * SEED
      */
 
-    // Provider
-    await this.loop(3, async () => {
-      Provider.insert(
-        Provider.create({
-          name: Faker.company.companyName(),
-        })
-      )
-    })
+    // MEETING TYPE
+    await this.loop(this.LOOPS.MEETING.TYPES, async meetingTypeID => {
 
-    // Enterprise
-    await this.loop(3, async () => {
-      Enterprise.insert(
-        Enterprise.create({
+      await this.save({
+
+        id: meetingTypeID,
+        title: Faker.commerce.productName()
+
+      }, MeetingType)
+
+    }) // MEETING TYPE
+
+    // PROVIDER
+    await this.loop(this.LOOPS.PROVIDERS, async providerID => {
+
+      await this.save({
+
+        id: providerID,
+        name: Faker.company.companyName()
+
+      }, Provider)
+
+      // ENTERPRISE
+      await this.loop(this.LOOPS.ENTERPRISES, async enterpriseID => {
+
+        await this.save({
+
+          id: enterpriseID,
           name: Faker.company.companyName(),
-          logo: Faker.internet.url(),
+          logo: Faker.image.imageUrl(),
           primary: Faker.commerce.color(),
           secondary: Faker.commerce.color(),
           ternary: Faker.commerce.color(),
-          provider: this.random(await Provider.find()),
-        })
-      )
-    })
+          provider: await Provider.findOne(providerID)
 
-    // User
-    await this.loop(10, async () => {
-      User.insert(
-        User.create({
-          firstName: Faker.name.firstName(),
-          lastName: Faker.name.lastName(),
-          email: Faker.internet.email(),
-          enterprise: this.random(await Enterprise.find()),
-        })
-      )
-    })
+        }, Enterprise)
 
-    // Choice
-    await this.loop(20, async () => {
-      Choice.insert(
-        Choice.create({
-          title: Faker.lorem.sentence(),
-          enterprise: this.random(await Enterprise.find()),
-        })
-      )
-    })
+        // USER
+        await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
 
-    // Meeting Type
-    await this.loop(4, async () => {
-      MeetingType.insert(
-        MeetingType.create({
-          title: Faker.lorem.word()
-        })
-      )
-    })
+          await this.save({
 
-    // Status
-    await this.loop(1, async () => {
-      Status.insert(
-        Status.create({
-          enterprise: this.random(await Enterprise.find()),
-          meetingType: this.random(await MeetingType.find()),
-          majorityMin: Faker.datatype.number(),
-          majorityMax: Faker.datatype.number(),
-          quorumMin: Faker.datatype.number(),
-          quorumMax: Faker.datatype.number(),
-          power: Faker.datatype.number(),
-        })
-      )
-    })
+            id: userID,
+            firstName: Faker.name.firstName(),
+            lastName: Faker.name.lastName(),
+            email: Faker.internet.email(),
+            enterprise: await Enterprise.findOne(enterpriseID)
 
-    // Meeting
-    await this.loop(10, async () => {
-      Meeting.insert(
-        Meeting.create({
-          date: Faker.datatype.datetime(),
-          location: `${Faker.address.streetAddress()} ${Faker.address.city()}`,
-          enterprise: this.random(await Enterprise.find()),
-          meetingType: this.random(await MeetingType.find()),
-          state: Faker.datatype.boolean(),
-        })
-      )
-    })
+          }, User)
 
-    // Participation
-    await this.loop(1, async () => {
-      Participation.insert(
-        Participation.create({
-          code: Faker.internet.password(),
-          isPresent: Faker.datatype.boolean(),
-          procuration: this.random(await User.find()),
-          user: this.random(await User.find()),
-          meeting: this.random(await Meeting.find()),
-        })
-      )
-    })
+        }) // USER
 
-    // Document
-    await this.loop(2, async () => {
-      Document.insert(
-        Document.create({
-          path: Faker.internet.url(),
-          name: Faker.lorem.words(),
-          meeting: this.random(await Meeting.find()),
-        })
-      )
-    })
+        // CHOICE
+        await this.loop(this.LOOPS.ENTERPRISE.CHOICES, async choiceID => {
 
-    // Chapter
-    await this.loop(20, async () => {
-      Chapter.save(
-        Chapter.create({
-          title: Faker.lorem.sentence(),
-          description: Faker.lorem.paragraph(),
-          summary: Faker.lorem.words(),
-          question: `${Faker.lorem.sentence()} ?`,
-          choices: [
-            this.random(await Choice.find()),
-            this.random(await Choice.find())
-          ],
-          result: this.random(await Choice.find()),
-          meeting: await Meeting.findOne(1)
-        })
-      )
-    })
+          await this.save({
 
-    // Answer
-    await this.loop(1, async () => {
-      Answer.save(
-        Answer.create({
-          chapter: this.random(await Chapter.find()),
-          user: this.random(await User.find()),
-          choice: this.random(await Choice.find())
-        })
-      )
-    })
+            id: choiceID,
+            title: Faker.commerce.productDescription(),
+            enterprise: await Enterprise.findOne(enterpriseID)
+
+          }, Choice)
+
+        }) // CHOICE
+
+        // STATUS
+        await this.loop(this.LOOPS.MEETING.TYPES, async meetingTypeID => {
+
+          await this.save({
+
+            enterprise: await Enterprise.findOne(enterpriseID),
+            meetingType: await MeetingType.findOne(meetingTypeID),
+            majorityMin: Faker.datatype.number(),
+            majorityMax: Faker.datatype.number(),
+            quorumMin: Faker.datatype.number(),
+            quorumMax: Faker.datatype.number(),
+            power: Faker.datatype.number()
+
+          }, Status)
+
+          // MEETING
+          await this.loop(this.LOOPS.ENTERPRISE.MEETINGS, async meetingID => {
+
+            await this.save({
+
+              id: meetingID,
+              date: Faker.datatype.datetime(),
+              location: Faker.address.streetAddress(),
+              enterprise: await Enterprise.findOne(enterpriseID),
+              meetingType: await MeetingType.findOne(meetingTypeID),
+              state: Faker.datatype.boolean()
+
+            }, Meeting)
+
+            // PARTICIPATION
+            await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
+
+              await this.save({
+
+                code: Faker.internet.password(),
+                isPresent: Faker.datatype.boolean(),
+                procuration: null,
+                user: await User.findOne(userID),
+                meeting: await Meeting.findOne(meetingID)
+
+              }, Participation)
+
+            }) // PARTICIPATION
+
+            // DOCUMENT
+            await this.loop(this.LOOPS.MEETING.DOCUMENTS, async documentID => {
+
+              await this.save({
+
+                id: documentID,
+                path: Faker.internet.url(),
+                name: Faker.lorem.words(),
+                meeting: await Meeting.findOne(meetingID)
+
+              }, Document)
+
+            }) // DOCUMENT
+
+            // CHAPTER
+            await this.loop(this.LOOPS.MEETING.CHAPTERS, async chapterID => {
+
+              const choices = await this.list(this.LOOPS.MEETING.CHAPTER.CHOICES, Choice, { where: { enterprise: { id: enterpriseID } }})
+
+              await this.save({
+
+                id: chapterID,
+                title: Faker.lorem.sentence(),
+                description: Faker.lorem.paragraph(),
+                summary: Faker.lorem.words(),
+                question: `${Faker.lorem.sentence()} ?`,
+                choices: choices,
+                result: this.pick([ null, ...choices ]),
+                meeting: await Meeting.findOne(meetingID)
+
+              }, Chapter)
+
+              // ANSWER
+              await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
+
+                await this.save({
+
+                  chapter: await Chapter.findOne(chapterID),
+                  user: await User.findOne(userID),
+                  choice: this.pick([ null, ...choices ])
+
+                }, Answer)
+
+              }) // ANSWER
+            }) // CHAPTER
+          }) // MEETING
+        }) // STATUS
+      }) // ENTERPRISE
+    }) // PROVIDER
 
     /**
-     * SEED END
+     * SEED
      */
+
   }
 
 }

@@ -9,8 +9,6 @@ import { MeetingService } from './meeting.service'
 })
 export class MeetingComponent implements OnInit, OnDestroy {
 
-  // meeting!: Meeting
-
   constructor(
     private readonly service: MeetingService,
     private readonly route: ActivatedRoute,
@@ -19,10 +17,10 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    // this.service.getMeeting(this.route.snapshot.queryParams.meeting)
-    this.service.getMeeting(1)
+    this.service.getMeeting(this.route.snapshot.queryParams.meeting)
+    // this.service.getMeeting(5)
       .then(meeting => {
-        (meeting) ? this.service.set('MEETING', meeting) : this.error()
+        (meeting) ? this.service.meeting = meeting : this.error()
         if (/^\/meeting\/?\??.*$/.test(this.router.url)) this.redirect()
       })
       .catch(() => this.error())
@@ -30,7 +28,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() : void
   {
-    this.service.unset('MEETING')
+    delete this.service.meeting
   }
 
   error()

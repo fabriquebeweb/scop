@@ -22,7 +22,7 @@ export class MeetingChaptersComponent implements OnInit {
     this.service.getMeetingChapters()
       .then(chapters => {
         this.chapters = chapters
-        this.router.navigate([`/meeting/chapters/${this.chapters[0].id}`])
+        if (this.chapters.length) this.router.navigate([`/meeting/chapters/${this.chapters[0].id}`])
       })
       .catch(() => this.router.navigate(['/error']))
   }

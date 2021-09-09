@@ -8,25 +8,27 @@ import { Meeting } from '../misc/entities/Meeting';
 export class MeetingService
 {
 
+  meeting?: Meeting
+
   constructor(
     private readonly http: HttpClient
   ) {}
 
-  get(key: string) : any
-  {
-    const value = sessionStorage.getItem(key)
-    return (value) ? JSON.parse(value) : null
-  }
+  // get(key: string) : any
+  // {
+  //   const value = sessionStorage.getItem(key)
+  //   return (value) ? JSON.parse(value) : null
+  // }
 
-  unset(key: string) : any
-  {
-    sessionStorage.removeItem(key)
-  }
+  // unset(key: string) : any
+  // {
+  //   sessionStorage.removeItem(key)
+  // }
 
-  set(key: string, value: any) : void
-  {
-    sessionStorage.setItem(key, JSON.stringify(value))
-  }
+  // set(key: string, value: any) : void
+  // {
+  //   sessionStorage.setItem(key, JSON.stringify(value))
+  // }
 
   async getMeeting(id: number) : Promise<Meeting>
   {
@@ -35,12 +37,12 @@ export class MeetingService
 
   async getMeetingChapters() : Promise<Chapter[]>
   {
-    return await this.http.get<Chapter[]>(API.path(`/meeting/${this.get('MEETING').id}/chapters`), API.options()).toPromise()
+    return await this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting?.id}/chapters`), API.options()).toPromise()
   }
 
   async getMeetingChapter(id: number) : Promise<Chapter>
   {
-    return await this.http.get<Chapter>(API.path(`/meeting/${this.get('MEETING').id}/chapter/${id}`), API.options()).toPromise()
+    return await this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
   }
 
 }

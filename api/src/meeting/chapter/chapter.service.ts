@@ -65,29 +65,11 @@ export class ChapterService {
         
     }
 
-    //#8 Récupère un vote (question et choices) d'un meeting : IN PROGRESS
-    // async getOneVote(chapterId) {
-    //     return await Chapter.find({
-    //         where: {id:chapterId},
-    //         relations: ["choices", "meeting"],
-    //         select: [
-    //             "id", Choice.find({select: ["id", "title"]}), Meeting.find({select: ["id"]})//, "choices", "meeting", 
-    //         ]
-    //     })   
-    // }
-
-    //#9 Persister un vote : IN PROGRESS
-    async saveOneVote1(answer: Answer) {
-        await Answer.save(answer)
-      }
-
-    //#9 Persister un vote : A TEST
+    
+    //#8 Persister un vote : IN PROGRESS
     async saveOneVote(answer: Answer) {
         await Answer.save(answer)
       }
-
-    //   if (chapter.state) {
-    //       await Answer.save(answer)
-    //   } 
+ 
 
 }

@@ -56,28 +56,12 @@ export class MeetingController
   
   }
 
-  // #8 Un vote : IN PROGRESS
-  // @Get('/:chapter/choice')
-  //   getAvoote(@Param('chapter') chapterId: string) {
-  //     return this.chapterService.getOneVote(chapterId)
-  //   }
 
-
-// #9 Persister un vote : IN PROGRESS
+// #8 Persister un vote : IN PROGRESS
   @Post('/:chapter/choices')
     async postVote(@Body() body: Answer, @Param('chapter') chapterId: string) {
-      this.chapterService.saveOneVote1(body)
+      this.chapterService.saveOneVote(body)
   }
+  
 
 }
-
-
-// Récupère les votes d'un meeting (question et choice)
-    // async getVote(meetingId) {
-    //     return await Chapter.find({
-    //         where: {
-    //             meeting:meetingId,
-    //         },
-    //         relations: ["meeting"]
-    //     })
-    // }

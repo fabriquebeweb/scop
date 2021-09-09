@@ -22,6 +22,9 @@ export class Chapter extends BaseEntity
   @Column({ nullable: true })
   question: string
 
+  @Column({ nullable: true })
+  state: boolean
+
   @ManyToMany(type => Choice, { nullable: true, cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   @JoinTable()
   choices: Choice[]

@@ -45,7 +45,8 @@ export class SeedService {
 
   async list(loops: number, entity: any, conditions?: any) : Promise<any[]>
   {
-    const entities = await entity.find((conditions) ? conditions : {}); const result: any[] = []
+    const result: any[] = []
+    const entities = await entity.find((conditions) ? conditions : {})
     for(let i: number = 0; i < loops; i++)
     {
       let tmp: any
@@ -53,6 +54,14 @@ export class SeedService {
       result.push(tmp)
     }
     return result
+  }
+
+  async forEach(entity: any, conditions: any, callback: any) : Promise<any>
+  {
+    for (const element of await entity.find((conditions) ? conditions : {}))
+    {
+      await callback(element)
+    }
   }
 
   async loop(loops: number, callback: any) : Promise<void>
@@ -76,11 +85,10 @@ export class SeedService {
      */
 
     // MEETING TYPE
-    await this.loop(this.LOOPS.MEETING.TYPES, async meetingTypeID => {
+    await this.loop(this.LOOPS.MEETING.TYPES, async () => {
 
       await this.save({
 
-        id: meetingTypeID,
         title: Faker.commerce.productName()
 
       }, MeetingType)
@@ -88,65 +96,61 @@ export class SeedService {
     }) // MEETING TYPE
 
     // PROVIDER
-    await this.loop(this.LOOPS.PROVIDERS, async providerID => {
+    await this.loop(this.LOOPS.PROVIDERS, async () => {
 
-      await this.save({
+      const PROVIDER: Provider = await this.save({
 
-        id: providerID,
         name: Faker.company.companyName()
 
       }, Provider)
 
       // ENTERPRISE
-      await this.loop(this.LOOPS.ENTERPRISES, async enterpriseID => {
+      await this.loop(this.LOOPS.ENTERPRISES, async () => {
 
-        await this.save({
+        const ENTERPRISE: Enterprise = await this.save({
 
-          id: enterpriseID,
           name: Faker.company.companyName(),
           logo: Faker.image.imageUrl(),
           primary: Faker.commerce.color(),
           secondary: Faker.commerce.color(),
           ternary: Faker.commerce.color(),
-          provider: await Provider.findOne(providerID)
+          provider: PROVIDER
 
         }, Enterprise)
 
         // USER
-        await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
+        await this.loop(this.LOOPS.ENTERPRISE.USERS, async () => {
 
           await this.save({
 
-            id: userID,
             firstName: Faker.name.firstName(),
             lastName: Faker.name.lastName(),
             email: Faker.internet.email(),
-            enterprise: await Enterprise.findOne(enterpriseID)
+            enterprise: ENTERPRISE
 
           }, User)
 
         }) // USER
 
         // CHOICE
-        await this.loop(this.LOOPS.ENTERPRISE.CHOICES, async choiceID => {
+        await this.loop(this.LOOPS.ENTERPRISE.CHOICES, async () => {
 
           await this.save({
 
-            id: choiceID,
             title: Faker.commerce.productDescription(),
-            enterprise: await Enterprise.findOne(enterpriseID)
+            enterprise: ENTERPRISE
 
           }, Choice)
 
         }) // CHOICE
 
         // STATUS
-        await this.loop(this.LOOPS.MEETING.TYPES, async meetingTypeID => {
+        await this.forEach(MeetingType, {}, async MEETING_TYPE => {
 
           await this.save({
 
-            enterprise: await Enterprise.findOne(enterpriseID),
-            meetingType: await MeetingType.findOne(meetingTypeID),
+            enterprise: ENTERPRISE,
+            meetingType: MEETING_TYPE,
             majorityMin: Faker.datatype.number(),
             majorityMax: Faker.datatype.number(),
             quorumMin: Faker.datatype.number(),
@@ -156,74 +160,73 @@ export class SeedService {
           }, Status)
 
           // MEETING
-          await this.loop(this.LOOPS.ENTERPRISE.MEETINGS, async meetingID => {
+          await this.loop(this.LOOPS.ENTERPRISE.MEETINGS, async () => {
 
-            await this.save({
+            const MEETING: Meeting = await this.save({
 
-              id: meetingID,
               date: Faker.datatype.datetime(),
               location: Faker.address.streetAddress(),
-              enterprise: await Enterprise.findOne(enterpriseID),
-              meetingType: await MeetingType.findOne(meetingTypeID),
+              enterprise: ENTERPRISE,
+              meetingType: MEETING_TYPE,
               state: Faker.datatype.boolean()
 
             }, Meeting)
 
             // PARTICIPATION
-            await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
+            await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
 
               await this.save({
 
                 code: Faker.internet.password(),
                 isPresent: Faker.datatype.boolean(),
                 procuration: null,
-                user: await User.findOne(userID),
-                meeting: await Meeting.findOne(meetingID)
+                user: USER,
+                meeting: MEETING
 
               }, Participation)
 
             }) // PARTICIPATION
 
             // DOCUMENT
-            await this.loop(this.LOOPS.MEETING.DOCUMENTS, async documentID => {
+            await this.loop(this.LOOPS.MEETING.DOCUMENTS, async () => {
 
               await this.save({
 
-                id: documentID,
                 path: Faker.internet.url(),
                 name: Faker.lorem.words(),
-                meeting: await Meeting.findOne(meetingID)
+                meeting: MEETING
 
               }, Document)
 
             }) // DOCUMENT
 
             // CHAPTER
-            await this.loop(this.LOOPS.MEETING.CHAPTERS, async chapterID => {
+            await this.loop(this.LOOPS.MEETING.CHAPTERS, async () => {
 
-              const choices = await this.list(this.LOOPS.MEETING.CHAPTER.CHOICES, Choice, { where: { enterprise: { id: enterpriseID } }})
+              const CHOICES: Choice[] = await this.list(this.LOOPS.MEETING.CHAPTER.CHOICES, Choice,
+                { where: { enterprise: { id: ENTERPRISE.id } }}
+              )
 
-              await this.save({
+              const CHAPTER: Chapter = await this.save({
 
-                id: chapterID,
                 title: Faker.lorem.sentence(),
                 description: Faker.lorem.paragraph(),
                 summary: Faker.lorem.words(),
                 question: `${Faker.lorem.sentence()} ?`,
-                choices: choices,
-                result: this.pick([ null, ...choices ]),
-                meeting: await Meeting.findOne(meetingID)
+                choices: CHOICES,
+                result: this.pick([ null, ...CHOICES ]),
+                meeting: MEETING
 
               }, Chapter)
 
               // ANSWER
-              await this.loop(this.LOOPS.ENTERPRISE.USERS, async userID => {
+              await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
 
                 await this.save({
 
-                  chapter: await Chapter.findOne(chapterID),
-                  user: await User.findOne(userID),
-                  choice: this.pick([ null, ...choices ])
+                  user: USER,
+                  chapter: CHAPTER,
+                  choice: this.pick([ null, ...CHOICES ])
 
                 }, Answer)
 

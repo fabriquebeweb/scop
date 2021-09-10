@@ -1,5 +1,5 @@
 <!-- Si l'état de la réunion est nul : -->
-<div *ngIf="service?.meeting?.state == null; else LobbyFalse" class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
+<div *ngIf="service?.meeting?.state == false; else LobbyNull" class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
     <!-- Affichage de la "salle d'attente" -->
     <section>
       <img  class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
@@ -13,7 +13,7 @@
 </div>
 
 <!-- Si l'état de la réunion est faux -->
-<ng-template #LobbyFalse>
+<ng-template #LobbyNull>
   <!-- Affichage de la clôture de réunion -->
   <div class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
     <section>

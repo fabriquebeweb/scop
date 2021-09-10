@@ -1,4 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post } from '@nestjs/common'
+import { Answer } from 'db/entities/Answer.entity'
+import { Chapter } from 'db/entities/Chapter.entity'
 import { ChapterService } from './chapter/chapter.service'
 import { MeetingService } from './meeting.service'
 
@@ -16,25 +18,18 @@ export class MeetingController{
     return this.service.getMeeting(id)
   }
 
-  //Requête Sidney
+  // Requête Sidney
   @Get('/:chapter/choices')
   answer(@Param('chapter') id : string){
     return this.chapterService.getAnswer(id)
   }
 
-  // //Récupérer un chapitre d'un meeting
-  // @Get('/:meeting/:chapter/chapter')
-  // chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
-  //   return this.chapterService.getMeetingChapter(meetingId, chapterId)
-  // }
-
   //Récupérer le résultat d'un vote d'un chapitre d'un meeting
-  @Get('/:meeting/:chapter/chapter')
-  chapter(@Param('meeting') meetingId: number, @Param('chapter') chapterId : number){
+  @Get('/:meeting/chapter/:chapter/results')
+  chapter(@Param('meeting') meetingId: number, @Param('chapter') chapterId : number)
+  {
     return this.chapterService.getMeetingChapterResult(meetingId, chapterId)
   }
-
-
 
   @Get('/:meeting/chapters')
   getMeetingChapters( @Param('meeting') id: number )
@@ -46,6 +41,20 @@ export class MeetingController{
   getMeetingChapter( @Param('meeting') meetingId: number, @Param('chapter') chapterId: number )
   {
     return this.service.getMeetingChapter(meetingId, chapterId)
+  }
+
+  // Une question et ses choices pour un meeting : OK
+  @Get('/:chapter/choices')
+  getChapterChoices( @Param('chapter') chapterId: number )
+  {
+    return this.chapterService.getAQuestion(chapterId)
+  }
+
+  // Persister un vote : IN PROGRESS
+  @Post('/chapter/choices')
+  async postVote(@Body() body: Answer)
+  {  
+    this.chapterService.saveOneVote(body)
   }
 
 }

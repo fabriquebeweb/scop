@@ -3,13 +3,46 @@ import { Chapter } from 'db/entities/Chapter.entity';
 import { Meeting } from 'db/entities/Meeting.entity';
 import { Choice } from 'db/entities/Choice.entity';
 import { Answer } from 'db/entities/Answer.entity';
-import { IsNull } from 'typeorm';
+import { Any, IsNull } from 'typeorm';
 
 @Injectable()
 export class ChapterService {
 
-  //Requête Sidney
-  async getAnswer(chapterId){
+  // Récupère la liste de toutes les questions : OK
+  async getAllQuestions()
+  {
+    return await Chapter.find({select: ["question"]})
+  }
+
+  // Récupère une question et ses choices pour un meeting : OK
+  async getAQuestion(chapterId)
+  {
+    return await Chapter.find({
+      where: {
+        id:chapterId,                
+      },
+      relations: ["choices", "meeting"]
+    })
+        
+  }
+
+  // Persister un vote : IN PROGRESS
+  async saveOneVote(answer: Answer)
+  {
+    let test = await Chapter.findOne({ 
+      select: ["id"],
+      where: {
+        id: answer.chapter
+      }
+    })
+
+    console.log(test)
+    if (test.id) await Answer.save(answer)
+  }
+ 
+  // Requête Sidney
+  async getAnswer(chapterId)
+  {
     return await Chapter.find({
       where: {
         id: chapterId
@@ -21,7 +54,7 @@ export class ChapterService {
     })
   }
 
-  //Récupérer les résultats du vote d'un chapitre d'un meeting
+  // Récupérer les résultats du vote d'un chapitre d'un meeting
   async getMeetingChapterResult(meetingId: number, chapterId: number)
   {
     // Requête l'info dont on a besoin de la BDD

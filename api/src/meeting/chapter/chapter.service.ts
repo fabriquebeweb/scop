@@ -3,6 +3,7 @@ import { Chapter } from 'db/entities/Chapter.entity';
 import { Meeting } from 'db/entities/Meeting.entity';
 import { Choice } from 'db/entities/Choice.entity';
 import { Answer } from 'db/entities/Answer.entity';
+import { IsNull } from 'typeorm';
 
 @Injectable()
 export class ChapterService {
@@ -71,18 +72,39 @@ export class ChapterService {
     //         })
     // }
 
-    //Récupérer un chapitre d'un meeting
+    //Récupérer les résultats du vote d'un chapitre d'un meeting
     async getMeetingChapterResult(meetingId,chapterId){
+      //Création d'une variable qui requête l'info dont on a besoin de la bdd : tout ce qui est lié aux choix et les votes
       let chapter = await Chapter.findOne({
-              where:{
-                  meeting: {id:meetingId},
-                  id:chapterId,
-              },
-              relations:["choices","answers"],
-              })
-      // chapter.choices.forEach(choice=>{
-      // console.log( chapter.answers.filter(answer=>answer.choice.id === choice.id).length)
-      // })
-      console.log(chapter)
+        where:{
+          meeting: {id:meetingId},
+          id: chapterId,
+          // answers: {choice: IsNull()}
+        },
+        relations:["choices","answers", "answers.choice","result"],
+      })
+      console.log(chapter.answers);
+
+      //Création objet qui héberge les détails du chapitre, les choix disponibles et le nb total de votes
+      let chapterResult = {
+        details: chapter,
+        count: chapter.answers.length,
+        choices: []
+      }
+
+      //Création d'une boucle qui va calculer le nb de votes par choix et qui va envoyer l'info à chapterResult
+      chapter.choices.forEach(choice=>{
+        let choiceResult = {
+          details: choice,
+          count: chapter.answers.filter(answer=>answer.choice.id === choice.id).length
+        }
+        chapterResult.choices.push(choiceResult)
+      })
+
+      //On supprime dans l'objet chapterResult les info d'answers pour ne pas saturer la table
+      delete chapterResult.details.answers
+      console.log(chapterResult);
+
+
     }
 }

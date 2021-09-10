@@ -14,7 +14,8 @@ import { MatRadioModule } from '@angular/material/radio'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
-import { MeetingService } from './meeting.service'
+import { MeetingService } from './meeting.service';
+import { MeetingLobbyComponent } from './lobby/lobby.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MeetingService } from './meeting.service'
     MeetingChaptersResultComponent,
     MeetingChaptersDetailsComponent,
     MeetingPresenceComponent,
-    MeetingFormComponent
+    MeetingFormComponent,
+    MeetingLobbyComponent
   ],
   imports: [
     CommonModule,

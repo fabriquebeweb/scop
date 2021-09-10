@@ -4,7 +4,7 @@ import { ChoiceResultDTO } from './ChoiceResult.dto'
 export interface ChapterResultDTO {
 
   count: number
-  chapterDetails: Chapter
-  choiceResults: ChoiceResultDTO[]
+  details: Chapter
+  choices: ChoiceResultDTO[]
 
 }

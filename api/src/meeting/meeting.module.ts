@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { MeetingController } from './meeting.controller'
+import { ChapterService } from './chapter/chapter.service';
 import { MeetingService } from './meeting.service';
 
 @Module({
@@ -8,7 +9,8 @@ import { MeetingService } from './meeting.service';
     MeetingController
   ],
   providers: [
-    MeetingService
+    MeetingService,
+    ChapterService
   ]
 })
 export class MeetingModule {}

@@ -9,8 +9,10 @@ import { MeetingService } from './meeting.service'
 })
 export class MeetingComponent implements OnInit, OnDestroy {
 
+  // meeting! : Meeting
+
   constructor(
-    private readonly service: MeetingService,
+    public readonly service: MeetingService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
   ) {}

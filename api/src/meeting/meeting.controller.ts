@@ -1,25 +1,40 @@
 import { Controller, Get, Param } from '@nestjs/common'
+import { ChapterService } from './chapter/chapter.service'
 import { MeetingService } from './meeting.service'
 
 @Controller()
-export class MeetingController
-{
+export class MeetingController{
 
   constructor(
+    private readonly chapterService : ChapterService,
     private readonly service: MeetingService
-  ) {}
-
-  @Get()
-  meeting()
-  {
-    return 'MEETING'
-  }
+  ){}
 
   @Get('/:meeting')
   getMeeting( @Param('meeting') id: number )
   {
     return this.service.getMeeting(id)
   }
+
+  //Requête Sidney
+  @Get('/:chapter/choices')
+  answer(@Param('chapter') id : string){
+    return this.chapterService.getAnswer(id)
+  }
+
+  // //Récupérer un chapitre d'un meeting
+  // @Get('/:meeting/:chapter/chapter')
+  // chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
+  //   return this.chapterService.getMeetingChapter(meetingId, chapterId)
+  // }
+
+  //Récupérer le résultat d'un vote d'un chapitre d'un meeting
+  @Get('/:meeting/:chapter/chapter')
+  chapter(@Param('meeting') meetingId: number, @Param('chapter') chapterId : number){
+    return this.chapterService.getMeetingChapterResult(meetingId, chapterId)
+  }
+
+
 
   @Get('/:meeting/chapters')
   getMeetingChapters( @Param('meeting') id: number )

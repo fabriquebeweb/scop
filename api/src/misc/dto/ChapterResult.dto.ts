@@ -1,4 +1,4 @@
-import { Chapter } from '../entities/Chapter'
+import { Chapter } from 'db/entities/Chapter.entity';
 import { ChoiceResultDTO } from './ChoiceResult.dto'
 
 export interface ChapterResultDTO {

@@ -1,4 +1,4 @@
-import { Choice } from '../entities/Choice'
+import { Choice } from "db/entities/Choice.entity";
 
 export interface ChoiceResultDTO {
 

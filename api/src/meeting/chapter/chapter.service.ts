@@ -73,38 +73,70 @@ export class ChapterService {
     // }
 
     //Récupérer les résultats du vote d'un chapitre d'un meeting
-    async getMeetingChapterResult(meetingId,chapterId){
+    async getMeetingChapterResult(meetingId: number, chapterId: number)
+    {
+
       //Création d'une variable qui requête l'info dont on a besoin de la bdd : tout ce qui est lié aux choix et les votes
       let chapter = await Chapter.findOne({
-        where:{
-          meeting: {id:meetingId},
+        where: {
           id: chapterId,
-          // answers: {choice: IsNull()}
+          meeting: { id: meetingId }
         },
-        relations:["choices","answers", "answers.choice","result"],
+        relations: [
+          "choices",
+          "result"
+        ]
       })
-      console.log(chapter.answers);
 
       //Création objet qui héberge les détails du chapitre, les choix disponibles et le nb total de votes
       let chapterResult = {
         details: chapter,
-        count: chapter.answers.length,
+        count: await Answer.count({
+          where: {
+            chapter: {
+              id: chapterId,
+              meeting: { id: meetingId }
+            }
+          }
+        }),
         choices: []
       }
 
       //Création d'une boucle qui va calculer le nb de votes par choix et qui va envoyer l'info à chapterResult
-      chapter.choices.forEach(choice=>{
-        let choiceResult = {
+      for (const choice of chapter.choices)
+      {
+
+        chapterResult.choices.push({
           details: choice,
-          count: chapter.answers.filter(answer=>answer.choice.id === choice.id).length
-        }
-        chapterResult.choices.push(choiceResult)
+          count: await Answer.count({
+            where: {
+              chapter: {
+                id: chapterId,
+                meeting: { id: meetingId }
+              },
+              choice: choice.id
+            }
+          })
+        })
+
+      }
+
+      chapterResult.choices.push({
+        details: null,
+        count: await Answer.count({
+          where: {
+            chapter: {
+              id: chapterId,
+              meeting: { id: meetingId }
+            },
+            choice: IsNull()
+          }
+        })
       })
 
       //On supprime dans l'objet chapterResult les info d'answers pour ne pas saturer la table
-      delete chapterResult.details.answers
-      console.log(chapterResult);
-
+      return chapterResult
 
     }
+
 }

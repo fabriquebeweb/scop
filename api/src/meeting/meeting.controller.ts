@@ -50,7 +50,7 @@ export class MeetingController{
 
   //Récupérer le résultat d'un vote d'un chapitre d'un meeting
   @Get('/:meeting/:chapter/chapter')
-  chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
+  chapter(@Param('meeting') meetingId: number, @Param('chapter') chapterId : number){
     return this.chapterService.getMeetingChapterResult(meetingId, chapterId)
   }
 

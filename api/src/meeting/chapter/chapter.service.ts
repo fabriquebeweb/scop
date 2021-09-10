@@ -68,7 +68,15 @@ export class ChapterService {
     
     //#8 Persister un vote : IN PROGRESS
     async saveOneVote(answer: Answer) {
-        await Answer.save(answer)
+        let test = await Chapter.findOne({ 
+            select: ["id"],
+            where: {
+                id: answer.chapter
+            }
+        })
+
+        console.log(test)
+        if (test.id) await Answer.save(answer)
       }
  
 

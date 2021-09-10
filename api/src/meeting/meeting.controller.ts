@@ -38,13 +38,13 @@ export class MeetingController
     }
 
   // #5La liste des chapters d'un meeting : OK
-    @Get('/:meeting/chapters')
-      meetingChapters(@Param('meeting') meetingId: string) {
-        return this.chapterService.getMeetingChapters(meetingId)
-      }
+  @Get('/:meeting/chapters')
+    meetingChapters(@Param('meeting') meetingId: string) {
+      return this.chapterService.getMeetingChapters(meetingId)
+    }
       
   // #6 Un chapter d'un meeting : OK
-    @Get('/:meeting/:chapter/chapter')
+  @Get('/:meeting/:chapter/chapter')
     meetingChapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId: string) {
         return this.chapterService.getMeetingChapter(meetingId, chapterId)
     }
@@ -53,13 +53,14 @@ export class MeetingController
   @Get('/:chapter/choices')
     vote(@Param('chapter') chapterId: string) {
     return this.chapterService.getAQuestion(chapterId)
-  
   }
 
 
 // #8 Persister un vote : IN PROGRESS
-  @Post('/:chapter/choices')
-    async postVote(@Body() body: Answer, @Param('chapter') chapterId: string) {
+  @Post('/chapter/choices')
+    async postVote(@Body() body: Answer){
+      console.log(body);
+      
       this.chapterService.saveOneVote(body)
   }
   

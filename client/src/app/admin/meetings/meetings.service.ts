@@ -15,7 +15,7 @@ export class AdminMeetingsService {
     return await this.http.get<Meeting[]>(API.path(`/admin/meetings`), API.options()).toPromise()
   }
 
-  async getMeetingDetails(id: string|number) : Promise<Meeting>
+  async getMeetingDetails(id: number) : Promise<Meeting>
   {
     return await this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
   }

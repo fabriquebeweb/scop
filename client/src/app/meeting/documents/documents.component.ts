@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
+import { Meeting } from 'src/app/misc/entities/Meeting'
 
 @Component({
   selector: 'meeting-documents',

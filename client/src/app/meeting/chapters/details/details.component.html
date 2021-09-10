@@ -1,15 +1,22 @@
-<!-- component enfant de meeting/chapters = affiche les données souhaitées -->
-<div class="w-7/12 fixed right-20 p-10 rounded bg-white shadow-lg">
-  <h3>Intitulé :</h3>{{chapter.title}}
+<section class="h-full w-full flex justify-center items-center">
+  <mat-card class="h-9/10 w-9/10 rounded shadow-lg">
+    <h3>{{ chapter.title }}</h3>
+    <h3>{{ chapter.description }}</h3>
+    <h3>{{ chapter.question }}</h3>
+  </mat-card>
 
-    <br>
-    <br>
-
-  <h3>Descrition :</h3>{{chapter.description}}
-
-    <br>
-    <br>
-
-  <h3>Question :</h3>{{chapter.question}}
-</div>
-
+<!-- Récupération de l'état de la mention : adoptée ou rejetée -->
+  <!-- Affichage s'il y a une question au chapitre -->
+  <div *ngIf="chapter.question" class="fixed bottom-10 w-fill flex p-3 pl-3 bg-gray-200 rounded-lg h-auto">
+    <!-- Affichage s'il y a un résultat à la question -->
+    <div *ngIf="chapter.result">
+      <a>
+        <span class="ml-2 truncate mr-1">Question :{{ chapter.id }}. {{ chapter.title }}</span>
+      </a>
+        <br><br>
+      <a>
+        <span class="ml-2 truncate mr-1">Résultat : {{ chapter.result.title }}</span>
+      </a>
+    </div>
+  </div>
+</section>

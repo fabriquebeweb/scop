@@ -13,13 +13,13 @@ export class Choice extends BaseEntity
   @Column()
   title: string
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { nullable: false })
+  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   enterprise: Enterprise
 
-  @ManyToMany(type => Chapter)
+  @ManyToMany(type => Chapter, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   chapters: Chapter[]
 
-  @OneToMany(type => Chapter, chapter => chapter.result)
+  @OneToMany(type => Chapter, chapter => chapter.result, { orphanedRowAction: 'nullify' })
   results: Chapter[]
 
   @OneToMany(type => Answer, answer => answer.choice)

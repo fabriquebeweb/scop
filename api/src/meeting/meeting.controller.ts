@@ -1,14 +1,20 @@
+<<<<<<< HEAD
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { Answer } from 'db/entities/Answer.entity'
 import { Chapter } from 'db/entities/Chapter.entity'
 import { get } from 'http'
 import { ChapterService } from './chapter/chapter.service'
+=======
+import { Controller, Get, Param } from '@nestjs/common'
+import { MeetingService } from './meeting.service'
+>>>>>>> 4c2977c93c55a487aabbf407e2ab2fa63a6feebc
 
 @Controller()
 export class MeetingController
 {
   constructor(private readonly chapterService: ChapterService){}
 
+<<<<<<< HEAD
   // #1Liste des meetings : OK
   @Get()
   meetings() {
@@ -64,5 +70,34 @@ export class MeetingController
       this.chapterService.saveOneVote(body)
   }
   
+=======
+  constructor(
+    private readonly service: MeetingService
+  ) {}
+
+  @Get()
+  meeting()
+  {
+    return 'MEETING'
+  }
+
+  @Get('/:meeting')
+  getMeeting( @Param('meeting') id: number )
+  {
+    return this.service.getMeeting(id)
+  }
+
+  @Get('/:meeting/chapters')
+  getMeetingChapters( @Param('meeting') id: number )
+  {
+    return this.service.getMeetingChapters(id)
+  }
+
+  @Get('/:meeting/chapter/:chapter')
+  getMeetingChapter( @Param('meeting') meetingId: number, @Param('chapter') chapterId: number )
+  {
+    return this.service.getMeetingChapter(meetingId, chapterId)
+  }
+>>>>>>> 4c2977c93c55a487aabbf407e2ab2fa63a6feebc
 
 }

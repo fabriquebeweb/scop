@@ -16,26 +16,6 @@ export class MeetingController{
     return this.service.getMeeting(id)
   }
 
-  // @Get('/:meeting/:chapter/result')
-  // result(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
-  //   return `meetingId : ${meetingId} chapterId : ${chapterId}`
-  // }
-
-  @Get('/:meeting/:chapter/result')
-  result(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
-    return this.chapterService.getResult(meetingId,chapterId)
-  }
-
-  // @Get('/:meeting')
-  // meetings(@Param('meeting') id : string){
-  //   return this.chapterService.getMeeting(id)
-  // }
-
-  // @Get('/:meeting/:chapter')
-  // chapter(@Param('meeting') meetingId: string, @Param('chapter') chapterId : string){
-  //   return this.chapterService.getChapter(meetingId, chapterId)
-  // }
-
   //Requête Sidney
   @Get('/:chapter/choices')
   answer(@Param('chapter') id : string){

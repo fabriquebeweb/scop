@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1630942364302,
+  "timestamp": 1631280780736,
   "index": "https://fabriquebeweb.github.io/scop/index.html",
   "assetGroups": [
     {
@@ -13,10 +13,10 @@
       "urls": [
         "https://fabriquebeweb.github.io/scop/favicon.ico",
         "https://fabriquebeweb.github.io/scop/index.html",
-        "https://fabriquebeweb.github.io/scop/main.f89f89480ddc64b8acc9.js",
+        "https://fabriquebeweb.github.io/scop/main.17b4a26c02f8fe39658a.js",
         "https://fabriquebeweb.github.io/scop/manifest.webmanifest",
-        "https://fabriquebeweb.github.io/scop/polyfills.17d606481179616160b5.js",
-        "https://fabriquebeweb.github.io/scop/runtime.8bac0e57d706e17c77ca.js",
+        "https://fabriquebeweb.github.io/scop/polyfills.59e8d0ab916f8439a86c.js",
+        "https://fabriquebeweb.github.io/scop/runtime.be07c56911cc134a666f.js",
         "https://fabriquebeweb.github.io/scop/styles.ae86026d5e153a635198.css"
       ],
       "patterns": []
@@ -78,12 +78,12 @@
     "https://fabriquebeweb.github.io/scop/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://fabriquebeweb.github.io/scop/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://fabriquebeweb.github.io/scop/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://fabriquebeweb.github.io/scop/index.html": "00fbb229ef3079a012fe41dd4b1525a2d019e1c5",
-    "https://fabriquebeweb.github.io/scop/main.f89f89480ddc64b8acc9.js": "9c9891649ef957d24ce2115c1c78819d72bba6ce",
+    "https://fabriquebeweb.github.io/scop/index.html": "34e55111d30bcd9d342bf04d6ee5c5f510002a36",
+    "https://fabriquebeweb.github.io/scop/main.17b4a26c02f8fe39658a.js": "54f15b1f8db2e03cc3211f44c43072eef1e0afbb",
     "https://fabriquebeweb.github.io/scop/manifest.webmanifest": "b8524397f3654efefcdd571726fff75bd4450723",
     "https://fabriquebeweb.github.io/scop/material-icons-base-400-normal.55e9c5500acdba076c60.woff": "f613b17c0679c0d1af614d4fa76484e413863ce6",
     "https://fabriquebeweb.github.io/scop/material-icons-base-400-normal.d72aa1b50fdf33cf3641.woff2": "e075ed6d74439c48c9c4ace6db3bfa8f93d9f761",
-    "https://fabriquebeweb.github.io/scop/polyfills.17d606481179616160b5.js": "d6a4a004c15974938c26b43de55f14b77ccb2175",
+    "https://fabriquebeweb.github.io/scop/polyfills.59e8d0ab916f8439a86c.js": "e19f4081d37baa21d30f907bbeafe0bd1318770e",
     "https://fabriquebeweb.github.io/scop/roboto-all-300-normal.8fc5f5f22c9951113696.woff": "67274fa757715fa68cba4e1e0105b89c30a2df60",
     "https://fabriquebeweb.github.io/scop/roboto-all-400-normal.376ea5d93f71583052f6.woff": "c6c8a2b7e67c182d77916cd2118b1b0d8a6ca549",
     "https://fabriquebeweb.github.io/scop/roboto-all-500-normal.52cb737b682eb9661ee1.woff": "6a57df5217d336599bdec757772025beb40c4536",
@@ -108,7 +108,7 @@
     "https://fabriquebeweb.github.io/scop/roboto-vietnamese-300-normal.af9afdc10c93e4118e90.woff2": "e628016d3f7789c6243afbae2c37082879f818a4",
     "https://fabriquebeweb.github.io/scop/roboto-vietnamese-400-normal.c0bec65d01f776c00c91.woff2": "081d22a7a51d4c026f526d8fb0d876de25eff5b4",
     "https://fabriquebeweb.github.io/scop/roboto-vietnamese-500-normal.b8e494da1ec1f1824769.woff2": "f2a4b910f3e1aff3919efd5077e88e43c5175455",
-    "https://fabriquebeweb.github.io/scop/runtime.8bac0e57d706e17c77ca.js": "1e4f0be69936c391291fc3b6c1c228b026eb98cb",
+    "https://fabriquebeweb.github.io/scop/runtime.be07c56911cc134a666f.js": "1e7b2721215f94837b719a35e4bf2aef957ae5f4",
     "https://fabriquebeweb.github.io/scop/styles.ae86026d5e153a635198.css": "1283dbe2f66df043eacfb0ae6ccd236d49a45d26"
   },
   "navigationUrls": [

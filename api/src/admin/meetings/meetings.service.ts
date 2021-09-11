@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common'
 import { Meeting } from 'db/entities/Meeting.entity'
+import { MeetingType } from 'db/entities/MeetingType.entity'
 import { InsertResult } from 'typeorm'
 
 @Injectable()
 export class AdminMeetingsService {
+
+  async getMeetingTypes() : Promise<MeetingType[]>
+  {
+    return await MeetingType.find()
+  }
 
   async getMeetings() : Promise<Meeting[]>
   {

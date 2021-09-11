@@ -21,6 +21,12 @@ export class AdminMeetingsController {
     return this.service.setMeeting(meeting)
   }
 
+  @Get('/types')
+  meetingTypes()
+  {
+    return this.service.getMeetingTypes()
+  }
+
   @Get('/:meeting')
   meetingDetails( @Param('meeting') id: number )
   {

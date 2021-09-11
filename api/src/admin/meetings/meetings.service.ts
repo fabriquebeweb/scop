@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
+import { DeleteResult, InsertResult } from 'typeorm'
 import { Meeting } from 'db/entities/Meeting.entity'
 import { MeetingType } from 'db/entities/MeetingType.entity'
-import { InsertResult } from 'typeorm'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -36,12 +36,12 @@ export class AdminMeetingsService {
     return await Meeting.insert(meeting)
   }
 
-  async updateMeeting(meeting: Meeting) : Promise<Meeting>
+  async resetMeeting(meeting: Meeting) : Promise<Meeting>
   {
     return await Meeting.save(meeting)
   }
 
-  async unsetMeeting(meetingId: number) : Promise<any>
+  async unsetMeeting(meetingId: number) : Promise<DeleteResult>
   {
     return await Meeting.delete(meetingId)
   }

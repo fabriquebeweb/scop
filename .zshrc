@@ -32,5 +32,5 @@ alias ts="ts-node"
 stop()
 {
   lsof -i $1 | awk 'echo $2'
-  lsof -i $1 | awk '{system("kill -9" $2)}'
+  lsof -i $1 | awk '{system("kill " $2)}'
 }

@@ -28,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     MatButtonModule,
     MatExpansionModule,
     FormsModule,
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([])
   ],
   providers: [

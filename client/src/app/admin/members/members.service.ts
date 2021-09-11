@@ -12,7 +12,7 @@ export class AdminMembersService {
 
   async getMembers() : Promise<User[]>
   {
-    return await this.http.get<User[]>(API.path(''), API.options()).toPromise()
+    return await this.http.get<User[]>(API.path('/admin/members'), API.options()).toPromise()
   }
 
 }

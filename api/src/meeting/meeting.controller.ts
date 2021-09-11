@@ -29,7 +29,7 @@ export class MeetingController{
 
   @Post('/:meeting/chapter/:chapter')
   postChapterAnswer(@Body() body: Answer)
-  {  
+  {
     return this.service.saveChapterAnswer(body)
   }
 

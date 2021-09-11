@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-import { AdminMembersService } from './members.service';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
+import { AdminMembersService } from './members.service'
+import { User } from 'db/entities/User.entity'
 
 @Controller('members')
 export class AdminMembersController {
@@ -12,6 +13,24 @@ export class AdminMembersController {
   members()
   {
     return this.service.getMembers()
+  }
+
+  @Post()
+  newMember( @Body() member: User )
+  {
+    return this.service.newMember(member)
+  }
+
+  @Put()
+  updateMember( @Body() member: User )
+  {
+    return this.service.updateMember(member)
+  }
+
+  @Delete('/:member')
+  deleteMember( @Param('member') id: number )
+  {
+    return this.service.deleteMember(id)
   }
 
 }

@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { API } from '../app.common';
-import { Chapter } from '../misc/entities/Chapter';
-import { Meeting } from '../misc/entities/Meeting';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Chapter, Meeting } from '@scop/entities'
+import { API } from '../app.common'
 
 @Injectable()
 export class MeetingService
@@ -43,11 +42,6 @@ export class MeetingService
   async getMeetingChapter(id: number) : Promise<Chapter>
   {
     return await this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
-  }
-
-  async getMeetingChapterResult(id: number) : Promise<any>
-  {
-    return await this.http.get<any>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}/result`), API.options()).toPromise()
   }
 
 }

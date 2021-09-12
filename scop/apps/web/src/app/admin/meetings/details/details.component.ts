@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AdminMeetingsService } from '../meetings.service'
 import { Subscription } from 'rxjs'
-import { Meeting } from '../../../misc/entities/Meeting'
+import { Meeting } from '@scop/entities'
 
 @Component({
   selector: 'meeting-details',

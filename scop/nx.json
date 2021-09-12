@@ -30,6 +30,12 @@
     "api": {
       "tags": []
     },
+    "entities": {
+      "tags": []
+    },
+    "interfaces": {
+      "tags": []
+    },
     "web": {
       "tags": []
     }

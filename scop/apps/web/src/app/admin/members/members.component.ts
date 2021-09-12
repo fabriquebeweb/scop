@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { AdminMembersService } from './members.service'
+import { User } from '@scop/entities'
 
 @Component({
   selector: 'admin-members',
@@ -6,9 +8,17 @@ import { Component, OnInit } from '@angular/core'
 })
 export class AdminMembersComponent implements OnInit {
 
-  constructor() {}
+  members!: User[]
+
+  constructor(
+    private readonly service: AdminMembersService
+  ) {}
 
   ngOnInit() : void
-  {}
+  {
+    this.service.getMembers()
+      .then(members => this.members = members)
+      .catch(error => console.error(error))
+  }
 
 }

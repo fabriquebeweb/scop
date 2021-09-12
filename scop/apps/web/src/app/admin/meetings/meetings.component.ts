@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
 import { AdminMeetingsService } from './meetings.service'
 import { Router } from '@angular/router'
-import { Meeting } from '../../misc/entities/Meeting'
+import { Meeting } from '@scop/entities'
 
 @Component({
   selector: 'admin-meetings',
@@ -24,6 +24,12 @@ export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
         if (/^\/admin\/meetings\/?$/.test(this.router.url)) this.redirect()
       })
       .catch(() => this.router.navigate(['/error']))
+
+    this.service.getMeetingTypes()
+      .then(meetingTypes => {
+        this.service.meetingTypes = meetingTypes
+      })
+      .catch(() => {})
   }
 
   ngOnChanges() : void
@@ -34,7 +40,7 @@ export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
 
   redirect() : void
   {
-    this.router.navigate(['/admin/meetings/' + ((this.meetings) ? this.meetings[0].id : 'new')])
+    this.router.navigate([`/admin/meetings/${ (this.meetings) ? this.meetings[0].id : 'new' }`])
   }
 
 }

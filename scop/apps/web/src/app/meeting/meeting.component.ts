@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Meeting } from '../misc/entities/Meeting'
 import { MeetingService } from './meeting.service'
+// import { Meeting } from '@scop/entities'
 
 @Component({
   selector: 'app-meeting',
@@ -9,8 +9,10 @@ import { MeetingService } from './meeting.service'
 })
 export class MeetingComponent implements OnInit, OnDestroy {
 
+  // meeting! : Meeting
+
   constructor(
-    private readonly service: MeetingService,
+    public readonly service: MeetingService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
   ) {}

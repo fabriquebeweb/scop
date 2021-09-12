@@ -1,4 +1,4 @@
-import { Choice } from '../entities/Choice'
+import { Choice } from '@scop/entities'
 
 export interface ChoiceResultDTO {
 

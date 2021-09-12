@@ -1,9 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Chapter } from '../../../misc/entities/Chapter';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
+import { Chapter } from '@scop/entities'
+import { Subscription } from 'rxjs'
 import { MeetingService } from '../../meeting.service'
-
 
 @Component({
   selector: 'chapter-details',

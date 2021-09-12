@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Chapter } from 'apps/web/src/app/misc/entities/Chapter'
+import { Chapter } from '@scop/entities'
 
 @Component({
   selector: 'meeting-chapters',

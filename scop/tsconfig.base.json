@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@scop/entities": ["libs/entities/src/index.ts"],
-      "@scop/interfaces": ["libs/interfaces/src/index.ts"]
+      "@scop/interfaces": ["libs/interfaces/src/index.ts"],
+      "@scop/migrations": ["libs/migrations/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

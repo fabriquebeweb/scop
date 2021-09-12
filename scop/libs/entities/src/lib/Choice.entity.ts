@@ -1,10 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, ManyToMany } from 'typeorm'
-import { Answer } from './Answer.entity'
-import { Chapter } from './Chapter.entity'
-import { Enterprise } from './Enterprise.entity'
+import { AnswerEntity, ChapterEntity, EnterpriseEntity } from '@scop/entities'
 
 @Entity()
-export class Choice extends BaseEntity
+export class ChoiceEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -13,16 +11,16 @@ export class Choice extends BaseEntity
   @Column()
   title: string
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  enterprise: Enterprise
+  @ManyToOne(type => EnterpriseEntity, enterprise => enterprise.choices, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  enterprise: EnterpriseEntity
 
-  @ManyToMany(type => Chapter, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  chapters: Chapter[]
+  @ManyToMany(type => ChapterEntity, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  chapters: ChapterEntity[]
 
-  @OneToMany(type => Chapter, chapter => chapter.result, { orphanedRowAction: 'nullify' })
-  results: Chapter[]
+  @OneToMany(type => ChapterEntity, chapter => chapter.result, { orphanedRowAction: 'nullify' })
+  results: ChapterEntity[]
 
-  @OneToMany(type => Answer, answer => answer.choice)
-  answers: Answer[]
+  @OneToMany(type => AnswerEntity, answer => answer.choice)
+  answers: AnswerEntity[]
 
 }

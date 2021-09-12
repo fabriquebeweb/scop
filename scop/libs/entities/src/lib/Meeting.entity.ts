@@ -1,12 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Index } from 'typeorm'
-import { Document } from './Document.entity'
-import { Enterprise } from './Enterprise.entity'
-import { MeetingType } from './MeetingType.entity'
-import { Participation } from './Participation.entity'
-import { Chapter } from './Chapter.entity'
+import { ChapterEntity, DocumentEntity, EnterpriseEntity, MeetingTypeEntity, ParticipationEntity } from '@scop/entities'
 
 @Entity()
-export class Meeting extends BaseEntity
+export class MeetingEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -19,22 +15,22 @@ export class Meeting extends BaseEntity
   location: string
 
   @Index('meeting_enterprise_idx')
-  @ManyToOne(type => Enterprise, enterprise => enterprise.meetings, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  enterprise: Enterprise
+  @ManyToOne(type => EnterpriseEntity, enterprise => enterprise.meetings, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  enterprise: EnterpriseEntity
 
-  @ManyToOne(type => MeetingType, meetingType => meetingType.meetings, { nullable: false })
-  meetingType: MeetingType
+  @ManyToOne(type => MeetingTypeEntity, meetingType => meetingType.meetings, { nullable: false })
+  meetingType: MeetingTypeEntity
 
   @Column({ nullable: true })
   state: boolean
 
-  @OneToMany(type => Participation, participation => participation.user, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  participations: Participation[]
+  @OneToMany(type => ParticipationEntity, participation => participation.user, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  participations: ParticipationEntity[]
 
-  @OneToMany(type => Document, document => document.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  documents: Document[]
+  @OneToMany(type => DocumentEntity, document => document.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  documents: DocumentEntity[]
 
-  @OneToMany(type => Chapter, chapter => chapter.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  chapters: Chapter[]
+  @OneToMany(type => ChapterEntity, chapter => chapter.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  chapters: ChapterEntity[]
 
 }

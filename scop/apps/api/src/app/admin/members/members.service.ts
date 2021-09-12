@@ -1,28 +1,28 @@
 import { Injectable } from '@nestjs/common'
 import { DeleteResult, InsertResult } from 'typeorm'
-import { User } from '@scop/entities'
+import { UserEntity } from '@scop/entities'
 
 @Injectable()
 export class AdminMembersService {
 
-  async getMembers() : Promise<User[]>
+  async getMembers() : Promise<UserEntity[]>
   {
-    return await User.find({ where: { enterprise: { id: 1 } } })
+    return await UserEntity.find({ where: { enterprise: { id: 1 } } })
   }
 
-  async newMember(member: User) : Promise<InsertResult>
+  async newMember(member: UserEntity) : Promise<InsertResult>
   {
-    return await User.insert(member)
+    return await UserEntity.insert(member)
   }
 
-  async updateMember(member: User) : Promise<User>
+  async updateMember(member: UserEntity) : Promise<UserEntity>
   {
-    return await User.save(member)
+    return await UserEntity.save(member)
   }
 
   async deleteMember(memberId: number) : Promise<DeleteResult>
   {
-    return await User.delete(memberId)
+    return await UserEntity.delete(memberId)
   }
 
 }

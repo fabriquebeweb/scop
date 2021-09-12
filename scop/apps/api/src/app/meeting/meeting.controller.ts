@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
-import { Answer } from '@scop/entities'
+import { AnswerEntity } from '@scop/entities'
 import { MeetingService } from './meeting.service'
 
 @Controller()
@@ -28,7 +28,7 @@ export class MeetingController{
   }
 
   @Post('/:meeting/chapter/:chapter')
-  postChapterAnswer(@Body() body: Answer)
+  postChapterAnswer(@Body() body: AnswerEntity)
   {
     return this.service.saveChapterAnswer(body)
   }

@@ -1,12 +1,8 @@
 import { Entity, Column, BaseEntity, ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
-import { Choice } from './Choice.entity'
-import { Meeting } from './Meeting.entity'
-import { Provider } from './Provider.entity'
-import { Status } from './Status.entity'
-import { User } from './User.entity'
+import { ChoiceEntity, MeetingEntity, ProviderEntity, StatusEntity, UserEntity } from '@scop/entities'
 
 @Entity()
-export class Enterprise extends BaseEntity
+export class EnterpriseEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -27,19 +23,19 @@ export class Enterprise extends BaseEntity
   @Column({ nullable: true })
   ternary: string
 
-  @ManyToOne(type => Provider, provider => provider.enterprises, { nullable: false })
-  provider: Provider
+  @ManyToOne(type => ProviderEntity, provider => provider.enterprises, { nullable: false })
+  provider: ProviderEntity
 
-  @OneToMany(type => Status, status => status.enterprise, { cascade: true })
-  status: Status[]
+  @OneToMany(type => StatusEntity, status => status.enterprise, { cascade: true })
+  status: StatusEntity[]
 
-  @OneToMany(type => User, user => user.enterprise, { cascade: true })
-  users: User[]
+  @OneToMany(type => UserEntity, user => user.enterprise, { cascade: true })
+  users: UserEntity[]
 
-  @OneToMany(type => Meeting, meeting => meeting.enterprise, { cascade: true })
-  meetings: Meeting[]
+  @OneToMany(type => MeetingEntity, meeting => meeting.enterprise, { cascade: true })
+  meetings: MeetingEntity[]
 
-  @OneToMany(type => Choice, choice => choice.enterprise, { cascade: true })
-  choices: Choice[]
+  @OneToMany(type => ChoiceEntity, choice => choice.enterprise, { cascade: true })
+  choices: ChoiceEntity[]
 
 }

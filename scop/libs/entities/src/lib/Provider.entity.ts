@@ -1,8 +1,8 @@
 import { Entity, Column, BaseEntity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { Enterprise } from './Enterprise.entity'
+import { EnterpriseEntity } from '@scop/entities'
 
 @Entity()
-export class Provider extends BaseEntity
+export class ProviderEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -11,7 +11,7 @@ export class Provider extends BaseEntity
   @Column()
   name: string
 
-  @OneToMany(type => Enterprise, enterprise => enterprise.provider)
-  enterprises: Enterprise[]
+  @OneToMany(type => EnterpriseEntity, enterprise => enterprise.provider)
+  enterprises: EnterpriseEntity[]
 
 }

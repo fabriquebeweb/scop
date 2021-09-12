@@ -1,5 +1,4 @@
-import { Chapter } from '@scop/entities'
-import { ChoiceResultDTO } from '@scop/interfaces'
+import { Chapter, ChoiceResultDTO } from '@scop/interfaces'
 
 export interface ChapterResultDTO {
 

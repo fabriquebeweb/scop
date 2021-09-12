@@ -36,6 +36,9 @@
     "interfaces": {
       "tags": []
     },
+    "migrations": {
+      "tags": []
+    },
     "web": {
       "tags": []
     }

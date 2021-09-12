@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Meeting, MeetingType } from '@scop/entities'
+import { Meeting, MeetingType } from '@scop/interfaces'
 import { API } from '../../app.common'
 
 @Injectable()

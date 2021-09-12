@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Chapter } from '@scop/entities'
+import { Chapter } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
 import { MeetingService } from '../../meeting.service'
 

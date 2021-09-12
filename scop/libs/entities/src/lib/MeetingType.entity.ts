@@ -1,9 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
-import { Meeting } from './Meeting.entity'
-import { Status } from './Status.entity'
+import { MeetingEntity, StatusEntity } from '@scop/entities'
 
 @Entity()
-export class MeetingType extends BaseEntity
+export class MeetingTypeEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -12,10 +11,10 @@ export class MeetingType extends BaseEntity
   @Column()
   title: string
 
-  @OneToMany(type => Status, status => status.meetingType, { nullable: true })
-  status: Status[]
+  @OneToMany(type => StatusEntity, status => status.meetingType, { nullable: true })
+  status: StatusEntity[]
 
-  @OneToMany(type => Meeting, meeting => meeting.meetingType, { nullable: true })
-  meetings: Meeting[]
+  @OneToMany(type => MeetingEntity, meeting => meeting.meetingType, { nullable: true })
+  meetings: MeetingEntity[]
 
 }

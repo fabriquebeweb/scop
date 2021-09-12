@@ -1,16 +1,15 @@
 import { Entity, Column, BaseEntity, ManyToOne, } from 'typeorm'
-import { Meeting } from './Meeting.entity'
-import { User } from './User.entity'
+import { MeetingEntity, UserEntity } from '@scop/entities'
 
 @Entity()
-export class Participation extends BaseEntity
+export class ParticipationEntity extends BaseEntity
 {
 
-  @ManyToOne(type => Meeting, meeting => meeting.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  meeting: Meeting
+  @ManyToOne(type => MeetingEntity, meeting => meeting.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  meeting: MeetingEntity
 
-  @ManyToOne(type => User, user => user.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  user: User
+  @ManyToOne(type => UserEntity, user => user.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  user: UserEntity
 
   // @Column({ unique: true })
   @Column()
@@ -19,7 +18,7 @@ export class Participation extends BaseEntity
   @Column({ nullable: true })
   isPresent: boolean
 
-  @ManyToOne(type => User, user => user.procurations, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  procuration: User
+  @ManyToOne(type => UserEntity, user => user.procurations, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  procuration: UserEntity
 
 }

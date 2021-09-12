@@ -1,10 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinTable, ManyToMany, OneToMany, Index } from 'typeorm'
-import { Answer } from './Answer.entity'
-import { Choice } from './Choice.entity'
-import { Meeting } from './Meeting.entity'
+import { AnswerEntity, ChoiceEntity, MeetingEntity } from '@scop/entities'
 
 @Entity()
-export class Chapter extends BaseEntity
+export class ChapterEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -25,18 +23,18 @@ export class Chapter extends BaseEntity
   @Column({ nullable: true })
   state: boolean
 
-  @ManyToMany(type => Choice, { nullable: true, cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  @ManyToMany(type => ChoiceEntity, { nullable: true, cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   @JoinTable()
-  choices: Choice[]
+  choices: ChoiceEntity[]
 
-  @ManyToOne(type => Choice, choice => choice.results, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'nullify' })
-  result: Choice
+  @ManyToOne(type => ChoiceEntity, choice => choice.results, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'nullify' })
+  result: ChoiceEntity
 
-  @OneToMany(type => Answer, answer => answer.chapter, { nullable: true, cascade: true })
-  answers: Answer[]
+  @OneToMany(type => AnswerEntity, answer => answer.chapter, { nullable: true, cascade: true })
+  answers: AnswerEntity[]
 
   @Index('chapter_meeting_idx')
-  @ManyToOne(type => Meeting, meeting => meeting.chapters, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  meeting: Meeting
+  @ManyToOne(type => MeetingEntity, meeting => meeting.chapters, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  meeting: MeetingEntity
 
 }

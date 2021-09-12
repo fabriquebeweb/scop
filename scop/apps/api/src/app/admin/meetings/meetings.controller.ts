@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { AdminMeetingsService } from './meetings.service'
-import { Meeting } from '@scop/entities'
+import { MeetingEntity } from '@scop/entities'
 
 @Controller('/meetings')
 export class AdminMeetingsController {
@@ -16,7 +16,7 @@ export class AdminMeetingsController {
   }
 
   @Post()
-  newMeeting( @Body() meeting: Meeting )
+  newMeeting( @Body() meeting: MeetingEntity )
   {
     return this.service.setMeeting(meeting)
   }
@@ -34,7 +34,7 @@ export class AdminMeetingsController {
   }
 
   @Put('/:meeting')
-  updateMeeting( @Param('meeting') id: number, @Body() meeting: Meeting )
+  updateMeeting( @Param('meeting') id: number, @Body() meeting: MeetingEntity )
   {
     return (meeting.id == id) ? this.service.resetMeeting(meeting) : null
   }

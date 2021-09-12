@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Meeting } from '@scop/entities'
+import { Meeting } from '@scop/interfaces'
 
 @Component({
   selector: 'meeting-summary',

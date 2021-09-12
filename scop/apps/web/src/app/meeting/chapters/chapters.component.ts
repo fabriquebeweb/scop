@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { Chapter } from '@scop/entities'
+import { Chapter } from '@scop/interfaces'
 import { MeetingService } from '../meeting.service'
 
 @Component({

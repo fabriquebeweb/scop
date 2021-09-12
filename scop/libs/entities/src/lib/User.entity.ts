@@ -1,10 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMany, Index } from 'typeorm'
-import { Answer } from './Answer.entity'
-import { Enterprise } from './Enterprise.entity'
-import { Participation } from './Participation.entity'
+import { AnswerEntity, EnterpriseEntity, ParticipationEntity } from '@scop/entities'
 
 @Entity()
-export class User extends BaseEntity
+export class UserEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -26,16 +24,16 @@ export class User extends BaseEntity
   isAdmin: boolean
 
   @Index('user_enterprise_idx')
-  @ManyToOne(type => Enterprise, enterprise => enterprise.users, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  enterprise: Enterprise
+  @ManyToOne(type => EnterpriseEntity, enterprise => enterprise.users, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  enterprise: EnterpriseEntity
 
-  @OneToMany(type => Participation, participation => participation.user, { cascade: true })
-  participations: Participation[]
+  @OneToMany(type => ParticipationEntity, participation => participation.user, { cascade: true })
+  participations: ParticipationEntity[]
 
-  @OneToMany(type => Participation, participation => participation.procuration, { nullable: true, cascade: true })
-  procurations: Participation[]
+  @OneToMany(type => ParticipationEntity, participation => participation.procuration, { nullable: true, cascade: true })
+  procurations: ParticipationEntity[]
 
-  @OneToMany(type => Answer, answer => answer.user, { cascade: true })
-  answers: Answer[]
+  @OneToMany(type => AnswerEntity, answer => answer.user, { cascade: true })
+  answers: AnswerEntity[]
 
 }

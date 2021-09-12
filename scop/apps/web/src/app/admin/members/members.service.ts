@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { User } from '@scop/entities'
+import { User } from '@scop/interfaces'
 import { API } from '../../app.common'
 
 @Injectable()

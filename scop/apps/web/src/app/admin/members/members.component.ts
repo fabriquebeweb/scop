@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { AdminMembersService } from './members.service'
-import { User } from '@scop/entities'
+import { User } from '@scop/interfaces'
 
 @Component({
   selector: 'admin-members',

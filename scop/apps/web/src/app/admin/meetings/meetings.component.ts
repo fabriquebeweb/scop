@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
 import { AdminMeetingsService } from './meetings.service'
 import { Router } from '@angular/router'
-import { Meeting } from '@scop/entities'
+import { Meeting } from '@scop/interfaces'
 
 @Component({
   selector: 'admin-meetings',

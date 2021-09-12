@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { AdminMembersService } from './members.service'
-import { User } from '@scop/entities'
+import { UserEntity } from '@scop/entities'
 
 @Controller('members')
 export class AdminMembersController {
@@ -16,13 +16,13 @@ export class AdminMembersController {
   }
 
   @Post()
-  newMember( @Body() member: User )
+  newMember( @Body() member: UserEntity )
   {
     return this.service.newMember(member)
   }
 
   @Put()
-  updateMember( @Body() member: User )
+  updateMember( @Body() member: UserEntity )
   {
     return this.service.updateMember(member)
   }

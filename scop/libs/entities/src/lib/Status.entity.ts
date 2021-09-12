@@ -1,16 +1,15 @@
 import { Entity, Column, BaseEntity, ManyToOne } from 'typeorm'
-import { Enterprise } from './Enterprise.entity'
-import { MeetingType } from './MeetingType.entity'
+import { EnterpriseEntity, MeetingTypeEntity } from '@scop/entities'
 
 @Entity()
-export class Status extends BaseEntity
+export class StatusEntity extends BaseEntity
 {
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.status, { primary: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  enterprise: Enterprise
+  @ManyToOne(type => EnterpriseEntity, enterprise => enterprise.status, { primary: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  enterprise: EnterpriseEntity
 
-  @ManyToOne(type => MeetingType, meetingType => meetingType.status, { primary: true, nullable: true })
-  meetingType: MeetingType
+  @ManyToOne(type => MeetingTypeEntity, meetingType => meetingType.status, { primary: true, nullable: true })
+  meetingType: MeetingTypeEntity
 
   @Column()
   majorityMin: number

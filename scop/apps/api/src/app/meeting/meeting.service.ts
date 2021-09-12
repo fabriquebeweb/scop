@@ -1,24 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { Answer, Chapter, Meeting } from '@scop/entities'
+import { AnswerEntity, ChapterEntity, MeetingEntity } from '@scop/entities'
 import { ChapterResultDTO } from '@scop/interfaces'
 import { IsNull } from 'typeorm';
 
 @Injectable()
 export class MeetingService {
 
-  async getMeeting(meetingId: number) : Promise<Meeting>
+  async getMeeting(meetingId: number) : Promise<MeetingEntity>
   {
-    return await Meeting.findOne(meetingId)
+    return await MeetingEntity.findOne(meetingId)
   }
 
-  async getMeetingChapters(meetingId: number) : Promise<Chapter[]>
+  async getMeetingChapters(meetingId: number) : Promise<ChapterEntity[]>
   {
-    return await Chapter.find({ where: { meeting: { id: meetingId } } })
+    return await ChapterEntity.find({ where: { meeting: { id: meetingId } } })
   }
 
-  async getMeetingChapter(meetingId: number, chapterId: number) : Promise<Chapter>
+  async getMeetingChapter(meetingId: number, chapterId: number) : Promise<ChapterEntity>
   {
-    return await Chapter.findOne({
+    return await ChapterEntity.findOne({
       where: {
         meeting: { id: meetingId },
         id: chapterId
@@ -30,15 +30,15 @@ export class MeetingService {
     })
   }
 
-  async saveChapterAnswer(answer: Answer) : Promise<void>
+  async saveChapterAnswer(answer: AnswerEntity) : Promise<void>
   {
-    const chapter = await Chapter.findOne({ where: { id: answer.chapter } })
-    if (chapter.state) await Answer.save(answer)
+    const chapter = await ChapterEntity.findOne({ where: { id: answer.chapter } })
+    if (chapter.state) await AnswerEntity.save(answer)
   }
 
   async getMeetingChapterResult(meetingId: number, chapterId: number) : Promise<ChapterResultDTO>
   {
-    const chapter = await Chapter.findOne({
+    const chapter = await ChapterEntity.findOne({
       where: {
         id: chapterId,
         meeting: { id: meetingId }
@@ -51,7 +51,7 @@ export class MeetingService {
 
     const chapterResult = {
       details: chapter,
-      count: await Answer.count({
+      count: await AnswerEntity.count({
         where: {
           chapter: {
             id: chapterId,
@@ -66,7 +66,7 @@ export class MeetingService {
     {
       chapterResult.choices.push({
         details: choice,
-        count: await Answer.count({
+        count: await AnswerEntity.count({
           where: {
             chapter: {
               id: chapterId,
@@ -80,7 +80,7 @@ export class MeetingService {
 
     chapterResult.choices.push({
       details: null,
-      count: await Answer.count({
+      count: await AnswerEntity.count({
         where: {
           chapter: {
             id: chapterId,

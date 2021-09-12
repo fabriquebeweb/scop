@@ -96,6 +96,28 @@
         }
       }
     },
+    "migrations": {
+      "root": "libs/migrations",
+      "sourceRoot": "libs/migrations/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/migrations/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/migrations"],
+          "options": {
+            "jestConfig": "libs/migrations/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "web": {
       "projectType": "application",
       "root": "apps/web",

@@ -1,27 +1,27 @@
 import { Injectable } from '@nestjs/common'
 import { DeleteResult, InsertResult } from 'typeorm'
-import { Meeting, MeetingType } from '@scop/entities'
+import { MeetingEntity, MeetingTypeEntity } from '@scop/entities'
 
 @Injectable()
 export class AdminMeetingsService {
 
-  async getMeetingTypes() : Promise<MeetingType[]>
+  async getMeetingTypes() : Promise<MeetingTypeEntity[]>
   {
-    return await MeetingType.find()
+    return await MeetingTypeEntity.find()
   }
 
-  async getMeetings() : Promise<Meeting[]>
+  async getMeetings() : Promise<MeetingEntity[]>
   {
-    return await Meeting.find({
+    return await MeetingEntity.find({
       relations: [
         "meetingType"
       ]
     })
   }
 
-  async getMeeting(meetingId: number) : Promise<Meeting>
+  async getMeeting(meetingId: number) : Promise<MeetingEntity>
   {
-    return await Meeting.findOne({
+    return await MeetingEntity.findOne({
       where: { id: meetingId },
       relations: [
         "meetingType",
@@ -30,19 +30,19 @@ export class AdminMeetingsService {
     })
   }
 
-  async setMeeting(meeting: Meeting) : Promise<InsertResult>
+  async setMeeting(meeting: MeetingEntity) : Promise<InsertResult>
   {
-    return await Meeting.insert(meeting)
+    return await MeetingEntity.insert(meeting)
   }
 
-  async resetMeeting(meeting: Meeting) : Promise<Meeting>
+  async resetMeeting(meeting: MeetingEntity) : Promise<MeetingEntity>
   {
-    return await Meeting.save(meeting)
+    return await MeetingEntity.save(meeting)
   }
 
   async unsetMeeting(meetingId: number) : Promise<DeleteResult>
   {
-    return await Meeting.delete(meetingId)
+    return await MeetingEntity.delete(meetingId)
   }
 
 }

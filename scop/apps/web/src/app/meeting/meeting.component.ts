@@ -1,15 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { MeetingService } from './meeting.service'
-// import { Meeting } from '@scop/entities'
 
 @Component({
   selector: 'app-meeting',
   templateUrl: './meeting.component.html'
 })
 export class MeetingComponent implements OnInit, OnDestroy {
-
-  // meeting! : Meeting
 
   constructor(
     public readonly service: MeetingService,

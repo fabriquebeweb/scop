@@ -1,8 +1,8 @@
 import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, Index } from 'typeorm'
-import { Meeting } from './Meeting.entity'
+import { MeetingEntity } from '@scop/entities'
 
 @Entity()
-export class Document extends BaseEntity
+export class DocumentEntity extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -15,7 +15,7 @@ export class Document extends BaseEntity
   name: string
 
   @Index('document_meeting_idx')
-  @ManyToOne(type => Meeting, meeting => meeting.documents, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  meeting: Meeting
+  @ManyToOne(type => MeetingEntity, meeting => meeting.documents, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  meeting: MeetingEntity
 
 }

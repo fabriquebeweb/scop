@@ -24,6 +24,12 @@ export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
         if (/^\/admin\/meetings\/?$/.test(this.router.url)) this.redirect()
       })
       .catch(() => this.router.navigate(['/error']))
+    
+    this.service.getMeetingTypes()
+      .then(meetingTypes => {
+        this.service.meetingTypes = meetingTypes
+      })
+      .catch(() => {})
   }
 
   ngOnChanges() : void

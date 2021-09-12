@@ -4,7 +4,7 @@ VOLUME /root/app
 WORKDIR /root/app
 
 RUN apt update
-RUN apt install -y apt-utils curl git gnupg software-properties-common unzip wget zsh
+RUN apt install -y apt-utils curl git gnupg lsof nano software-properties-common unzip wget zsh
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
 RUN apt-add-repository https://cli.github.com/packages

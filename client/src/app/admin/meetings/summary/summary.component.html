@@ -1,4 +1,4 @@
 <button [routerLink]="['/admin/meetings/' + meeting.id]" routerLinkActive="bg-basic-light" class="h-20 w-full bg-white hover:bg-basic-light rounded flex flex-col justify-center items-center shadow-raised my-1">
   <p>{{ meeting.meetingType.title }}</p>
-  <p class="capitalize">{{ meeting.date | date:'d MMM Y, HH:mm'}}</p>
+  <p class="capitalize">{{ meeting.date | date:'d MMM Y, HH:mm' }}</p>
 </button>

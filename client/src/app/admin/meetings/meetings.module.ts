@@ -11,6 +11,7 @@ import { AdminMeetingsComponent } from './meetings.component'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatButtonModule } from '@angular/material/button'
 import { RouterModule } from '@angular/router'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { RouterModule } from '@angular/router'
     CommonModule,
     MatButtonModule,
     MatExpansionModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([])
   ],
   providers: [

@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
 import { AdminMeetingsService } from './meetings.service'
 import { Router } from '@angular/router'
-import { Meeting } from 'src/app/misc/entities/Meeting'
+import { Meeting } from '../../misc/entities/Meeting'
 
 @Component({
   selector: 'admin-meetings',

@@ -11,7 +11,7 @@ RUN apt-add-repository https://cli.github.com/packages
 RUN apt update
 RUN apt install -y gh
 
-RUN npm i -g typescript ts-node @angular/cli @nestjs/cli nativescript @nativescript/schematics typeorm
+RUN npm i -g @angular/cli @nestjs/cli nx ts-node typeorm typescript
 RUN git clone https://github.com/fabriquebeweb/scop.git /root/app
 
 RUN git clone -b docker --single-branch https://github.com/fabriquebeweb/scop.git /root/tmp

@@ -52,41 +52,27 @@
         }
       }
     },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
-          }
-        }
-      }
-    },
-    "scop": {
+    "web": {
       "projectType": "application",
-      "root": "apps/scop",
-      "sourceRoot": "apps/scop/src",
-      "prefix": "scop",
+      "root": "apps/web",
+      "sourceRoot": "apps/web/src",
+      "prefix": "web",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/scop",
-            "index": "apps/scop/src/index.html",
-            "main": "apps/scop/src/main.ts",
-            "polyfills": "apps/scop/src/polyfills.ts",
-            "tsConfig": "apps/scop/tsconfig.app.json",
+            "outputPath": "dist/apps/web",
+            "index": "apps/web/src/index.html",
+            "main": "apps/web/src/main.ts",
+            "polyfills": "apps/web/src/polyfills.ts",
+            "tsConfig": "apps/web/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/scop/src/favicon.ico", "apps/scop/src/assets", "apps/scop/src/manifest.webmanifest"],
-            "styles": ["apps/scop/src/styles.scss"],
+            "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets", "apps/web/src/manifest.webmanifest"],
+            "styles": ["apps/web/src/styles.scss"],
             "scripts": [],
             "serviceWorker": true,
-            "ngswConfigPath": "apps/scop/ngsw-config.json"
+            "ngswConfigPath": "apps/web/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -104,8 +90,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/scop/src/environments/environment.ts",
-                  "with": "apps/scop/src/environments/environment.prod.ts"
+                  "replace": "apps/web/src/environments/environment.ts",
+                  "with": "apps/web/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -125,37 +111,37 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "scop:build:production"
+              "browserTarget": "web:build:production"
             },
             "development": {
-              "browserTarget": "scop:build:development"
+              "browserTarget": "web:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "apps/scop/proxy.conf.json"
+            "proxyConfig": "apps/web/proxy.conf.json"
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "scop:build"
+            "browserTarget": "web:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/scop/src/**/*.ts",
-              "apps/scop/src/**/*.html"
+              "apps/web/src/**/*.ts",
+              "apps/web/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/scop"],
+          "outputs": ["coverage/apps/web"],
           "options": {
-            "jestConfig": "apps/scop/jest.config.js",
+            "jestConfig": "apps/web/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -194,5 +180,5 @@
       "skipTests": true
     }
   },
-  "defaultProject": "scop"
+  "defaultProject": "web"
 }

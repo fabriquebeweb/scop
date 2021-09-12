@@ -45,4 +45,9 @@ export class MeetingService
     return await this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
   }
 
+  async getMeetingChapterResult(id: number) : Promise<any>
+  {
+    return await this.http.get<any>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}/result`), API.options()).toPromise()
+  }
+
 }

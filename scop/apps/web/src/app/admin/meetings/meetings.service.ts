@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Meeting } from 'src/app/misc/entities/Meeting'
-import { API } from 'src/app/app.common'
+import { API } from '../../app.common'
+import { Meeting } from '../../misc/entities/Meeting'
 
 @Injectable()
 export class AdminMeetingsService {

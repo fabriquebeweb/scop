@@ -1,7 +1,17 @@
 {
-    "folders": [
-        {
-            "path": "."
-        }
-    ]
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "api"
+		},
+		{
+			"path": "cdn"
+		},
+		{
+			"path": "client"
+		}
+	],
+	"settings": {}
 }

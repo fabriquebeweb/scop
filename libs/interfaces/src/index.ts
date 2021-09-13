@@ -7,3 +7,4 @@ export * from './lib/User'
 
 export * from './lib/ChapterResult.dto'
 export * from './lib/ChoiceResult.dto'
+export * from './lib/NewMeeting.dto'

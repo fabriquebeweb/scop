@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Chapter, Meeting } from '@scop/interfaces'
+import { Chapter, ChapterResultDTO, Meeting } from '@scop/interfaces'
 import { API } from '../app.common'
 
 @Injectable()
@@ -42,6 +42,11 @@ export class MeetingService
   async getMeetingChapter(id: number) : Promise<Chapter>
   {
     return await this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
+  }
+
+  async getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>
+  {
+    return await this.http.get<ChapterResultDTO>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}/results`), API.options()).toPromise()
   }
 
 }

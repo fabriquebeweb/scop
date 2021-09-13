@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Chapter } from '@scop/interfaces'
+import { Chapter, ChapterResultDTO } from '@scop/interfaces'
+import { MeetingService } from '../../meeting.service'
 
 @Component({
   selector: 'chapter-result',
@@ -8,10 +9,22 @@ import { Chapter } from '@scop/interfaces'
 export class MeetingChaptersResultComponent implements OnInit {
 
   @Input() chapter!: Chapter
+  result!: ChapterResultDTO
 
-  constructor() { }
+  constructor(
+    private readonly service: MeetingService
+  ){}
 
   ngOnInit() : void
-  {}
+  {
+    this.service.getMeetingChapterResult(1)
+    // this.service.getMeetingChapterResult(this.chapter.id)
+    .then((result) => {
+      this.result = result
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
 
 }

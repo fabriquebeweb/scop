@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "seed": {
+      "type": "library",
+      "root": "libs/seed",
+      "entryFile": "index",
+      "sourceRoot": "libs/seed/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/seed/tsconfig.lib.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true
+  }
+}

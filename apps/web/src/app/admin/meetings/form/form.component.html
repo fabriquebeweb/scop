@@ -1,1 +1,66 @@
-<p>form works!</p>
+<section class="h-full w-full flex flex-col justify-center items-center">
+
+  <!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="name" value="_NAME_" placeholder="Enter Name">
+    <input type="text" formControlName="lol" value="_LOLILOL_" placeholder="Enter LOL">
+    <input type="datetime-local" formControlName="datte">
+    <input type="submit" value="_SUBMIT_">
+  </form>
+
+  <p>{{ form.value | json }}</p>
+  <p>{{ form.value.datte | date:'d MMM Y, HH:mm' }}</p> -->
+
+
+  <form #form="ngForm" (ngSubmit)="log()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="datetime" class="form-control" [(ngModel)]="meeting.date">
+     </div>
+     <div class="form-check form-group">
+        <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers" ngModel>
+        <label class="form-check-label" for="emailOffers">
+          Email Offers
+        </label>
+      </div>
+       <p>User Interface Style</p>
+      <div class="form-group">
+      <div class="form-check">
+          <input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="light" ngModel>
+          <label class="form-check-label" for="lightInterface">
+            Light
+          </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="interfaceStyle" id="mediumInterface" value="medium" ngModel>
+            <label class="form-check-label" for="mediumInterface">
+              Medium
+            </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="interfaceStyle" id="darkInterface" value="Dark" ngModel>
+              <label class="form-check-label" for="darkInterface">
+                Dark
+              </label>
+            </div>
+          </div>
+            <div class="form-group">
+                <label for="subscriptionType">SubscriptionType</label>
+                <select class="form-control" id="subscriptionType" name="subscriptionType" [(ngModel)]="meeting.meetingType">
+                  <option [ngValue]="meeting.meetingType" selected>{{ meeting.meetingType.title }}</option>
+                  <!-- <option *ngFor="let type of service.meetingTypes" [selected]="type.id == meeting.meetingType.id" [ngValue]="type">{{ type.title }}</option> -->
+                  <ng-container *ngFor="let type of service.meetingTypes">
+                    <option *ngIf="type.id != meeting.meetingType.id" [ngValue]="type">{{ type.title }}</option>
+                  </ng-container>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" class="form-control" rows="5" ngModel></textarea>
+              </div>
+    <!-- <button type="submit" class="btn btn-primary" (click)="log()">Send</button> -->
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+
+  <!-- <meeting-chapters *ngIf="meeting.chapters" [chapters]="meeting.chapters"></meeting-chapters> -->
+
+</section>

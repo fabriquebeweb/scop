@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { Meeting } from 'src/app/misc/entities/Meeting'
-import { MeetingType } from 'src/app/misc/entities/MeetingType'
+import { Meeting, MeetingType } from '@scop/interfaces'
 import { AdminMeetingsService } from '../meetings.service'
 
 @Component({

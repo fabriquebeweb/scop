@@ -141,7 +141,7 @@ export class SeedService {
               location: Faker.address.streetAddress(),
               enterprise: ENTERPRISE,
               meetingType: MEETING_TYPE,
-              state: Faker.datatype.boolean()
+              state: true
 
             }, Meeting)
 

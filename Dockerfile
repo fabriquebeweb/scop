@@ -1,7 +1,7 @@
 FROM node:lts
 EXPOSE 80
-VOLUME /root/app
-WORKDIR /root/app
+VOLUME /root/scop
+WORKDIR /root/scop
 
 RUN apt update
 RUN apt install -y apt-utils curl git gnupg lsof nano software-properties-common unzip wget zsh
@@ -11,8 +11,8 @@ RUN apt-add-repository https://cli.github.com/packages
 RUN apt update
 RUN apt install -y gh
 
-RUN npm i -g typescript ts-node @angular/cli @nestjs/cli nativescript @nativescript/schematics typeorm
-RUN git clone https://github.com/fabriquebeweb/scop.git /root/app
+RUN npm i -g @angular/cli @nestjs/cli nx ts-node tsconfig-paths typeorm typescript
+RUN git clone https://github.com/fabriquebeweb/scop.git /root/scop
 
 RUN git clone -b docker --single-branch https://github.com/fabriquebeweb/scop.git /root/tmp
 RUN for file in /root/tmp/.*; do mv $file /root; done

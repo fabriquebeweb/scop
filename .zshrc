@@ -29,6 +29,8 @@ alias src="exec zsh"
 alias js="node"
 alias ts="ts-node"
 
+alias orm="ts-node -r tsconfig-paths/register -P $HOME/app/tsconfig.json '$(npm root -g)/typeorm/cli.js'"
+
 stop()
 {
   lsof -i $1 | awk 'echo $2'

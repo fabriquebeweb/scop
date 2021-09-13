@@ -17,7 +17,7 @@ export class MeetingChaptersResultComponent implements OnInit {
 
   ngOnInit() : void
   {
-    this.service.getMeetingChapterResult(2)
+    this.service.getMeetingChapterResult(1)
     // this.service.getMeetingChapterResult(this.chapter.id)
     .then((result) => {
       this.result = result

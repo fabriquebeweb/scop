@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common'
+import { HttpCode, HttpStatus, Injectable } from '@nestjs/common'
+import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util'
 import { Answer, Chapter, Meeting } from '@scop/entities'
 import { ChapterResultDTO } from '@scop/interfaces'
-import { IsNull } from 'typeorm'
+import { InsertResult, IsNull } from 'typeorm'
 
 @Injectable()
 export class MeetingService {
@@ -30,10 +31,9 @@ export class MeetingService {
     })
   }
 
-  async saveChapterAnswer(answer: Answer) : Promise<void>
+  async saveChapterAnswer(answer: Answer) : Promise<InsertResult>
   {
-    const chapter = await Chapter.findOne({ where: { id: answer.chapter } })
-    if (chapter.state) await Answer.save(answer)
+    return await Answer.insert(answer)
   }
 
   async getMeetingChapterResult(meetingId: number, chapterId: number) : Promise<ChapterResultDTO>

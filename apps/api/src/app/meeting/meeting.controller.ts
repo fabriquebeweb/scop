@@ -28,9 +28,9 @@ export class MeetingController{
   }
 
   @Post('/:meeting/chapter/:chapter')
-  postChapterAnswer(@Body() body: Answer)
+  postChapterAnswer( @Body() answer: Answer )
   {
-    return this.service.saveChapterAnswer(body)
+    return this.service.saveChapterAnswer(answer)
   }
 
   @Get('/:meeting/chapter/:chapter/results')

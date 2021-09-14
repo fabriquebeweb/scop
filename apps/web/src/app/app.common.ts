@@ -3,6 +3,7 @@ import { HttpHeaders } from "@angular/common/http"
 export class API {
 
   static ROOT: string = 'http://vps-6cf378a8.vps.ovh.net:3000/api'
+  // static ROOT: string = '/api'
 
   static headers() : HttpHeaders
   {

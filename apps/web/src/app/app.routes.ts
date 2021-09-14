@@ -59,6 +59,14 @@ export const routes: Routes = [
       {
         path: 'theme',
         component: AdminThemeComponent
+      },
+      {
+        path: 'error',
+        component: ErrorComponent
+      },
+      {
+        path: '**',
+        component: ErrorComponent
       }
     ]
   },

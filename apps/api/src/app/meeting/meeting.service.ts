@@ -30,10 +30,10 @@ export class MeetingService {
     })
   }
 
-  async saveChapterAnswer(answer: Answer) : Promise<void>
+  async saveChapterAnswer(answer: Answer) : Promise<Answer|null>
   {
     const chapter = await Chapter.findOne({ where: { id: answer.chapter } })
-    if (chapter.state) await Answer.save(answer)
+    return (chapter.state) ? await Answer.save(answer) : null
   }
 
   async getMeetingChapterResult(meetingId: number, chapterId: number) : Promise<ChapterResultDTO>

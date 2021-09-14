@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Chapter, Meeting } from '@scop/interfaces'
+import { Answer, Chapter, Choice, Meeting } from '@scop/interfaces'
 import { API } from '../app.common'
 
 @Injectable()
@@ -29,19 +29,24 @@ export class MeetingService
   //   sessionStorage.setItem(key, JSON.stringify(value))
   // }
 
-  async getMeeting(id: number) : Promise<Meeting>
+  getMeeting(id: number) : Promise<Meeting>
   {
-    return await this.http.get<Meeting>(API.path(`/meeting/${id}`), API.options()).toPromise()
+    return this.http.get<Meeting>(API.path(`/meeting/${id}`), API.options()).toPromise()
   }
 
-  async getMeetingChapters() : Promise<Chapter[]>
+  getMeetingChapters() : Promise<Chapter[]>
   {
-    return await this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting?.id}/chapters`), API.options()).toPromise()
+    return this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting?.id}/chapters`), API.options()).toPromise()
   }
 
-  async getMeetingChapter(id: number) : Promise<Chapter>
+  getMeetingChapter(id: number) : Promise<Chapter>
   {
-    return await this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
+    return this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
+  }
+
+  addChapterChoice(answer: Answer) : Promise<Answer>
+  {
+    return this.http.post<Answer>(API.path(`/meeting/${this.meeting?.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
   }
 
 }

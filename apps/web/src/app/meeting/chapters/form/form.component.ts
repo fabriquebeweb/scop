@@ -39,17 +39,16 @@ export class MeetingFormComponent implements OnInit{
   {
     let answer: Answer = {
       chapter : this.chapter.id,
-      user : this.user.id,
+      user : 7,
       choice : this.choice.id
 
     }
-    this.service.addChapterChoice()
+    this.service.addChapterChoice(answer)
       .then((choice)=> {
-        this.choice = choice
-        console.log('Cette réponse est de loin la meilleure ' + this.choice)
+          console.log('Cette réponse est de loin la meilleure ' + choice)
       
   })
-      .catch(()=> console.log('Ceci n\'est pas le bon choix: ' + this.choice))
+      .catch(console.log)
               
   }
 

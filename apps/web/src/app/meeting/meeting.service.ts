@@ -7,7 +7,7 @@ import { API } from '../app.common'
 export class MeetingService
 {
 
-  meeting?: Meeting
+  meeting!: Meeting
 
   constructor(
     private readonly http: HttpClient
@@ -36,17 +36,25 @@ export class MeetingService
 
   getMeetingChapters() : Promise<Chapter[]>
   {
+<<<<<<< HEAD
     return this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting?.id}/chapters`), API.options()).toPromise()
+=======
+    return this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting.id}/chapters`), API.options()).toPromise()
+>>>>>>> 2fe1a66e751cb9db3f5cdb7c994e713025522eae
   }
 
   getMeetingChapter(id: number) : Promise<Chapter>
   {
+<<<<<<< HEAD
     return this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
   }
 
   addChapterChoice(answer: Answer) : Promise<Answer>
   {
     return this.http.post<Answer>(API.path(`/meeting/${this.meeting?.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
+=======
+    return this.http.get<Chapter>(API.path(`/meeting/${this.meeting.id}/chapter/${id}`), API.options()).toPromise()
+>>>>>>> 2fe1a66e751cb9db3f5cdb7c994e713025522eae
   }
 
 }

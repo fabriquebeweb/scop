@@ -1,8 +1,9 @@
-<!-- Si l'état de la réunion est nul : -->
-<div *ngIf="service?.meeting?.state == false; else LobbyNull" class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
+<!-- Si la réunion est terminée (state == false) -->
+
+<div *ngIf="service.meeting.state == false; else LobbyNull" class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
     <!-- Affichage de la "salle d'attente" -->
     <section>
-      <img [routerLink]="['/']" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
+      <img [routerLink]="'/'" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
       <p>La réunion n'a pas encore commencé.
       <br>
       Veuillez revenir à la date suivante :
@@ -12,9 +13,9 @@
     </section>
 </div>
 
-<!-- Si l'état de la réunion est faux -->
+<!-- Si la Réunion n'a pas encore commencée -->
+
 <ng-template #LobbyNull>
-  <!-- Affichage de la clôture de réunion -->
   <div class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
     <section>
       <img [routerLink]="['/']" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">

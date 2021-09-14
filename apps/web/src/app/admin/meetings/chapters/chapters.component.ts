@@ -7,7 +7,7 @@ import { Chapter } from '@scop/interfaces'
 })
 export class AdminMeetingsChaptersComponent implements OnInit {
 
-  @Input() chapters?: Chapter[]
+  @Input() chapters!: Chapter[]
 
   constructor() { }
 

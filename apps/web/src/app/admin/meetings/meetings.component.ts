@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
 import { AdminMeetingsService } from './meetings.service'
 import { Router } from '@angular/router'
-import { Meeting } from '@scop/interfaces'
+import { Meeting, MeetingType } from '@scop/interfaces'
 
 @Component({
   selector: 'admin-meetings',
@@ -19,17 +19,12 @@ export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() : void
   {
     this.service.getMeetingsSummary()
-      .then(meetings => {
-        this.meetings = meetings
-        if (/^\/admin\/meetings\/?$/.test(this.router.url)) this.redirect()
-      })
-      .catch(() => this.router.navigate(['/error']))
+      .then(meetings => this.setMeetings(meetings))
+      .catch(() => this.onError())
 
     this.service.getMeetingTypes()
-      .then(meetingTypes => {
-        this.service.meetingTypes = meetingTypes
-      })
-      .catch(() => {})
+      .then(meetingTypes => this.setMeetingTypes(meetingTypes))
+      .catch(console.log)
   }
 
   ngOnChanges() : void
@@ -38,9 +33,25 @@ export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
   ngOnDestroy() : void
   {}
 
+  setMeetings(meetings: Meeting[]) : void
+  {
+    this.meetings = meetings
+    if (/^\/admin\/meetings\/?$/.test(this.router.url)) this.redirect()
+  }
+
+  setMeetingTypes(meetingTypes: MeetingType[]) : void
+  {
+    this.service.meetingTypes = meetingTypes
+  }
+
   redirect() : void
   {
-    this.router.navigate([`/admin/meetings/${ (this.meetings) ? this.meetings[0].id : 'new' }`])
+    this.router.navigateByUrl(`/admin/meetings/${(this.meetings) ? this.meetings[0].id : 'new'}`)
+  }
+
+  onError() : void
+  {
+    this.router.navigateByUrl('/admin/error')
   }
 
 }

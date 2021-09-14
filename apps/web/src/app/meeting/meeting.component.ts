@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
+import { Meeting } from '@scop/interfaces'
 import { MeetingService } from './meeting.service'
 
 @Component({
@@ -18,26 +19,27 @@ export class MeetingComponent implements OnInit, OnDestroy {
   {
     // this.service.getMeeting(this.route.snapshot.queryParams.meeting)
     this.service.getMeeting(1)
-      .then(meeting => {
-        (meeting) ? this.service.meeting = meeting : this.error()
-        if (/^\/meeting\/?\??.*$/.test(this.router.url)) this.redirect()
-      })
-      .catch(() => this.error())
+      .then(meeting => this.setMeeting(meeting))
+      .catch(() => this.onError())
   }
 
   ngOnDestroy() : void
+  {}
+
+  setMeeting(meeting: Meeting) : void
   {
-    delete this.service.meeting
+    (meeting) ? this.service.meeting = meeting : this.onError()
+    if (/^\/meeting\/?\??.*$/.test(this.router.url)) this.redirect()
   }
 
-  error()
+  redirect() : void
   {
-    this.router.navigate(['/error'])
+    this.router.navigateByUrl('/meeting/chapters')
   }
 
-  redirect()
+  onError() : void
   {
-    this.router.navigate(['/meeting/chapters'])
+    this.router.navigateByUrl('/error')
   }
 
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Meeting, MeetingType } from '@scop/interfaces'
+import { Meeting, MeetingType, NewMeetingDTO } from '@scop/interfaces'
+import { DeleteResult, InsertResult } from 'typeorm'
+import { Router } from '@angular/router'
 import { API } from '../../app.common'
 
 @Injectable()
@@ -10,21 +12,36 @@ export class AdminMeetingsService {
 
   constructor(
     private readonly http: HttpClient
-  ) {}
+  ){}
 
-  async getMeetingsSummary() : Promise<Meeting[]>
+  getMeetingsSummary() : Promise<Meeting[]>
   {
-    return await this.http.get<Meeting[]>(API.path(`/admin/meetings`), API.options()).toPromise()
+    return this.http.get<Meeting[]>(API.path(`/admin/meetings`), API.options()).toPromise()
   }
 
-  async getMeetingDetails(id: number) : Promise<Meeting>
+  getMeetingDetails(id: number) : Promise<Meeting>
   {
-    return await this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
+    return this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
   }
 
-  async getMeetingTypes() : Promise<MeetingType[]>
+  getMeetingTypes() : Promise<MeetingType[]>
   {
-    return await this.http.get<MeetingType[]>(API.path(`/admin/meetings/types`), API.options()).toPromise()
+    return this.http.get<MeetingType[]>(API.path(`/admin/meetings/types`), API.options()).toPromise()
+  }
+
+  setNewMeeting(meeting: NewMeetingDTO) : Promise<InsertResult>
+  {
+    return this.http.post<InsertResult>(API.path(`/admin/meetings`), meeting, API.options()).toPromise()
+  }
+
+  unsetMeeting(id: number) : Promise<DeleteResult>
+  {
+    return this.http.delete<DeleteResult>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
+  }
+
+  checkMeeting(meeting: Meeting | NewMeetingDTO) : boolean
+  {
+    return (meeting.enterprise && meeting.date && meeting.meetingType && meeting.chapters) ? true : false
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { NewMeetingDTO } from '@scop/interfaces'
+import { Chapter, NewMeetingDTO } from '@scop/interfaces'
 import { AdminMeetingsService } from '../meetings.service'
 
 @Component({
@@ -30,12 +30,17 @@ export class AdminMeetingsFormComponent implements OnInit {
 
     if (this.service.checkMeeting(this.meeting))
     {
-      this.service.setNewMeeting(this.meeting)
-        .then(console.log)
-        .catch(console.log)
+      // this.service.setNewMeeting(this.meeting)
+      //   .then(console.log)
+      //   .catch(console.log)
 
       this.onCancel()
     }
+  }
+
+  onChaptersUpdate(chapters: Chapter[])
+  {
+    this.meeting.chapters = chapters
   }
 
   onCancel() : void

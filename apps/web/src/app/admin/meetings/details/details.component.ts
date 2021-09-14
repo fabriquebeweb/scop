@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { AdminMeetingsService } from '../meetings.service'
-import { Meeting } from '@scop/interfaces'
+import { Chapter, Meeting } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'meeting-details',
@@ -21,7 +22,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    this.observer = this.route.params.subscribe(params => this.updateMeeting(params))
+    this.observer = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
   }
 
   ngOnDestroy() : void
@@ -29,14 +30,24 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.observer.unsubscribe()
   }
 
+  onUpdateDialog() : void
+  {}
+
   onSubmit() : void
   {
+    // this.meeting = this.meetingArchive
     console.log(this.meeting)
+    // console.log(this.meeting.chapters)
   }
 
-  updateMeeting(params: Params) : void
+  onError() : void
   {
-    this.service.getMeetingDetails(params.meeting)
+    this.router.navigateByUrl('/admin/error')
+  }
+
+  refreshMeeting(id: number) : void
+  {
+    this.service.getMeetingDetails(id)
       .then(meeting => this.setMeeting(meeting))
       .catch(() => this.onError())
   }
@@ -47,9 +58,15 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.meeting = meeting
   }
 
-  onError() : void
+  resetMeeting() : void
+  {}
+
+  unsetMeeting() : void
+  {}
+
+  updateChapters(chapters: Chapter[]) : void
   {
-    this.router.navigateByUrl('/admin/error')
+    this.meeting.chapters = chapters
   }
 
 }

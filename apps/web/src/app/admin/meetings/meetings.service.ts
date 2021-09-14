@@ -34,6 +34,11 @@ export class AdminMeetingsService {
     return this.http.post<InsertResult>(API.path(`/admin/meetings`), meeting, API.options()).toPromise()
   }
 
+  resetMeeting(meeting: Meeting) : Promise<Meeting>
+  {
+    return this.http.put<Meeting>(API.path(`/admin/meetings/${meeting.id}`), meeting, API.options()).toPromise()
+  }
+
   unsetMeeting(id: number) : Promise<DeleteResult>
   {
     return this.http.delete<DeleteResult>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()

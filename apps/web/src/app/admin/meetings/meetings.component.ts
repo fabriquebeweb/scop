@@ -7,7 +7,7 @@ import { Meeting, MeetingType } from '@scop/interfaces'
   selector: 'admin-meetings',
   templateUrl: './meetings.component.html',
 })
-export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
+export class AdminMeetingsComponent implements OnInit, OnDestroy {
 
   meetings!: Meeting[]
 
@@ -26,9 +26,6 @@ export class AdminMeetingsComponent implements OnInit, OnChanges, OnDestroy {
       .then(meetingTypes => this.setMeetingTypes(meetingTypes))
       .catch(console.log)
   }
-
-  ngOnChanges() : void
-  {}
 
   ngOnDestroy() : void
   {}

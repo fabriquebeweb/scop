@@ -2,7 +2,7 @@ import { Choice } from '@scop/interfaces'
 
 export interface Chapter {
 
-  id: number
+  id?: number
   title: string
   description: string
   summary: string

@@ -1,8 +1,8 @@
 <form #form="ngForm" class="h-full w-full flex flex-col justify-center items-center">
 
-  <section class="w-5/6 flex justify-between items-end h-1/10">
+  <section class="w-5/6 flex justify-around items-end h-1/10">
 
-    <section class="w-6/12 h-full text-lg tracking-widest flex justify-center items-center">
+    <section class="w-8/20 h-full text-lg tracking-widest flex justify-center items-center">
       <select class="w-full outline-none bg-transparent" name="meetingType" [(ngModel)]="meeting.meetingType">
 
         <option [ngValue]="undefined" disabled selected>
@@ -18,7 +18,7 @@
       </select>
     </section>
 
-    <section class="w-4/12 h-full text-lg tracking-widest flex justify-center items-center">
+    <section class="w-6/20 h-full text-lg tracking-widest flex justify-center items-center">
       <input class="w-full outline-none bg-transparent" name="datetime" type="datetime-local" [(ngModel)]="meeting.date">
     </section>
 
@@ -26,11 +26,11 @@
 
   <section class="w-5/6 overflow-y-auto h-8/10 p-5 rounded-lg">
 
-    <meeting-chapters [chapters]="meeting.chapters"></meeting-chapters>
+    <meeting-chapters [chapters]="meeting.chapters" (update)="onChaptersUpdate($event)"></meeting-chapters>
 
   </section>
 
-  <section class="w-5/6 flex justify-between items-center h-1/10">
+  <section class="w-4/6 flex justify-between items-center h-1/10">
     <button mat-raised-button (click)="onSubmit()" class="h-4/6 w-10/20 tracking-widest text-gray-900" color="primary">
       ENREGISTER
     </button>

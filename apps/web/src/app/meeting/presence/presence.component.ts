@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Chapter } from '@scop/interfaces'
+import { MatDialog } from '@angular/material/dialog'
+import { DialogComponent } from '../dialog/dialog.component'
 
 @Component({
   selector: 'meeting-presence',
@@ -9,9 +11,17 @@ export class MeetingPresenceComponent implements OnInit {
 
   chapters!: Chapter[]
 
-  constructor() {}
+  constructor(
+    private dialog: MatDialog
+  ){}
 
   ngOnInit() : void
   {}
+
+  openDialog(): void {
+    let dialogPage = this.dialog.open(DialogComponent,
+      { height: '700px',
+        width: '1000px'})
+  }
 
 }

@@ -188,7 +188,8 @@ export class SeedService {
                 question: `${Faker.lorem.sentence()} ?`,
                 choices: CHOICES,
                 result: this.pick([ null, ...CHOICES ]),
-                meeting: MEETING
+                meeting: MEETING,
+                state: true
 
               }, Chapter)
 

@@ -11,10 +11,10 @@ import { Subscription } from 'rxjs'
 export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
   observer!: Subscription
-  meeting?: Meeting
+  meeting!: Meeting
 
   constructor(
-    private readonly service: AdminMeetingsService,
+    public readonly service: AdminMeetingsService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
   ) {}
@@ -23,14 +23,30 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
   {
     this.observer = this.route.params.subscribe(params => {
       this.service.getMeetingDetails(params.meeting)
-        .then(meeting => { (meeting) ? this.meeting = meeting : this.router.navigate(['/admin/meetings/new']) })
-        .catch(() => this.router.navigate(['/error']))
+        .then(meeting => this.setMeeting(meeting))
+        .catch(() => this.onError())
     })
   }
 
   ngOnDestroy() : void
   {
     this.observer.unsubscribe()
+  }
+
+  onSubmit() : void
+  {
+    console.log(this.meeting)
+  }
+
+  setMeeting(meeting: Meeting) : void
+  {
+    meeting.date = meeting.date.replace(/:\d{2}.\d{3}Z$/, '')
+    this.meeting = meeting
+  }
+
+  onError() : void
+  {
+    this.router.navigateByUrl('/admin/error')
   }
 
 }

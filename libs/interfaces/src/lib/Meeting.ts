@@ -5,7 +5,7 @@ export interface Meeting {
   id: number
   date: string
   location: string
-  enterprise?: Enterprise
+  enterprise: Enterprise
   meetingType: MeetingType
   chapters: Chapter[]
   state: boolean | null

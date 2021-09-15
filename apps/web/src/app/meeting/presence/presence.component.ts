@@ -9,7 +9,7 @@ export class MeetingPresenceComponent implements OnInit {
 
   chapters!: Chapter[]
 
-  constructor() {}
+  constructor(){}
 
   ngOnInit() : void
   {}

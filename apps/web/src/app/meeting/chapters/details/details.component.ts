@@ -23,16 +23,24 @@ export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
   {
     this.observer = this.route.params.subscribe(params => {
       this.service.getMeetingChapter(params.chapter)
-        .then(chapter => {
-          this.chapter = chapter
-        })
-        .catch(() => this.router.navigateByUrl('/meeting'))
+        .then(chapter => this.setChapter(chapter))
+        .catch(() => this.onError())
     })
   }
 
   ngOnDestroy() : void
   {
     this.observer.unsubscribe()
+  }
+
+  setChapter(chapter: Chapter) : void
+  {
+    this.chapter = chapter
+  }
+
+  onError() : void
+  {
+    this.router.navigateByUrl('/meeting/error')
   }
 
 }

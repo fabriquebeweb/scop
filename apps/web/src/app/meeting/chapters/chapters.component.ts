@@ -19,11 +19,19 @@ export class MeetingChaptersComponent implements OnInit {
   ngOnInit() : void
   {
     this.service.getMeetingChapters()
-      .then(chapters => {
-        this.chapters = chapters
-        if (this.chapters.length) this.router.navigate([`/meeting/chapters/${this.chapters[0].id}`])
-      })
-      .catch(() => this.router.navigate(['/error']))
+      .then(chapters => this.setChapters(chapters))
+      .catch(() => this.onError())
+  }
+
+  setChapters(chapters: Chapter[]) : void
+  {
+    this.chapters = chapters
+    if (this.chapters.length) this.router.navigateByUrl(`/meeting/chapters/${this.chapters[0].id}`)
+  }
+
+  onError() : void
+  {
+    this.router.navigateByUrl('/meeting/error')
   }
 
 }

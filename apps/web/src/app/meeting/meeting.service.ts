@@ -1,17 +1,24 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Chapter, Meeting } from '@scop/interfaces'
+import { Chapter, Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { API } from '../app.common'
+import { Subject } from 'rxjs'
 
 @Injectable()
 export class MeetingService
 {
 
   meeting!: Meeting
+  dialog = new Subject<MeetingDialogDTO>()
 
   constructor(
     private readonly http: HttpClient
   ) {}
+
+  notify(chapter: MeetingDialogDTO)
+  {
+    this.dialog.next(chapter)
+  }
 
   // get(key: string) : any
   // {

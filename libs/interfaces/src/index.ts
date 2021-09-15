@@ -8,6 +8,7 @@ export * from './lib/Provider'
 export * from './lib/Status'
 export * from './lib/User'
 
+export * from './lib/ChapterAnswer.dto'
 export * from './lib/ChapterResult.dto'
 export * from './lib/ChoiceResult.dto'
 export * from './lib/MeetingDialog.dto'

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Answer, Chapter, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
+import { Chapter, ChapterAnswerDTO, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { InsertResult } from 'typeorm'
 import { API } from '../app.common'
 import { Subject } from 'rxjs'
@@ -52,7 +52,7 @@ export class MeetingService
     return this.http.get<Chapter>(API.path(`/meeting/${this.meeting.id}/chapter/${id}`), API.options()).toPromise()
   }
 
-  saveAnswer(answer: Answer) : Promise<InsertResult>
+  postAnswer(answer: ChapterAnswerDTO) : Promise<InsertResult>
   {
     return this.http.post<InsertResult>(API.path(`/meeting/${this.meeting.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
   }

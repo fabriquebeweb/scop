@@ -2,14 +2,14 @@ import { Component, Input, OnInit } from '@angular/core'
 import { Chapter } from '@scop/interfaces'
 
 @Component({
-  selector: 'chapter-result',
+  selector: 'dialog-result',
   templateUrl: './result.component.html'
 })
-export class MeetingChaptersResultComponent implements OnInit {
+export class MeetingDialogResultComponent implements OnInit {
 
   @Input() chapter!: Chapter
 
-  constructor() { }
+  constructor(){}
 
   ngOnInit() : void
   {}

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MeetingDialogDTO } from '@scop/interfaces';
+import { MeetingService } from '../meeting.service';
 
 @Component({
   selector: 'meeting-dialog',
@@ -9,7 +10,8 @@ import { MeetingDialogDTO } from '@scop/interfaces';
 export class MeetingDialogComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: MeetingDialogDTO
+    @Inject(MAT_DIALOG_DATA) public data: MeetingDialogDTO,
+    private readonly service: MeetingService
   ){}
 
   ngOnInit() : void

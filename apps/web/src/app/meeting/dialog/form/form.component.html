@@ -1,5 +1,6 @@
-<div class=" p-10 border-2 border-gray-300 flex flex-col" >
+<div class=" p-10 flex flex-col" >
     <div class="text-2xl">Chapitre {{chapter.id}}</div>
+    <div>{{chapter.description}}</div>
     <div>{{chapter.summary}}</div>
     <br>
     <div class="ml-12">{{chapter.question}}</div>
@@ -9,7 +10,7 @@
             <div>
                 <mat-radio-group >
                     <div class="flex flex-col">
-                        <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" value="{{choice.id}}" name="{{chapter.id}}" (click)="valueElement(choice.id)">{{choice.title}}</mat-radio-button>
+                        <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" value="{{choice.id}}" name="answer" (click)="setChoice(choice)">{{choice.title}}</mat-radio-button>
                     </div>
                 </mat-radio-group>
             </div>
@@ -17,7 +18,7 @@
 
         <div>
             <mat-card-actions class="flex justify-center mt-10">
-                <button (click)="save()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
+                <button (click)="saveAnswer()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
             </mat-card-actions>
         </div>
     </div>

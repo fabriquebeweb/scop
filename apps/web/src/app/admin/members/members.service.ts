@@ -10,9 +10,9 @@ export class AdminMembersService {
     private readonly http: HttpClient
   ){}
 
-  async getMembers() : Promise<User[]>
+  getMembers() : Promise<User[]>
   {
-    return await this.http.get<User[]>(API.path('/admin/members'), API.options()).toPromise()
+    return this.http.get<User[]>(API.path('/admin/members'), API.options()).toPromise()
   }
 
 }

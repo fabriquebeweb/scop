@@ -29,24 +29,24 @@ export class MeetingService
   //   sessionStorage.setItem(key, JSON.stringify(value))
   // }
 
-  async getMeeting(id: number) : Promise<Meeting>
+  getMeeting(id: number) : Promise<Meeting>
   {
-    return await this.http.get<Meeting>(API.path(`/meeting/${id}`), API.options()).toPromise()
+    return this.http.get<Meeting>(API.path(`/meeting/${id}`), API.options()).toPromise()
   }
 
-  async getMeetingChapters() : Promise<Chapter[]>
+  getMeetingChapters() : Promise<Chapter[]>
   {
-    return await this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting?.id}/chapters`), API.options()).toPromise()
+    return this.http.get<Chapter[]>(API.path(`/meeting/${this.meeting?.id}/chapters`), API.options()).toPromise()
   }
 
-  async getMeetingChapter(id: number) : Promise<Chapter>
+  getMeetingChapter(id: number) : Promise<Chapter>
   {
-    return await this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
+    return this.http.get<Chapter>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}`), API.options()).toPromise()
   }
 
-  async getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>
+  getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>
   {
-    return await this.http.get<ChapterResultDTO>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}/results`), API.options()).toPromise()
+    return this.http.get<ChapterResultDTO>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}/results`), API.options()).toPromise()
   }
 
 }

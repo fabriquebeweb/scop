@@ -26,7 +26,7 @@ export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
         .then(chapter => {
           this.chapter = chapter
         })
-        .catch(() => this.router.navigate(['/meeting']))
+        .catch(() => this.router.navigateByUrl('/meeting'))
     })
   }
 

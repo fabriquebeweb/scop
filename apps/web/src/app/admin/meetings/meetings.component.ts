@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
 import { AdminMeetingsService } from './meetings.service'
 import { Router } from '@angular/router'
 import { Meeting, MeetingType } from '@scop/interfaces'
@@ -9,12 +9,10 @@ import { Meeting, MeetingType } from '@scop/interfaces'
 })
 export class AdminMeetingsComponent implements OnInit, OnDestroy {
 
-  meetings!: Meeting[]
-
   constructor(
-    private readonly service: AdminMeetingsService,
+    public readonly service: AdminMeetingsService,
     private readonly router: Router
-  ) {}
+  ){}
 
   ngOnInit() : void
   {
@@ -32,7 +30,7 @@ export class AdminMeetingsComponent implements OnInit, OnDestroy {
 
   setMeetings(meetings: Meeting[]) : void
   {
-    this.meetings = meetings
+    this.service.meetings = meetings
     if (/^\/admin\/meetings\/?$/.test(this.router.url)) this.redirect()
   }
 
@@ -43,7 +41,7 @@ export class AdminMeetingsComponent implements OnInit, OnDestroy {
 
   redirect() : void
   {
-    this.router.navigateByUrl(`/admin/meetings/${(this.meetings) ? this.meetings[0].id : 'new'}`)
+    this.router.navigateByUrl(`/admin/meetings/${(this.service.meetings) ? this.service.meetings[0].id : 'new'}`)
   }
 
   onError() : void

@@ -18,10 +18,4 @@ export class MeetingPresenceComponent implements OnInit {
   ngOnInit() : void
   {}
 
-  openDialog(): void {
-    let dialogPage = this.dialog.open(DialogComponent,
-      { height: '700px',
-        width: '1000px'})
-  }
-
 }

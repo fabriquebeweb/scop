@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Answer, Chapter, Choice, Meeting } from '@scop/interfaces'
+import { InsertResult } from 'typeorm'
 import { API } from '../app.common'
 
 @Injectable()
@@ -44,9 +45,9 @@ export class MeetingService
     return this.http.get<Chapter>(API.path(`/meeting/${this.meeting.id}/chapter/${id}`), API.options()).toPromise()
   }
 
-  addChapterChoice(answer: Answer) : Promise<Answer>
+  saveAnswer(answer: Answer) : Promise<InsertResult>
   {
-    return this.http.post<Answer>(API.path(`/meeting/${this.meeting.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
+    return this.http.post<InsertResult>(API.path(`/meeting/${this.meeting.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
   }
 
 }

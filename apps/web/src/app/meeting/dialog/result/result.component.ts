@@ -3,10 +3,10 @@ import { Chapter, ChapterResultDTO } from '@scop/interfaces'
 import { MeetingService } from '../../meeting.service'
 
 @Component({
-  selector: 'chapter-result',
+  selector: 'dialog-result',
   templateUrl: './result.component.html'
 })
-export class MeetingChaptersResultComponent implements OnInit {
+export class MeetingDialogResultComponent implements OnInit {
 
   @Input() chapter!: Chapter
   result!: ChapterResultDTO
@@ -19,12 +19,13 @@ export class MeetingChaptersResultComponent implements OnInit {
   {
     this.service.getMeetingChapterResult(1)
     // this.service.getMeetingChapterResult(this.chapter.id)
-    .then((result) => {
-      this.result = result
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    .then(result => this.setChapterResult(result))
+    .catch(console.log)
+  }
+
+  setChapterResult(result: ChapterResultDTO) : void
+  {
+    this.result = result
   }
 
 }

@@ -16,9 +16,11 @@
   </section>
 </nav>
 
-<main *ngIf="service.meeting?.state; else Lobby">
-  <router-outlet></router-outlet>
-</main>
+<ng-container *ngIf="service.meeting">
+  <main *ngIf="service.meeting.state == true; else Lobby">
+    <router-outlet></router-outlet>
+  </main>
+</ng-container>
 
 <ng-template #Lobby>
   <meeting-lobby></meeting-lobby>

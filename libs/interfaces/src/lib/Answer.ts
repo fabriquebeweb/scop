@@ -2,8 +2,8 @@ import { Chapter, Choice, User } from '@scop/interfaces'
 
 export interface Answer {
 
-  chapter: Chapter
-  user: User
-  choice?: Choice
+  chapter: number
+  user: number
+  choice: number | null
 
 }

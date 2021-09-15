@@ -5,27 +5,30 @@ import { MeetingComponent } from './meeting.component'
 import { MeetingDocumentsComponent } from './documents/documents.component'
 import { MeetingChaptersComponent } from './chapters/chapters.component'
 import { MeetingPresenceComponent } from './presence/presence.component'
-import { MeetingChaptersResultComponent } from './chapters/result/result.component'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MeetingChaptersDetailsComponent } from './chapters/details/details.component'
 import { MatTabsModule } from '@angular/material/tabs'
-import { MeetingFormComponent } from './chapters/form/form.component'
 import { MatRadioModule } from '@angular/material/radio'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
+import { MatDialogModule } from '@angular/material/dialog'
 import { MatCardModule } from '@angular/material/card'
-import { MeetingService } from './meeting.service';
+import { MeetingService } from './meeting.service'
 import { MeetingLobbyComponent } from './lobby/lobby.component'
+import { MeetingDialogComponent } from './dialog/dialog.component'
+import { MeetingDialogResultComponent } from './dialog/result/result.component'
+import { MeetingDialogFormComponent } from './dialog/form/form.component'
 
 @NgModule({
   declarations: [
     MeetingComponent,
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
-    MeetingChaptersResultComponent,
     MeetingChaptersDetailsComponent,
     MeetingPresenceComponent,
-    MeetingFormComponent,
+    MeetingDialogComponent,
+    MeetingDialogResultComponent,
+    MeetingDialogFormComponent,
     MeetingLobbyComponent
   ],
   imports: [
@@ -36,10 +39,14 @@ import { MeetingLobbyComponent } from './lobby/lobby.component'
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
+    MatDialogModule,
     RouterModule.forChild([])
   ],
   providers: [
     MeetingService
+  ],
+  entryComponents: [
+    MeetingDialogComponent
   ]
 })
 export class MeetingModule {}

@@ -1,5 +1,5 @@
 FROM node:lts
-EXPOSE 80
+EXPOSE 4200
 VOLUME /root/scop
 WORKDIR /root/scop
 

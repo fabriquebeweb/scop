@@ -1,12 +1,13 @@
-import { Chapter, MeetingType } from '@scop/interfaces'
+import { Chapter, MeetingType, Enterprise } from '@scop/interfaces'
 
 export interface Meeting {
 
   id: number
-  date: Date
-  location?: string
+  date: string
+  location: string
+  enterprise?: Enterprise
   meetingType: MeetingType
-  chapters?: Chapter[]
-  state?: boolean
+  chapters: Chapter[]
+  state: boolean | null
 
 }

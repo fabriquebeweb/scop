@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AdminMeetingsService } from '../meetings.service'
-import { Meeting } from '@scop/interfaces'
+import { Chapter, Meeting } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -11,21 +11,17 @@ import { Subscription } from 'rxjs'
 export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
   observer!: Subscription
-  meeting?: Meeting
+  meeting!: Meeting
 
   constructor(
-    private readonly service: AdminMeetingsService,
+    public readonly service: AdminMeetingsService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
   ) {}
 
   ngOnInit() : void
   {
-    this.observer = this.route.params.subscribe(params => {
-      this.service.getMeetingDetails(params.meeting)
-        .then(meeting => this.setMeeting(meeting))
-        .catch(() => this.onError())
-    })
+    this.observer = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
   }
 
   ngOnDestroy() : void
@@ -33,14 +29,59 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.observer.unsubscribe()
   }
 
-  setMeeting(meeting: Meeting) : void
+  onUpdateDialog() : void
+  {}
+
+  onSubmit() : void
   {
-    (meeting) ? this.meeting = meeting : this.router.navigateByUrl('/admin/meetings/new')
+    this.service.resetMeeting(this.meeting)
+      .then(meeting => this.setMeeting(meeting))
+      .catch(() => this.onError())
+
+    this.service.meetings[this.index(this.meeting)] = this.meeting
+  }
+
+  onDelete() : void
+  {
+    this.service.unsetMeeting(this.meeting.id)
+      .then(() => this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id))
+      .catch(() => this.onError())
+
+    this.router.navigateByUrl('/admin/meetings/new')
   }
 
   onError() : void
   {
     this.router.navigateByUrl('/admin/error')
+  }
+
+  refreshMeeting(id: number) : void
+  {
+    this.service.getMeetingDetails(id)
+      .then(meeting => this.setMeeting(meeting))
+      .catch(() => this.onError())
+  }
+
+  setMeeting(meeting: Meeting) : void
+  {
+    meeting.date = meeting.date.replace(/:\d{2}.\d{3}Z$/, '')
+    this.meeting = meeting
+  }
+
+  resetMeeting() : void
+  {}
+
+  unsetMeeting() : void
+  {}
+
+  updateChapters(chapters: Chapter[]) : void
+  {
+    this.meeting.chapters = chapters
+  }
+
+  index(meeting: Meeting) : number
+  {
+    return this.service.meetings.findIndex(obj => obj.id == meeting.id)
   }
 
 }

@@ -2,12 +2,12 @@
 
   <aside class="sticky w-2/8 h-full flex flex-col justify-between left-0 bottom-0 pt-2 px-2">
 
-    <button mat-raised-button color="accent" [routerLink]="['/admin/meetings/new']" class="text-white tracking-widest w-full h-12 rounded-lg">
+    <button mat-raised-button color="accent" [routerLink]="'/admin/meetings/new'" class="text-white tracking-widest w-full h-12 rounded-lg">
       NOUVELLE REUNION
     </button>
 
     <section class="overflow-y-scroll h-full">
-      <meeting-summary *ngFor="let meeting of meetings" [meeting]="meeting"></meeting-summary>
+      <meeting-summary *ngFor="let meeting of service.meetings" [meeting]="meeting"></meeting-summary>
     </section>
 
   </aside>

@@ -187,23 +187,28 @@ export class SeedService {
                 summary: Faker.lorem.words(),
                 question: `${Faker.lorem.sentence()} ?`,
                 choices: CHOICES,
-                result: this.pick([ null, ...CHOICES ]),
-                meeting: MEETING
+                result: this.pick(CHOICES),
+                meeting: MEETING,
+                state: true
 
               }, Chapter)
 
-              // ANSWER
-              await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
+              if (CHAPTER.id == 1)
+              {
+                // ANSWER
+                await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
 
-                await this.save({
+                  await this.save({
 
-                  user: USER,
-                  chapter: CHAPTER,
-                  choice: this.pick([ null, ...CHOICES ])
+                    user: USER,
+                    chapter: CHAPTER,
+                    choice: this.pick([ null, ...CHOICES ])
 
-                }, Answer)
+                  }, Answer)
 
-              }) // ANSWER
+                }) // ANSWER
+              }
+
             }) // CHAPTER
           }) // MEETING
         }) // STATUS

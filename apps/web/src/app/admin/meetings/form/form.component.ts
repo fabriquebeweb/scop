@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { Meeting, MeetingType } from '@scop/interfaces'
+import { Chapter, NewMeetingDTO } from '@scop/interfaces'
 import { AdminMeetingsService } from '../meetings.service'
 
 @Component({
@@ -10,15 +9,11 @@ import { AdminMeetingsService } from '../meetings.service'
 })
 export class AdminMeetingsFormComponent implements OnInit {
 
-  // form!: FormGroup
-
-  meeting: Meeting = {
-    id: 1,
-    date: new Date(),
-    meetingType: {
-      id: 2,
-      title: "Fantastic Fresh Shoes"
-    }
+  meeting: NewMeetingDTO = {
+    enterprise: 1,
+    date: undefined,
+    meetingType: undefined,
+    chapters: []
   }
 
   constructor(
@@ -27,23 +22,32 @@ export class AdminMeetingsFormComponent implements OnInit {
   ) {}
 
   ngOnInit() : void
-  {
-    // this.form = new FormGroup({
-    //   name: new FormControl(null),
-    //   lol: new FormControl(null),
-    //   datte: new FormControl(null)
-    // })
-  }
+  {}
 
   onSubmit() : void
   {
-    // console.log(this.form.value)
-    // console.log(new Date(this.form.value.datte))
+    console.log(this.meeting)
+
+    if (this.service.checkMeeting(this.meeting))
+    {
+      // this.service.setNewMeeting(this.meeting)
+      //   .then(console.log)
+      //   .catch(console.log)
+
+      this.onCancel()
+    }
   }
 
-  log()
+  onChaptersUpdate(chapters: Chapter[])
   {
-    console.log(this.meeting)
+    this.meeting.chapters = chapters
+  }
+
+  onCancel() : void
+  {
+    this.meeting.date = undefined
+    this.meeting.meetingType = undefined
+    this.meeting.chapters = []
   }
 
 }

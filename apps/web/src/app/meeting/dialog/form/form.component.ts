@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { FormBuilder, FormControl } from '@angular/forms'
 import { Chapter } from '@scop/interfaces'
 
 @Component({

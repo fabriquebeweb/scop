@@ -24,7 +24,7 @@ import { AdminMeetingSummaryComponent } from './summary/summary.component';
     AdminMeetingsDetailsComponent,
     AdminMeetingsChaptersComponent,
     AdminMeetingsChaptersDetailsComponent,
-    AdminMeetingsChaptersFormComponent,
+    AdminMeetingsChaptersFormComponent
   ],
   imports: [
     CommonModule,

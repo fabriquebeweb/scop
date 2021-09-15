@@ -11,21 +11,21 @@
             </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let member of members; let i = index" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
-                <td class="p-3 rounded-lg">
-                  {{ member.firstName }}
-                </td>
-                <td class="p-3 rounded-lg">
-                  {{ member.lastName }}
-                </td>
-                <td class="p-3 rounded-lg">
-                  {{ member.email }}
-                </td>
-                <td class="p-3 flex items-center justify-evenly">
-                  <mat-icon class="material-icons hover:text-blue-600 cursor-pointer">edit</mat-icon>
-                  <mat-icon class="material-icons hover:text-red-600 cursor-pointer">delete_forever</mat-icon>
-                </td>
-              </tr>
+            <tr *ngFor="let member of members; let i = index" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
+              <td class="p-3 rounded-lg">
+                {{ member.firstName }}
+              </td>
+              <td class="p-3 rounded-lg">
+                {{ member.lastName }}
+              </td>
+              <td class="p-3 rounded-lg">
+                {{ member.email }}
+              </td>
+              <td class="p-3 flex items-center justify-evenly">
+                <mat-icon [routerLink]="'/admin/members/' + member.id" class="hover:text-blue-600 cursor-pointer">edit</mat-icon>
+                <mat-icon (click)="onDelete(member)" class="hover:text-red-600 cursor-pointer">delete_forever</mat-icon>
+              </td>
+            </tr>
           </tbody>
         </table>
     </div>

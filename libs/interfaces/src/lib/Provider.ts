@@ -4,6 +4,6 @@ export interface Provider {
 
   id: number
   name: string
-  enterprises?: Enterprise[] | number[]
+  enterprises?: Enterprise[]
 
 }

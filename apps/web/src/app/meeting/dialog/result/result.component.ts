@@ -19,8 +19,8 @@ export class MeetingDialogResultComponent implements OnInit {
   {
     this.service.getMeetingChapterResult(1)
     // this.service.getMeetingChapterResult(this.chapter.id)
-    .then(result => this.setChapterResult(result))
-    .catch(console.log)
+      .then(result => this.setChapterResult(result))
+      .catch(console.log)
   }
 
   setChapterResult(result: ChapterResultDTO) : void

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class AdminMeetingsChaptersFormComponent implements OnInit {
 
-  constructor() {}
+  constructor(){}
 
   ngOnInit() : void
   {}

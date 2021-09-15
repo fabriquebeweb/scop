@@ -91,8 +91,20 @@ export const routes: Routes = [
       {
         path: 'presence',
         component: MeetingPresenceComponent
+      },
+      {
+        path: 'error',
+        component: ErrorComponent
+      },
+      {
+        path: '**',
+        component: ErrorComponent
       }
     ]
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
   },
   {
     path: '**',

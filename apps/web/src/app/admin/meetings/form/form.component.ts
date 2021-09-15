@@ -30,11 +30,11 @@ export class AdminMeetingsFormComponent implements OnInit {
 
     if (this.service.checkMeeting(this.meeting))
     {
-      // this.service.setNewMeeting(this.meeting)
-      //   .then(console.log)
-      //   .catch(console.log)
+      this.service.setNewMeeting(this.meeting)
+        .then(console.log)
+        .catch(console.log)
 
-      this.onCancel()
+      this.resetMeeting()
     }
   }
 
@@ -43,7 +43,7 @@ export class AdminMeetingsFormComponent implements OnInit {
     this.meeting.chapters = chapters
   }
 
-  onCancel() : void
+  resetMeeting() : void
   {
     this.meeting.date = undefined
     this.meeting.meetingType = undefined

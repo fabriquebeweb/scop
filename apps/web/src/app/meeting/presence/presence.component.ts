@@ -7,8 +7,6 @@ import { Chapter } from '@scop/interfaces'
 })
 export class MeetingPresenceComponent implements OnInit {
 
-  chapters!: Chapter[]
-
   constructor(){}
 
   ngOnInit() : void

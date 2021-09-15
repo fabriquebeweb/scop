@@ -53,7 +53,7 @@ export class MeetingService
 
   getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>
   {
-    return this.http.get<ChapterResultDTO>(API.path(`/meeting/${this.meeting?.id}/chapter/${id}/results`), API.options()).toPromise()
+    return this.http.get<ChapterResultDTO>(API.path(`/meeting/${this.meeting.id}/chapter/${id}/results`), API.options()).toPromise()
   }
 
 }

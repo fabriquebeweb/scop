@@ -29,22 +29,17 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.observer.unsubscribe()
   }
 
-  onUpdateDialog() : void
-  {}
-
   onSubmit() : void
   {
     this.service.resetMeeting(this.meeting)
-      .then(meeting => this.setMeeting(meeting))
+      .then(meeting => this.resetMeeting(meeting))
       .catch(() => this.onError())
-
-    this.service.meetings[this.index(this.meeting)] = this.meeting
   }
 
   onDelete() : void
   {
     this.service.unsetMeeting(this.meeting.id)
-      .then(() => this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id))
+      .then(() => this.unsetMeeting())
       .catch(() => this.onError())
 
     this.router.navigateByUrl('/admin/meetings/new')
@@ -68,11 +63,16 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.meeting = meeting
   }
 
-  resetMeeting() : void
-  {}
+  resetMeeting(meeting: Meeting) : void
+  {
+    this.setMeeting(meeting)
+    this.service.meetings[this.index(this.meeting)] = this.meeting
+  }
 
   unsetMeeting() : void
-  {}
+  {
+    this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id)
+  }
 
   updateChapters(chapters: Chapter[]) : void
   {

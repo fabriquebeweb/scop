@@ -23,14 +23,24 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
   {
     this.observer = this.route.params.subscribe(params => {
       this.service.getMeetingDetails(params.meeting)
-        .then(meeting => { (meeting) ? this.meeting = meeting : this.router.navigate(['/admin/meetings/new']) })
-        .catch(() => this.router.navigate(['/error']))
+        .then(meeting => this.setMeeting(meeting))
+        .catch(() => this.onError())
     })
   }
 
   ngOnDestroy() : void
   {
     this.observer.unsubscribe()
+  }
+
+  setMeeting(meeting: Meeting) : void
+  {
+    (meeting) ? this.meeting = meeting : this.router.navigateByUrl('/admin/meetings/new')
+  }
+
+  onError() : void
+  {
+    this.router.navigateByUrl('/admin/error')
   }
 
 }

@@ -1,79 +1,70 @@
-<form #form="ngForm" class="h-full w-full flex flex-col justify-center items-center">
+<form #form="ngForm" *ngIf="meeting" class="h-full w-full flex flex-col justify-center items-center">
 
-  <!-- <section class="w-5/6 flex justify-between items-end h-1/10">
-    <section class="w-1/2 text-lg tracking-widest flex justify-center items-center">
-      <p>{{ meeting.meetingType.title }}</p>
-    </section>
-    <section class="w-1/2 text-lg tracking-widest flex justify-center items-center">
-      <p class="capitalize">{{ meeting.date | date:'d MMM Y, HH:mm' }}</p>
-    </section>
-  </section> -->
+  <section class="w-5/6 flex justify-around items-end h-2/20">
 
-  <section class="w-5/6 flex justify-between items-end h-1/10">
-
-    <section class="w-6/12 h-full text-lg tracking-widest flex justify-center items-center">
+    <section class="w-8/20 h-full text-lg tracking-widest flex justify-center items-center">
       <select class="w-full outline-none bg-transparent" name="meetingType" [(ngModel)]="meeting.meetingType">
 
         <option [ngValue]="meeting.meetingType" selected>
           {{ meeting.meetingType.title }}
         </option>
 
-        <ng-container *ngFor="let meetingType of service.meetingTypes">
-          <option *ngIf="meetingType.id != meeting.meetingType.id" [ngValue]="meetingType">
-            {{ meetingType.title }}
-          </option>
-        </ng-container>
+          <ng-container *ngFor="let meetingType of service.meetingTypes">
+            <option *ngIf="meetingType.id != meeting.meetingType.id" [ngValue]="meetingType">
+              {{ meetingType.title }}
+            </option>
+          </ng-container>
 
       </select>
     </section>
 
-    <section class="w-4/12 h-full text-lg tracking-widest flex justify-center items-center">
+    <section class="w-6/20 h-full text-lg tracking-widest flex justify-center items-center">
       <input class="w-full outline-none bg-transparent" name="datetime" type="datetime-local" [value]="meeting.date" [(ngModel)]="meeting.date">
     </section>
 
   </section>
 
-  <section class="w-5/6 overflow-y-auto h-8/10 p-5 rounded-lg">
+  <section class="w-7/8 overflow-y-auto h-15/20 p-5 rounded-lg">
 
     <meeting-chapters [chapters]="meeting.chapters"></meeting-chapters>
 
   </section>
 
-  <section *ngIf="meeting.state == null" class="w-5/6 flex justify-between items-center h-1/10">
-    <button [routerLink]="'/meeting?meeting=' + meeting.id" mat-raised-button class="h-4/6 w-7/20 tracking-widest text-gray-900" color="primary">
+  <section *ngIf="meeting.state == null" class="w-6/8 flex justify-between items-center h-3/20">
+    <button [routerLink]="'/meeting?meeting=' + meeting.id" mat-raised-button class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
       LANCER
     </button>
-    <button mat-raised-button class="h-4/6 w-6/20 tracking-widest text-gray-900" color="accent">
+    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       CONVOQUER
     </button>
-    <button mat-raised-button class="h-4/6 w-6/20 tracking-widest text-gray-900" color="warn">
+    <button mat-raised-button (click)="onDelete()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
       SUPPRIMER
     </button>
   </section>
 
-  <section *ngIf="meeting.state == true" class="w-5/6 flex justify-between items-center h-1/10">
-    <button mat-raised-button (click)="onSubmit()" class="h-4/6 w-7/20 tracking-widest text-gray-900" color="primary">
+  <section *ngIf="meeting.state == true" class="w-6/8 flex justify-between items-center h-3/20">
+    <button mat-raised-button (click)="onSubmit()" class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
       REJOINDRE
     </button>
-    <!-- <button mat-raised-button [routerLink]="'/meeting?meeting=' + meeting.id" class="h-4/6 w-7/20 tracking-widest text-gray-900" color="primary">
+    <!-- <button mat-raised-button [routerLink]="'/meeting?meeting=' + meeting.id" class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
       REJOINDRE
     </button> -->
-    <button mat-raised-button class="h-4/6 w-6/20 tracking-widest text-gray-900" color="accent">
+    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       INVITER
     </button>
-    <button mat-raised-button class="h-4/6 w-6/20 tracking-widest text-gray-900" color="warn">
+    <button mat-raised-button (click)="onDelete()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
       CLOTURER
     </button>
   </section>
 
-  <section *ngIf="meeting.state == false" class="w-5/6 flex justify-between items-center h-1/10">
-    <button mat-raised-button disabled class="h-4/6 w-7/20 tracking-widest text-gray-900">
+  <section *ngIf="meeting.state == false" class="w-6/8 flex justify-between items-center h-3/20">
+    <button mat-raised-button disabled class="h-9/20 w-7/20 tracking-widest text-gray-900">
       CLOTURÉE
     </button>
-    <button mat-raised-button class="h-4/6 w-6/20 tracking-widest text-gray-900" color="accent">
+    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       COMPTE RENDU
     </button>
-    <button mat-raised-button class="h-4/6 w-6/20 tracking-widest text-gray-900" color="warn">
+    <button mat-raised-button (click)="onDelete()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
       SUPPRIMER
     </button>
   </section>

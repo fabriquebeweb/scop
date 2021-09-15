@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MeetingDialogDTO } from '@scop/interfaces';
+import { MeetingService } from '../meeting.service';
 
 @Component({
-  selector: 'web-dialog',
-  templateUrl: './dialog.component.html'
+  selector: 'meeting-dialog',
+  templateUrl: './dialog.component.html',
 })
-export class DialogComponent implements OnInit {
+export class MeetingDialogComponent implements OnInit {
 
-  constructor() {}
-  
-  ngOnInit(): void {
-  }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: MeetingDialogDTO,
+    private readonly service: MeetingService
+  ){}
 
+  ngOnInit() : void
+  {}
 
 }

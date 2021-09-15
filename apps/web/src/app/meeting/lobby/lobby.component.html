@@ -1,27 +1,22 @@
-<!-- Si la réunion est terminée (state == false) -->
+<!-- REUNION TERMINEE -->
+<main *ngIf="service.meeting.state == false; else LobbyNull" class="h-full w-full flex justify-center items-center truncate text-center">
+  <section>
+    <img [routerLink]="'/'" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
+      <p>La réunion n'a pas encore commencé.</p>
+      <p>Veuillez revenir à la date suivante :</p>
+      <p>{{ service.meeting.date | date:'d MMM Y, HH:mm'}}</p>
+  </section>
+</main>
+<!-- / REUNION TERMINEE -->
 
-<div *ngIf="service.meeting.state == false; else LobbyNull" class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
-    <!-- Affichage de la "salle d'attente" -->
+<!-- REUNION EN ATTENTE -->
+<ng-template #LobbyNull>
+  <main class="h-full w-full flex justify-center items-center truncate text-center">
     <section>
       <img [routerLink]="'/'" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
-      <p>La réunion n'a pas encore commencé.
-      <br>
-      Veuillez revenir à la date suivante :
-      <br>
-      {{ service?.meeting?.date | date:'d MMM Y, HH:mm'}}
-      </p>
+      <p>Cette réunion est terminée.</p>
+      <p>Nous vous remercions de votre participation !</p>
     </section>
-</div>
-
-<!-- Si la Réunion n'a pas encore commencée -->
-
-<ng-template #LobbyNull>
-  <div class="md: h-full md: w-full bg-white -lg flex justify-center items-center truncate text-center">
-    <section>
-      <img [routerLink]="['/']" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
-      Cette réunion est terminée.
-      <br>
-      Nous vous remercions de votre participation !
-    </section>
-  </div>
+  </main>
 </ng-template>
+<!-- / REUNION EN ATTENTE -->

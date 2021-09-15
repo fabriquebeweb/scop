@@ -9,7 +9,7 @@ export class MeetingLobbyComponent implements OnInit {
 
   constructor(
     public readonly service: MeetingService
-  ) {}
+  ){}
 
   ngOnInit() : void
   {}

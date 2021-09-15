@@ -36,7 +36,7 @@ export class AdminMeetingsController {
   @Put('/:meeting')
   updateMeeting( @Param('meeting') id: number, @Body() meeting: Meeting )
   {
-    return (meeting.id == id) ? this.service.resetMeeting(meeting) : null
+    return this.service.resetMeeting(meeting)
   }
 
   @Delete('/:meeting')

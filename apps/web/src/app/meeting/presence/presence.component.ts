@@ -9,11 +9,7 @@ import { DialogComponent } from '../dialog/dialog.component'
 })
 export class MeetingPresenceComponent implements OnInit {
 
-  chapters!: Chapter[]
-
-  constructor(
-    private dialog: MatDialog
-  ){}
+  constructor(){}
 
   ngOnInit() : void
   {}

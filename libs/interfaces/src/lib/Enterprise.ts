@@ -4,14 +4,14 @@ export interface Enterprise {
 
   id: number
   name: string
-  logo?: string
-  primary?: string
-  secondary?: string
-  ternary?: string
-  provider?: Provider | number
-  status?: Status[] | number[]
-  users?: User[] | number[]
-  meetings?: Meeting[] | number[]
-  choices?: Choice[] | number[]
+  logo: string | null
+  primary: string | null
+  secondary: string | null
+  ternary: string | null
+  provider?: Provider
+  status?: Status[]
+  users?: User[]
+  meetings?: Meeting[]
+  choices?: Choice[]
 
 }

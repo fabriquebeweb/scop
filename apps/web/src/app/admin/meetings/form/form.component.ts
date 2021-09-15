@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { NewMeetingDTO } from '@scop/interfaces'
+import { Chapter, NewMeetingDTO } from '@scop/interfaces'
 import { AdminMeetingsService } from '../meetings.service'
 
 @Component({
@@ -34,11 +34,16 @@ export class AdminMeetingsFormComponent implements OnInit {
         .then(console.log)
         .catch(console.log)
 
-      this.onCancel()
+      this.resetMeeting()
     }
   }
 
-  onCancel() : void
+  onChaptersUpdate(chapters: Chapter[])
+  {
+    this.meeting.chapters = chapters
+  }
+
+  resetMeeting() : void
   {
     this.meeting.date = undefined
     this.meeting.meetingType = undefined

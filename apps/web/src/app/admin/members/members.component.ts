@@ -21,4 +21,16 @@ export class AdminMembersComponent implements OnInit {
       .catch(error => console.error(error))
   }
 
+  onDelete(member: User) : void
+  {
+    this.service.unsetMember(member.id)
+      .then(() => this.unsetMember(member.id))
+      .catch(console.log)
+  }
+
+  unsetMember(memberId: number) : void
+  {
+    this.members = this.members.filter(member => member.id != memberId)
+  }
+
 }

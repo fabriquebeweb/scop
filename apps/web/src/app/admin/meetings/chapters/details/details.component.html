@@ -6,6 +6,28 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <p>{{ chapter.description }}</p>
+  <form #form="ngForm" class="w-full">
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Titre</mat-label>
+      <input matInput type="text" name="title" [(ngModel)]="chapter.title" (change)="chapterUpdate()" required>
+      <mat-error *ngIf="!chapter.title">Champ obligatoire</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="description" [(ngModel)]="chapter.description" (change)="chapterUpdate()"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Compte Rendu</mat-label>
+      <textarea matInput name="summary" [(ngModel)]="chapter.summary" (change)="chapterUpdate()"></textarea>
+    </mat-form-field>
+
+  </form>
+
+  <mat-action-row>
+    <button mat-button color="warn" (click)="chapterRemove()">Supprimer</button>
+  </mat-action-row>
 
 </mat-expansion-panel>

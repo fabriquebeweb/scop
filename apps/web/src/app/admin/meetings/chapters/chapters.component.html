@@ -1,6 +1,8 @@
 <mat-accordion>
 
-  <chapter-details *ngFor="let chapter of chapters" [chapter]="chapter"></chapter-details>
+  <chapter-details *ngFor="let chapter of chapters"
+    [chapter]="chapter" (update)="onChapterUpdate($event)" (remove)="onChapterRemove($event)">
+  </chapter-details>
 
   <!-- <chapter-form [selected]="true"></chapter-form> -->
 

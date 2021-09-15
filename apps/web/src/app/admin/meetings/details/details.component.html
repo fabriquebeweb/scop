@@ -1,4 +1,4 @@
-<form #form="ngForm" class="h-full w-full flex flex-col justify-center items-center">
+<form #form="ngForm" *ngIf="meeting" class="h-full w-full flex flex-col justify-center items-center">
 
   <section class="w-5/6 flex justify-around items-end h-2/20">
 
@@ -9,11 +9,11 @@
           {{ meeting.meetingType.title }}
         </option>
 
-        <ng-container *ngFor="let meetingType of service.meetingTypes">
-          <option *ngIf="meetingType.id != meeting.meetingType.id" [ngValue]="meetingType">
-            {{ meetingType.title }}
-          </option>
-        </ng-container>
+          <ng-container *ngFor="let meetingType of service.meetingTypes">
+            <option *ngIf="meetingType.id != meeting.meetingType.id" [ngValue]="meetingType">
+              {{ meetingType.title }}
+            </option>
+          </ng-container>
 
       </select>
     </section>
@@ -26,7 +26,7 @@
 
   <section class="w-7/8 overflow-y-auto h-15/20 p-5 rounded-lg">
 
-    <meeting-chapters [chapters]="meeting.chapters" (update)="updateChapters($event)"></meeting-chapters>
+    <meeting-chapters [chapters]="meeting.chapters"></meeting-chapters>
 
   </section>
 
@@ -37,7 +37,7 @@
     <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       CONVOQUER
     </button>
-    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
+    <button mat-raised-button (click)="onDelete()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
       SUPPRIMER
     </button>
   </section>
@@ -52,7 +52,7 @@
     <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       INVITER
     </button>
-    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
+    <button mat-raised-button (click)="onDelete()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
       CLOTURER
     </button>
   </section>
@@ -64,7 +64,7 @@
     <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       COMPTE RENDU
     </button>
-    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
+    <button mat-raised-button (click)="onDelete()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">
       SUPPRIMER
     </button>
   </section>

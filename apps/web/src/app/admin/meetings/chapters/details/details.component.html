@@ -8,7 +8,7 @@
 
   <form #form="ngForm" class="w-full">
 
-    <mat-form-field (click)="chapterRemove()" appearance="outline" class="w-full">
+    <mat-form-field appearance="outline" class="w-full">
       <mat-label>Titre</mat-label>
       <input matInput type="text" name="title" [(ngModel)]="chapter.title" (change)="chapterUpdate()" required>
       <mat-error *ngIf="!chapter.title">Champ obligatoire</mat-error>
@@ -25,5 +25,9 @@
     </mat-form-field>
 
   </form>
+
+  <mat-action-row>
+    <button mat-button color="warn" (click)="chapterRemove()">Supprimer</button>
+  </mat-action-row>
 
 </mat-expansion-panel>

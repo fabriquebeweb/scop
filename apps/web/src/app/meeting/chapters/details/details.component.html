@@ -1,4 +1,4 @@
-<section class="h-full w-full flex justify-center items-center">
+<section *ngIf="chapter" class="h-full w-full flex justify-center items-center">
   <mat-card class="h-9/10 w-9/10 rounded shadow-lg">
     <h3>{{ chapter.title }}</h3>
     <h3>{{ chapter.description }}</h3>

@@ -21,4 +21,9 @@ export class AdminMembersComponent implements OnInit {
       .catch(error => console.error(error))
   }
 
+  onDelete(targetMember: User) : void
+  {
+    this.members = this.members.filter(meeting => meeting.id != targetMember.id)
+  }
+
 }

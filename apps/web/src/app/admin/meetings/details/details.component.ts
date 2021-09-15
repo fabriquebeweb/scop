@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { AdminMeetingsService } from '../meetings.service'
 import { Chapter, Meeting } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
-import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'meeting-details',
@@ -35,9 +34,20 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
   onSubmit() : void
   {
-    // this.meeting = this.meetingArchive
-    console.log(this.meeting)
-    // console.log(this.meeting.chapters)
+    this.service.resetMeeting(this.meeting)
+      .then(meeting => this.setMeeting(meeting))
+      .catch(() => this.onError())
+
+    this.service.meetings[this.index(this.meeting)] = this.meeting
+  }
+
+  onDelete() : void
+  {
+    this.service.unsetMeeting(this.meeting.id)
+      .then(() => this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id))
+      .catch(() => this.onError())
+
+    this.router.navigateByUrl('/admin/meetings/new')
   }
 
   onError() : void
@@ -67,6 +77,11 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
   updateChapters(chapters: Chapter[]) : void
   {
     this.meeting.chapters = chapters
+  }
+
+  index(meeting: Meeting) : number
+  {
+    return this.service.meetings.findIndex(obj => obj.id == meeting.id)
   }
 
 }

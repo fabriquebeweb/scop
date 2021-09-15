@@ -8,6 +8,7 @@ import { API } from '../../app.common'
 @Injectable()
 export class AdminMeetingsService {
 
+  meetings!: Meeting[]
   meetingTypes!: MeetingType[]
 
   constructor(
@@ -24,11 +25,6 @@ export class AdminMeetingsService {
     return this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
   }
 
-  getMeetingTypes() : Promise<MeetingType[]>
-  {
-    return this.http.get<MeetingType[]>(API.path(`/admin/meetings/types`), API.options()).toPromise()
-  }
-
   setNewMeeting(meeting: NewMeetingDTO) : Promise<InsertResult>
   {
     return this.http.post<InsertResult>(API.path(`/admin/meetings`), meeting, API.options()).toPromise()
@@ -42,6 +38,11 @@ export class AdminMeetingsService {
   unsetMeeting(id: number) : Promise<DeleteResult>
   {
     return this.http.delete<DeleteResult>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
+  }
+
+  getMeetingTypes() : Promise<MeetingType[]>
+  {
+    return this.http.get<MeetingType[]>(API.path(`/admin/meetings/types`), API.options()).toPromise()
   }
 
   checkMeeting(meeting: Meeting | NewMeetingDTO) : boolean

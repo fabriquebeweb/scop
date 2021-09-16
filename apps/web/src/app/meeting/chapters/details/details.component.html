@@ -1,12 +1,25 @@
 <mat-card class="h-full w-full">
+  <section *ngIf="chapter" class="p-5 overflow-y-scroll h-full w-full flex flex-col justify-start items-center">
 
-  <header *ngIf="chapter" class="h-full w-full p-10 flex justify-center items-center">
-    <mat-card-header class="my-10 flex flex-col justify-center items-center">
-      <mat-card-title class="text-center uppercase">{{ chapter.title }}</mat-card-title>
-      <mat-card-subtitle class="text-center">{{ chapter.description }}</mat-card-subtitle>
+    <mat-card-header>
+      <header class="p-10 flex flex-col justify-center items-center">
+        <section class="my-5">
+          <mat-card-title class="text-center uppercase">{{ chapter.title }}</mat-card-title>
+        </section>
+        <section class="my-5">
+          <mat-card-subtitle class="text-center">{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}</mat-card-subtitle>
+        </section>
+      </header>
     </mat-card-header>
-  </header>
 
+    <mat-card-actions>
+      <footer class="pb-8">
+        <button mat-button>MO</button>
+        <button mat-button>MO</button>
+      </footer>
+    </mat-card-actions>
+
+  </section>
 </mat-card>
 
 <!-- <div *ngIf="chapter.question" (click)="openDialog(chapter.id)" class="fixed bottom-10 w-fill flex p-3 pl-3 bg-gray-200 rounded-lg h-auto">

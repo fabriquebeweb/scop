@@ -1,10 +1,10 @@
 <section class="fixed bottom-0 h-7/8 flex justify-center items-center">
   <section class="flex justify-center items-center h-7/8 w-7/8">
 
-    <aside class="overflow-y-scroll w-2/6 h-full flex flex-col justify-between">
+    <aside class="overflow-y-scroll w-2/6 h-full flex flex-col justify-between px-2">
 
-      <button *ngFor="let chapter of chapters" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 h-32 w-full bg-white hover:bg-basic-light rounded flex flex-col justify-center items-center shadow-raised break-all overflow-hidden">
-        {{ chapter.title }}
+      <button *ngFor="let chapter of chapters; let i = index" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 h-32 w-full bg-white hover:bg-basic-light rounded-tl rounded-bl flex flex-col justify-center items-start shadow-raised truncate overflow-hidden">
+        {{ i + 1 }}. {{ chapter.title }}
       </button>
 
     </aside>

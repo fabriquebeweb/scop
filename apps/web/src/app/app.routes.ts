@@ -14,6 +14,8 @@ import { MeetingPresenceComponent } from './meeting/presence/presence.component'
 import { AdminMeetingsDetailsComponent } from './admin/meetings/details/details.component'
 import { AdminMeetingsFormComponent } from './admin/meetings/form/form.component'
 import { MeetingChaptersDetailsComponent } from './meeting/chapters/details/details.component'
+import { AdminMembersFormComponent } from './admin/members/form/form.component'
+import { AdminMembersDetailsComponent } from './admin/members/details/details.component'
 
 export const routes: Routes = [
   {
@@ -50,7 +52,17 @@ export const routes: Routes = [
       },
       {
         path: 'members',
-        component: AdminMembersComponent
+        component: AdminMembersComponent,
+        children: [
+          {
+            path: 'new',
+            component: AdminMembersFormComponent
+          },
+          {
+            path: ':meeting',
+            component: AdminMembersDetailsComponent
+          }
+        ]
       },
       {
         path: 'status',

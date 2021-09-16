@@ -1,1 +1,36 @@
-<p>form works!</p>
+<aside>
+
+    <p>Nouveau membre</p>
+  
+  
+    <form #form="ngForm" class="w-full" >
+  
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Prénom</mat-label>
+          <input matInput type="text" name="firstName" required>
+        <mat-error>Champ obligatoire</mat-error>
+        
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Nom</mat-label>
+          <input matInput name="description" required>
+        <mat-error>Champ obligatoire</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Email</mat-label>
+          <input matInput name="summary" required>
+        <mat-error>Champ obligatoire</mat-error>
+      </mat-form-field>
+  
+    </form>
+  
+    <mat-action-row>
+      <button mat-button color="primary">Valider</button>
+    </mat-action-row>
+  
+    <mat-action-row>
+      <button mat-button color="warn">Annuler</button>
+    </mat-action-row>
+  </aside>

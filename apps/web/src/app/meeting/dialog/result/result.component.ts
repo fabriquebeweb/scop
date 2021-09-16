@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Chapter, ChapterResultDTO } from '@scop/interfaces'
 import { MeetingService } from '../../meeting.service'
 
@@ -9,7 +9,8 @@ import { MeetingService } from '../../meeting.service'
 export class MeetingDialogResultComponent implements OnInit {
 
   @Input() chapter!: Chapter
-  result!: ChapterResultDTO
+  @Output() close: EventEmitter<void> = new EventEmitter<void>()
+  chapterResult!: ChapterResultDTO
 
   constructor(
     private readonly service: MeetingService
@@ -17,15 +18,19 @@ export class MeetingDialogResultComponent implements OnInit {
 
   ngOnInit() : void
   {
-    this.service.getMeetingChapterResult(1)
-    // this.service.getMeetingChapterResult(this.chapter.id)
+    this.service.getMeetingChapterResult(this.chapter.id)
       .then(result => this.setChapterResult(result))
       .catch(console.log)
   }
 
   setChapterResult(result: ChapterResultDTO) : void
   {
-    this.result = result
+    this.chapterResult = result
+  }
+
+  onClose() : void
+  {
+    this.close.emit()
   }
 
 }

@@ -13,7 +13,7 @@ export class MeetingService
   dialog = new Subject<MeetingDialogDTO>()
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
   ){}
 
   notify(chapter: MeetingDialogDTO)

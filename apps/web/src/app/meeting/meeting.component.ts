@@ -16,7 +16,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     public dialog: MatDialog
-  ) {}
+  ){}
 
   ngOnInit() : void
   {
@@ -33,13 +33,12 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   onDialog(chapter: MeetingDialogDTO)
   {
-    this.dialog.open(MeetingDialogComponent, { data: chapter })
+    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', maxWidth: '80vw', data: chapter })
   }
 
   setMeeting(meeting: Meeting) : void
   {
     (meeting) ? this.service.meeting = meeting : this.onError()
-    if (/^\/meeting\/?\??.*$/.test(this.router.url)) this.redirect()
   }
 
   redirect() : void
@@ -49,7 +48,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   onError() : void
   {
-    this.router.navigateByUrl('/error')
+    this.router.navigateByUrl('/meeting/error')
   }
 
 }

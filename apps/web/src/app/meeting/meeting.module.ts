@@ -9,7 +9,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MeetingChaptersDetailsComponent } from './chapters/details/details.component'
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatRadioModule } from '@angular/material/radio'
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatCardModule } from '@angular/material/card'
@@ -33,7 +33,7 @@ import { MeetingDialogFormComponent } from './dialog/form/form.component'
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    FormsModule,
     MatProgressBarModule,
     MatRadioModule,
     MatButtonModule,

@@ -6,13 +6,15 @@ import { AdminStatusComponent } from './status/status.component'
 import { AdminThemeComponent } from './theme/theme.component'
 import { AdminMeetingsModule } from './meetings/meetings.module'
 import { MatTabsModule } from '@angular/material/tabs';
-import { AdminMembersModule } from './members/members.module'
+import { AdminMembersModule } from './members/members.module';
+//import { MemberdetailsComponent } from './members/memberdetails/memberdetails.component'
 
 @NgModule({
   declarations: [
     AdminComponent,
     AdminStatusComponent,
-    AdminThemeComponent
+    AdminThemeComponent,
+    //MemberdetailsComponent
   ],
   imports: [
     CommonModule,

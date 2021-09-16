@@ -9,13 +9,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { AdminMembersComponent } from './members.component'
-import { AdminMembersService } from './members.service'
-import { MemberdetailsComponent } from './memberdetails/memberdetails.component'
+import { AdminMembersService } from './members.service';
+import { AdminMembersFormComponent } from './form/form.component'
+import { AdminMembersDetailsComponent } from './details/details.component'
 
 @NgModule({
   declarations: [
     AdminMembersComponent,
-    MemberdetailsComponent
+    AdminMembersFormComponent,
+    AdminMembersDetailsComponent
   ],
   imports: [
     CommonModule,

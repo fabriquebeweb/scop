@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Chapter } from '@scop/interfaces'
 
 @Component({
   selector: 'meeting-presence',

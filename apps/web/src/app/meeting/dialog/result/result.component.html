@@ -1,26 +1,26 @@
-<section class="flex flex-col w-full h-full items-center">
-    <!-- Récupération du nombre total de votes par chapitre -->
-    <section class="flex mt-5 h-1/10 bg-basic w-full justify-center items-center text-center">Nombre total de votes : {{ result.count }}</section>
+<section *ngIf="chapterResult" class="flex flex-col w-full h-full items-center">
+  <!-- Récupération du nombre total de votes par chapitre -->
+  <section class="flex mt-5 h-1/10 bg-basic w-full justify-center items-center text-center">Nombre total de votes : {{ chapterResult.count }}</section>
 
-    <!-- Boucle sur l'entité chapter afin de récupérer les choix -->
-    <section class="overflow-y-scroll w-full pr-10 pl-10 mb-5 h-8/10">
-      <div class="mt-5" *ngFor="let choice of result.choices">
-          <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
-          <div class="flex flex-row w-full mb-4">
-              <div class="flex justify-start w-1/2">{{ (choice.count/result.count)*100 }}% {{ choice.details != null ? choice.details.title : 'Abstention' }}</div>
-              <div class="flex justify-end w-1/2">{{ choice.count }} votes</div>
-          </div>
-          <!-- Graphe sous forme de barre horizontale et récupération du nombre de votes dans value -->
-          <mat-progress-bar mode="determinate" value="{{ (choice.count/result.count)*100 }}"></mat-progress-bar>
+  <!-- Boucle sur l'entité chapter afin de récupérer les choix -->
+  <section class="overflow-y-scroll w-full pr-10 pl-10 mb-5 h-8/10">
+    <div class="mt-5" *ngFor="let choice of chapterResult.choices">
+      <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
+      <div class="flex flex-row w-full mb-4">
+          <div class="flex justify-start w-1/2">{{ (choice.count/chapterResult.count)*100 }}% {{ choice.details != null ? choice.details.title : 'Abstention' }}</div>
+          <div class="flex justify-end w-1/2">{{ choice.count }} votes</div>
       </div>
-    </section>
-    <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
-    <section class="h-1/10">
-        <a class="w-fill flex p-3 pl-3 bg-gray-200 rounded-lg ">
-            <span class="ml-2 truncate mr-1">{{ result.details.result?.title }}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </a>
-    </section>
+      <!-- Graphe sous forme de barre horizontale et récupération du nombre de votes dans value -->
+      <mat-progress-bar mode="determinate" value="{{ (choice.count/chapterResult.count)*100 }}"></mat-progress-bar>
+    </div>
+  </section>
+  <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
+  <section *nfIf="chapterResult.details.result" class="h-1/10">
+    <a class="w-fill flex p-3 pl-3 bg-gray-200 rounded-lg ">
+      <span class="ml-2 truncate mr-1">{{ chapterResult.details.result?.title }}</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </a>
+  </section>
 </section>

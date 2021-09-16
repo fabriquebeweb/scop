@@ -33,6 +33,11 @@ export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
     this.observer.unsubscribe()
   }
 
+  openDialog(id: number)
+  {
+    this.service.dialog.next({ chapter: id })
+  }
+
   setChapter(chapter: Chapter) : void
   {
     this.chapter = chapter

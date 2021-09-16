@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Chapter, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
+import { Chapter, ChapterAnswerDTO, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
+import { InsertResult } from 'typeorm'
 import { API } from '../app.common'
 import { Subject } from 'rxjs'
 
@@ -12,7 +13,7 @@ export class MeetingService
   dialog = new Subject<MeetingDialogDTO>()
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
   ){}
 
   notify(chapter: MeetingDialogDTO)
@@ -49,6 +50,11 @@ export class MeetingService
   getMeetingChapter(id: number) : Promise<Chapter>
   {
     return this.http.get<Chapter>(API.path(`/meeting/${this.meeting.id}/chapter/${id}`), API.options()).toPromise()
+  }
+
+  postAnswer(answer: ChapterAnswerDTO) : Promise<InsertResult>
+  {
+    return this.http.post<InsertResult>(API.path(`/meeting/${this.meeting.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
   }
 
   getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>

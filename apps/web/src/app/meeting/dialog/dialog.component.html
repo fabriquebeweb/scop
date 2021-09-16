@@ -1,1 +1,11 @@
-<p>{{ data.chapter }}</p>
+<aside *ngIf="chapter">
+
+  <ng-container *ngIf="chapter.state == false; else Form">
+    <dialog-result [chapter]="chapter" (close)="onClose()"></dialog-result>
+  </ng-container>
+
+  <ng-template #Form>
+    <dialog-form [chapter]="chapter" (close)="onClose()"></dialog-form>
+  </ng-template>
+  
+</aside>

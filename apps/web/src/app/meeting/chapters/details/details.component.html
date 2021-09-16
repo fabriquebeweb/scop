@@ -7,7 +7,7 @@
 
 <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
   <!-- Affichage s'il y a une question au chapitre -->
-  <div *ngIf="chapter.question" class="fixed bottom-10 w-fill flex p-3 pl-3 bg-gray-200 rounded-lg h-auto">
+  <div *ngIf="chapter.question" (click)="openDialog(chapter.id)" class="fixed bottom-10 w-fill flex p-3 pl-3 bg-gray-200 rounded-lg h-auto">
     <!-- Affichage s'il y a un résultat à la question -->
     <div *ngIf="chapter.result">
       <a>

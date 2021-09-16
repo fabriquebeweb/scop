@@ -2,6 +2,7 @@ import { Chapter } from '@scop/interfaces'
 
 export interface MeetingDialogDTO {
 
-  chapter: Chapter | number
+  chapter: number
+  // chapter: Chapter | number
 
 }

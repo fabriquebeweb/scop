@@ -1,21 +1,17 @@
-<section class="flex w-full h-full">
+<section class="fixed bottom-0 h-7/8 flex justify-center items-center">
+  <section class="flex justify-center items-center h-7/8 w-7/8">
 
-  <aside class="sticky w-3/8 h-full flex flex-col justify-between left-0 bottom-0 pt-2 px-2">
+    <aside class="overflow-y-scroll w-2/6 h-full flex flex-col justify-between">
 
-    <section class="overflow-y-scroll h-full">
-      <article>
-        <button *ngFor="let chapter of chapters" [routerLink]="['/meeting/chapters/' + chapter.id]" routerLinkActive="bg-basic-light" class="p-5 h-20 w-full bg-white hover:bg-basic-light rounded flex flex-col justify-items-start items-center shadow-raised my-1 break-all overflow-hidden">
-          {{ chapter.title }}
-        </button>
-      </article>
-    </section>
+      <button *ngFor="let chapter of chapters" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 h-32 w-full bg-white hover:bg-basic-light rounded flex flex-col justify-center items-center shadow-raised break-all overflow-hidden">
+        {{ chapter.title }}
+      </button>
 
-  </aside>
+    </aside>
 
-  <main class="h-7/8 w-5/8 fixed right-0 bottom-0">
+    <main class="overflow-y-scroll h-full w-4/6">
+      <router-outlet></router-outlet>
+    </main>
 
-    <router-outlet></router-outlet>
-
-  </main>
-
+  </section>
 </section>

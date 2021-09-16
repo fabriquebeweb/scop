@@ -16,12 +16,12 @@
   </section>
 </nav>
 
-<ng-container *ngIf="service.meeting">
+<ng-container *ngIf="service.meeting" class="fixed bottom-0 h-7/8">
   <main *ngIf="service.meeting.state == true; else Lobby">
     <router-outlet></router-outlet>
   </main>
 </ng-container>
 
-<ng-template #Lobby>
+<ng-template #Lobby class="fixed bottom-0 h-7/8">
   <meeting-lobby></meeting-lobby>
 </ng-template>

@@ -16,11 +16,6 @@ export class MeetingService
     private readonly http: HttpClient,
   ){}
 
-  notify(chapter: MeetingDialogDTO)
-  {
-    this.dialog.next(chapter)
-  }
-
   // get(key: string) : any
   // {
   //   const value = sessionStorage.getItem(key)
@@ -54,7 +49,7 @@ export class MeetingService
 
   postAnswer(answer: ChapterAnswerDTO) : Promise<InsertResult>
   {
-    return this.http.post<InsertResult>(API.path(`/meeting/${this.meeting.id}/chapter/${answer.chapter}}`), answer, API.options()).toPromise()
+    return this.http.post<InsertResult>(API.path(`/meeting/${this.meeting.id}/chapter/${answer.chapter}`), answer, API.options()).toPromise()
   }
 
   getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>

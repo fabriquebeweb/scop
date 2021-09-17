@@ -5,17 +5,17 @@
     <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
   </mat-card-header>
 
-  <mat-card-content class="overflow-y-scroll my-6 max-h-80 w-9/10">
-    <mat-radio-group *ngIf="answer" class="flex flex-col justify-evenly items-start" name="answer" [(ngModel)]="answer.choice">
+  <mat-card-content *ngIf="answer" class="overflow-y-scroll my-6 max-h-80 w-9/10">
+    <mat-radio-group class="flex flex-col justify-evenly items-start" name="answer" [(ngModel)]="answer.choice">
       <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" [value]="choice" name="answer">
         {{ choice.title }}
       </mat-radio-button>
     </mat-radio-group>
   </mat-card-content>
 
-  <mat-card-footer class="w-5/6">
+  <mat-card-footer class="w-5/6" *ngIf="answer">
     <footer class="my-6 w-full flex justify-evenly items-center space-x-5">
-      
+
       <button mat-raised-button *ngIf="answer.choice; else NoChoice" (click)="saveAnswer()" class="w-64 tracking-widest" color="primary">
         VALIDER
       </button>
@@ -26,7 +26,7 @@
       <ng-template #NoChoice>
         <button mat-raised-button class="w-64 tracking-widest" disabled>
           VALIDER
-        </button>  
+        </button>
       </ng-template>
 
     </footer>

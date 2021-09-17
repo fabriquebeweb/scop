@@ -36,6 +36,18 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
       .catch(() => this.onError())
   }
 
+  onLaunch() : void
+  {
+    this.meeting.state = true
+    this.onSubmit()
+  }
+
+  onClose() : void
+  {
+    this.meeting.state = false
+    this.onSubmit()
+  }
+
   onDelete() : void
   {
     this.service.unsetMeeting(this.meeting.id)

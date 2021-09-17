@@ -3,7 +3,7 @@
 
     <aside class="overflow-y-scroll w-4/10 h-full flex flex-col justify-between px-2">
 
-      <button *ngFor="let chapter of chapters; let i = index" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 h-32 w-full bg-white hover:bg-basic-light rounded-tl rounded-bl flex flex-col justify-center items-start shadow-raised truncate overflow-hidden">
+      <button *ngFor="let chapter of chapters; let i = index" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 h-32 w-full bg-white hover:bg-basic-light rounded-tl rounded-bl flex flex-col justify-center items-start shadow-raised truncate overflow-hidden" title="{{ chapter.title }}">
         {{ i + 1 }}. {{ chapter.title }}
       </button>
 

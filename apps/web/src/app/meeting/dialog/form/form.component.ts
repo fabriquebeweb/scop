@@ -21,7 +21,7 @@ export class MeetingDialogFormComponent implements OnInit {
   {
     this.service.getMeetingChapter(this.chapter.id)
       .then(chapter => this.setChapter(chapter))
-      .catch(console.log)
+      .catch(console.error)
   }
 
   setChapter(chapter: Chapter) : void
@@ -46,9 +46,6 @@ export class MeetingDialogFormComponent implements OnInit {
     this.service.postAnswer(this.answer)
       .then(result => this.onSave(result))
       .catch(console.log)
-
-    // console.log(this.answer)
-    // this.onClose()
   }
 
   onSave(result: InsertResult) : void

@@ -15,19 +15,19 @@ export class AdminMembersController {
     return this.service.getMembers()
   }
 
-  @Get('/:member')
-  member( @Param('member') id: number )
-  {
-    return this.service.getMember(id)
-  }
-
   @Post()
   newMember( @Body() member: User )
   {
     return this.service.newMember(member)
   }
 
-  @Put()
+  @Get('/:member')
+  member( @Param('member') id: number )
+  {
+    return this.service.getMember(id)
+  }
+
+  @Put('/:member')
   updateMember( @Body() member: User )
   {
     return this.service.updateMember(member)

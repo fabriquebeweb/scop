@@ -10,6 +10,16 @@ export class AdminMembersService {
     return await User.find({ where: { enterprise: { id: 1 } } })
   }
 
+  async getMember(memberId: number) : Promise<User>
+  {
+    return await User.findOne({
+      where: {
+        id: memberId,
+        enterprise: { id: 1 }
+      }
+    })
+  }
+
   async newMember(member: User) : Promise<InsertResult>
   {
     return await User.insert(member)

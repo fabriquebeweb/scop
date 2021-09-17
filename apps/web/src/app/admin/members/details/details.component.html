@@ -3,24 +3,24 @@
     <p>Détails membre</p>
   
   
-    <form #form="ngForm" class="w-full" >
+    <form #form="ngForm" *ngIf="member" class="w-full" >
   
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Prénom</mat-label>
-          <input matInput type="text" name="firstName" [(ngModel)]="member.firstName" required>
+          <input matInput type="text" name="firstName" [(ngModel)]="member.firstName" #newItem required>
         <mat-error>Champ obligatoire</mat-error>
         
       </mat-form-field>
   
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Nom</mat-label>
-          <input matInput name="description" [(ngModel)]="member.lastName" required>
+          <input matInput name="description" [(ngModel)]="member.lastName" #newItem required>
         <mat-error>Champ obligatoire</mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Email</mat-label>
-          <input matInput name="summary" [(ngModel)]="member.email" required>
+          <input matInput name="summary" [(ngModel)]="member.email" #newItem required>
         <mat-error>Champ obligatoire</mat-error>
       </mat-form-field>
   

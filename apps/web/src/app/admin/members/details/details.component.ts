@@ -10,7 +10,7 @@ import { AdminMembersService } from '../members.service';
 })
 export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
 
-  @Input() member!: User
+  member!: User
   observer!: Subscription
 
   constructor(
@@ -21,7 +21,7 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    this.observer = this.route.params.subscribe(params => this.refreshMember(params.members)) //ou member?
+    this.observer = this.route.params.subscribe(params => this.refreshMember(params.member))
   }
 
   ngOnDestroy() : void
@@ -44,7 +44,8 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
 
   onError() : void
   {
-    this.router.navigateByUrl('/admin/members/error')
+    this.router.navigateByUrl('/admin/error')
   }
+
 
 }

@@ -1,7 +1,7 @@
 <form #form="ngForm" *ngIf="chapter.state == true; else Pending" class="flex flex-col justify-center items-center">
 
   <mat-card-header class="my-2 flex flex-col justify-center items-center">
-    <mat-card-subtitle class="text-center uppercase">Chapitre {{ chapter.id }}</mat-card-subtitle>
+    <mat-card-subtitle class="text-center uppercase">{{ chapter.title }}</mat-card-subtitle>
     <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
   </mat-card-header>
 
@@ -31,7 +31,7 @@
   <form class="flex flex-col justify-center items-center">
 
   <mat-card-header class="my-2 flex flex-col justify-center items-center">
-    <mat-card-subtitle class="text-center uppercase">Chapitre {{ chapter.id }}</mat-card-subtitle>
+    <mat-card-subtitle class="text-center uppercase">{{ chapter.title }}</mat-card-subtitle>
     <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
   </mat-card-header>
 

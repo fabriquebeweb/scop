@@ -26,8 +26,7 @@ export class MeetingDialogComponent implements OnInit {
 
   setChapter(chapter: Chapter)
   {
-    chapter.state = null
-
+    chapter.state = false
     this.chapter = chapter
   }
 

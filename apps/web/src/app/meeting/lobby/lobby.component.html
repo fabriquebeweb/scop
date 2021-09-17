@@ -1,22 +1,15 @@
 <!-- REUNION TERMINEE -->
-<main *ngIf="service.meeting.state == false; else LobbyNull" class="h-full w-full flex justify-center items-center truncate text-center">
-  <section>
-    <img [routerLink]="'/'" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
-      <p>La réunion n'a pas encore commencé.</p>
-      <p>Veuillez revenir à la date suivante :</p>
-      <p>{{ service.meeting.date | date:'d MMM Y, HH:mm'}}</p>
-  </section>
+<main *ngIf="service.meeting.state == false; else LobbyNull" class="h-full w-full flex flex-col justify-center items-center text-center">
+  <p>Cette réunion est terminée.</p>
+  <p>Nous vous remercions de votre participation !</p>
 </main>
 <!-- / REUNION TERMINEE -->
 
 <!-- REUNION EN ATTENTE -->
 <ng-template #LobbyNull>
-  <main class="h-full w-full flex justify-center items-center truncate text-center">
-    <section>
-      <img [routerLink]="'/'" class="inline h-24 cursor-pointer" src="https://doscarre.com/wp-content/uploads/2021/01/LOGO_SCOP-1024x610.png">
-      <p>Cette réunion est terminée.</p>
-      <p>Nous vous remercions de votre participation !</p>
-    </section>
+  <main class="h-full w-full flex flex-col justify-center items-center text-center">
+    <p>La réunion n'a pas encore commencé.</p>
+    <p>Veuillez revenir le {{ service.meeting.date | date:'d MMM Y' }} à {{ service.meeting.date | date:'HH:mm' }}</p>
   </main>
 </ng-template>
 <!-- / REUNION EN ATTENTE -->

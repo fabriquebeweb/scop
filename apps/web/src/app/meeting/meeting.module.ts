@@ -11,13 +11,15 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { MatRadioModule } from '@angular/material/radio'
 import { FormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatCardModule } from '@angular/material/card'
 import { MeetingService } from './meeting.service'
 import { MeetingLobbyComponent } from './lobby/lobby.component'
 import { MeetingDialogComponent } from './dialog/dialog.component'
 import { MeetingDialogResultComponent } from './dialog/result/result.component'
-import { MeetingDialogFormComponent } from './dialog/form/form.component'
+import { MeetingDialogFormComponent } from './dialog/form/form.component';
+import { MeetingChaptersResultComponent } from './chapters/result/result.component'
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { MeetingDialogFormComponent } from './dialog/form/form.component'
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
     MeetingChaptersDetailsComponent,
+    MeetingChaptersResultComponent,
     MeetingPresenceComponent,
     MeetingDialogComponent,
     MeetingDialogResultComponent,
@@ -39,6 +42,7 @@ import { MeetingDialogFormComponent } from './dialog/form/form.component'
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
+    MatIconModule,
     MatDialogModule,
     RouterModule.forChild([])
   ],

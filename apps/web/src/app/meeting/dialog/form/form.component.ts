@@ -26,8 +26,6 @@ export class MeetingDialogFormComponent implements OnInit {
 
   setChapter(chapter: Chapter) : void
   {
-    chapter.state = null
-
     this.chapter = chapter
 
     this.answer = {

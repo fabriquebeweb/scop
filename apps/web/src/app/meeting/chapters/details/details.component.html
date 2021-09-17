@@ -7,29 +7,14 @@
           <mat-card-title class="text-center uppercase">{{ chapter.title }}</mat-card-title>
         </section>
         <section class="my-5">
-          <mat-card-subtitle class="text-center">{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}{{ chapter.description }}</mat-card-subtitle>
+          <mat-card-subtitle class="text-center">{{ chapter.description }}</mat-card-subtitle>
         </section>
       </header>
     </mat-card-header>
 
-    <mat-card-actions>
-      <footer class="pb-8">
-        <button mat-button>MO</button>
-        <button mat-button>MO</button>
-      </footer>
+    <mat-card-actions *ngIf="chapter.question" class="w-full">
+      <chapter-result [chapter]="chapter" (click)="openDialog(chapter.id)"></chapter-result>
     </mat-card-actions>
 
   </section>
 </mat-card>
-
-<!-- <div *ngIf="chapter.question" (click)="openDialog(chapter.id)" class="fixed bottom-10 w-fill flex p-3 pl-3 bg-gray-200 rounded-lg h-auto">
-  <div *ngIf="chapter.result">
-    <a>
-      <span class="ml-2 truncate mr-1">Question : {{ chapter.id }}. {{ chapter.title }}</span>
-    </a>
-      <br><br>
-    <a>
-      <span class="ml-2 truncate mr-1">Résultat : {{ chapter.result.title }}</span>
-    </a>
-  </div>
-</div> -->

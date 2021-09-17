@@ -47,5 +47,9 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/admin/error')
   }
 
+  updateMember()
+  {
+    
+  }
 
 }

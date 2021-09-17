@@ -1,8 +1,11 @@
-<aside>
+<aside class="w-full h-full flex flex-col items-center">
+
     <!-- Affiche "Modification" ou "Création" selon le cas dans lequel on se trouve -->
-    <p>Détails membre</p>
-  
-  
+    
+    <div class="mt-4">
+      <p>Détails membre</p>
+    </div>
+    <div class="w-7/8">
     <form #form="ngForm" *ngIf="member" class="w-full" >
   
       <mat-form-field appearance="outline" class="w-full">
@@ -25,12 +28,16 @@
       </mat-form-field>
   
     </form>
+    </div>
   
-    <mat-action-row>
-      <button color="primary">Valider</button>
-    </mat-action-row>
-  
-    <mat-action-row>
-      <button mat-button color="warn">Annuler</button>
-    </mat-action-row>
+    <div class="flex justify-center">
+      <mat-action-row>
+        <button mat-button color="primary">Valider</button>
+      </mat-action-row>
+    
+      <mat-action-row>
+        <button mat-button color="warn">Annuler</button>
+      </mat-action-row>
+    </div>
+
   </aside>

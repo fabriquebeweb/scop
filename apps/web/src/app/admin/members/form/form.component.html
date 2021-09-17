@@ -1,36 +1,43 @@
-<aside>
+<aside class="w-full h-full flex flex-col items-center">
 
+  <div class="mt-4">
     <p>Nouveau membre</p>
-  
-  
-    <form #form="ngForm" class="w-full" >
-  
+  </div>
+
+  <div class="w-7/8">
+    <form #form="ngForm" class="w-full">
+
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Prénom</mat-label>
-          <input matInput type="text" name="firstName" required>
+        <input matInput type="text" name="firstName" value="test firstname" required>
         <mat-error>Champ obligatoire</mat-error>
-        
+
       </mat-form-field>
-  
+
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Nom</mat-label>
-          <input matInput name="description" required>
+        <input matInput name="description" value="test lastname"required>
         <mat-error>Champ obligatoire</mat-error>
       </mat-form-field>
-  
+
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Email</mat-label>
-          <input matInput name="summary" required>
+        <input matInput name="summary" type="email" value="email" required>
         <mat-error>Champ obligatoire</mat-error>
       </mat-form-field>
-  
+
     </form>
-  
+  </div>
+
+
+  <div class="flex justify-center">
     <mat-action-row>
-      <button mat-button color="primary">Valider</button>
+      <button (click)="addMember()" mat-button color="primary">Valider</button>
     </mat-action-row>
-  
+
     <mat-action-row>
       <button mat-button color="warn">Annuler</button>
     </mat-action-row>
-  </aside>
+  </div>
+
+</aside>

@@ -1,7 +1,6 @@
 import { Chapter, ChapterAnswerDTO, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable, Subject } from 'rxjs'
 import { Socket } from 'ngx-socket-io'
 import { InsertResult } from 'typeorm'
 import { API, EVENTS } from '@scop/globals'

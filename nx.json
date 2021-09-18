@@ -39,6 +39,9 @@
     "migrations": {
       "tags": []
     },
+    "globals": {
+      "tags": []
+    },
     "subscribers": {
       "tags": []
     },

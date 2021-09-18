@@ -1,8 +1,8 @@
+import { DeleteResult, InsertResult } from 'typeorm'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { User } from '@scop/interfaces'
-import { DeleteResult, InsertResult } from 'typeorm'
-import { API } from '../../app.common'
+import { API } from '@scop/globals'
 
 @Injectable()
 export class AdminMembersService {
@@ -13,27 +13,27 @@ export class AdminMembersService {
 
   getMembers() : Promise<User[]>
   {
-    return this.http.get<User[]>(API.path('/admin/members'), API.options()).toPromise()
+    return this.http.get<User[]>(`${API.PATH}/admin/members`, API.OPTIONS).toPromise()
   }
 
   getMember(id: number) : Promise<User>
   {
-    return this.http.get<User>(API.path(`/admin/members/${id}`), API.options()).toPromise()
+    return this.http.get<User>(`${API.PATH}/admin/members/${id}`, API.OPTIONS).toPromise()
   }
 
   setNewMember(member: User) : Promise<InsertResult>
   {
-    return this.http.post<InsertResult>(API.path(`/admin/members`), member, API.options()).toPromise()
+    return this.http.post<InsertResult>(`${API.PATH}/admin/members`, member, API.OPTIONS).toPromise()
   }
 
   resetMember(member: User) : Promise<User>
   {
-    return this.http.put<User>(API.path(`/admin/members/${member.id}`), member, API.options()).toPromise()
+    return this.http.put<User>(`${API.PATH}/admin/members/${member.id}`, member, API.OPTIONS).toPromise()
   }
 
   unsetMember(id: number) : Promise<DeleteResult>
   {
-    return this.http.delete<DeleteResult>(API.path(`/admin/members/${id}`), API.options()).toPromise()
+    return this.http.delete<DeleteResult>(`${API.PATH}/admin/members/${id}`, API.OPTIONS).toPromise()
   }
 
 }

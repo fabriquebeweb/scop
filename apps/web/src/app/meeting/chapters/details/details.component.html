@@ -13,7 +13,7 @@
     </mat-card-header>
 
     <mat-card-actions *ngIf="chapter.question" class="w-full">
-      <chapter-result [chapter]="chapter" (click)="openDialog(chapter.id)"></chapter-result>
+      <chapter-result [chapter]="chapter" (click)="service.emitDialog({ chapter: chapter.id })"></chapter-result>
     </mat-card-actions>
 
   </section>

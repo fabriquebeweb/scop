@@ -11,13 +11,17 @@ export class MeetingService
 {
 
   meeting!: Meeting
-  dialog = new Subject<MeetingDialogDTO>()
+  dialog = this.socket.fromEvent<MeetingDialogDTO>(EVENTS.MEETING.DIALOG)
 
   constructor(
     private readonly http: HttpClient,
+    private socket: Socket
   ){}
 
-
+  emitDialog(payload: MeetingDialogDTO) : void
+  {
+    this.socket.emit(EVENTS.MEETING.DIALOG, payload)
+  }
 
   getMeeting(id: number) : Promise<Meeting>
   {

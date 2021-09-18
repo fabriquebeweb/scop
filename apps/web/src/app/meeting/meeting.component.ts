@@ -4,12 +4,15 @@ import { MeetingDialogComponent } from './dialog/dialog.component'
 import { Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { MatDialog } from '@angular/material/dialog'
 import { MeetingService } from './meeting.service'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-meeting',
   templateUrl: './meeting.component.html'
 })
 export class MeetingComponent implements OnInit, OnDestroy {
+
+  dialogSub!: Subscription
 
   constructor(
     public readonly service: MeetingService,
@@ -25,15 +28,17 @@ export class MeetingComponent implements OnInit, OnDestroy {
       .then(meeting => this.setMeeting(meeting))
       .catch(() => this.onError())
 
-    this.service.dialog.subscribe(chapter => this.onDialog(chapter))
+    this.dialogSub = this.service.dialog.subscribe(payload => this.onDialog(payload))
   }
 
   ngOnDestroy() : void
-  {}
-
-  onDialog(chapter: MeetingDialogDTO)
   {
-    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', maxWidth: '80vw', data: chapter })
+    this.dialogSub.unsubscribe()
+  }
+
+  onDialog(payload: MeetingDialogDTO)
+  {
+    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', maxWidth: '80vw', data: payload })
   }
 
   setMeeting(meeting: Meeting) : void

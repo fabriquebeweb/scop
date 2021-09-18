@@ -12,7 +12,8 @@ import { LoginComponent } from './login/login.component'
 import { ErrorComponent } from './error/error.component'
 import { AdminModule } from './admin/admin.module'
 import { MeetingModule } from './meeting/meeting.module'
-import { PWA } from '@scop/globals'
+import { SocketIoModule } from 'ngx-socket-io'
+import { PWA, SOCKET } from '@scop/globals'
 import FR from '@angular/common/locales/fr'
 registerLocaleData(FR)
 
@@ -31,6 +32,7 @@ registerLocaleData(FR)
     AdminModule,
     MeetingModule,
     RouterModule.forRoot(ROUTES),
+    SocketIoModule.forRoot(SOCKET),
     ServiceWorkerModule.register('ngsw-worker.js', PWA)
   ],
   providers: [

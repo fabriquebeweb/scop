@@ -33,6 +33,7 @@ export class AdminMembersFormComponent implements OnInit {
     this.service.getMember(insertMember.raw)
     .then(member => this.service.members.push(member))
     .catch(console.log)
+    this.deletion()
   }
 
   deletion() : void

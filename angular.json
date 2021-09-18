@@ -125,6 +125,28 @@
         }
       }
     },
+    "globals": {
+      "root": "libs/globals",
+      "sourceRoot": "libs/globals/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/globals/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/globals"],
+          "options": {
+            "jestConfig": "libs/globals/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "subscribers": {
       "root": "libs/subscribers",
       "sourceRoot": "libs/subscribers/src",

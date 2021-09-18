@@ -17,7 +17,7 @@ import { MeetingChaptersDetailsComponent } from './meeting/chapters/details/deta
 import { AdminMembersFormComponent } from './admin/members/form/form.component'
 import { AdminMembersDetailsComponent } from './admin/members/details/details.component'
 
-export const routes: Routes = [
+export const ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',

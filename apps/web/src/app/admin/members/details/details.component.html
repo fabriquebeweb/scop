@@ -1,43 +1,42 @@
 <aside class="w-full h-full flex flex-col items-center">
 
-    <!-- Affiche "Modification" ou "Création" selon le cas dans lequel on se trouve -->
-    
-    <div class="mt-4">
-      <p>Détails membre</p>
-    </div>
-    <div class="w-7/8">
-    <form #form="ngForm" *ngIf="member" class="w-full" >
+  <div class="mt-4">
+    <p>Détails membre</p>
+  </div>
   
+  <div class="w-7/8">
+    <form #form="ngForm" *ngIf="member" class="w-full">
+
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Prénom</mat-label>
-          <input matInput type="text" name="firstName" [(ngModel)]="member.firstName" #newItem required>
+        <input matInput type="text" name="firstName" [(ngModel)]="member.firstName" required>
         <mat-error>Champ obligatoire</mat-error>
-        
+
       </mat-form-field>
-  
+
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Nom</mat-label>
-          <input matInput name="description" [(ngModel)]="member.lastName" #newItem required>
+        <input matInput name="description" [(ngModel)]="member.lastName" required>
         <mat-error>Champ obligatoire</mat-error>
       </mat-form-field>
-  
+
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Email</mat-label>
-          <input matInput name="summary" [(ngModel)]="member.email" #newItem required>
+        <input matInput name="summary" [(ngModel)]="member.email" required>
         <mat-error>Champ obligatoire</mat-error>
       </mat-form-field>
-  
-    </form>
-    </div>
-  
-    <div class="flex justify-center">
-      <mat-action-row>
-        <button mat-button color="primary">Valider</button>
-      </mat-action-row>
-    
-      <mat-action-row>
-        <button mat-button color="warn">Annuler</button>
-      </mat-action-row>
-    </div>
 
-  </aside>
+    </form>
+  </div>
+
+  <div class="flex justify-center">
+    <mat-action-row>
+      <button (click)="updateMember()" mat-button color="primary">Valider</button>
+    </mat-action-row>
+
+    <mat-action-row>
+      <button (click)="deletion()" mat-button color="warn">Annuler</button>
+    </mat-action-row>
+  </div>
+
+</aside>

@@ -10,8 +10,8 @@
           <th class="p-3 w-1/10 rounded-lg text-center"></th>
         </tr>
       </thead>
-      <tbody *ngIf="members">
-        <tr *ngFor="let member of members; let i = index" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
+      <tbody *ngIf="service.members">
+        <tr *ngFor="let member of service.members; let i = index" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
           <td class="p-3 rounded-lg">
             {{ member.firstName }}
           </td>

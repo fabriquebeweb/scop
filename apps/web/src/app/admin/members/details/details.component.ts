@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@scop/interfaces';
 import { Subscription } from 'rxjs';
+import { InsertResult } from 'typeorm';
 import { AdminMembersService } from '../members.service';
 
 @Component({
@@ -47,9 +48,22 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/admin/error')
   }
 
+  // Update = getmember + save member
   updateMember()
   {
-    
+    this.service.resetMember(this.member)
+    .then(member => this.onsave(member))
+    .catch(console.log)
   }
 
+  onsave(member: User) : void
+  {
+    
+    console.log(member)
+  }
+
+  deletion() : void
+  {
+
+  }
 }

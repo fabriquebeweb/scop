@@ -9,10 +9,8 @@ import { Router } from '@angular/router'
 })
 export class AdminMembersComponent implements OnInit {
 
-  members!: User[]
-
   constructor(
-    private readonly service: AdminMembersService,
+    public service: AdminMembersService,
     private readonly router: Router
   ) {}
 
@@ -25,7 +23,7 @@ export class AdminMembersComponent implements OnInit {
 
   setMembers(members: User[]) : void
   {
-    this.members = members
+    this.service.members = members
     this.redirect()
   }
 
@@ -38,7 +36,7 @@ export class AdminMembersComponent implements OnInit {
 
   unsetMember(memberId: number) : void
   {
-    this.members = this.members.filter(member => member.id != memberId)
+    this.service.members = this.service.members.filter(member => member.id != memberId)
   }
 
   redirect() : void

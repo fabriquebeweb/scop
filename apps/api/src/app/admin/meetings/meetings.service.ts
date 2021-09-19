@@ -25,7 +25,8 @@ export class AdminMeetingsService {
       where: { id: meetingId },
       relations: [
         "meetingType",
-        "chapters"
+        "chapters",
+        "chapters.choices"
       ]
     })
   }

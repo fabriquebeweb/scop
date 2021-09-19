@@ -1,5 +1,5 @@
+import { AppModule } from '@scop/api/app.module'
 import { NestFactory } from '@nestjs/core'
-import { AppModule } from './app/app.module'
 import { API } from '@scop/globals'
 import 'reflect-metadata'
 

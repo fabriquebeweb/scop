@@ -1,4 +1,4 @@
-<aside *ngIf="chapter">
+<aside *ngIf="chapter; else Loading">
 
   <ng-container *ngIf="chapter.state == false; else Form">
     <dialog-result [chapter]="chapter" (close)="onClose()"></dialog-result>
@@ -7,5 +7,9 @@
   <ng-template #Form>
     <dialog-form [chapter]="chapter" (close)="onClose()"></dialog-form>
   </ng-template>
-  
+
 </aside>
+
+<ng-template #Loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

@@ -1,6 +1,6 @@
 import { ConnectedSocket, MessageBody, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
-import { EVENTS } from '@scop/globals'
 import { Server, Socket } from 'socket.io'
+import { EVENTS } from '@scop/globals'
 
 @WebSocketGateway()
 export class MeetingGateway implements OnGatewayConnection, OnGatewayDisconnect {

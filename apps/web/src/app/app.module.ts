@@ -1,20 +1,21 @@
-import { ROUTES } from '@scop/web/app/app.routes'
-import { LOCALE_ID, NgModule } from '@angular/core'
-import { CommonModule, registerLocaleData } from '@angular/common'
+import FR from '@angular/common/locales/fr'
+import { SocketIoModule } from 'ngx-socket-io'
 import { RouterModule } from '@angular/router'
+import { LOCALE_ID, NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser'
 import { ServiceWorkerModule } from '@angular/service-worker'
+import { CommonModule, registerLocaleData } from '@angular/common'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http'
-import { AppComponent } from '@scop/web/app/app.component'
-import { HomeComponent } from './home/home.component'
-import { LoginComponent } from './login/login.component'
-import { ErrorComponent } from './error/error.component'
-import { AdminModule } from './admin/admin.module'
-import { MeetingModule } from './meeting/meeting.module'
-import { SocketIoModule } from 'ngx-socket-io'
 import { PWA, SOCKET } from '@scop/globals'
-import FR from '@angular/common/locales/fr'
+import { ROUTES } from '@scop/web/app.routes'
+import { AppComponent } from '@scop/web/app.component'
+import { AdminModule } from '@scop/web/admin/admin.module'
+import { HomeComponent } from '@scop/web/home/home.component'
+import { LoginComponent } from '@scop/web/login/login.component'
+import { ErrorComponent } from '@scop/web/error/error.component'
+import { MeetingModule } from '@scop/web/meeting/meeting.module'
 registerLocaleData(FR)
 
 @NgModule({
@@ -29,6 +30,7 @@ registerLocaleData(FR)
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
     AdminModule,
     MeetingModule,
     RouterModule.forRoot(ROUTES),

@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common'
 import { Answer, Chapter, Meeting } from '@scop/entities'
 import { ChapterResultDTO } from '@scop/interfaces'
 import { InsertResult, IsNull } from 'typeorm'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class MeetingService {

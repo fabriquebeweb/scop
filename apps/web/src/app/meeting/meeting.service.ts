@@ -1,9 +1,9 @@
 import { Chapter, ChapterAnswerDTO, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { HttpClient } from '@angular/common/http'
-import { Injectable } from '@angular/core'
-import { Socket } from 'ngx-socket-io'
-import { InsertResult } from 'typeorm'
 import { API, EVENTS } from '@scop/globals'
+import { Injectable } from '@angular/core'
+import { InsertResult } from 'typeorm'
+import { Socket } from 'ngx-socket-io'
 
 @Injectable()
 export class MeetingService

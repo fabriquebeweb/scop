@@ -1,5 +1,5 @@
 import { SwRegistrationOptions } from '@angular/service-worker'
-import { environment } from '@scop/web/environments/environment'
+import { environment } from '@scop/environment'
 
 export const PWA: SwRegistrationOptions = {
 

@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common'
 import { DeleteResult, InsertResult } from 'typeorm'
+import { Injectable } from '@nestjs/common'
 import { User } from '@scop/entities'
 
 @Injectable()

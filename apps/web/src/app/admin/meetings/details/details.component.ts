@@ -1,6 +1,6 @@
+import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { AdminMeetingsService } from '../meetings.service'
 import { Chapter, Meeting } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
 

@@ -22,8 +22,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
+                  "replace": "libs/environment/src/lib/environment.ts",
+                  "with": "libs/environment/src/lib/environment.prod.ts"
                 }
               ]
             }
@@ -81,6 +81,50 @@
         }
       }
     },
+    "environment": {
+      "root": "libs/environment",
+      "sourceRoot": "libs/environment/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/environment/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/environment"],
+          "options": {
+            "jestConfig": "libs/environment/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "globals": {
+      "root": "libs/globals",
+      "sourceRoot": "libs/globals/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/globals/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/globals"],
+          "options": {
+            "jestConfig": "libs/globals/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "interfaces": {
       "root": "libs/interfaces",
       "sourceRoot": "libs/interfaces/src",
@@ -120,28 +164,6 @@
           "outputs": ["coverage/libs/migrations"],
           "options": {
             "jestConfig": "libs/migrations/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "globals": {
-      "root": "libs/globals",
-      "sourceRoot": "libs/globals/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/globals/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/globals"],
-          "options": {
-            "jestConfig": "libs/globals/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -211,8 +233,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/web/src/environments/environment.ts",
-                  "with": "apps/web/src/environments/environment.prod.ts"
+                  "replace": "libs/environment/src/lib/environment.ts",
+                  "with": "libs/environment/src/lib/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"

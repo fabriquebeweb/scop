@@ -1,11 +1,11 @@
 import { Logger, Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { connection } from '@scop/database'
-import { SeedService } from './seed.service'
+import { CONNECTION } from '@scop/database'
+import { SeedService } from '@scop/seed'
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(connection)
+    TypeOrmModule.forRoot(CONNECTION)
   ],
   providers: [
     SeedService,

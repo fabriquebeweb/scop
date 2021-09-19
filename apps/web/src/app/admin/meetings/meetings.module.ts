@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
-import { FormsModule } from '@angular/forms'
-import { MatFormFieldModule } from '@angular/material/form-field'
-import { MatExpansionModule } from '@angular/material/expansion'
-import { MatSnackBarModule } from '@angular/material/snack-bar'
-import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
-import { AdminMeetingsService } from './meetings.service'
-import { AdminMeetingsComponent } from './meetings.component'
-import { AdminMeetingsFormComponent } from './form/form.component'
-import { AdminMeetingsDetailsComponent } from './details/details.component'
-import { AdminMeetingsChaptersComponent } from './chapters/chapters.component'
-import { AdminMeetingsChaptersDetailsComponent } from './chapters/details/details.component'
-import { AdminMeetingsChaptersFormComponent } from './chapters/form/form.component'
-import { AdminMeetingSummaryComponent } from './summary/summary.component';
+import { MatButtonModule } from '@angular/material/button'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
+import { AdminMeetingsComponent } from '@scop/web/admin/meetings/meetings.component'
+import { AdminMeetingsFormComponent } from '@scop/web/admin/meetings/form/form.component'
+import { AdminMeetingSummaryComponent } from '@scop/web/admin/meetings/summary/summary.component'
+import { AdminMeetingsDetailsComponent } from '@scop/web/admin/meetings/details/details.component'
+import { AdminMeetingsChaptersComponent } from '@scop/web/admin/meetings/chapters/chapters.component'
+import { AdminMeetingsChaptersFormComponent } from '@scop/web/admin/meetings/chapters/form/form.component'
+import { AdminMeetingsChaptersDetailsComponent } from '@scop/web/admin/meetings/chapters/details/details.component'
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { AdminMeetingSummaryComponent } from './summary/summary.component';
     AdminMeetingSummaryComponent,
     AdminMeetingsDetailsComponent,
     AdminMeetingsChaptersComponent,
-    AdminMeetingsChaptersDetailsComponent,
-    AdminMeetingsChaptersFormComponent
+    AdminMeetingsChaptersFormComponent,
+    AdminMeetingsChaptersDetailsComponent
   ],
   imports: [
     CommonModule,

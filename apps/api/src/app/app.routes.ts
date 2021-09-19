@@ -1,8 +1,8 @@
 import { Routes } from 'nest-router'
-import { AdminModule } from './admin/admin.module'
-import { MeetingModule } from './meeting/meeting.module'
+import { AdminModule } from '@scop/api/admin/admin.module'
+import { MeetingModule } from '@scop/api/meeting/meeting.module'
 
-export const routes: Routes = [
+export const ROUTES: Routes = [
   {
     path: 'admin',
     module: AdminModule

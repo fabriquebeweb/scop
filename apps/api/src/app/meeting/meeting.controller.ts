@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
+import { MeetingService } from '@scop/api/meeting/meeting.service'
 import { Answer } from '@scop/entities'
-import { MeetingService } from './meeting.service'
 
 @Controller()
 export class MeetingController{

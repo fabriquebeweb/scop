@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
 import { Meeting, MeetingType, NewMeetingDTO } from '@scop/interfaces'
 import { DeleteResult, InsertResult } from 'typeorm'
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 import { API } from '@scop/globals'
 
 @Injectable()

@@ -1,5 +1,5 @@
 <mat-card class="h-full w-full">
-  <section *ngIf="chapter" class="p-5 overflow-y-scroll h-full w-full flex flex-col justify-start items-center">
+  <section *ngIf="chapter; else Loading" class="p-5 overflow-y-scroll h-full w-full flex flex-col justify-start items-center">
 
     <mat-card-header>
       <header class="p-10 flex flex-col justify-center items-center">
@@ -18,3 +18,9 @@
 
   </section>
 </mat-card>
+
+<ng-template #Loading>
+  <ng-container class="h-screen w-screen">
+    <mat-spinner></mat-spinner>
+  </ng-container>
+</ng-template>

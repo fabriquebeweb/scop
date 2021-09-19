@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { CommonModule, registerLocaleData } from '@angular/common'
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { PWA, SOCKET } from '@scop/globals'
 import { ROUTES } from '@scop/web/app.routes'
@@ -30,7 +29,6 @@ registerLocaleData(FR)
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    MatProgressSpinnerModule,
     AdminModule,
     MeetingModule,
     RouterModule.forRoot(ROUTES),

@@ -10,7 +10,7 @@
           <th class="p-3 w-1/10 rounded-lg text-center"></th>
         </tr>
       </thead>
-      <tbody *ngIf="members">
+      <tbody *ngIf="members; else Loading">
         <tr *ngFor="let member of members; let i = index" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
           <td class="p-3 rounded-lg">
             {{ member.firstName }}
@@ -35,3 +35,9 @@
   </section>
 
 </section>
+
+<ng-template #Loading>
+  <section class="h-full w-full">
+    <mat-spinner></mat-spinner>
+  </section>
+</ng-template>

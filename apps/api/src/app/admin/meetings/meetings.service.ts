@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common'
 import { DeleteResult, InsertResult } from 'typeorm'
 import { Chapter, Meeting, MeetingType } from '@scop/entities'
+import { MeetingService } from '@scop/api/meeting/meeting.service'
 
 @Injectable()
 export class AdminMeetingsService {
+
+  constructor(
+    private readonly meetingService: MeetingService
+  ){}
 
   async getMeetingTypes() : Promise<MeetingType[]>
   {
@@ -83,6 +88,21 @@ export class AdminMeetingsService {
     const chapter: Chapter = await Chapter.findOne(id)
     chapter.state = false
     return await Chapter.save(chapter)
+  }
+
+  async getMeetingChapterResultWinner(meetingId: number, chapterId: number)
+  {
+    let chapterResult = await this.meetingService.getMeetingChapterResult(meetingId, chapterId)
+    chapterResult.details.result = chapterResult.choices.filter(choice => choice.details != null).reduce((prev, current) => (prev.count > current.count) ? prev : current).details
+    return chapterResult.details
+
+  }
+
+  async saveMeetingChapterResultWinner(meetingId: number, chapterId: number)
+  {
+    let modifiedChapter = await this.getMeetingChapterResultWinner(meetingId, chapterId)
+    modifiedChapter.state = false
+    return await Chapter.create(modifiedChapter).save()
   }
 
 }

@@ -6,6 +6,7 @@ import { AdminMembersService } from '@scop/api/admin/members/members.service'
 import { AdminMeetingsService } from '@scop/api/admin/meetings/meetings.service'
 import { AdminMembersController } from '@scop/api/admin/members/members.controller'
 import { AdminMeetingsController } from '@scop/api/admin/meetings/meetings.controller'
+import { MeetingService } from '../meeting/meeting.service'
 
 @Module({
   imports: [],
@@ -18,7 +19,8 @@ import { AdminMeetingsController } from '@scop/api/admin/meetings/meetings.contr
     AdminService,
     AdminMeetingsGateway,
     AdminMeetingsService,
-    AdminMembersService
+    AdminMembersService,
+    MeetingService
   ]
 })
 export class AdminModule {}

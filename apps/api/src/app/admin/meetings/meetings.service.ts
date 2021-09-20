@@ -1,8 +1,8 @@
 import { MeetingService } from '@scop/api/meeting/meeting.service'
-import { Chapter, Meeting, MeetingType } from '@scop/entities'
+import { Chapter, Meeting, MeetingType, Question } from '@scop/entities'
 import { DeleteResult, InsertResult } from 'typeorm'
 import { Injectable } from '@nestjs/common'
-import { ChapterResultDTO } from '@scop/interfaces'
+import { QuestionResultDTO } from '@scop/interfaces'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -28,7 +28,8 @@ export class AdminMeetingsService {
       relations: [
         'meetingType',
         'chapters',
-        'chapters.choices'
+        'chapters.question',
+        'chapters.question.choices'
       ]
     })
   }
@@ -52,8 +53,9 @@ export class AdminMeetingsService {
   {
     return await Chapter.findOne(chapterId, {
       relations: [
-        'result',
-        'choices'
+        'question',
+        'question.result',
+        'question.choices'
       ]
     })
   }
@@ -73,24 +75,24 @@ export class AdminMeetingsService {
     return await Chapter.delete(chapterId)
   }
 
-  async startVote(chapterId: number) : Promise<Chapter>
+  async startVote(questionId: number) : Promise<Question>
   {
-    const chapter: Chapter = await Chapter.findOne(chapterId)
+    const chapter: Question = await Question.findOne(questionId)
     chapter.state = true
-    return await Chapter.save(chapter)
+    return await Question.save(chapter)
   }
 
-  async endVote(chapterId: number) : Promise<Chapter>
+  async endVote(questionId: number) : Promise<Question>
   {
-    const chapter: ChapterResultDTO = await this.meetingService.getMeetingChapterResult(chapterId)
+    const question: QuestionResultDTO = await this.meetingService.getQuestionResult(questionId)
 
-    chapter.details.result = chapter.choices
+    question.details.result = question.choices
       .filter(choice => choice.details != null)
       .reduce((prev, current) => (prev.count > current.count) ? prev : current).details
 
-    chapter.details.state = false
+    question.details.state = false
 
-    return await Chapter.save(chapter.details as unknown as Chapter)
+    return await Question.save(question.details as unknown as Question)
   }
 
 }

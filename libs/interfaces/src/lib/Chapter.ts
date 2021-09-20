@@ -1,4 +1,4 @@
-import { Choice } from '@scop/interfaces'
+import { Question } from '@scop/interfaces'
 
 export interface Chapter {
 
@@ -6,10 +6,7 @@ export interface Chapter {
   title: string
   description: string
   summary: string
-  question: string | null
-  state: boolean | null
-  choices?: Choice[]
-  result?: Choice
+  question?: Question
   meeting: number
 
 }

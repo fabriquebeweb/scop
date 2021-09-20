@@ -1,4 +1,4 @@
-import { Chapter, ChapterAnswerDTO, ChapterResultDTO, Meeting, MeetingDialogDTO } from '@scop/interfaces'
+import { Chapter, Meeting, MeetingDialogDTO, Question, QuestionAnswerDTO, QuestionResultDTO } from '@scop/interfaces'
 import { HttpClient } from '@angular/common/http'
 import { API, EVENTS } from '@scop/globals'
 import { Injectable } from '@angular/core'
@@ -37,14 +37,19 @@ export class MeetingService
     return this.http.get<Chapter>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${id}`, API.OPTIONS).toPromise()
   }
 
-  postAnswer(answer: ChapterAnswerDTO) : Promise<InsertResult>
+  postAnswer(answer: QuestionAnswerDTO) : Promise<InsertResult>
   {
-    return this.http.post<InsertResult>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${answer.chapter}`, answer, API.OPTIONS).toPromise()
+    return this.http.post<InsertResult>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${answer.question}`, answer, API.OPTIONS).toPromise()
   }
 
-  getMeetingChapterResult(id: number) : Promise<ChapterResultDTO>
+  getQuestion(id: number) : Promise<Question>
   {
-    return this.http.get<ChapterResultDTO>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${id}/results`, API.OPTIONS).toPromise()
+    return this.http.get<Question>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}/question`, API.OPTIONS).toPromise()
+  }
+
+  getQuestionResult(id: number) : Promise<QuestionResultDTO>
+  {
+    return this.http.get<QuestionResultDTO>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}/results`, API.OPTIONS).toPromise()
   }
 
 }

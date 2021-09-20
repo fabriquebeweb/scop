@@ -1,8 +1,8 @@
-import { Chapter } from '@scop/interfaces'
+import { Question } from '@scop/interfaces'
 
 export interface MeetingDialogDTO {
 
-  chapter: number
-  // chapter: Chapter | number
+  question: number
+  // question: Question | number
 
 }

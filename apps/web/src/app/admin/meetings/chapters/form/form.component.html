@@ -7,12 +7,29 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form>FORM</form>
+    <form #form="ngForm" class="w-full">
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Titre</mat-label>
+        <input matInput type="text" name="title" [(ngModel)]="chapter.title" required>
+        <mat-error *ngIf="!chapter.title">Champ obligatoire</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Description</mat-label>
+        <textarea matInput name="description" [(ngModel)]="chapter.description"></textarea>
+      </mat-form-field>
+
+    </form>
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button (click)="newChapter()" color="primary">ENREGISTRER</button>
-    <button mat-button (click)="clearChapter()">ANNULER</button>
+    <button mat-button *ngIf="chapter.title; else Required" (click)="newChapter()" color="primary">ENREGISTRER</button>
+    <button mat-button (click)="clearChapter()">EFFACER</button>
+
+    <ng-template #Required>
+      <button mat-button disabled>ENREGISTRER</button>
+    </ng-template>
   </mat-card-actions>
 
 </mat-card>

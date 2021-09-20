@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { Chapter, ChapterAnswerDTO, Choice, User } from '@scop/interfaces'
-import { MeetingService } from '../../meeting.service'
+import { MeetingService } from '@scop/web/meeting/meeting.service'
+import { QuestionAnswerDTO, Question } from '@scop/interfaces'
 import { InsertResult } from 'typeorm'
 
 @Component({
@@ -9,9 +9,9 @@ import { InsertResult } from 'typeorm'
 })
 export class MeetingDialogFormComponent implements OnInit {
 
-  @Input() chapter!: Chapter
+  @Input() question!: Question
   @Output() close: EventEmitter<void> = new EventEmitter<void>()
-  answer!: ChapterAnswerDTO
+  answer!: QuestionAnswerDTO
 
   constructor(
     private service: MeetingService
@@ -19,17 +19,17 @@ export class MeetingDialogFormComponent implements OnInit {
 
   ngOnInit() : void
   {
-    this.service.getMeetingChapter(this.chapter.id)
-      .then(chapter => this.setChapter(chapter))
+    this.service.getQuestion(this.question.id)
+      .then(question => this.setQuestion(question))
       .catch(console.error)
   }
 
-  setChapter(chapter: Chapter) : void
+  setQuestion(question: Question) : void
   {
-    this.chapter = chapter
+    this.question = question
 
     this.answer = {
-      chapter : chapter.id,
+      question : question.id,
       user : 1,
       choice : null
     }

@@ -26,13 +26,13 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   startVote() : void
   {
-    this.chapter.state = true
+    this.chapter.question!.state = true
     this.service.socket.emit(EVENTS.ADMIN.MEETING.CHAPTER.START, { chapter: this.chapter.id })
   }
 
   endVote() : void
   {
-    this.chapter.state = false
+    this.chapter.question!.state = false
     this.service.socket.emit(EVENTS.ADMIN.MEETING.CHAPTER.END, { chapter: this.chapter.id })
   }
 

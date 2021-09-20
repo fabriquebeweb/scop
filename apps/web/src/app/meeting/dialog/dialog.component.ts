@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Chapter, MeetingDialogDTO } from '@scop/interfaces';
+import { Question, MeetingDialogDTO } from '@scop/interfaces';
 import { MeetingService } from '../meeting.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MeetingService } from '../meeting.service';
 })
 export class MeetingDialogComponent implements OnInit {
 
-  chapter!: Chapter
+  question!: Question
 
   constructor(
     private readonly ref: MatDialogRef<MeetingDialogComponent>,
@@ -19,14 +19,14 @@ export class MeetingDialogComponent implements OnInit {
 
   ngOnInit() : void
   {
-    this.service.getMeetingChapter(this.data.chapter)
-      .then(chapter => this.setChapter(chapter))
+    this.service.getQuestion(this.data.question)
+      .then(question => this.setQuestion(question))
       .catch(console.log)
   }
 
-  setChapter(chapter: Chapter) : void
+  setQuestion(question: Question) : void
   {
-    this.chapter = chapter
+    this.question = question
   }
 
   onClose() : void

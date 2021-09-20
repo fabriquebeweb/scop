@@ -1,11 +1,11 @@
-<aside *ngIf="chapter; else Loading">
+<aside *ngIf="question; else Loading">
 
-  <ng-container *ngIf="chapter.state == false; else Form">
-    <dialog-result [chapter]="chapter" (close)="onClose()"></dialog-result>
+  <ng-container *ngIf="question.state == false; else Form">
+    <dialog-result [question]="question" (close)="onClose()"></dialog-result>
   </ng-container>
 
   <ng-template #Form>
-    <dialog-form [chapter]="chapter" (close)="onClose()"></dialog-form>
+    <dialog-form [question]="question" (close)="onClose()"></dialog-form>
   </ng-template>
 
 </aside>

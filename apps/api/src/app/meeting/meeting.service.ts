@@ -1,7 +1,7 @@
-import { Answer, Chapter, Meeting } from '@scop/entities'
+import { Answer, Chapter, Meeting, Question } from '@scop/entities'
+import { QuestionResultDTO } from '@scop/interfaces'
 import { InsertResult, IsNull } from 'typeorm'
 import { Injectable } from '@nestjs/common'
-import { ChapterResultDTO } from '@scop/interfaces'
 
 @Injectable()
 export class MeetingService {
@@ -13,7 +13,13 @@ export class MeetingService {
 
   async getMeetingChapters(meetingId: number) : Promise<Chapter[]>
   {
-    return await Chapter.find({ where: { meeting: { id: meetingId } } })
+    return await Chapter.find({
+      where: { meeting: { id: meetingId } },
+      relations: [
+        'question',
+        'question.choices'
+      ]
+    })
   }
 
   async getMeetingChapter(meetingId: number, chapterId: number) : Promise<Chapter>
@@ -24,10 +30,16 @@ export class MeetingService {
         id: chapterId
       },
       relations: [
-        "choices",
-        "result"
+        'question',
+        'question.choices',
+        'question.result'
       ]
     })
+  }
+
+  async getQuestion(questionId: number) : Promise<Question>
+  {
+    return await Question.findOne(questionId, { relations: ['choices'] })
   }
 
   async saveChapterAnswer(answer: Answer) : Promise<InsertResult>
@@ -38,48 +50,48 @@ export class MeetingService {
   /**
    * Fonction qui récupère les valeurs obtenues par choix pour chaque question-chapter lors du vote
    * @param meetingId
-   * @param chapterId
+   * @param questionId
    * @returns le nombre de votes par choix et chapitre
    */
-  async getMeetingChapterResult(chapterId: number) : Promise<ChapterResultDTO>
+  async getQuestionResult(questionId: number) : Promise<QuestionResultDTO>
   {
     /*
     * Tout d'abord on sélectionne le chapitre tenant compte son id et l'id du meeting auquel il appartient
     * On crée les relations avec les tables choices et result afin de pouvoir ressortir plus tard les résultats par choix
     */
-    const chapter = await Chapter.findOne({
+    const question = await Question.findOne({
       where: {
-        id: chapterId,
+        id: questionId,
         // meeting: { id: meetingId }
       },
       relations: [
-        "choices",
-        "result"
+        'choices',
+        'result'
       ]
     })
 
-    const chapterResult: ChapterResultDTO = {
-      details: chapter,
+    const questionResult: QuestionResultDTO = {
+      details: question,
       count: await Answer.count({
         where: {
-          chapter: {
-            id: chapterId,
+          question: {
+            id: questionId,
             // meeting: { id: meetingId }
           }
         }
       }),
       choices: []
-    } as unknown as ChapterResultDTO
+    } as unknown as QuestionResultDTO
 
-    // Pour chaque choix on va réaliser le count des votes et on va pousser dans la variable chapterResult
-    for (const choice of chapter.choices)
+    // Pour chaque choix on va réaliser le count des votes et on va pousser dans la variable questionResult
+    for (const choice of question.choices)
     {
-      chapterResult.choices.push({
+      questionResult.choices.push({
         details: choice,
         count: await Answer.count({
           where: {
-            chapter: {
-              id: chapterId,
+            question: {
+              id: questionId,
               // meeting: { id: meetingId }
             },
             choice: choice.id
@@ -88,22 +100,22 @@ export class MeetingService {
       })
     }
 
-    // Pour les nulls on va les conter aussi et les pousser dans les résultats en tant que Abstention dans la variable chapterResult
-    chapterResult.choices.push({
+    // Pour les nulls on va les conter aussi et les pousser dans les résultats en tant que Abstention dans la variable questionResult
+    questionResult.choices.push({
       details: null,
       count: await Answer.count({
         where: {
-          chapter: {
-            id: chapterId,
+          question: {
+            id: questionId,
             // meeting: { id: meetingId }
           },
           choice: IsNull()
         }
       })
     })
-    
-    // On retournera la variable chapterResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
-    return chapterResult
+
+    // On retournera la variable questionResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
+    return questionResult
   }
 
 }

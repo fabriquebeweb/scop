@@ -10,20 +10,21 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
 
   @Input() meeting!: Meeting
   @Output() new: EventEmitter<Chapter> = new EventEmitter<Chapter>()
-  chapter: NewChapterDTO = {
-    title: undefined,
-    description: undefined,
-    question: null,
-    choices: [],
-    meeting: this.meeting.id
-  }
+  chapter!: NewChapterDTO
 
   constructor(
     private readonly service: AdminMeetingsService
   ){}
 
   ngOnInit() : void
-  {}
+  {
+    this.chapter = {
+      title: undefined,
+      description: undefined,
+      question: null,
+      meeting: this.meeting.id
+    }
+  }
 
   newChapter() : void
   {
@@ -51,7 +52,6 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
       title: undefined,
       description: undefined,
       question: null,
-      choices: [],
       meeting: this.meeting.id
     }
   }

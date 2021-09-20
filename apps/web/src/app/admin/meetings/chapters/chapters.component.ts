@@ -20,6 +20,7 @@ export class AdminMeetingsChaptersComponent implements OnInit {
   onNewChapter(chapter: Chapter) : void
   {
     this.chapters.push(chapter)
+    this.toggleForm()
     this.update.emit(this.chapters)
   }
 

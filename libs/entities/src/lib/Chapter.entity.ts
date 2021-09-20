@@ -1,5 +1,5 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinTable, ManyToMany, OneToMany, Index } from 'typeorm'
-import { Answer, Choice, Meeting } from '@scop/entities'
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinTable, ManyToMany, OneToMany, Index, OneToOne, JoinColumn } from 'typeorm'
+import { Answer, Choice, Meeting, Question } from '@scop/entities'
 
 @Entity()
 export class Chapter extends BaseEntity
@@ -17,21 +17,9 @@ export class Chapter extends BaseEntity
   @Column({ nullable: true })
   summary: string
 
-  @Column({ nullable: true })
-  question: string
-
-  @Column({ nullable: true })
-  state: boolean
-
-  @ManyToMany(type => Choice, { nullable: true, cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  @JoinTable()
-  choices: Choice[]
-
-  @ManyToOne(type => Choice, choice => choice.results, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'nullify' })
-  result: Choice
-
-  @OneToMany(type => Answer, answer => answer.chapter, { nullable: true, cascade: true })
-  answers: Answer[]
+  @OneToOne(type => Question, question => question.chapter, { cascade: true })
+  @JoinColumn()
+  question: Question
 
   @Index('chapter_meeting_idx')
   @ManyToOne(type => Meeting, meeting => meeting.chapters, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })

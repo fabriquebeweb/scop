@@ -2,7 +2,7 @@ import { Chapter, Choice, User } from '@scop/interfaces'
 
 export interface Answer {
 
-  chapter: number
+  question: number
   user: number
   choice: number | null
 

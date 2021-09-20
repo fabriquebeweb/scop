@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs'
 })
 export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
-  observer!: Subscription
+  paramSub!: Subscription
   meeting!: Meeting
 
   constructor(
@@ -21,12 +21,12 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    this.observer = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
+    this.paramSub = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
   }
 
   ngOnDestroy() : void
   {
-    this.observer.unsubscribe()
+    this.paramSub.unsubscribe()
   }
 
   onSubmit() : void

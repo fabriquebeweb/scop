@@ -1,14 +1,13 @@
-<ng-container *ngIf="chapter; else Loading">
-  <form #form="ngForm" *ngIf="chapter.state == true; else Pending" class="flex flex-col justify-center items-center">
+<ng-container *ngIf="question; else Loading">
+  <form #form="ngForm" *ngIf="question.state == true; else Pending" class="flex flex-col justify-center items-center">
 
     <mat-card-header class="my-2 flex flex-col justify-center items-center">
-      <mat-card-subtitle class="text-center uppercase">{{ chapter.title }}</mat-card-subtitle>
-      <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
+      <mat-card-title class="text-center">{{ question.title }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-content *ngIf="answer" class="overflow-y-scroll my-6 max-h-80 w-9/10">
       <mat-radio-group class="flex flex-col justify-evenly items-start" name="answer" [(ngModel)]="answer.choice">
-        <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" [value]="choice" name="answer">
+        <mat-radio-button class="m-2" *ngFor="let choice of question.choices" [value]="choice" name="answer">
           {{ choice.title }}
         </mat-radio-button>
       </mat-radio-group>
@@ -41,13 +40,12 @@
   <form class="flex flex-col justify-center items-center">
 
   <mat-card-header class="my-2 flex flex-col justify-center items-center">
-    <mat-card-subtitle class="text-center uppercase">{{ chapter.title }}</mat-card-subtitle>
-    <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
+    <mat-card-title class="text-center">{{ question.title }}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content class="overflow-y-scroll my-6 max-h-80 w-9/10">
     <mat-radio-group *ngIf="answer" class="flex flex-col justify-evenly items-start" name="answer">
-      <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" selected="false" name="answer" disabled>
+      <mat-radio-button class="m-2" *ngFor="let choice of question.choices" selected="false" name="answer" disabled>
         {{ choice.title }}
       </mat-radio-button>
     </mat-radio-group>

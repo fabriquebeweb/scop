@@ -1,4 +1,4 @@
-import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Status, User } from '@scop/entities'
+import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, User } from '@scop/entities'
 import { SeedLoops } from '@scop/config/seed.config'
 import { Injectable } from '@nestjs/common'
 import * as Faker from 'faker'
@@ -176,22 +176,28 @@ export class SeedService {
             // CHAPTER
             await this.loop(SeedLoops.MEETING.CHAPTERS, async () => {
 
-              const CHOICES: Choice[] = await this.list(SeedLoops.MEETING.CHAPTER.CHOICES, Choice,
-                { where: { enterprise: { id: ENTERPRISE.id } }}
-              )
-
               const CHAPTER: Chapter = await this.save({
 
                 title: Faker.lorem.sentence(),
                 description: Faker.lorem.paragraph(),
                 summary: Faker.lorem.words(),
-                question: `${Faker.lorem.sentence()} ?`,
-                choices: CHOICES,
-                result: null,
-                meeting: MEETING,
-                state: null
+                meeting: MEETING
 
               }, Chapter)
+
+              const CHOICES: Choice[] = await this.list(SeedLoops.MEETING.CHAPTER.CHOICES, Choice,
+                { where: { enterprise: { id: ENTERPRISE.id } }}
+              )
+
+              const QUESTION: Question = await this.save({
+
+                title: `${Faker.lorem.sentence()} ?`,
+                choices: CHOICES,
+                result: null,
+                state: null,
+                chapter: CHAPTER
+
+              }, Question)
 
               if (CHAPTER.id == 1)
               {
@@ -201,7 +207,7 @@ export class SeedService {
                   await this.save({
 
                     user: USER,
-                    chapter: CHAPTER,
+                    question: QUESTION,
                     choice: this.pick([ null, ...CHOICES ])
 
                   }, Answer)

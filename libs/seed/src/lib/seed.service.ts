@@ -141,7 +141,7 @@ export class SeedService {
               location: Faker.address.streetAddress(),
               enterprise: ENTERPRISE,
               meetingType: MEETING_TYPE,
-              state: true
+              state: null
 
             }, Meeting)
 
@@ -189,7 +189,7 @@ export class SeedService {
                 choices: CHOICES,
                 result: this.pick(CHOICES),
                 meeting: MEETING,
-                state: true
+                state: null
 
               }, Chapter)
 

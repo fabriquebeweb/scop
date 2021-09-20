@@ -39,16 +39,4 @@ export class MeetingController{
     return this.service.getMeetingChapterResult(meetingId, chapterId)
   }
 
-  @Get('/:meeting/chapter/:chapter/resulted')
-  winner( @Param('meeting') meetingId: number, @Param('chapter') chapterId : number )
-  {
-    return this.service.getMeetingChapterResultWinner(meetingId, chapterId)
-  }
-
-   @Put('/:meeting/chapter/:chapter/resulteded')
-  putWinner( @Param('meeting') meetingId: number, @Param('chapter') chapterId : number )
-  {
-    return this.service.saveMeetingChapterResultWinner(meetingId, chapterId)
-  }
-
 }

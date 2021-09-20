@@ -33,7 +33,7 @@ export class MeetingController{
     return this.service.saveChapterAnswer(answer)
   }
 
-  @Get('/:meeting/chapter/:chapter/result')
+  @Get('/:meeting/chapter/:chapter/results')
   chapter( @Param('meeting') meetingId: number, @Param('chapter') chapterId : number )
   {
     return this.service.getMeetingChapterResult(meetingId, chapterId)

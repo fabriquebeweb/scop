@@ -27,13 +27,13 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
   startVote() : void
   {
     this.chapter.state = true
-    this.service.socket.emit(EVENTS.ADMIN.MEETING.CHAPTER.START, { chapter: this.chapter.id })
+    // this.service.socket.emit(EVENTS.ADMIN.MEETING.CHAPTER.START, { chapter: this.chapter.id })
   }
 
   endVote() : void
   {
     this.chapter.state = false
-    this.service.socket.emit(EVENTS.ADMIN.MEETING.CHAPTER.END, { chapter: this.chapter.id })
+    // this.service.socket.emit(EVENTS.ADMIN.MEETING.CHAPTER.END, { chapter: this.chapter.id })
   }
 
   onUpdate()
@@ -57,6 +57,7 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   updateChapter(chapter: Chapter) : void
   {
+    this.archive = { ...chapter }
     this.update.emit(chapter)
   }
 

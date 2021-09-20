@@ -31,7 +31,7 @@ export class AdminMeetingsChaptersComponent implements OnInit {
 
   onChapterRemove(targetChapter: Chapter) : void
   {
-    this.chapters = this.chapters.filter(chapter => chapter != targetChapter)
+    this.chapters = this.chapters.filter(chapter => chapter.id != targetChapter.id)
     this.update.emit(this.chapters)
   }
 

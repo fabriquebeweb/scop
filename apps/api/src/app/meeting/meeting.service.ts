@@ -1,4 +1,4 @@
-import { Answer, Chapter, Meeting } from '@scop/entities'
+import { Answer, Chapter, Choice, Meeting } from '@scop/entities'
 import { ChapterResultDTO } from '@scop/interfaces'
 import { InsertResult, IsNull } from 'typeorm'
 import { Injectable } from '@nestjs/common'
@@ -102,17 +102,29 @@ export class MeetingService {
     })
     //On retournera la variable chapterResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
     return chapterResult
-    console.log(chapterResult);
+
   }
 
 
 
+  async getMeetingChapterResultWinner(meetingId: number, chapterId: number)
+  {
+    let chapterResult = await this.getMeetingChapterResult(meetingId, chapterId)
+    let resultWinner = chapterResult.choices.filter(choice => choice.details != null).reduce((prev, current) => (prev.count > current.count) ? prev : current)
+    return resultWinner
+
+  }
+
+  async saveMeetingChapterResultWinner(meetingId: number, chapterId: number, chapter: Chapter)
+  {
+    let resultWinner = await this.getMeetingChapterResultWinner(meetingId,chapterId)
+    let saveChapter = await chapter.save(chapter.state = 1)
+    Chapter.state = false
+    chapterResult.details.result.id = resultWinner.details.id
+    chapterResult.details.result.title = resultWinner.details.title
+    Chapter.save()
+  }
 
 
-  // async getMeetingChapterResultWinner(chapterResult)
-  // {
-
-
-  // }
 
 }

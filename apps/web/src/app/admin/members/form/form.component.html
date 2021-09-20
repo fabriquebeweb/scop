@@ -1,1 +1,46 @@
-<p>form works!</p>
+<aside class="w-full h-full flex flex-col items-center">
+
+  <div class="mt-4">
+    <p>Nouveau membre</p>
+  </div>
+
+  <div class="w-7/8">
+    <form #form="ngForm" class="w-full">
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Prénom</mat-label>
+        <input matInput [(ngModel)]="member.firstName"  name="firstName" type="text" required>
+        <mat-error>Champ obligatoire</mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Nom</mat-label>
+        <input matInput [(ngModel)]="member.lastName" name="description" type="text" required> 
+        <mat-error>Champ obligatoire</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="member.email" name="email" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #emailref="ngModel" required> 
+        <mat-error>Email non valide</mat-error>
+      </mat-form-field>
+
+    </form>
+  </div>
+
+
+  <div class="flex justify-center">
+    <mat-action-row>
+      <button *ngIf="!(emailref.invalid && emailref.touched) || !emailref.dirty; else NotValid" (click)="addMember()" mat-button color="primary">Valider</button>
+      <button (click)="deletion()" mat-button color="warn">Annuler</button>
+      
+      <ng-template #NotValid>
+        <button mat-button disabled>Valider</button>
+      </ng-template>
+
+    </mat-action-row>
+
+  </div>
+
+</aside>

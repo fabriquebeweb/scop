@@ -33,6 +33,12 @@
     "entities": {
       "tags": []
     },
+    "environment": {
+      "tags": []
+    },
+    "globals": {
+      "tags": []
+    },
     "interfaces": {
       "tags": []
     },

@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
 import { Meeting, MeetingType, NewMeetingDTO } from '@scop/interfaces'
 import { DeleteResult, InsertResult } from 'typeorm'
-import { API } from '../../app.common'
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { API } from '@scop/globals'
+import { Socket } from 'ngx-socket-io'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -11,37 +12,38 @@ export class AdminMeetingsService {
   meetingTypes!: MeetingType[]
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    public readonly socket: Socket
   ){}
 
   getMeetingsSummary() : Promise<Meeting[]>
   {
-    return this.http.get<Meeting[]>(API.path(`/admin/meetings`), API.options()).toPromise()
+    return this.http.get<Meeting[]>(`${API.PATH}/admin/meetings`, API.OPTIONS).toPromise()
   }
 
   getMeetingDetails(id: number) : Promise<Meeting>
   {
-    return this.http.get<Meeting>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
+    return this.http.get<Meeting>(`${API.PATH}/admin/meetings/${id}`, API.OPTIONS).toPromise()
   }
 
   setNewMeeting(meeting: NewMeetingDTO) : Promise<InsertResult>
   {
-    return this.http.post<InsertResult>(API.path(`/admin/meetings`), meeting, API.options()).toPromise()
+    return this.http.post<InsertResult>(`${API.PATH}/admin/meetings`, meeting, API.OPTIONS).toPromise()
   }
 
   resetMeeting(meeting: Meeting) : Promise<Meeting>
   {
-    return this.http.put<Meeting>(API.path(`/admin/meetings/${meeting.id}`), meeting, API.options()).toPromise()
+    return this.http.put<Meeting>(`${API.PATH}/admin/meetings/${meeting.id}`, meeting, API.OPTIONS).toPromise()
   }
 
   unsetMeeting(id: number) : Promise<DeleteResult>
   {
-    return this.http.delete<DeleteResult>(API.path(`/admin/meetings/${id}`), API.options()).toPromise()
+    return this.http.delete<DeleteResult>(`${API.PATH}/admin/meetings/${id}`, API.OPTIONS).toPromise()
   }
 
   getMeetingTypes() : Promise<MeetingType[]>
   {
-    return this.http.get<MeetingType[]>(API.path(`/admin/meetings/types`), API.options()).toPromise()
+    return this.http.get<MeetingType[]>(`${API.PATH}/admin/meetings/types`, API.OPTIONS).toPromise()
   }
 
   checkMeeting(meeting: Meeting | NewMeetingDTO) : boolean

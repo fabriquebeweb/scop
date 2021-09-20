@@ -1,7 +1,7 @@
+import { AdminMembersService } from '@scop/web/admin/members/members.service'
 import { Component, OnInit } from '@angular/core'
-import { AdminMembersService } from './members.service'
-import { User } from '@scop/interfaces'
 import { Router } from '@angular/router'
+import { User } from '@scop/interfaces'
 
 @Component({
   selector: 'admin-members',

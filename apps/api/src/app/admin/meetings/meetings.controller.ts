@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
-import { AdminMeetingsService } from './meetings.service'
+import { AdminMeetingsService } from '@scop/api/admin/meetings/meetings.service'
 import { Meeting } from '@scop/entities'
 
 @Controller('/meetings')

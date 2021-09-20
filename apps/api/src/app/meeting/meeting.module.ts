@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
-import { MeetingController } from './meeting.controller'
-import { MeetingService } from './meeting.service';
+import { MeetingController } from '@scop/api/meeting/meeting.controller'
+import { MeetingGateway } from '@scop/api/meeting/meeting.gateway'
+import { MeetingService } from '@scop/api/meeting/meeting.service'
 
 @Module({
   imports: [],
@@ -8,6 +9,7 @@ import { MeetingService } from './meeting.service';
     MeetingController
   ],
   providers: [
+    MeetingGateway,
     MeetingService
   ]
 })

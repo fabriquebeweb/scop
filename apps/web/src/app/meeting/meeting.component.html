@@ -16,7 +16,7 @@
   </section>
 </nav>
 
-<ng-container *ngIf="service.meeting">
+<ng-container *ngIf="service.meeting; else Loading">
   <main *ngIf="service.meeting.state == true; else Lobby">
     <router-outlet></router-outlet>
   </main>
@@ -24,4 +24,10 @@
 
 <ng-template #Lobby>
   <meeting-lobby></meeting-lobby>
+</ng-template>
+
+<ng-template #Loading>
+  <section class="h-full w-full">
+    <mat-spinner></mat-spinner>
+  </section>
 </ng-template>

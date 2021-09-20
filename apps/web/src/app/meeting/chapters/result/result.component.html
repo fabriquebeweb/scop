@@ -1,0 +1,6 @@
+<footer class="w-full cursor-pointer flex justify-center p-2" title="{{ chapter.question }}">
+  <section [ngClass]="chapter.state ? 'bg-primary-500 hover:bg-primary-600 text-white' : 'bg-basic'" class="w-7/8 h-12 flex rounded shadow-raised justify-evenly items-center uppercase">
+    <span class="w-5/6 text-center truncate">{{ chapter.question }}</span>
+    <mat-icon class="w-1/6">{{ chapter.state == false ? 'leaderboard' : 'question_answer' }}</mat-icon>
+  </section>
+</footer>

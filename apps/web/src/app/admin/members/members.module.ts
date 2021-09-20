@@ -8,10 +8,12 @@ import { MatExpansionModule } from '@angular/material/expansion'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
-import { AdminMembersComponent } from './members.component'
-import { AdminMembersService } from './members.service';
-import { AdminMembersFormComponent } from './form/form.component'
-import { AdminMembersDetailsComponent } from './details/details.component'
+import { AdminMembersComponent } from '@scop/web/admin/members/members.component'
+import { AdminMembersService } from '@scop/web/admin/members/members.service';
+import { AdminMembersFormComponent } from '@scop/web/admin/members/form/form.component'
+import { AdminMembersDetailsComponent } from '@scop/web/admin/members/details/details.component'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AdminMembersDetailsComponent } from './details/details.component'
     MatSnackBarModule,
     MatButtonModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild([])
   ],
   providers: [

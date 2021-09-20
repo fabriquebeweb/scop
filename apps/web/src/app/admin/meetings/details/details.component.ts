@@ -1,6 +1,6 @@
+import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { AdminMeetingsService } from '../meetings.service'
 import { Chapter, Meeting } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
 
@@ -34,6 +34,18 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.service.resetMeeting(this.meeting)
       .then(meeting => this.resetMeeting(meeting))
       .catch(() => this.onError())
+  }
+
+  onLaunch() : void
+  {
+    this.meeting.state = true
+    this.onSubmit()
+  }
+
+  onClose() : void
+  {
+    this.meeting.state = false
+    this.onSubmit()
   }
 
   onDelete() : void

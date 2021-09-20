@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
-import { AdminComponent } from './admin.component'
-import { AdminStatusComponent } from './status/status.component'
-import { AdminThemeComponent } from './theme/theme.component'
-import { AdminMeetingsModule } from './meetings/meetings.module'
-import { MatTabsModule } from '@angular/material/tabs';
-import { AdminMembersModule } from './members/members.module';
-//import { MemberdetailsComponent } from './members/memberdetails/memberdetails.component'
+import { MatTabsModule } from '@angular/material/tabs'
+import { AdminComponent } from '@scop/web/admin/admin.component'
+import { AdminMembersModule } from '@scop/web/admin/members/members.module'
+import { AdminThemeComponent } from '@scop/web/admin/theme/theme.component'
+import { AdminMeetingsModule } from '@scop/web/admin/meetings/meetings.module'
+import { AdminStatusComponent } from '@scop/web/admin/status/status.component'
 
 @NgModule({
   declarations: [

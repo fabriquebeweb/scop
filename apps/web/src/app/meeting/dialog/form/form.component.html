@@ -1,37 +1,47 @@
-<form #form="ngForm" *ngIf="chapter.state == true; else Pending" class="flex flex-col justify-center items-center">
+<ng-container *ngIf="chapter; else Loading">
+  <form #form="ngForm" *ngIf="chapter.state == true; else Pending" class="flex flex-col justify-center items-center">
 
-  <mat-card-header class="my-2 flex flex-col justify-center items-center">
-    <mat-card-subtitle class="text-center uppercase">Chapitre {{ chapter.id }}</mat-card-subtitle>
-    <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
-  </mat-card-header>
+    <mat-card-header class="my-2 flex flex-col justify-center items-center">
+      <mat-card-subtitle class="text-center uppercase">{{ chapter.title }}</mat-card-subtitle>
+      <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content class="overflow-y-scroll my-6 max-h-80 w-9/10">
-    <mat-radio-group *ngIf="answer" class="flex flex-col justify-evenly items-start" name="answer" [(ngModel)]="answer.choice">
-      <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" [value]="choice" name="answer">
-        {{ choice.title }}
-      </mat-radio-button>
-    </mat-radio-group>
-  </mat-card-content>
+    <mat-card-content *ngIf="answer" class="overflow-y-scroll my-6 max-h-80 w-9/10">
+      <mat-radio-group class="flex flex-col justify-evenly items-start" name="answer" [(ngModel)]="answer.choice">
+        <mat-radio-button class="m-2" *ngFor="let choice of chapter.choices" [value]="choice" name="answer">
+          {{ choice.title }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
 
-  <mat-card-footer class="w-5/6">
-    <footer class="my-6 w-full flex justify-evenly items-center space-x-5">
-      <button mat-raised-button (click)="saveAnswer()" class="w-64 tracking-widest" color="primary">
-        VALIDER
-      </button>
-      <button mat-raised-button (click)="saveAbstention()" class="w-60 tracking-widest" color="accent">
-        ABSTENTION
-      </button>
-    </footer>
-  </mat-card-footer>
+    <mat-card-footer class="w-5/6" *ngIf="answer">
+      <footer class="my-6 w-full flex justify-evenly items-center space-x-5">
 
-</form>
+        <button mat-raised-button *ngIf="answer.choice; else NoChoice" (click)="saveAnswer()" class="w-64 tracking-widest" color="primary">
+          VALIDER
+        </button>
+        <button mat-raised-button (click)="saveAbstention()" class="w-60 tracking-widest" color="accent">
+          ABSTENTION
+        </button>
+
+        <ng-template #NoChoice>
+          <button mat-raised-button class="w-64 tracking-widest" disabled>
+            VALIDER
+          </button>
+        </ng-template>
+
+      </footer>
+    </mat-card-footer>
+
+  </form>
+</ng-container>
 
 <ng-template #Pending>
 
   <form class="flex flex-col justify-center items-center">
 
   <mat-card-header class="my-2 flex flex-col justify-center items-center">
-    <mat-card-subtitle class="text-center uppercase">Chapitre {{ chapter.id }}</mat-card-subtitle>
+    <mat-card-subtitle class="text-center uppercase">{{ chapter.title }}</mat-card-subtitle>
     <mat-card-title class="text-center">{{ chapter.question }}</mat-card-title>
   </mat-card-header>
 
@@ -56,4 +66,10 @@
 
   </form>
 
+</ng-template>
+
+<ng-template #Loading>
+  <section class="h-full w-full">
+    <mat-spinner></mat-spinner>
+  </section>
 </ng-template>

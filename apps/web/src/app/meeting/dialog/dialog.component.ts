@@ -24,14 +24,12 @@ export class MeetingDialogComponent implements OnInit {
       .catch(console.log)
   }
 
-  setChapter(chapter: Chapter)
+  setChapter(chapter: Chapter) : void
   {
-    chapter.state = null
-
     this.chapter = chapter
   }
 
-  onClose()
+  onClose() : void
   {
     this.ref.close()
   }

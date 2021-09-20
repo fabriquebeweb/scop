@@ -1,7 +1,7 @@
+import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
+import { Chapter, NewMeetingDTO } from '@scop/interfaces'
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { Chapter, NewMeetingDTO } from '@scop/interfaces'
-import { AdminMeetingsService } from '../meetings.service'
 
 @Component({
   selector: 'meeting-form',

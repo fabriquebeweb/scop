@@ -3,6 +3,7 @@ import { DeleteResult, InsertResult } from 'typeorm'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { API } from '@scop/globals'
+import { Socket } from 'ngx-socket-io'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -11,7 +12,8 @@ export class AdminMeetingsService {
   meetingTypes!: MeetingType[]
 
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    public readonly socket: Socket
   ){}
 
   getMeetingsSummary() : Promise<Meeting[]>

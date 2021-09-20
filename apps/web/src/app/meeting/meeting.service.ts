@@ -14,7 +14,7 @@ export class MeetingService
 
   constructor(
     private readonly http: HttpClient,
-    private socket: Socket
+    private readonly socket: Socket
   ){}
 
   emitDialog(payload: MeetingDialogDTO) : void

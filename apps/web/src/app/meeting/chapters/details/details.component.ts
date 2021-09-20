@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { ActivatedRoute, Router } from '@angular/router'
+import { MeetingService } from '@scop/web/meeting/meeting.service'
 import { Chapter, MeetingDialogDTO } from '@scop/interfaces'
+import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ActivatedRoute, Params, Router } from '@angular/router'
 import { Subscription } from 'rxjs'
-import { MeetingService } from '../../meeting.service'
 
 @Component({
   selector: 'chapter-details',
@@ -21,16 +21,19 @@ export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    this.paramSub = this.route.params.subscribe(params => {
-      this.service.getMeetingChapter(params.chapter)
-        .then(chapter => this.setChapter(chapter))
-        .catch(() => this.onError())
-    })
+    this.paramSub = this.route.params.subscribe(params => this.paramsChapter(params))
   }
 
   ngOnDestroy() : void
   {
     this.paramSub.unsubscribe()
+  }
+
+  paramsChapter(params: Params) : void
+  {
+    this.service.getMeetingChapter(params.chapter)
+      .then(chapter => this.setChapter(chapter))
+      .catch(() => this.onError())
   }
 
   setChapter(chapter: Chapter) : void

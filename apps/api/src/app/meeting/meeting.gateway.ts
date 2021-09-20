@@ -1,22 +1,17 @@
-import { ConnectedSocket, MessageBody, OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
+import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
+import { MeetingDialogDTO } from '@scop/interfaces'
 import { Server, Socket } from 'socket.io'
 import { EVENTS } from '@scop/globals'
 
 @WebSocketGateway()
-export class MeetingGateway implements OnGatewayConnection, OnGatewayDisconnect {
+export class MeetingGateway {
 
   @WebSocketServer() server: Server
 
-  async handleConnection()
-  {}
-
-  async handleDisconnect()
-  {}
-
   @SubscribeMessage(EVENTS.MEETING.DIALOG)
-  async onDialog( @ConnectedSocket() socket: Socket, @MessageBody() payload: any )
+  async onDialog( @ConnectedSocket() socket: Socket, @MessageBody() payload: MeetingDialogDTO )
   {
-    this.server.emit(EVENTS.MEETING.DIALOG, payload)
+    socket.emit(EVENTS.MEETING.DIALOG, payload)
   }
 
 }

@@ -12,6 +12,14 @@ export const EVENTS = {
 
   MEETING: {
     DIALOG: 'OpenMeetingDialog'
+  },
+  ADMIN: {
+    MEETING: {
+      CHAPTER: {
+        START: 'StartChapterVote',
+        END: 'EndChapterVote'
+      }
+    }
   }
 
 }

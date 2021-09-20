@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common'
-import { DeleteResult, InsertResult } from 'typeorm'
-import { Chapter, Meeting, MeetingType } from '@scop/entities'
 import { MeetingService } from '@scop/api/meeting/meeting.service'
+import { Chapter, Meeting, MeetingType } from '@scop/entities'
+import { DeleteResult, InsertResult } from 'typeorm'
+import { Injectable } from '@nestjs/common'
+import { ChapterResultDTO } from '@scop/interfaces'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -17,11 +18,7 @@ export class AdminMeetingsService {
 
   async getMeetings() : Promise<Meeting[]>
   {
-    return await Meeting.find({
-      relations: [
-        "meetingType"
-      ]
-    })
+    return await Meeting.find({ relations: ['meetingType'] })
   }
 
   async getMeeting(meetingId: number) : Promise<Meeting>
@@ -29,9 +26,9 @@ export class AdminMeetingsService {
     return await Meeting.findOne({
       where: { id: meetingId },
       relations: [
-        "meetingType",
-        "chapters",
-        "chapters.choices"
+        'meetingType',
+        'chapters',
+        'chapters.choices'
       ]
     })
   }
@@ -50,7 +47,7 @@ export class AdminMeetingsService {
   {
     return await Meeting.delete(meetingId)
   }
-  
+
   async getChapter(chapterId: number) : Promise<Chapter>
   {
     return await Chapter.findOne(chapterId, {
@@ -76,33 +73,24 @@ export class AdminMeetingsService {
     return await Chapter.delete(chapterId)
   }
 
-  async startVote(id: number)
+  async startVote(chapterId: number) : Promise<Chapter>
   {
-    const chapter: Chapter = await Chapter.findOne(id)
+    const chapter: Chapter = await Chapter.findOne(chapterId)
     chapter.state = true
     return await Chapter.save(chapter)
   }
 
-  async endVote(id: number)
+  async endVote(chapterId: number) : Promise<Chapter>
   {
-    const chapter: Chapter = await Chapter.findOne(id)
-    chapter.state = false
-    return await Chapter.save(chapter)
-  }
+    const chapter: ChapterResultDTO = await this.meetingService.getMeetingChapterResult(chapterId)
 
-  async getMeetingChapterResultWinner(meetingId: number, chapterId: number)
-  {
-    let chapterResult = await this.meetingService.getMeetingChapterResult(meetingId, chapterId)
-    chapterResult.details.result = chapterResult.choices.filter(choice => choice.details != null).reduce((prev, current) => (prev.count > current.count) ? prev : current).details
-    return chapterResult.details
+    chapter.details.result = chapter.choices
+      .filter(choice => choice.details != null)
+      .reduce((prev, current) => (prev.count > current.count) ? prev : current).details
 
-  }
+    chapter.details.state = false
 
-  async saveMeetingChapterResultWinner(meetingId: number, chapterId: number)
-  {
-    let modifiedChapter = await this.getMeetingChapterResultWinner(meetingId, chapterId)
-    modifiedChapter.state = false
-    return await Chapter.create(modifiedChapter).save()
+    return await Chapter.save(chapter.details as unknown as Chapter)
   }
 
 }

@@ -36,7 +36,7 @@ export class MeetingController{
   @Get('/:meeting/chapter/:chapter/results')
   chapter( @Param('meeting') meetingId: number, @Param('chapter') chapterId : number )
   {
-    return this.service.getMeetingChapterResult(meetingId, chapterId)
+    return this.service.getMeetingChapterResult(chapterId)
   }
 
 }

@@ -11,7 +11,7 @@
       <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
       <div class="flex flex-row justify-between w-full mb-4">
           <div class="w-1/12">
-            {{ (choice.count/chapterResult.count)*100 | number:'1.0-0' }}%
+            {{ ( choice.count / chapterResult.count ) * 100 | number:'1.0-0' }}%
           </div>
           <div class="w-8/12 truncate" title="{{ choice.details != null ? choice.details.title : 'Abstention' }}">
             {{ choice.details != null ? choice.details.title : 'Abstention' }}

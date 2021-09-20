@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { DeleteResult, InsertResult } from 'typeorm'
-import { Meeting, MeetingType } from '@scop/entities'
+import { Chapter, Meeting, MeetingType } from '@scop/entities'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -44,6 +44,31 @@ export class AdminMeetingsService {
   async unsetMeeting(meetingId: number) : Promise<DeleteResult>
   {
     return await Meeting.delete(meetingId)
+  }
+  
+  async getChapter(chapterId: number) : Promise<Chapter>
+  {
+    return await Chapter.findOne(chapterId, {
+      relations: [
+        'result',
+        'choices'
+      ]
+    })
+  }
+
+  async setChapter(chapter: Chapter) : Promise<InsertResult>
+  {
+    return await Chapter.insert(chapter)
+  }
+
+  async resetChapter(chapter: Chapter) : Promise<Chapter>
+  {
+    return await Chapter.save(chapter)
+  }
+
+  async unsetChapter(chapterId: number) : Promise<DeleteResult>
+  {
+    return await Chapter.delete(chapterId)
   }
 
 }

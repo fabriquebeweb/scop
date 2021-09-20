@@ -1,7 +1,7 @@
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Chapter, Meeting } from '@scop/interfaces'
+import { Chapter, Meeting, NewChapterDTO } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -17,7 +17,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     public readonly service: AdminMeetingsService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
-  ) {}
+  ){}
 
   ngOnInit() : void
   {

@@ -1,4 +1,4 @@
-import { Chapter, Enterprise, MeetingType } from '@scop/interfaces'
+import { Chapter, Enterprise, MeetingType, NewChapterDTO } from '@scop/interfaces'
 
 export interface NewMeetingDTO {
 
@@ -6,6 +6,6 @@ export interface NewMeetingDTO {
   location?: string
   meetingType?: MeetingType
   enterprise: number
-  chapters: Chapter[]
+  chapters: (Chapter|NewChapterDTO)[]
 
 }

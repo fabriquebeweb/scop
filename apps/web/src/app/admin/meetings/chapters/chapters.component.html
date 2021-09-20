@@ -1,10 +1,10 @@
 
-<ng-container *ngIf="state == null; else Launched">
+<ng-container *ngIf="meeting.state Launched">
 
   <mat-accordion *ngIf="!isForm; else Form">
     <chapter-details *ngFor="let chapter of chapters"
       [chapter]="chapter"
-      [state]="state"
+      [meeting]="meeting"
       (update)="onChapterUpdate($event)"
       (remove)="onChapterRemove($event)">
     </chapter-details>
@@ -23,7 +23,7 @@
   <mat-accordion>
     <chapter-details *ngFor="let chapter of chapters"
       [chapter]="chapter"
-      [state]="state"
+      [meeting]="meeting"
       (update)="onChapterUpdate($event)">
     </chapter-details>
   </mat-accordion>
@@ -31,5 +31,5 @@
 </ng-template>
 
 <ng-template #Form>
-  <chapter-form></chapter-form>
+  <chapter-form [meeting]="meeting" (new)="onNewChapter($event)"></chapter-form>
 </ng-template>

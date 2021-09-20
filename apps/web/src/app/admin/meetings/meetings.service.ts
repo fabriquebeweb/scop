@@ -1,4 +1,4 @@
-import { Meeting, MeetingType, NewMeetingDTO } from '@scop/interfaces'
+import { Chapter, Meeting, MeetingType, NewChapterDTO, NewMeetingDTO } from '@scop/interfaces'
 import { DeleteResult, InsertResult } from 'typeorm'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
@@ -39,6 +39,26 @@ export class AdminMeetingsService {
   unsetMeeting(id: number) : Promise<DeleteResult>
   {
     return this.http.delete<DeleteResult>(`${API.PATH}/admin/meetings/${id}`, API.OPTIONS).toPromise()
+  }
+
+  getChapter(meetingId: number, chapterId: number) : Promise<Chapter>
+  {
+    return this.http.get<Chapter>(`${API.PATH}/admin/meetings/${meetingId}/chapters/${chapterId}`, API.OPTIONS).toPromise()
+  }
+
+  setNewChapter(meetingId: number, chapter: NewChapterDTO) : Promise<InsertResult>
+  {
+    return this.http.post<InsertResult>(`${API.PATH}/admin/meetings/${meetingId}/chapters`, chapter, API.OPTIONS).toPromise()
+  }
+
+  resetChapter(meetingId: number, chapter: Chapter) : Promise<Chapter>
+  {
+    return this.http.put<Chapter>(`${API.PATH}/admin/meetings/${meetingId}/chapters/${chapter.id}`, chapter, API.OPTIONS).toPromise()
+  }
+
+  unsetChapter(meetingId: number, chapterId: number) : Promise<DeleteResult>
+  {
+    return this.http.delete<DeleteResult>(`${API.PATH}/admin/meetings/${meetingId}/chapters/${chapterId}`, API.OPTIONS).toPromise()
   }
 
   getMeetingTypes() : Promise<MeetingType[]>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core'
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
-import { Chapter } from '@scop/interfaces'
+import { Chapter, Meeting } from '@scop/interfaces'
 import { EVENTS } from '@scop/globals'
 
 @Component({
@@ -9,8 +9,9 @@ import { EVENTS } from '@scop/globals'
 })
 export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
+  archive!: Chapter
   @Input() chapter!: Chapter
-  @Input() state: boolean|null = false
+  @Input() meeting!: Meeting
   @Output() update: EventEmitter<Chapter> = new EventEmitter<Chapter>()
   @Output() remove: EventEmitter<Chapter> = new EventEmitter<Chapter>()
 
@@ -19,7 +20,9 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
   ){}
 
   ngOnInit() : void
-  {}
+  {
+    this.archive = { ...this.chapter }
+  }
 
   startVote() : void
   {
@@ -35,15 +38,29 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   onUpdate()
   {
-    this.update.emit(this.chapter)
+    this.service.resetChapter(this.meeting.id, this.chapter)
+      .then(chapter => this.updateChapter(chapter))
+      .catch(console.error)
+  }
+
+  onRemove()
+  {
+    this.service.unsetChapter(this.meeting.id, this.chapter.id)
+      .then(() => this.removeChapter())
+      .catch(console.error)
   }
 
   onCancel()
   {
-    // this.update.emit(this.chapter)
+    this.chapter = { ...this.archive }
   }
 
-  onRemove()
+  updateChapter(chapter: Chapter) : void
+  {
+    this.update.emit(chapter)
+  }
+
+  removeChapter() : void
   {
     this.remove.emit(this.chapter)
   }

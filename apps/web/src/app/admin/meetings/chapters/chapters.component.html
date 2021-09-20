@@ -1,9 +1,35 @@
-<mat-accordion>
 
-  <chapter-details *ngFor="let chapter of chapters"
-    [chapter]="chapter" (update)="onChapterUpdate($event)" (remove)="onChapterRemove($event)">
-  </chapter-details>
+<ng-container *ngIf="state == null; else Launched">
 
-  <!-- <chapter-form [selected]="true"></chapter-form> -->
+  <mat-accordion *ngIf="!isForm; else Form">
+    <chapter-details *ngFor="let chapter of chapters"
+      [chapter]="chapter"
+      [state]="state"
+      (update)="onChapterUpdate($event)"
+      (remove)="onChapterRemove($event)">
+    </chapter-details>
+  </mat-accordion>
 
-</mat-accordion>
+  <span class="sticky bottom-0 float-right mr-5">
+    <button mat-fab color="basic">
+      <mat-icon (click)="toggleForm()">{{ isForm ? 'close' : 'add' }}</mat-icon>
+    </button>
+  </span>
+
+</ng-container>
+
+<ng-template #Launched>
+
+  <mat-accordion>
+    <chapter-details *ngFor="let chapter of chapters"
+      [chapter]="chapter"
+      [state]="state"
+      (update)="onChapterUpdate($event)">
+    </chapter-details>
+  </mat-accordion>
+
+</ng-template>
+
+<ng-template #Form>
+  <chapter-form></chapter-form>
+</ng-template>

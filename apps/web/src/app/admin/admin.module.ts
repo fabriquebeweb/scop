@@ -12,8 +12,7 @@ import { AdminStatusComponent } from '@scop/web/admin/status/status.component'
   declarations: [
     AdminComponent,
     AdminStatusComponent,
-    AdminThemeComponent,
-    //MemberdetailsComponent
+    AdminThemeComponent
   ],
   imports: [
     CommonModule,

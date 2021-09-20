@@ -6,6 +6,6 @@ export interface NewMeetingDTO {
   location?: string
   meetingType?: MeetingType
   enterprise: number
-  chapters: (Chapter|NewChapterDTO)[]
+  chapters: Chapter[]
 
 }

@@ -1,7 +1,7 @@
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { Chapter, Meeting, NewChapterDTO } from '@scop/interfaces'
+import { Chapter, Meeting } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -86,7 +86,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id)
   }
 
-  updateChapters(chapters: Chapter[]) : void
+  onChaptersUpdate(chapters: Chapter[]) : void
   {
     this.meeting.chapters = chapters
   }

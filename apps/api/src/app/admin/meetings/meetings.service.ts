@@ -71,4 +71,18 @@ export class AdminMeetingsService {
     return await Chapter.delete(chapterId)
   }
 
+  async startVote(id: number)
+  {
+    const chapter: Chapter = await Chapter.findOne(id)
+    chapter.state = true
+    return await Chapter.save(chapter)
+  }
+
+  async endVote(id: number)
+  {
+    const chapter: Chapter = await Chapter.findOne(id)
+    chapter.state = false
+    return await Chapter.save(chapter)
+  }
+
 }

@@ -2,8 +2,8 @@ import { DeleteResult, InsertResult } from 'typeorm'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { NewUserDTO, User } from '@scop/interfaces'
-import { DeleteResult, InsertResult } from 'typeorm'
-import { API } from '../../app.common'
+import { API } from '@scop/globals'
+
 
 @Injectable()
 export class AdminMembersService {

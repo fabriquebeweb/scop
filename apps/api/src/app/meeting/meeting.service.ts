@@ -1,5 +1,4 @@
-import { Answer, Chapter, Choice, Meeting } from '@scop/entities'
-import { ChapterResultDTO } from '@scop/interfaces'
+import { Answer, Chapter, Meeting } from '@scop/entities'
 import { InsertResult, IsNull } from 'typeorm'
 import { Injectable } from '@nestjs/common'
 
@@ -58,8 +57,7 @@ export class MeetingService {
       ]
     })
 
-    //Pour chaque chapitre on va faire un count des votes pour chaque choix
-    const chapterResult = {
+    const chapterResult: ChapterResultDTO = {
       details: chapter,
       count: await Answer.count({
         where: {
@@ -70,8 +68,9 @@ export class MeetingService {
         }
       }),
       choices: []
-    }
+    } as unknown as ChapterResultDTO
     //Pour chaque choix on va réaliser le count des votes et on va pousser dans la variable chapterResult
+
     for (const choice of chapter.choices)
     {
       chapterResult.choices.push({
@@ -99,8 +98,9 @@ export class MeetingService {
           choice: IsNull()
         }
       })
-    })
+    } as ChoiceResultDTO)
     //On retournera la variable chapterResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
+
     return chapterResult
   }
 

@@ -17,7 +17,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     public readonly service: AdminMeetingsService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
-  ) {}
+  ){}
 
   ngOnInit() : void
   {
@@ -86,7 +86,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id)
   }
 
-  updateChapters(chapters: Chapter[]) : void
+  onChaptersUpdate(chapters: Chapter[]) : void
   {
     this.meeting.chapters = chapters
   }

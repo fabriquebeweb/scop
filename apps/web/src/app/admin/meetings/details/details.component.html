@@ -26,12 +26,12 @@
 
   <section class="w-7/8 overflow-y-auto h-15/20 p-5 rounded-lg">
 
-    <meeting-chapters [chapters]="meeting.chapters" [state]="meeting.state"></meeting-chapters>
+    <meeting-chapters [chapters]="meeting.chapters" [meeting]="meeting" (update)="onChaptersUpdate($event)"></meeting-chapters>
 
   </section>
 
   <section *ngIf="meeting.state == null" class="w-6/8 flex justify-between items-center h-3/20">
-    <button (click)="onLaunch()" [routerLink]="'/meeting?meeting=' + meeting.id" mat-raised-button class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
+    <button (click)="onLaunch()" mat-raised-button class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
       LANCER
     </button>
     <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">

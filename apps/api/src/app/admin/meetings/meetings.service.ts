@@ -50,6 +50,45 @@ export class AdminMeetingsService {
   {
     return await Meeting.delete(meetingId)
   }
+  
+  async getChapter(chapterId: number) : Promise<Chapter>
+  {
+    return await Chapter.findOne(chapterId, {
+      relations: [
+        'result',
+        'choices'
+      ]
+    })
+  }
+
+  async setChapter(chapter: Chapter) : Promise<InsertResult>
+  {
+    return await Chapter.insert(chapter)
+  }
+
+  async resetChapter(chapter: Chapter) : Promise<Chapter>
+  {
+    return await Chapter.save(chapter)
+  }
+
+  async unsetChapter(chapterId: number) : Promise<DeleteResult>
+  {
+    return await Chapter.delete(chapterId)
+  }
+
+  async startVote(id: number)
+  {
+    const chapter: Chapter = await Chapter.findOne(id)
+    chapter.state = true
+    return await Chapter.save(chapter)
+  }
+
+  async endVote(id: number)
+  {
+    const chapter: Chapter = await Chapter.findOne(id)
+    chapter.state = false
+    return await Chapter.save(chapter)
+  }
 
   async getMeetingChapterResultWinner(meetingId: number, chapterId: number)
   {

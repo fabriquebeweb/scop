@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { Chapter } from '@scop/interfaces'
+import { Chapter, Meeting } from '@scop/interfaces'
 
 @Component({
   selector: 'meeting-chapters',
@@ -7,7 +7,7 @@ import { Chapter } from '@scop/interfaces'
 })
 export class AdminMeetingsChaptersComponent implements OnInit {
 
-  @Input() state!: boolean|null
+  @Input() meeting!: Meeting
   @Input() chapters!: Chapter[]
   @Output() update: EventEmitter<Chapter[]> = new EventEmitter<Chapter[]>()
   isForm: boolean = false
@@ -26,13 +26,12 @@ export class AdminMeetingsChaptersComponent implements OnInit {
   onChapterUpdate(chapter: Chapter) : void
   {
     this.chapters[this.index(chapter)] = chapter
-    // this.update.emit(this.chapters)
-    console.log(this.chapters)
+    this.update.emit(this.chapters)
   }
 
   onChapterRemove(targetChapter: Chapter) : void
   {
-    this.chapters = this.chapters.filter(chapter => chapter != targetChapter)
+    this.chapters = this.chapters.filter(chapter => chapter.id != targetChapter.id)
     this.update.emit(this.chapters)
   }
 
@@ -43,7 +42,7 @@ export class AdminMeetingsChaptersComponent implements OnInit {
 
   index(chapter: Chapter) : number
   {
-    return this.chapters.findIndex(obj => obj.id == chapter.id)
+    return this.chapters.findIndex(obj => { obj.id == chapter.id })
   }
 
 }

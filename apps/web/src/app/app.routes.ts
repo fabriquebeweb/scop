@@ -59,7 +59,7 @@ export const ROUTES: Routes = [
             component: AdminMembersFormComponent
           },
           {
-            path: ':meeting',
+            path: ':member',
             component: AdminMembersDetailsComponent
           }
         ]

@@ -10,5 +10,6 @@ export interface Chapter {
   state: boolean | null
   choices?: Choice[]
   result?: Choice
+  meeting: number
 
 }

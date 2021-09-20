@@ -6,26 +6,28 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <form #form="ngForm" class="w-full" *ngIf="chapter.state == null; else Launched">
+  <ng-container *ngIf="meeting.state == null; else Launched">
+    <form #form="ngForm" class="w-full">
 
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>Titre</mat-label>
-      <input matInput type="text" name="title" [(ngModel)]="chapter.title" required>
-      <mat-error *ngIf="!chapter.title">Champ obligatoire</mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Titre</mat-label>
+        <input matInput type="text" name="title" [(ngModel)]="chapter.title" required>
+        <mat-error *ngIf="!chapter.title">Champ obligatoire</mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" class="w-full">
-      <mat-label>Description</mat-label>
-      <textarea matInput name="description" [(ngModel)]="chapter.description"></textarea>
-    </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Description</mat-label>
+        <textarea matInput name="description" [(ngModel)]="chapter.description"></textarea>
+      </mat-form-field>
 
-    <mat-action-row>
-      <button mat-button (click)="onUpdate()" color="primary">Enregistrer</button>
-      <button mat-button (click)="onCancel()">Annuler</button>
-      <button mat-button (click)="onRemove()" color="warn">Supprimer</button>
-    </mat-action-row>
+      <mat-action-row>
+        <button mat-button (click)="onUpdate()" color="primary">Enregistrer</button>
+        <button mat-button (click)="onCancel()">Annuler</button>
+        <button mat-button (click)="onRemove()" color="warn">Supprimer</button>
+      </mat-action-row>
 
-  </form>
+    </form>
+  </ng-container>
 
   <ng-template #Launched>
     <form #form="ngForm" class="w-full">
@@ -40,10 +42,20 @@
     </form>
 
     <mat-action-row>
-      <button mat-button (click)="onUpdate()" color="primary">Enregistrer</button>
-      <button mat-button (click)="onCancel()">Annuler</button>
-      <button mat-button disabled>Supprimer</button>
+      <button mat-button (click)="onUpdate()" color="primary">ENREGISTRER</button>
+      <ng-container *ngIf="meeting.state == true">
+        <ng-container *ngIf="chapter.state == true; else Ended">
+          <button mat-button disabled>LANCER</button>
+          <button mat-button (click)="endVote()" color="warn">CLOTÛRER</button>
+        </ng-container>
+        <ng-template #Ended>
+          <button mat-button (click)="startVote()" color="accent">LANCER</button>
+          <button mat-button disabled>CLOTÛRER</button>
+        </ng-template>
+      </ng-container>
+      <button mat-button (click)="onCancel()">ANNULER</button>
     </mat-action-row>
+
   </ng-template>
 
 </mat-expansion-panel>

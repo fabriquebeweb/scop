@@ -1,6 +1,6 @@
 import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Status, User } from '@scop/entities'
+import { SeedLoops } from '@scop/config/seed.config'
 import { Injectable } from '@nestjs/common'
-import { SeedLoops } from '@scop/seed'
 import * as Faker from 'faker'
 
 @Injectable()
@@ -141,7 +141,7 @@ export class SeedService {
               location: Faker.address.streetAddress(),
               enterprise: ENTERPRISE,
               meetingType: MEETING_TYPE,
-              state: true
+              state: null
 
             }, Meeting)
 
@@ -187,9 +187,9 @@ export class SeedService {
                 summary: Faker.lorem.words(),
                 question: `${Faker.lorem.sentence()} ?`,
                 choices: CHOICES,
-                result: this.pick(CHOICES),
+                result: null,
                 meeting: MEETING,
-                state: true
+                state: null
 
               }, Chapter)
 

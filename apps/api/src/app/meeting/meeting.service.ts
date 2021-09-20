@@ -1,5 +1,5 @@
 import { Answer, Chapter, Meeting } from '@scop/entities'
-import { ChapterResultDTO } from '@scop/interfaces'
+import { ChapterResultDTO, ChoiceResultDTO } from '@scop/interfaces'
 import { InsertResult, IsNull } from 'typeorm'
 import { Injectable } from '@nestjs/common'
 
@@ -48,7 +48,7 @@ export class MeetingService {
       ]
     })
 
-    const chapterResult = {
+    const chapterResult: ChapterResultDTO = {
       details: chapter,
       count: await Answer.count({
         where: {
@@ -59,7 +59,7 @@ export class MeetingService {
         }
       }),
       choices: []
-    }
+    } as unknown as ChapterResultDTO
 
     for (const choice of chapter.choices)
     {
@@ -88,7 +88,7 @@ export class MeetingService {
           choice: IsNull()
         }
       })
-    })
+    } as ChoiceResultDTO)
 
     return chapterResult
   }

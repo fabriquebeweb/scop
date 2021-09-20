@@ -39,4 +39,10 @@ export class MeetingController{
     return this.service.getMeetingChapterResult(meetingId, chapterId)
   }
 
+  // @Get('/:meeting/chapter/:chapter/results')
+  // winner( @Param('meeting') meetingId: number, @Param('chapter') chapterId : number )
+  // {
+  //   return this.service.getMeetingChapterResultWinner(meetingId, chapterId)
+  // }
+
 }

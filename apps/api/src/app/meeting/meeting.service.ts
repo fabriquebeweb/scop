@@ -35,8 +35,18 @@ export class MeetingService {
     return await Answer.insert(answer)
   }
 
+  /**
+   * Fonction qui récupère les valeurs obtenues par choix pour chaque question-chapter lors du vote
+   * @param meetingId
+   * @param chapterId
+   * @returns le nombre de votes par choix et chapitre
+   */
   async getMeetingChapterResult(meetingId: number, chapterId: number) : Promise<ChapterResultDTO>
   {
+    /*
+    * Tout d'abord on sélectionne le chapitre tenant compte son id et l'id du meeting auquel il appartient
+    * On crée les relations avec les tables choices et result afin de pouvoir ressortir plus tard les résultats par choix
+    */
     const chapter = await Chapter.findOne({
       where: {
         id: chapterId,
@@ -48,6 +58,7 @@ export class MeetingService {
       ]
     })
 
+    //Pour chaque chapitre on va faire un count des votes pour chaque choix
     const chapterResult = {
       details: chapter,
       count: await Answer.count({
@@ -60,7 +71,7 @@ export class MeetingService {
       }),
       choices: []
     }
-
+    //Pour chaque choix on va réaliser le count des votes et on va pousser dans la variable chapterResult
     for (const choice of chapter.choices)
     {
       chapterResult.choices.push({
@@ -76,7 +87,7 @@ export class MeetingService {
         })
       })
     }
-
+    //Pour les nulls on va les conter aussi et les pousser dans les résultats en tant que Abstention dans la variable chapterResult
     chapterResult.choices.push({
       details: null,
       count: await Answer.count({
@@ -89,8 +100,19 @@ export class MeetingService {
         }
       })
     })
-
+    //On retournera la variable chapterResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
     return chapterResult
+    console.log(chapterResult);
   }
+
+
+
+
+
+  // async getMeetingChapterResultWinner(chapterResult)
+  // {
+
+
+  // }
 
 }

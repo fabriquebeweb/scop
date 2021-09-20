@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@scop/interfaces';
 import { Subscription } from 'rxjs';
-import { InsertResult } from 'typeorm';
 import { AdminMembersService } from '../members.service';
 
 @Component({
@@ -18,52 +17,42 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
     public readonly service: AdminMembersService,
     private readonly route: ActivatedRoute,
     private readonly router: Router
-  ){}
+  ) { }
 
-  ngOnInit() : void
-  {
+  ngOnInit(): void {
     this.observer = this.route.params.subscribe(params => this.refreshMember(params.member))
   }
 
-  ngOnDestroy() : void
-  {
+  ngOnDestroy(): void {
     this.observer.unsubscribe
   }
 
   //récupère l'id du member, affecte à la variable membre l'id courant
-  refreshMember(id: number) : void
-  {
+  refreshMember(id: number): void {
     this.service.getMember(id)
-    .then(member => this.setMember(member))
-    .catch(() => this.onError())
+      .then(member => this.setMember(member))
+      .catch(() => this.onError())
   }
 
-  setMember(member: User) : void
-  {
+  setMember(member: User): void {
     this.member = member
   }
 
-  onError() : void
-  {
+  onError(): void {
     this.router.navigateByUrl('/admin/error')
   }
 
-  // Update = getmember + save member
-  updateMember()
-  {
+  updateMember() {
     this.service.resetMember(this.member)
-    .then(member => this.onsave(member))
-    .catch(console.log)
+      .then(modifiedMember => this.updateMemberList(modifiedMember))
   }
 
-  onsave(member: User) : void
-  {
-    
-    console.log(member)
+  updateMemberList(modifiedMember: User): void {
+    this.service.members[this.index(modifiedMember)] = modifiedMember
   }
 
-  deletion() : void
-  {
-
+  index(member: User): number {
+    return this.service.members.findIndex(obj => obj.id == member.id)
   }
+
 }

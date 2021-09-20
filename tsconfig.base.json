@@ -16,13 +16,13 @@
     "baseUrl": ".",
     "paths": {
       "@scop/api/*": ["apps/api/src/app/*"],
-      "@scop/database": ["ormconfig.ts"],
       "@scop/entities": ["libs/entities/src/index.ts"],
       "@scop/environment": ["libs/environment/src/index.ts"],
       "@scop/globals": ["libs/globals/src/index.ts"],
       "@scop/interfaces": ["libs/interfaces/src/index.ts"],
       "@scop/migrations": ["libs/migrations/src/index.ts"],
       "@scop/seed": ["libs/seed/src/index.ts"],
+      "@scop/config/*": ["*.ts"],
       "@scop/subscribers": ["libs/subscribers/src/index.ts"],
       "@scop/web/*": ["apps/web/src/app/*"]
     }

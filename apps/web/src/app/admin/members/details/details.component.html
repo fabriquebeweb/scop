@@ -31,11 +31,12 @@
 
   <div class="flex justify-center">
     <mat-action-row>
-      <button (click)="updateMember()" mat-button color="primary">Valider</button><!--(click)="updateMember()"-->
+      <button (click)="updateMember()" mat-button color="primary">Valider</button>
+      <button  (click)="cancelModification(member.id)" mat-button color="warn">Annuler</button>
     </mat-action-row>
 
     <mat-action-row>
-      <button  mat-button color="warn">Annuler</button><!--(click)="deletion()"-->
+      
     </mat-action-row>
   </div>
 

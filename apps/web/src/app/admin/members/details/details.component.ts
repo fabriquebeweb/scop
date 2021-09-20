@@ -81,4 +81,11 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
     return this.service.members.findIndex(obj => obj.id == member.id)
   }
 
+  cancelModification(id: number): void
+  {
+    this.service.getMember(id)
+      .then(member => this.setMember(member))
+      .catch(() => this.onError())
+  }
+
 }

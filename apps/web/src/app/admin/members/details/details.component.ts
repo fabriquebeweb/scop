@@ -83,9 +83,7 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
 
   cancelModification(id: number): void
   {
-    this.service.getMember(id)
-      .then(member => this.setMember(member))
-      .catch(() => this.onError())
+    this.refreshMember(this.member.id)
   }
 
 }

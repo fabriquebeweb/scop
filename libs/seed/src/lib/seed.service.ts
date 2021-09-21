@@ -199,21 +199,18 @@ export class SeedService {
 
               }, Question)
 
-              if (CHAPTER.id == 1)
-              {
-                // ANSWER
-                await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
+              // // ANSWER
+              // await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
 
-                  await this.save({
+              //   await this.save({
 
-                    user: USER,
-                    question: QUESTION,
-                    choice: this.pick([ null, ...CHOICES ])
+              //     user: USER,
+              //     question: QUESTION,
+              //     choice: this.pick([ null, ...CHOICES ])
 
-                  }, Answer)
+              //   }, Answer)
 
-                }) // ANSWER
-              }
+              // }) // ANSWER
 
             }) // CHAPTER
           }) // MEETING

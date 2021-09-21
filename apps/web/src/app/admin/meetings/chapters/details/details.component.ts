@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Chapter, Meeting } from '@scop/interfaces'
 import { EVENTS } from '@scop/globals'

@@ -34,7 +34,7 @@ export class AdminMeetingsService {
 
     for(const chapter of meeting.chapters)
     {
-      chapter.question = await Question.findOne({
+      if (chapter.question) chapter.question = await Question.findOne({
         where: { id: chapter.question.id },
         relations: ['choices']
       })

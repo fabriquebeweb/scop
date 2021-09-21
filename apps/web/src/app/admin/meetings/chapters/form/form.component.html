@@ -20,6 +20,8 @@
         <textarea matInput name="description" [(ngModel)]="chapter.description"></textarea>
       </mat-form-field>
 
+      <chapter-question [question]="chapter.question" [meeting]="meeting"></chapter-question>
+
     </form>
   </mat-card-content>
 

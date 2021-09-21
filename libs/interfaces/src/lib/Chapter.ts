@@ -6,7 +6,7 @@ export interface Chapter {
   title: string
   description: string
   summary: string
-  question?: Question
+  question: Question | null
   meeting: number
 
 }

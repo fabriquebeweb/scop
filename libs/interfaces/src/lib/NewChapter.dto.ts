@@ -4,7 +4,7 @@ export interface NewChapterDTO {
 
   title?: string
   description?: string
-  question?: Question | null
+  question: Question | null
   meeting: number
 
 }

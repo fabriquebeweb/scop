@@ -20,6 +20,8 @@
         <textarea matInput name="description" [(ngModel)]="chapter.description"></textarea>
       </mat-form-field>
 
+      <chapter-question [question]="chapter.question" [meeting]="meeting"></chapter-question>
+
       <mat-action-row>
         <button mat-button (click)="onUpdate()" color="primary">ENREGISTRER</button>
         <button mat-button (click)="onCancel()">ANNULER</button>
@@ -33,6 +35,8 @@
     <form #form="ngForm" class="w-full">
 
       <section class="mt-2 mb-10">{{ chapter.description }}</section>
+
+      <chapter-question [question]="chapter.question" [meeting]="meeting"></chapter-question>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Compte Rendu</mat-label>

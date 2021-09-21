@@ -23,7 +23,7 @@ export class Enterprise extends BaseEntity
   @Column({ nullable: true })
   ternary: string
 
-  @ManyToOne(type => Provider, provider => provider.enterprises, { nullable: false })
+  @ManyToOne(type => Provider, provider => provider.enterprises)
   provider: Provider
 
   @OneToMany(type => Status, status => status.enterprise, { cascade: true })

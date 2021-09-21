@@ -8,6 +8,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/seed/tsconfig.lib.json"
       }
+    },
+    "hydrate": {
+      "type": "library",
+      "root": "libs/hydrate",
+      "entryFile": "index",
+      "sourceRoot": "libs/hydrate/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/hydrate/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {

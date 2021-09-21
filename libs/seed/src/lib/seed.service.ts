@@ -1,5 +1,5 @@
 import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, User } from '@scop/entities'
-import { SeedLoops } from '@scop/config/seed.config'
+import { SEED } from '@scop/config/seed.config'
 import { Injectable } from '@nestjs/common'
 import * as Faker from 'faker'
 
@@ -58,7 +58,7 @@ export class SeedService {
      */
 
     // MEETING TYPE
-    await this.loop(SeedLoops.MEETING.TYPES, async () => {
+    await this.loop(SEED.MEETING.TYPES, async () => {
 
       await this.save({
 
@@ -69,16 +69,16 @@ export class SeedService {
     }) // MEETING TYPE
 
     // PROVIDER
-    await this.loop(SeedLoops.PROVIDERS, async () => {
+    await this.loop(SEED.PROVIDERS, async () => {
 
       const PROVIDER: Provider = await this.save({
 
-        name: Faker.company.companyName()
+        title: Faker.company.companyName()
 
       }, Provider)
 
       // ENTERPRISE
-      await this.loop(SeedLoops.ENTERPRISES, async () => {
+      await this.loop(SEED.ENTERPRISES, async () => {
 
         const ENTERPRISE: Enterprise = await this.save({
 
@@ -92,7 +92,7 @@ export class SeedService {
         }, Enterprise)
 
         // USER
-        await this.loop(SeedLoops.ENTERPRISE.USERS, async () => {
+        await this.loop(SEED.ENTERPRISE.USERS, async () => {
 
           await this.save({
 
@@ -106,7 +106,7 @@ export class SeedService {
         }) // USER
 
         // CHOICE
-        await this.loop(SeedLoops.ENTERPRISE.CHOICES, async () => {
+        await this.loop(SEED.ENTERPRISE.CHOICES, async () => {
 
           await this.save({
 
@@ -133,7 +133,7 @@ export class SeedService {
           }, Status)
 
           // MEETING
-          await this.loop(SeedLoops.ENTERPRISE.MEETINGS, async () => {
+          await this.loop(SEED.ENTERPRISE.MEETINGS, async () => {
 
             const MEETING: Meeting = await this.save({
 
@@ -161,7 +161,7 @@ export class SeedService {
             }) // PARTICIPATION
 
             // DOCUMENT
-            await this.loop(SeedLoops.MEETING.DOCUMENTS, async () => {
+            await this.loop(SEED.MEETING.DOCUMENTS, async () => {
 
               await this.save({
 
@@ -174,7 +174,7 @@ export class SeedService {
             }) // DOCUMENT
 
             // CHAPTER
-            await this.loop(SeedLoops.MEETING.CHAPTERS, async () => {
+            await this.loop(SEED.MEETING.CHAPTERS, async () => {
 
               const CHAPTER: Chapter = await this.save({
 
@@ -185,7 +185,7 @@ export class SeedService {
 
               }, Chapter)
 
-              const CHOICES: Choice[] = await this.list(SeedLoops.MEETING.CHAPTER.CHOICES, Choice,
+              const CHOICES: Choice[] = await this.list(SEED.MEETING.CHAPTER.CHOICES, Choice,
                 { where: { enterprise: { id: ENTERPRISE.id } }}
               )
 

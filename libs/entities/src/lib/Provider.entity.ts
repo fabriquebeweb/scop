@@ -9,7 +9,7 @@ export class Provider extends BaseEntity
   readonly id: number
 
   @Column()
-  name: string
+  title: string
 
   @OneToMany(type => Enterprise, enterprise => enterprise.provider)
   enterprises: Enterprise[]

@@ -19,6 +19,7 @@
       "@scop/entities": ["libs/entities/src/index.ts"],
       "@scop/environment": ["libs/environment/src/index.ts"],
       "@scop/globals": ["libs/globals/src/index.ts"],
+      "@scop/hydrate": ["libs/hydrate/src/index.ts"],
       "@scop/interfaces": ["libs/interfaces/src/index.ts"],
       "@scop/migrations": ["libs/migrations/src/index.ts"],
       "@scop/seed": ["libs/seed/src/index.ts"],

@@ -1,4 +1,4 @@
-export const SeedLoops = {
+export const SEED = {
   PROVIDERS : 1,
   ENTERPRISES : 1,
   ENTERPRISE : {

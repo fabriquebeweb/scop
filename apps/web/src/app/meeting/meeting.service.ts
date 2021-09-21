@@ -44,7 +44,7 @@ export class MeetingService
 
   getQuestion(id: number) : Promise<Question>
   {
-    return this.http.get<Question>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}/question`, API.OPTIONS).toPromise()
+    return this.http.get<Question>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}`, API.OPTIONS).toPromise()
   }
 
   getQuestionResult(id: number) : Promise<QuestionResultDTO>

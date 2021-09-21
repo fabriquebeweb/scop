@@ -8,7 +8,7 @@ export class API {
   static PREFIX: string = '/api'
   static PATH: string = `http://${API.HOST}:${API.PORT}${API.PREFIX}`
   static HEADERS: HttpHeaders = new HttpHeaders({
-    'content-type': 'application/json',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': '*',
     'Access-Control-Allow-Headers': '*'

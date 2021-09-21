@@ -128,7 +128,7 @@ export const HYDRATE: HydrateConfigOptions = {
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             question: {
               title: 'Validation des Budgets',
-              state: null,
+              state: true,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [
                 { user: 1, choice: null },
@@ -138,6 +138,47 @@ export const HYDRATE: HydrateConfigOptions = {
                 { user: 5, choice: null },
                 { user: 6, choice: null }
               ],
+              result: null
+            }
+          },
+          {
+            title: 'Budgets',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            question: {
+              title: 'Validation des Budgets',
+              state: null,
+              choices: [ { id: 1 }, { id: 2 } ],
+              answers: [],
+              result: null
+            }
+          },
+          {
+            title: 'Budgets',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            question: {
+              title: 'Validation des Budgets',
+              state: null,
+              choices: [ { id: 1 }, { id: 2 } ],
+              answers: [],
+              result: null
+            }
+          }
+        ]
+      },
+      {
+        enterprise: 1,
+        meetingType: 2,
+        date: new Date('2022-12-01 18:00'),
+        state: null,
+        chapters: [
+          {
+            title: 'Budgets',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            question: {
+              title: 'Validation des Budgets',
+              state: null,
+              choices: [ { id: 1 }, { id: 2 } ],
+              answers: [],
               result: null
             }
           }

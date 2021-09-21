@@ -23,15 +23,24 @@ export class AdminMeetingsService {
 
   async getMeeting(meetingId: number) : Promise<Meeting>
   {
-    return await Meeting.findOne({
+    const meeting = await Meeting.findOne({
       where: { id: meetingId },
       relations: [
         'meetingType',
         'chapters',
-        'chapters.question',
-        'chapters.question.choices'
+        'chapters.question'
       ]
     })
+
+    for(const chapter of meeting.chapters)
+    {
+      chapter.question = await Question.findOne({
+        where: { id: chapter.question.id },
+        relations: ['choices']
+      })
+    }
+
+    return meeting
   }
 
   async setMeeting(meeting: Meeting) : Promise<InsertResult>

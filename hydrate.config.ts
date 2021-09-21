@@ -124,10 +124,10 @@ export const HYDRATE: HydrateConfigOptions = {
         state: null,
         chapters: [
           {
-            title: 'Budgets',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            title: 'Élecion du nouveau trésorier',
+            description: 'Cette année, nous avons 3 candidats : J.S. BACH, J.B. POQUELIN, J.P. RAMEAU.',
             question: {
-              title: 'Validation des Budgets',
+              title: 'Qui souhaitez-vous élire ?',
               state: true,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [
@@ -142,10 +142,10 @@ export const HYDRATE: HydrateConfigOptions = {
             }
           },
           {
-            title: 'Budgets',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            title: 'Validation du budget annuel',
+            description: 'Nous allouons un budget de 16 570€ pour les entretiens généraux, les assurances et les fournitures courantes.',
             question: {
-              title: 'Validation des Budgets',
+              title: 'Validation du budget',
               state: null,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [],
@@ -153,10 +153,10 @@ export const HYDRATE: HydrateConfigOptions = {
             }
           },
           {
-            title: 'Budgets',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            title: 'Rénovation de la toiture',
+            description: 'Suite aux intempéries, la toiture a été partiellement détruite. De ce fait, nous souhaitons effectuer les réparations et assurer les fondations déjà présentes pour éviter tout problème futur. Le devis est de : 2 874,95€.',
             question: {
-              title: 'Validation des Budgets',
+              title: 'Validation devis de toiture',
               state: null,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [],
@@ -172,10 +172,10 @@ export const HYDRATE: HydrateConfigOptions = {
         state: null,
         chapters: [
           {
-            title: 'Budgets',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            title: 'Candidature au sociétariat',
+            description: 'Deux candidats : Pierre Husson  et Yassine REZIKI',
             question: {
-              title: 'Validation des Budgets',
+              title: 'Pour qui souhaitez-vous voter ?',
               state: null,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [],

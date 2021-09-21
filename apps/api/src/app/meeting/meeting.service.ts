@@ -59,11 +59,7 @@ export class MeetingService {
     * Tout d'abord on sélectionne le chapitre tenant compte son id et l'id du meeting auquel il appartient
     * On crée les relations avec les tables choices et result afin de pouvoir ressortir plus tard les résultats par choix
     */
-    const question = await Question.findOne({
-      where: {
-        id: questionId,
-        // meeting: { id: meetingId }
-      },
+    const question = await Question.findOne(questionId, {
       relations: [
         'choices',
         'result'
@@ -78,10 +74,12 @@ export class MeetingService {
             id: questionId,
             // meeting: { id: meetingId }
           }
-        }
+        },
+        relations: ['question']
       }),
       choices: []
     } as unknown as QuestionResultDTO
+
 
     // Pour chaque choix on va réaliser le count des votes et on va pousser dans la variable questionResult
     for (const choice of question.choices)
@@ -95,7 +93,8 @@ export class MeetingService {
               // meeting: { id: meetingId }
             },
             choice: choice.id
-          }
+          },
+          relations: ['question']
         })
       })
     }
@@ -110,12 +109,13 @@ export class MeetingService {
             // meeting: { id: meetingId }
           },
           choice: IsNull()
-        }
+        },
+        relations: ['question']
       })
     })
 
     // On retournera la variable questionResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
     return questionResult
-  }
+   }
 
 }

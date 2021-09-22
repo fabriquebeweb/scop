@@ -20,7 +20,7 @@ export class Choice extends BaseEntity
   @OneToMany(type => Answer, answer => answer.choice)
   answers: Answer[]
 
-  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  @ManyToOne(type => Enterprise, enterprise => enterprise.choices, { onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   enterprise: Enterprise
 
 }

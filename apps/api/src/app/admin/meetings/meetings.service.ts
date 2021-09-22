@@ -69,9 +69,9 @@ export class AdminMeetingsService {
     })
   }
 
-  async setChapter(chapter: Chapter) : Promise<InsertResult>
+  async setChapter(chapter: Chapter) : Promise<Chapter>
   {
-    return await Chapter.insert(chapter)
+    return await Chapter.save(chapter)
   }
 
   async resetChapter(chapter: Chapter) : Promise<Chapter>

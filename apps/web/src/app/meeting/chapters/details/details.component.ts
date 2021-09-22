@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs'
 })
 export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
 
-  paramSub!: Subscription
+  params$!: Subscription
   chapter!: Chapter
 
   constructor(
@@ -21,12 +21,12 @@ export class MeetingChaptersDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    this.paramSub = this.route.params.subscribe(params => this.paramsChapter(params))
+    this.params$ = this.route.params.subscribe(params => this.paramsChapter(params))
   }
 
   ngOnDestroy() : void
   {
-    this.paramSub.unsubscribe()
+    this.params$.unsubscribe()
   }
 
   paramsChapter(params: Params) : void

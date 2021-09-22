@@ -18,7 +18,6 @@ import { AdminMeetingsDetailsComponent } from '@scop/web/admin/meetings/details/
 import { AdminMeetingsChaptersComponent } from '@scop/web/admin/meetings/chapters/chapters.component'
 import { AdminMeetingsChaptersFormComponent } from '@scop/web/admin/meetings/chapters/form/form.component'
 import { AdminMeetingsChaptersDetailsComponent } from '@scop/web/admin/meetings/chapters/details/details.component'
-import { AdminMeetingsChaptersQuestionComponent } from '@scop/web/admin/meetings/chapters/question/question.component'
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { AdminMeetingsChaptersQuestionComponent } from '@scop/web/admin/meetings
     AdminMeetingsDetailsComponent,
     AdminMeetingsChaptersComponent,
     AdminMeetingsChaptersFormComponent,
-    AdminMeetingsChaptersDetailsComponent,
-    AdminMeetingsChaptersQuestionComponent
+    AdminMeetingsChaptersDetailsComponent
   ],
   imports: [
     CommonModule,

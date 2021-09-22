@@ -11,7 +11,7 @@ import { AdminMembersService } from '../members.service';
 export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
 
   member!: Member
-  observer!: Subscription
+  params$!: Subscription
 
   constructor(
     public readonly service: AdminMembersService,
@@ -20,11 +20,11 @@ export class AdminMembersDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.observer = this.route.params.subscribe(params => this.refreshMember(params.member))
+    this.params$ = this.route.params.subscribe(params => this.refreshMember(params.member))
   }
 
   ngOnDestroy(): void {
-    this.observer.unsubscribe
+    this.params$.unsubscribe
   }
 
   /** Mise à jour d'un membre selon son ID

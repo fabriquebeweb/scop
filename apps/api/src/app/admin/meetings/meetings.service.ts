@@ -1,8 +1,8 @@
 import { MeetingService } from '@scop/api/meeting/meeting.service'
-import { Chapter, Meeting, MeetingType, Question } from '@scop/entities'
-import { DeleteResult, InsertResult } from 'typeorm'
+import { Chapter, Choice, Meeting, MeetingType, Question } from '@scop/entities'
+import { ChoiceOptionDTO, QuestionResultDTO } from '@scop/interfaces'
+import { DeleteResult, ILike, InsertResult, IsNull } from 'typeorm'
 import { Injectable } from '@nestjs/common'
-import { QuestionResultDTO } from '@scop/interfaces'
 
 @Injectable()
 export class AdminMeetingsService {
@@ -102,6 +102,22 @@ export class AdminMeetingsService {
     question.details.state = false
 
     return await Question.save(question.details as unknown as Question)
+  }
+
+  async getChoiceOptions(payload: ChoiceOptionDTO)
+  {
+    return await Choice.find({
+      where: {
+        // enterprise: { id: [
+        //   payload.enterprise,
+        //   IsNull()
+        // ]},
+        title: ILike(`%${payload.title}%`)
+      },
+      skip: 0,
+      take: 3,
+      cache: true
+    })
   }
 
 }

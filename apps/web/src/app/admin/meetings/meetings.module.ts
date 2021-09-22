@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { AdminMeetingsComponent } from '@scop/web/admin/meetings/meetings.component'
@@ -39,6 +40,7 @@ import { AdminMeetingsChaptersDetailsComponent } from '@scop/web/admin/meetings/
     MatSnackBarModule,
     MatFormFieldModule,
     MatExpansionModule,
+    MatAutocompleteModule,
     MatProgressSpinnerModule,
     RouterModule.forChild([])
   ],

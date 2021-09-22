@@ -2,7 +2,7 @@
 <ng-container *ngIf="meeting.state == null; else Launched">
 
   <mat-accordion *ngIf="!isForm; else Form">
-    <chapter-details *ngFor="let chapter of chapters; let i = index"
+    <chapter-details *ngFor="let chapter of chapters; index as i"
       [chapter]="chapter"
       [meeting]="meeting"
       [index]="i"
@@ -26,7 +26,7 @@
 <ng-template #Launched>
 
   <mat-accordion>
-    <chapter-details *ngFor="let chapter of chapters; let i = index"
+    <chapter-details *ngFor="let chapter of chapters; index as i"
       [chapter]="chapter"
       [meeting]="meeting"
       [index]="i"

@@ -21,7 +21,7 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
   }
 
   constructor(
-    private readonly service: AdminMeetingsService
+    public readonly service: AdminMeetingsService
   ){}
 
   ngOnInit() : void
@@ -55,19 +55,6 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
       .catch(console.error)
   }
 
-  // onQuestionUpdate(question: Question|null) : void
-  // {
-  //   this.chapter.question = question
-
-  //   console.log('CHAPTER')
-  //   console.log(this.chapter.question)
-  //   console.log('ARCHIVE')
-  //   console.log(this.archive.question)
-
-  //   // this.questionSubject.next(this.chapter.question)
-  //   this.questionSubject.next()
-  // }
-
   onCancel() : void
   {
     this.chapter = { ...this.archive }
@@ -80,6 +67,12 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
       choices: [],
       state: null
     }
+  }
+
+  options(title: string) : void
+  {
+    this.newChoice.title = title
+    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, this.newChoice.title)
   }
 
   addChoice() : void

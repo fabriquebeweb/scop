@@ -1,6 +1,6 @@
-import { MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
+import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
 import { AdminMeetingsService } from '@scop/api/admin/meetings/meetings.service'
-import { MeetingDialogDTO } from '@scop/interfaces'
+import { ChoiceOptionDTO, MeetingDialogDTO } from '@scop/interfaces'
 import { Server, Socket } from 'socket.io'
 import { EVENTS } from '@scop/globals'
 
@@ -23,6 +23,12 @@ export class AdminMeetingsGateway {
   async endVote( @MessageBody() payload: MeetingDialogDTO )
   {
     this.openDialog({ question: ( await this.service.endVote(payload.question) ).id })
+  }
+
+  @SubscribeMessage(EVENTS.ADMIN.CHOICE.TMP)
+  async choiceOptions( @ConnectedSocket() socket: Socket, @MessageBody() payload: ChoiceOptionDTO )
+  {
+    socket.emit(EVENTS.ADMIN.CHOICE.OPTIONS, await this.service.getChoiceOptions(payload))
   }
 
   async openDialog( payload: MeetingDialogDTO )

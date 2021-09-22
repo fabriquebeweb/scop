@@ -2,7 +2,7 @@ import { Chapter, Choice, Meeting, MeetingType, NewChapterDTO, NewChoiceDTO, New
 import { DeleteResult, InsertResult } from 'typeorm'
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { API } from '@scop/globals'
+import { API, EVENTS } from '@scop/globals'
 import { Socket } from 'ngx-socket-io'
 
 @Injectable()
@@ -10,6 +10,7 @@ export class AdminMeetingsService {
 
   meetings!: Meeting[]
   meetingTypes!: MeetingType[]
+  choiceOptions$ = this.socket.fromEvent<Choice[]>(EVENTS.ADMIN.CHOICE.OPTIONS)
 
   constructor(
     private readonly http: HttpClient,

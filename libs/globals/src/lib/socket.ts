@@ -17,6 +17,10 @@ export const EVENTS = {
     CHAPTER: {
       START: 'StartChapterVote',
       END: 'EndChapterVote'
+    },
+    CHOICE: {
+      OPTIONS: 'ChoiceOptions',
+      TMP: 'TemporaryChoice'
     }
   }
 

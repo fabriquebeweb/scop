@@ -9,6 +9,7 @@ export * from './lib/Provider'
 export * from './lib/Question'
 export * from './lib/Status'
 
+export * from './lib/ChoiceOption.dto'
 export * from './lib/ChoiceResult.dto'
 export * from './lib/MeetingDialog.dto'
 export * from './lib/NewChapter.dto'

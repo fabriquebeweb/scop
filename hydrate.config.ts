@@ -1,4 +1,4 @@
-import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, User } from '@scop/entities'
+import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, Member } from '@scop/entities'
 import { HydrateConfigOptions } from '@scop/hydrate'
 
 export const HYDRATE: HydrateConfigOptions = {
@@ -27,8 +27,8 @@ export const HYDRATE: HydrateConfigOptions = {
       { name: 'Fondespierre' }
     ]
   },
-  USERS: {
-    entity: User,
+  MEMBERS: {
+    entity: Member,
     values: [
       {
         enterprise: 1,
@@ -77,8 +77,8 @@ export const HYDRATE: HydrateConfigOptions = {
   CHOICES: {
     entity: Choice,
     values: [
-      { enterprise: 1, title: 'Pour' },
-      { enterprise: 1, title: 'Contre' },
+      { enterprise: null, title: 'Pour' },
+      { enterprise: null, title: 'Contre' },
       { enterprise: 1, title: 'Sidney Carlos' },
       { enterprise: 1, title: 'Lauren Georges' },
       { enterprise: 1, title: 'Tamara Alcala-Jimenez' },
@@ -131,12 +131,12 @@ export const HYDRATE: HydrateConfigOptions = {
               state: true,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [
-                { user: 1, choice: null },
-                { user: 2, choice: 1 },
-                { user: 3, choice: 2 },
-                { user: 4, choice: 1 },
-                { user: 5, choice: null },
-                { user: 6, choice: null }
+                { member: 1, choice: null },
+                { member: 2, choice: 1 },
+                { member: 3, choice: 2 },
+                { member: 4, choice: 1 },
+                { member: 5, choice: null },
+                { member: 6, choice: null }
               ],
               result: null
             }

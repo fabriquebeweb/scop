@@ -1,7 +1,7 @@
 export interface QuestionAnswerDTO {
 
   question: number
-  user: number
+  member: number
   choice: number | null
 
 }

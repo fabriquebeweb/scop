@@ -86,9 +86,9 @@ export class AdminMeetingsService {
 
   async startVote(questionId: number) : Promise<Question>
   {
-    const chapter: Question = await Question.findOne(questionId)
-    chapter.state = true
-    return await Question.save(chapter)
+    const question: Question = await Question.findOne(questionId)
+    question.state = true
+    return await Question.save(question)
   }
 
   async endVote(questionId: number) : Promise<Question>

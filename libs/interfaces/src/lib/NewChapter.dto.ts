@@ -1,10 +1,10 @@
-import { Choice, Question } from '@scop/interfaces'
+import { NewQuestionDTO } from '@scop/interfaces'
 
 export interface NewChapterDTO {
 
   title?: string
   description?: string
-  question: Question | null
+  question: NewQuestionDTO | null
   meeting: number
 
 }

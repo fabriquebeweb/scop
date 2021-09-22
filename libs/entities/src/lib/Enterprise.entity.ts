@@ -1,5 +1,5 @@
 import { Entity, Column, BaseEntity, ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
-import { Choice, Meeting, Provider, Status, User } from '@scop/entities'
+import { Choice, Meeting, Provider, Status, Member } from '@scop/entities'
 
 @Entity()
 export class Enterprise extends BaseEntity
@@ -29,8 +29,8 @@ export class Enterprise extends BaseEntity
   @OneToMany(type => Status, status => status.enterprise, { cascade: true })
   status: Status[]
 
-  @OneToMany(type => User, user => user.enterprise, { cascade: true })
-  users: User[]
+  @OneToMany(type => Member, member => member.enterprise, { cascade: true })
+  members: Member[]
 
   @OneToMany(type => Meeting, meeting => meeting.enterprise, { cascade: true })
   meetings: Meeting[]

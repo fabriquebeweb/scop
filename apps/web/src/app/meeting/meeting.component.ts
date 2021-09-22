@@ -38,7 +38,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   onDialog(payload: MeetingDialogDTO)
   {
-    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', maxWidth: '80vw', data: payload })
+    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', minWidth: '50vw', maxWidth: '80vw', data: payload })
   }
 
   setMeeting(meeting: Meeting) : void

@@ -30,7 +30,7 @@ export class MeetingDialogFormComponent implements OnInit {
 
     this.answer = {
       question : question.id,
-      user : 1,
+      member : 1,
       choice : null
     }
   }

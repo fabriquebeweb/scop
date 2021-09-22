@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm'
-import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, User } from '@scop/entities'
+import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, Member } from '@scop/entities'
 
 export const CONNECTION: TypeOrmModuleOptions = {
   type: 'sqlite',
@@ -12,11 +12,11 @@ export const CONNECTION: TypeOrmModuleOptions = {
     Enterprise,
     Meeting,
     MeetingType,
+    Member,
     Participation,
     Provider,
     Question,
-    Status,
-    User
+    Status
   ],
   synchronize: true,
   autoLoadEntities: true,

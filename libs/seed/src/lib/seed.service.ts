@@ -1,4 +1,4 @@
-import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, User } from '@scop/entities'
+import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, Member } from '@scop/entities'
 import { SEED } from '@scop/config/seed.config'
 import { Injectable } from '@nestjs/common'
 import * as Faker from 'faker'
@@ -91,8 +91,8 @@ export class SeedService {
 
         }, Enterprise)
 
-        // USER
-        await this.loop(SEED.ENTERPRISE.USERS, async () => {
+        // MEMBER
+        await this.loop(SEED.ENTERPRISE.MEMBERS, async () => {
 
           await this.save({
 
@@ -101,9 +101,9 @@ export class SeedService {
             email: Faker.internet.email(),
             enterprise: ENTERPRISE
 
-          }, User)
+          }, Member)
 
-        }) // USER
+        }) // MEMBER
 
         // CHOICE
         await this.loop(SEED.ENTERPRISE.CHOICES, async () => {
@@ -146,14 +146,14 @@ export class SeedService {
             }, Meeting)
 
             // PARTICIPATION
-            await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
+            await this.forEach(Member, { where: { enterprise: { id: ENTERPRISE.id } } }, async MEMBER => {
 
               await this.save({
 
                 code: Faker.internet.password(),
                 isPresent: Faker.datatype.boolean(),
                 procuration: null,
-                user: USER,
+                member: MEMBER,
                 meeting: MEETING
 
               }, Participation)
@@ -200,11 +200,11 @@ export class SeedService {
               }, Question)
 
               // // ANSWER
-              // await this.forEach(User, { where: { enterprise: { id: ENTERPRISE.id } } }, async USER => {
+              // await this.forEach(Member, { where: { enterprise: { id: ENTERPRISE.id } } }, async MEMBER => {
 
               //   await this.save({
 
-              //     user: USER,
+              //     member: MEMBER,
               //     question: QUESTION,
               //     choice: this.pick([ null, ...CHOICES ])
 

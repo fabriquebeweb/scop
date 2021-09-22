@@ -26,16 +26,21 @@ export class AdminMeetingsFormComponent implements OnInit {
 
   onSubmit() : void
   {
-    console.log(this.meeting)
-
     if (this.service.checkMeeting(this.meeting))
     {
       this.service.setNewMeeting(this.meeting)
-        .then(console.log)
+        .then(insert => this.addNewMeeting(insert.raw))
         .catch(console.log)
 
       this.resetMeeting()
     }
+  }
+
+  addNewMeeting(id: number) : void
+  {
+    this.service.getMeetingsSummary()
+      .then(meetings => this.service.meetings = meetings)
+      .catch(console.error)
   }
 
   onChaptersUpdate(chapters: Chapter[])

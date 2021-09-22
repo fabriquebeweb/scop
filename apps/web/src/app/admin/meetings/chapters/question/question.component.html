@@ -1,0 +1,3 @@
+<form #form="ngForm">
+  <input type="text" *ngIf="question" name="title" [(ngModel)]="question.title" (change)="onChange()">
+</form>

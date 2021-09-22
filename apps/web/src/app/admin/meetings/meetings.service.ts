@@ -46,9 +46,9 @@ export class AdminMeetingsService {
     return this.http.get<Chapter>(`${API.PATH}/admin/meetings/${meetingId}/chapters/${chapterId}`, API.OPTIONS).toPromise()
   }
 
-  setNewChapter(meetingId: number, chapter: NewChapterDTO) : Promise<InsertResult>
+  setNewChapter(meetingId: number, chapter: NewChapterDTO) : Promise<Chapter>
   {
-    return this.http.post<InsertResult>(`${API.PATH}/admin/meetings/${meetingId}/chapters`, chapter, API.OPTIONS).toPromise()
+    return this.http.post<Chapter>(`${API.PATH}/admin/meetings/${meetingId}/chapters`, chapter, API.OPTIONS).toPromise()
   }
 
   resetChapter(meetingId: number, chapter: Chapter) : Promise<Chapter>

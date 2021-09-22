@@ -2,7 +2,7 @@
 
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{ chapter.title }}
+      {{ index + 1 }}. {{ chapter.title }}
     </mat-panel-title>
   </mat-expansion-panel-header>
 
@@ -20,7 +20,44 @@
         <textarea matInput name="description" [(ngModel)]="chapter.description"></textarea>
       </mat-form-field>
 
-      <chapter-question [question]="chapter.question" [meeting]="meeting"></chapter-question>
+      <section *ngIf="chapter.question; else NoQuestion">
+
+        <section class="w-full">
+          <mat-form-field appearance="outline" class="w-19/20">
+            <mat-label>Question</mat-label>
+            <input matInput type="text" name="question" [(ngModel)]="chapter.question.title">
+          </mat-form-field>
+          <button (click)="chapter.question = null" title="Supprimer la question" class="w-1/20">
+            <mat-icon color="warn">close</mat-icon>
+          </button>
+        </section>
+
+        <section class="w-8/10" *ngFor="let choice of chapter.question.choices; let i = index">
+          <mat-form-field appearance="outline" class="w-19/20">
+            <mat-label>Choix #{{ i + 1 }}</mat-label>
+            <input matInput type="text" [value]="choice.title" disabled>
+          </mat-form-field>
+          <button (click)="removeChoice(choice.id)" title="Supprimer le choix" class="w-1/20">
+            <mat-icon color="warn">close</mat-icon>
+          </button>
+        </section>
+
+        <section class="w-8/10">
+          <mat-form-field appearance="outline" class="w-19/20">
+            <mat-label>Ajouter un Choix</mat-label>
+            <input matInput type="text" name="choice" [(ngModel)]="newChoice.title">
+          </mat-form-field>
+          <button (click)="addChoice()" class="w-1/20">
+            <mat-icon>add</mat-icon>
+          </button>
+        </section>
+
+      </section>
+
+      <ng-template #NoQuestion>
+        <button mat-raised-button class="w-full" (click)="createQuestion()">AJOUTER QUESTION</button>
+      </ng-template>
+
 
       <mat-action-row>
         <button mat-button (click)="onUpdate()" color="primary">ENREGISTRER</button>
@@ -35,8 +72,6 @@
     <form #form="ngForm" class="w-full">
 
       <section class="mt-2 mb-10">{{ chapter.description }}</section>
-
-      <chapter-question [question]="chapter.question" [meeting]="meeting"></chapter-question>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Compte Rendu</mat-label>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { Meeting, NewChapterDTO, Question } from '@scop/interfaces'
+import { Chapter, Meeting, NewChapterDTO, Question } from '@scop/interfaces'
+import { Subject } from 'rxjs'
 import { AdminMeetingsService } from '../../meetings.service'
 
 @Component({
@@ -9,11 +10,10 @@ import { AdminMeetingsService } from '../../meetings.service'
 export class AdminMeetingsChaptersQuestionComponent implements OnInit {
 
   @Input() meeting!: Meeting
-  @Input() question?: Question | null
-  @Output() new: EventEmitter<Question> = new EventEmitter<Question>()
-  @Output() update: EventEmitter<Question> = new EventEmitter<Question>()
-  @Output() remove: EventEmitter<Question> = new EventEmitter<Question>()
-  chapter!: NewChapterDTO
+  @Input() subject!: Subject<Question|null>
+  @Input() chapter!: Chapter | NewChapterDTO
+  @Output() update = new EventEmitter<Question|null>()
+  question!: Question | null
 
   constructor(
     private readonly service: AdminMeetingsService
@@ -21,12 +21,15 @@ export class AdminMeetingsChaptersQuestionComponent implements OnInit {
 
   ngOnInit() : void
   {
-    this.chapter = {
-      title: undefined,
-      description: undefined,
-      question: null,
-      meeting: this.meeting.id
-    }
+    this.setQuestion()
+    this.subject.subscribe(() => this.setQuestion())
+    // this.setQuestion()
+    // this.chapter = {
+    //   title: undefined,
+    //   description: undefined,
+    //   question: null,
+    //   meeting: this.meeting.id
+    // }
   }
 
   // newChapter() : void
@@ -51,12 +54,26 @@ export class AdminMeetingsChaptersQuestionComponent implements OnInit {
 
   clearChapter() : void
   {
-    this.chapter = {
-      title: undefined,
-      description: undefined,
-      question: null,
-      meeting: this.meeting.id
-    }
+    // this.chapter = {
+    //   title: undefined,
+    //   description: undefined,
+    //   question: null,
+    //   meeting: this.meeting.id
+    // }
+  }
+
+  onChange()
+  {
+    // console.log(this.chapter.question === this.archive)
+    // console.log(this.archive)
+    // console.log(this.chapter.question)
+    this.update.emit(this.question)
+    // this.setQuestion()
+  }
+
+  setQuestion() : void
+  {
+    // this.question = this.chapter.question
   }
 
 }

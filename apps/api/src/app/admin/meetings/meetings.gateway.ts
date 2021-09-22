@@ -13,19 +13,19 @@ export class AdminMeetingsGateway {
     private readonly service: AdminMeetingsService
   ){}
 
-  @SubscribeMessage(EVENTS.ADMIN.MEETING.CHAPTER.START)
+  @SubscribeMessage(EVENTS.ADMIN.CHAPTER.START)
   async startVote( @MessageBody() payload: MeetingDialogDTO )
   {
     this.openDialog({ question: ( await this.service.startVote(payload.question) ).id })
   }
 
-  @SubscribeMessage(EVENTS.ADMIN.MEETING.CHAPTER.END)
+  @SubscribeMessage(EVENTS.ADMIN.CHAPTER.END)
   async endVote( @MessageBody() payload: MeetingDialogDTO )
   {
     this.openDialog({ question: ( await this.service.endVote(payload.question) ).id })
   }
 
-  async openDialog( @MessageBody() payload: MeetingDialogDTO )
+  async openDialog( payload: MeetingDialogDTO )
   {
     this.server.emit(EVENTS.MEETING.DIALOG, payload)
   }

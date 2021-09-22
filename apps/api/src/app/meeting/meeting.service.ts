@@ -66,7 +66,7 @@ export class MeetingService {
       ]
     })
 
-    const questionResult: QuestionResultDTO = {
+    const questionResult = {
       details: question,
       count: await Answer.count({
         where: {
@@ -78,7 +78,7 @@ export class MeetingService {
         relations: ['question']
       }),
       choices: []
-    } as unknown as QuestionResultDTO
+    }
 
 
     // Pour chaque choix on va réaliser le count des votes et on va pousser dans la variable questionResult
@@ -115,7 +115,7 @@ export class MeetingService {
     })
 
     // On retournera la variable questionResult avec les votes par choix afin de pouvoir les afficher dans le graphe dédié
-    return questionResult
+    return questionResult as unknown as QuestionResultDTO
    }
 
 }

@@ -108,10 +108,8 @@ export class AdminMeetingsService {
   {
     return await Choice.find({
       where: {
-        // enterprise: { id: [
+        enterprise: IsNull(),
         //   payload.enterprise,
-        //   IsNull()
-        // ]},
         title: ILike(`%${payload.title}%`)
       },
       skip: 0,

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
-import { Chapter, Choice, Meeting, NewChoiceDTO } from '@scop/interfaces'
+import { Chapter, Choice, Meeting, NewChoiceDTO, NewQuestionDTO, Question } from '@scop/interfaces'
 import { EVENTS } from '@scop/globals'
 
 @Component({
@@ -9,12 +9,14 @@ import { EVENTS } from '@scop/globals'
 })
 export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
-  archive!: Chapter
   @Input() index!: number
   @Input() chapter!: Chapter
   @Input() meeting!: Meeting
   @Output() update: EventEmitter<Chapter> = new EventEmitter<Chapter>()
   @Output() remove: EventEmitter<Chapter> = new EventEmitter<Chapter>()
+  chapterArchive!: Chapter
+  questionArchive!: Question | NewQuestionDTO | null
+  choicesArchive!: Choice[] | undefined
   newChoice: NewChoiceDTO = {
     title: '',
     enterprise: 1
@@ -26,7 +28,10 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   ngOnInit() : void
   {
-    this.archive = { ...this.chapter }
+    this.chapterArchive = { ...this.chapter }
+    this.questionArchive = (this.chapter.question) ? { ...this.chapter.question } : null
+    this.choicesArchive = (this.chapter.question?.choices) ? [ ...this.chapter.question?.choices ] : []
+    // if (this.chapter.question?.choices) this.choicesArchive = [ ...this.chapter.question.choices ]
   }
 
   startVote() : void
@@ -57,7 +62,9 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   onCancel() : void
   {
-    this.chapter = { ...this.archive }
+    this.chapter = { ...this.chapterArchive }
+    this.chapter.question = (this.questionArchive) ? { ...this.questionArchive } : null
+    if (this.chapter.question) this.chapter.question.choices = (this.choicesArchive) ? [ ...this.choicesArchive ] : []
   }
 
   createQuestion() : void
@@ -77,8 +84,8 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   addNewChoice() : void
   {
-    (this.choiceExists(this.newChoice) || !this.newChoice.title) ?
-      this.clearChoice : this.service.setNewChoice(this.newChoice)
+    ( this.choiceExists(this.newChoice) || !this.newChoice.title ) ? this.clearChoice
+      : this.service.setNewChoice(this.newChoice)
         .then(insert => this.getChoice(insert.raw))
         .catch(console.error)
   }
@@ -109,7 +116,9 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   updateChapter(chapter: Chapter) : void
   {
-    this.archive = { ...chapter }
+    this.chapterArchive = { ...chapter }
+    this.questionArchive = (chapter.question) ? { ...chapter.question } : null
+    this.choicesArchive = (this.chapter.question?.choices) ? [ ...this.chapter.question?.choices ] : []
     this.update.emit(chapter)
   }
 

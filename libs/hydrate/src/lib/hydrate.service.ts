@@ -27,7 +27,7 @@ export class HydrateService {
     await this.loop(HYDRATE.MEETING_TYPES)
     await this.loop(HYDRATE.PROVIDERS)
     await this.loop(HYDRATE.ENTERPRISES)
-    await this.loop(HYDRATE.USERS)
+    await this.loop(HYDRATE.MEMBERS)
     await this.loop(HYDRATE.CHOICES)
     await this.loop(HYDRATE.STATUS)
     await this.loop(HYDRATE.MEETINGS)

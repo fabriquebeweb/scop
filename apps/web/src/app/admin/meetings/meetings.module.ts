@@ -5,10 +5,12 @@ import { RouterModule } from '@angular/router'
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { AdminMeetingsComponent } from '@scop/web/admin/meetings/meetings.component'
@@ -18,7 +20,6 @@ import { AdminMeetingsDetailsComponent } from '@scop/web/admin/meetings/details/
 import { AdminMeetingsChaptersComponent } from '@scop/web/admin/meetings/chapters/chapters.component'
 import { AdminMeetingsChaptersFormComponent } from '@scop/web/admin/meetings/chapters/form/form.component'
 import { AdminMeetingsChaptersDetailsComponent } from '@scop/web/admin/meetings/chapters/details/details.component'
-import { AdminMeetingsChaptersQuestionComponent } from '@scop/web/admin/meetings/chapters/question/question.component'
 
 @NgModule({
   declarations: [
@@ -28,8 +29,7 @@ import { AdminMeetingsChaptersQuestionComponent } from '@scop/web/admin/meetings
     AdminMeetingsDetailsComponent,
     AdminMeetingsChaptersComponent,
     AdminMeetingsChaptersFormComponent,
-    AdminMeetingsChaptersDetailsComponent,
-    AdminMeetingsChaptersQuestionComponent
+    AdminMeetingsChaptersDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -37,10 +37,12 @@ import { AdminMeetingsChaptersQuestionComponent } from '@scop/web/admin/meetings
     MatIconModule,
     MatCardModule,
     MatInputModule,
+    MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
     MatFormFieldModule,
     MatExpansionModule,
+    MatAutocompleteModule,
     MatProgressSpinnerModule,
     RouterModule.forChild([])
   ],

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { Question } from '@scop/interfaces'
+import { NewQuestionDTO, Question } from '@scop/interfaces'
 
 @Component({
   selector: 'chapter-question',
@@ -7,7 +7,7 @@ import { Question } from '@scop/interfaces'
 })
 export class MeetingQuestionComponent implements OnInit {
 
-  @Input() question!: Question
+  @Input() question!: Question | NewQuestionDTO
 
   constructor(){}
 

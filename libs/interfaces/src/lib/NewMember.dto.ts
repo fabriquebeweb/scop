@@ -1,4 +1,4 @@
-export interface NewUserDTO {
+export interface NewMemberDTO {
 
   firstName?: string
   lastName?: string

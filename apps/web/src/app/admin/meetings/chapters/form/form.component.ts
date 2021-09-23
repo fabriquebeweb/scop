@@ -1,6 +1,7 @@
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { Chapter, Meeting, NewChapterDTO } from '@scop/interfaces'
+import { Chapter, Choice, Meeting, NewChapterDTO, NewChoiceDTO, Question } from '@scop/interfaces'
+import { EVENTS } from '@scop/globals'
 
 @Component({
   selector: 'chapter-form',
@@ -11,9 +12,13 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
   @Input() meeting!: Meeting
   @Output() new: EventEmitter<Chapter> = new EventEmitter<Chapter>()
   chapter!: NewChapterDTO
+  newChoice: NewChoiceDTO = {
+    title: '',
+    enterprise: 1
+  }
 
   constructor(
-    private readonly service: AdminMeetingsService
+    public readonly service: AdminMeetingsService
   ){}
 
   ngOnInit() : void
@@ -29,13 +34,6 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
   newChapter() : void
   {
     this.service.setNewChapter(this.meeting.id, this.chapter)
-      .then(insert => this.setChapter(insert.raw))
-      .catch(console.error)
-  }
-
-  setChapter(chapterId: number) : void
-  {
-    this.service.getChapter(this.meeting.id, chapterId)
       .then(chapter => this.addChapter(chapter))
       .catch(console.error)
   }
@@ -46,6 +44,53 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
     this.clearChapter()
   }
 
+  createQuestion() : void
+  {
+    this.chapter.question = {
+      title: undefined,
+      choices: [],
+      state: null
+    }
+  }
+
+  changeOptions(title: string) : void
+  {
+    this.newChoice.title = title
+    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, this.newChoice)
+  }
+
+  addNewChoice() : void
+  {
+    (this.choiceExists(this.newChoice) || !this.newChoice.title) ?
+      this.clearChoice : this.service.setNewChoice(this.newChoice)
+        .then(insert => this.getChoice(insert.raw))
+        .catch(console.error)
+  }
+
+  getChoice(id: number) : void
+  {
+    this.service.getChoice(id)
+      .then(choice => this.setChoice(choice))
+      .catch(console.error)
+  }
+
+  setChoice(choice: Choice) : void
+  {
+    if (!this.choiceExists(choice)) this.chapter.question!.choices!.push(choice)
+
+    this.clearChoice()
+  }
+
+  choiceExists(choice: Choice | NewChoiceDTO)
+  {
+    return (this.chapter.question!.choices!.find(obj => obj.title === choice.title)) ? true : false
+  }
+
+  removeChoice(choiceId: number) : void
+  {
+    this.chapter.question!.choices = this.chapter.question!.choices.filter(choice => choice.id != choiceId)
+  }
+
   clearChapter() : void
   {
     this.chapter = {
@@ -54,6 +99,11 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
       question: null,
       meeting: this.meeting.id
     }
+  }
+
+  clearChoice() : void
+  {
+    this.newChoice.title = undefined
   }
 
 }

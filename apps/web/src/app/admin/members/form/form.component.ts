@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NewUserDTO, User } from '@scop/interfaces';
+import { Component, OnInit } from '@angular/core'
+import { NewMemberDTO } from '@scop/interfaces'
 import { InsertResult } from 'typeorm';
 import { AdminMembersService } from '../members.service';
 
@@ -8,14 +8,14 @@ import { AdminMembersService } from '../members.service';
   templateUrl: './form.component.html',
 })
 export class AdminMembersFormComponent implements OnInit {
-  
-  member: NewUserDTO = {
+
+  member: NewMemberDTO = {
     firstName: undefined,
     lastName: undefined,
     email:  undefined,
     enterprise: 1
   }
- 
+
   constructor(public readonly service: AdminMembersService,){}
 
   ngOnInit() : void
@@ -24,19 +24,19 @@ export class AdminMembersFormComponent implements OnInit {
   addMember() : void
   {
     this.service.setNewMember(this.member)
-    .then(insertMember => this.onsave(insertMember))
+    .then(insertMember => this.onSave(insertMember))
     .catch(console.log)
   }
 
-  onsave(insertMember: InsertResult) : void
+  onSave(insertMember: InsertResult) : void
   {
     this.service.getMember(insertMember.raw)
     .then(member => this.service.members.push(member))
     .catch(console.log)
-    this.deletion()
+    this.onDelete()
   }
 
-  deletion() : void
+  onDelete() : void
   {
     this.member = {
       firstName: undefined,
@@ -45,5 +45,5 @@ export class AdminMembersFormComponent implements OnInit {
       enterprise: 1
     }
   }
-  
+
 }

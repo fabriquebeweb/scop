@@ -24,7 +24,7 @@ export class Meeting extends BaseEntity
   @Column({ nullable: true })
   state: boolean
 
-  @OneToMany(type => Participation, participation => participation.user, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  @OneToMany(type => Participation, participation => participation.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   participations: Participation[]
 
   @OneToMany(type => Document, document => document.meeting, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })

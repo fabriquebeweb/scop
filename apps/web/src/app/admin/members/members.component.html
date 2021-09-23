@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody *ngIf="service.members; else Loading">
-        <tr *ngFor="let member of service.members; let i = index" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
+        <tr *ngFor="let member of service.members; index as i" [ngClass]="i % 2 == 0 ? 'bg-gray-100' : 'bg-gray-200'">
           <td class="p-3 rounded-lg">
             {{ member.firstName }}
           </td>

@@ -1,4 +1,4 @@
-import { Question } from '@scop/interfaces'
+import { NewQuestionDTO, Question } from '@scop/interfaces'
 
 export interface Chapter {
 
@@ -6,7 +6,7 @@ export interface Chapter {
   title: string
   description: string
   summary: string
-  question: Question | null
+  question: NewQuestionDTO | Question | null
   meeting: number
 
 }

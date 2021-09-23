@@ -10,7 +10,7 @@ export class MeetingService
 {
 
   meeting!: Meeting
-  dialog = this.socket.fromEvent<MeetingDialogDTO>(EVENTS.MEETING.DIALOG)
+  dialog$ = this.socket.fromEvent<MeetingDialogDTO>(EVENTS.MEETING.DIALOG)
 
   constructor(
     private readonly http: HttpClient,
@@ -37,14 +37,14 @@ export class MeetingService
     return this.http.get<Chapter>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${id}`, API.OPTIONS).toPromise()
   }
 
-  postAnswer(answer: QuestionAnswerDTO) : Promise<InsertResult>
-  {
-    return this.http.post<InsertResult>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${answer.question}`, answer, API.OPTIONS).toPromise()
-  }
-
   getQuestion(id: number) : Promise<Question>
   {
     return this.http.get<Question>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}`, API.OPTIONS).toPromise()
+  }
+
+  postAnswer(answer: QuestionAnswerDTO) : Promise<InsertResult>
+  {
+    return this.http.post<InsertResult>(`${API.PATH}/meeting/${this.meeting.id}/question/${answer.question}`, answer, API.OPTIONS).toPromise()
   }
 
   getQuestionResult(id: number) : Promise<QuestionResultDTO>

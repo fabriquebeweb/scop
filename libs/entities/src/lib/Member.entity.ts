@@ -2,7 +2,7 @@ import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne, OneToMan
 import { Answer, Enterprise, Participation } from '@scop/entities'
 
 @Entity()
-export class User extends BaseEntity
+export class Member extends BaseEntity
 {
 
   @PrimaryGeneratedColumn()
@@ -23,17 +23,17 @@ export class User extends BaseEntity
   @Column({ default: false })
   isAdmin: boolean
 
-  @Index('user_enterprise_idx')
-  @ManyToOne(type => Enterprise, enterprise => enterprise.users, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  @Index('member_enterprise_idx')
+  @ManyToOne(type => Enterprise, enterprise => enterprise.members, { nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   enterprise: Enterprise
 
-  @OneToMany(type => Participation, participation => participation.user, { cascade: true })
+  @OneToMany(type => Participation, participation => participation.member, { cascade: true })
   participations: Participation[]
 
   @OneToMany(type => Participation, participation => participation.procuration, { nullable: true, cascade: true })
   procurations: Participation[]
 
-  @OneToMany(type => Answer, answer => answer.user, { cascade: true })
+  @OneToMany(type => Answer, answer => answer.member, { cascade: true })
   answers: Answer[]
 
 }

@@ -27,16 +27,16 @@ export class MeetingController{
     return this.service.getMeetingChapter(meetingId, chapterId)
   }
 
-  @Post('/:meeting/chapter/:chapter')
-  postChapterAnswer( @Body() answer: Answer )
-  {
-    return this.service.saveChapterAnswer(answer)
-  }
-
   @Get('/:meeting/question/:question')
   getQuestion( @Param('meeting') meetingId: number, @Param('question') questionId : number )
   {
     return this.service.getQuestion(questionId)
+  }
+
+  @Post('/:meeting/question/:question')
+  postChapterAnswer( @Body() answer: Answer )
+  {
+    return this.service.saveChapterAnswer(answer)
   }
 
   @Get('/:meeting/question/:question/results')

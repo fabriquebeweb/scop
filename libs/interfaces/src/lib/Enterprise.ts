@@ -1,4 +1,4 @@
-import { Choice, Meeting, Provider, Status, User } from '@scop/interfaces'
+import { Choice, Meeting, Provider, Status, Member } from '@scop/interfaces'
 
 export interface Enterprise {
 
@@ -10,7 +10,7 @@ export interface Enterprise {
   ternary: string | null
   provider?: Provider
   status?: Status[]
-  users?: User[]
+  members?: Member[]
   meetings?: Meeting[]
   choices?: Choice[]
 

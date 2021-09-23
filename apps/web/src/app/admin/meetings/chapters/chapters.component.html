@@ -2,16 +2,17 @@
 <ng-container *ngIf="meeting.state == null; else Launched">
 
   <mat-accordion *ngIf="!isForm; else Form">
-    <chapter-details *ngFor="let chapter of chapters"
+    <chapter-details *ngFor="let chapter of chapters; index as i"
       [chapter]="chapter"
       [meeting]="meeting"
+      [index]="i"
       (update)="onChapterUpdate($event)"
       (remove)="onChapterRemove($event)">
     </chapter-details>
   </mat-accordion>
 
   <span class="sticky bottom-0 float-right mr-5">
-    <button mat-fab color="basic">
+    <button mat-fab color="accent">
       <mat-icon (click)="toggleForm()">{{ isForm ? 'close' : 'add' }}</mat-icon>
     </button>
   </span>
@@ -25,9 +26,10 @@
 <ng-template #Launched>
 
   <mat-accordion>
-    <chapter-details *ngFor="let chapter of chapters"
+    <chapter-details *ngFor="let chapter of chapters; index as i"
       [chapter]="chapter"
       [meeting]="meeting"
+      [index]="i"
       (update)="onChapterUpdate($event)">
     </chapter-details>
   </mat-accordion>

@@ -14,11 +14,13 @@ export const EVENTS = {
     DIALOG: 'OpenMeetingDialog'
   },
   ADMIN: {
-    MEETING: {
-      CHAPTER: {
-        START: 'StartChapterVote',
-        END: 'EndChapterVote'
-      }
+    CHAPTER: {
+      START: 'StartChapterVote',
+      END: 'EndChapterVote'
+    },
+    CHOICE: {
+      OPTIONS: 'ChoiceOptions',
+      TMP: 'TemporaryChoice'
     }
   }
 

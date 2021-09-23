@@ -1,4 +1,4 @@
-<aside *ngIf="question; else Loading">
+<aside *ngIf="question; else Loading" class="w-full h-full">
 
   <ng-container *ngIf="question.state == false; else Form">
     <dialog-result [question]="question" (close)="onClose()"></dialog-result>

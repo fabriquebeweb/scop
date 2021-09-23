@@ -1,9 +1,9 @@
-import { Chapter, Choice, User } from '@scop/interfaces'
+import { Chapter, Choice, Member } from '@scop/interfaces'
 
 export interface Answer {
 
   question: number
-  user: number
+  member: number
   choice: number | null
 
 }

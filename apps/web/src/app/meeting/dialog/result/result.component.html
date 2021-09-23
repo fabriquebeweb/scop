@@ -1,30 +1,31 @@
 <section *ngIf="questionResult; else Loading" class="flex flex-col w-full h-full items-center">
 
   <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
-  <section *ngIf="questionResult.details.result" class="h-1/10 sticky top-0 z-40 flex justify-center">
-    <a class="w-9/10 flex p-5 bg-gradient-to-b from-basic to-transparent rounded-lg truncate">
-      <span class="truncate">{{ questionResult.details.result?.title }}</span>
+  <section *ngIf="questionResult.details.result" class="h-1/10 w-full sticky top-0 z-40 flex justify-center">
+    <a class="w-full flex justify-center items-center p-5 bg-primary-100 rounded-lg truncate">
+      <span class="truncate uppercase font-bold">{{ questionResult.details.result?.title }}</span>
     </a>
   </section>
 
-  <!-- Boucle sur l'entité chapter afin de récupérer les choix -->
-  <section class="overflow-y-scroll w-full px-10 py-5 h-8/10">
+  <section class="overflow-y-scroll w-full px-10 py-5 max-h-5/10">
+
+    <!-- Boucle sur l'entité chapter afin de récupérer les choix -->
     <section class="mt-5" *ngFor="let choice of questionResult.choices">
 
       <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
       <section class="flex flex-row justify-between w-full mb-4">
-          <section class="w-1/12">
-            {{ ( choice.count / questionResult.count ) * 100 | number:'1.0-0' }} %
-          </section>
-          <section class="w-8/12 truncate" title="{{ choice.details != null ? choice.details.title : 'Abstention' }}">
+          <section class="w-16/20 truncate" title="{{ choice.details != null ? choice.details.title : 'Abstention' }}">
             {{ choice.details != null ? choice.details.title : 'Abstention' }}
           </section>
-          <section class="w-1/12">
-            {{ choice.count }} votes
+          <section class="w-2/20 text-right">
+            {{ ( choice.count / questionResult.count ) * 100 | number:'1.0-0' }} %
+          </section>
+          <section class="w-2/20 text-right">
+            {{ choice.count }} vote{{ choice.count > 1 ? 's' : '' }}
           </section>
       </section>
 
-      <!-- Graphe sous forme de barre horizontale et récupération du nombre de votes dans value -->
+      <!-- Graph sous forme de barre horizontale et récupération du nombre de votes dans value -->
       <mat-progress-bar mode="determinate" value="{{ ( choice.count / questionResult.count ) * 100 }}"></mat-progress-bar>
 
     </section>
@@ -32,7 +33,7 @@
   </section>
 
   <!-- Récupération du nombre total de votes par chapitre -->
-  <section class="flex w-full h-1/10 sticky bottom-0 bg-basic justify-center items-center text-center">
+  <section class="flex w-full h-1/10 p-2 mt-5 bg-basic justify-center items-center text-center uppercase font-bold">
     Nombre total de votants : {{ questionResult.count }}
   </section>
 

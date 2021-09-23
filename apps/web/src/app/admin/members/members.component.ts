@@ -1,7 +1,7 @@
 import { AdminMembersService } from '@scop/web/admin/members/members.service'
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { User } from '@scop/interfaces'
+import { Member } from '@scop/interfaces'
 
 @Component({
   selector: 'admin-members',
@@ -21,13 +21,13 @@ export class AdminMembersComponent implements OnInit {
       .catch(console.error)
   }
 
-  setMembers(members: User[]) : void
+  setMembers(members: Member[]) : void
   {
     this.service.members = members
     this.redirect()
   }
 
-  onDelete(member: User) : void
+  onDelete(member: Member) : void
   {
     this.service.unsetMember(member.id)
       .then(() => this.unsetMember(member.id))

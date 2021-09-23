@@ -1,4 +1,4 @@
-import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, User } from '@scop/entities'
+import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, Member } from '@scop/entities'
 import { HydrateConfigOptions } from '@scop/hydrate'
 
 export const HYDRATE: HydrateConfigOptions = {
@@ -27,8 +27,8 @@ export const HYDRATE: HydrateConfigOptions = {
       { name: 'Fondespierre' }
     ]
   },
-  USERS: {
-    entity: User,
+  MEMBERS: {
+    entity: Member,
     values: [
       {
         enterprise: 1,
@@ -77,8 +77,8 @@ export const HYDRATE: HydrateConfigOptions = {
   CHOICES: {
     entity: Choice,
     values: [
-      { enterprise: 1, title: 'Pour' },
-      { enterprise: 1, title: 'Contre' },
+      { enterprise: null, title: 'Pour' },
+      { enterprise: null, title: 'Contre' },
       { enterprise: 1, title: 'Sidney Carlos' },
       { enterprise: 1, title: 'Lauren Georges' },
       { enterprise: 1, title: 'Tamara Alcala-Jimenez' },
@@ -131,21 +131,21 @@ export const HYDRATE: HydrateConfigOptions = {
               state: true,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [
-                { user: 1, choice: null },
-                { user: 2, choice: 1 },
-                { user: 3, choice: 2 },
-                { user: 4, choice: 1 },
-                { user: 5, choice: null },
-                { user: 6, choice: null }
+                { member: 1, choice: null },
+                { member: 2, choice: 1 },
+                { member: 3, choice: 2 },
+                { member: 4, choice: 1 },
+                { member: 5, choice: null },
+                { member: 6, choice: null }
               ],
               result: null
             }
           },
           {
-            title: 'Validation du budget annuel',
-            description: 'Nous allouons un budget de 16 570€ pour les entretiens généraux, les assurances et les fournitures courantes.',
+            title: 'Hygiène & Sécurité',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             question: {
-              title: 'Validation du budget',
+              title: 'Validation de la nouvelle convention',
               state: null,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [],

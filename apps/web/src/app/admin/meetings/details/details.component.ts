@@ -2,6 +2,7 @@ import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Chapter, Meeting } from '@scop/interfaces'
+import { EVENTS } from '@scop/globals'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs'
 })
 export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
-  paramSub!: Subscription
+  params$!: Subscription
   meeting!: Meeting
 
   constructor(
@@ -21,12 +22,13 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    this.paramSub = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
+    this.params$ = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
+    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, { title: '', enterprise: 1 })
   }
 
   ngOnDestroy() : void
   {
-    this.paramSub.unsubscribe()
+    this.params$.unsubscribe()
   }
 
   onSubmit() : void

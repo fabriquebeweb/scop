@@ -1,9 +1,9 @@
 <section class="fixed w-screen bottom-0 h-7/8 flex justify-center items-center">
   <section class="flex justify-center items-center h-7/8 w-7/8">
 
-    <aside *ngIf="chapters; else Loading" class="overflow-y-scroll w-4/10 h-full flex flex-col justify-between px-2">
+    <aside *ngIf="chapters; else Loading" class="overflow-y-scroll w-4/10 h-full flex flex-col justify-start px-2">
 
-      <button *ngFor="let chapter of chapters; let i = index" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 h-32 w-full bg-white hover:bg-basic-light rounded-tl rounded-bl flex flex-col justify-center items-start shadow-raised truncate overflow-hidden" title="{{ chapter.title }}">
+      <button *ngFor="let chapter of chapters; index as i" [routerLink]="'/meeting/chapters/' + chapter.id" routerLinkActive="bg-basic-light" class="p-5 w-full bg-white hover:bg-basic-light rounded-tl rounded-bl flex flex-col justify-center items-start shadow-raised truncate overflow-hidden" title="{{ chapter.title }}">
         {{ i + 1 }}. {{ chapter.title }}
       </button>
 

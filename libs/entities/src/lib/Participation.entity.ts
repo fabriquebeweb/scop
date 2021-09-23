@@ -1,5 +1,5 @@
 import { Entity, Column, BaseEntity, ManyToOne, } from 'typeorm'
-import { Meeting, User } from '@scop/entities'
+import { Meeting, Member } from '@scop/entities'
 
 @Entity()
 export class Participation extends BaseEntity
@@ -8,8 +8,8 @@ export class Participation extends BaseEntity
   @ManyToOne(type => Meeting, meeting => meeting.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   meeting: Meeting
 
-  @ManyToOne(type => User, user => user.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  user: User
+  @ManyToOne(type => Member, member => member.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  member: Member
 
   // @Column({ unique: true })
   @Column()
@@ -18,7 +18,7 @@ export class Participation extends BaseEntity
   @Column({ nullable: true })
   isPresent: boolean
 
-  @ManyToOne(type => User, user => user.procurations, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  procuration: User
+  @ManyToOne(type => Member, member => member.procurations, { nullable: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
+  procuration: Member
 
 }

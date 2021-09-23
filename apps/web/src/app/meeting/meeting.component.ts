@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs'
 })
 export class MeetingComponent implements OnInit, OnDestroy {
 
-  dialogSub!: Subscription
+  dialog$!: Subscription
 
   constructor(
     public readonly service: MeetingService,
@@ -28,17 +28,17 @@ export class MeetingComponent implements OnInit, OnDestroy {
       .then(meeting => this.setMeeting(meeting))
       .catch(() => this.onError())
 
-    this.dialogSub = this.service.dialog.subscribe(payload => this.onDialog(payload))
+    this.dialog$ = this.service.dialog$.subscribe(payload => this.onDialog(payload))
   }
 
   ngOnDestroy() : void
   {
-    this.dialogSub.unsubscribe()
+    this.dialog$.unsubscribe()
   }
 
   onDialog(payload: MeetingDialogDTO)
   {
-    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', maxWidth: '80vw', data: payload })
+    this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', minWidth: '50vw', maxWidth: '80vw', data: payload })
   }
 
   setMeeting(meeting: Meeting) : void

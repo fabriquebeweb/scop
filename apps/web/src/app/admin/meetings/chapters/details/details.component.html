@@ -80,7 +80,22 @@
   <ng-template #Launched>
     <form #form="ngForm" class="w-full">
 
-      <section class="mt-2 mb-10">{{ chapter.description }}</section>
+      <mat-form-field *ngIf="chapter.description" appearance="fill" class="w-full">
+        <mat-label>Description</mat-label>
+        <textarea matInput name="description" [value]="chapter.description" disabled></textarea>
+      </mat-form-field>
+
+      <ng-container *ngIf="chapter.question">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Question</mat-label>
+          <input matInput type="text" name="question" [value]="chapter.question.title" disabled>
+        </mat-form-field>
+
+        <mat-form-field *ngFor="let choice of chapter.question.choices; index as i" appearance="fill" class="w-8/10">
+          <mat-label>Choix #{{ i + 1 }}</mat-label>
+          <input matInput type="text" [value]="choice.title" disabled>
+        </mat-form-field>
+      </ng-container>
 
       <mat-form-field appearance="outline" class="w-full">
         <mat-label>Compte Rendu</mat-label>

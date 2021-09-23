@@ -14,10 +14,9 @@
     "build:prod": "cross-env NODE_ENV=production nx build --configuration production",
     "deploy": "ng deploy --baseHref=\"https://fabriquebeweb.github.io/scop/\"",
     "orm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "seed": "ts-node -r tsconfig-paths/register ./libs/seed/src/lib/seed.ts",
-    "seed:hard": "rimraf ./db.sqlite && npm run seed",
-    "hydrate": "ts-node -r tsconfig-paths/register ./libs/hydrate/src/lib/hydrate.ts",
-    "hydrate:hard": "rimraf ./db.sqlite && npm run hydrate",
+    "db:drop": "npm run orm schema:drop",
+    "db:seed": "npm run db:drop && ts-node -r tsconfig-paths/register ./libs/seed/src/lib/seed.ts",
+    "db:hydrate": "npm run db:drop && ts-node -r tsconfig-paths/register ./libs/hydrate/src/lib/hydrate.ts",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main"
   },
   "dependencies": {

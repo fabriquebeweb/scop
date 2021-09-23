@@ -45,14 +45,18 @@
         <section class="w-8/10">
           <mat-form-field appearance="outline" class="w-19/20">
             <mat-label>Ajouter un Choix</mat-label>
-            <input matInput type="text" name="choice" [ngModel]="newChoice.title" (ngModelChange)="options($event)">
+            <input matInput type="text" name="choice"
+              [matAutocomplete]="auto"
+              [ngModel]="newChoice.title"
+              (ngModelChange)="changeOptions($event)"
+            >
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of service.choiceOptions$ | async" (click)="setChoice(option)" [value]="option.title">
+                {{ option.title }}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let option of service.choiceOptions$ | async" [value]="option">
-              {{ option }}
-            </mat-option>
-          </mat-autocomplete>
-          <button (click)="addChoice()" class="w-1/20">
+          <button (click)="addNewChoice()" class="w-1/20">
             <mat-icon>add</mat-icon>
           </button>
         </section>

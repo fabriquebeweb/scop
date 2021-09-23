@@ -2,6 +2,7 @@ import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Chapter, Meeting } from '@scop/interfaces'
+import { EVENTS } from '@scop/globals'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -22,6 +23,7 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
   ngOnInit() : void
   {
     this.params$ = this.route.params.subscribe(params => this.refreshMeeting(params.meeting))
+    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, { title: '', enterprise: 1 })
   }
 
   ngOnDestroy() : void

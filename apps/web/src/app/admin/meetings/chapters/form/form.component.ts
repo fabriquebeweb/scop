@@ -1,6 +1,7 @@
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Chapter, Choice, Meeting, NewChapterDTO, NewChoiceDTO, Question } from '@scop/interfaces'
+import { EVENTS } from '@scop/globals'
 
 @Component({
   selector: 'chapter-form',
@@ -12,12 +13,12 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
   @Output() new: EventEmitter<Chapter> = new EventEmitter<Chapter>()
   chapter!: NewChapterDTO
   newChoice: NewChoiceDTO = {
-    title: undefined,
+    title: '',
     enterprise: 1
   }
 
   constructor(
-    private readonly service: AdminMeetingsService
+    public readonly service: AdminMeetingsService
   ){}
 
   ngOnInit() : void
@@ -52,11 +53,18 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
     }
   }
 
-  addChoice() : void
+  changeOptions(title: string) : void
   {
-    this.service.setNewChoice(this.newChoice)
-      .then(insert => this.getChoice(insert.raw))
-      .catch(console.error)
+    this.newChoice.title = title
+    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, this.newChoice)
+  }
+
+  addNewChoice() : void
+  {
+    (this.choiceExists(this.newChoice) || !this.newChoice.title) ?
+      this.clearChoice : this.service.setNewChoice(this.newChoice)
+        .then(insert => this.getChoice(insert.raw))
+        .catch(console.error)
   }
 
   getChoice(id: number) : void
@@ -68,9 +76,14 @@ export class AdminMeetingsChaptersFormComponent implements OnInit {
 
   setChoice(choice: Choice) : void
   {
-    this.chapter.question!.choices.push(choice)
+    if (!this.choiceExists(choice)) this.chapter.question!.choices!.push(choice)
 
     this.clearChoice()
+  }
+
+  choiceExists(choice: Choice | NewChoiceDTO)
+  {
+    return (this.chapter.question!.choices!.find(obj => obj.title === choice.title)) ? true : false
   }
 
   removeChoice(choiceId: number) : void

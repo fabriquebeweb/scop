@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { AdminMeetingsService } from '@scop/web/admin/meetings/meetings.service'
-import { Chapter, Choice, Meeting, NewChoiceDTO, Question } from '@scop/interfaces'
+import { Chapter, Choice, Meeting, NewChoiceDTO } from '@scop/interfaces'
 import { EVENTS } from '@scop/globals'
 
 @Component({
@@ -16,7 +16,7 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
   @Output() update: EventEmitter<Chapter> = new EventEmitter<Chapter>()
   @Output() remove: EventEmitter<Chapter> = new EventEmitter<Chapter>()
   newChoice: NewChoiceDTO = {
-    title: undefined,
+    title: '',
     enterprise: 1
   }
 
@@ -69,17 +69,18 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
     }
   }
 
-  options(title: string) : void
+  changeOptions(title: string) : void
   {
     this.newChoice.title = title
-    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, this.newChoice.title)
+    this.service.socket.emit(EVENTS.ADMIN.CHOICE.TMP, this.newChoice)
   }
 
-  addChoice() : void
+  addNewChoice() : void
   {
-    this.service.setNewChoice(this.newChoice)
-      .then(insert => this.getChoice(insert.raw))
-      .catch(console.error)
+    (this.choiceExists(this.newChoice) || !this.newChoice.title) ?
+      this.clearChoice : this.service.setNewChoice(this.newChoice)
+        .then(insert => this.getChoice(insert.raw))
+        .catch(console.error)
   }
 
   getChoice(id: number) : void
@@ -91,9 +92,14 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
 
   setChoice(choice: Choice) : void
   {
-    this.chapter.question!.choices!.push(choice)
+    if (!this.choiceExists(choice)) this.chapter.question!.choices!.push(choice)
 
     this.clearChoice()
+  }
+
+  choiceExists(choice: Choice | NewChoiceDTO)
+  {
+    return (this.chapter.question!.choices!.find(obj => obj.title === choice.title)) ? true : false
   }
 
   removeChoice(choiceId: number) : void

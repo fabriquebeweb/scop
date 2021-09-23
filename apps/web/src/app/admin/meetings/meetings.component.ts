@@ -23,6 +23,8 @@ export class AdminMeetingsComponent implements OnInit, OnDestroy {
     this.service.getMeetingTypes()
       .then(meetingTypes => this.setMeetingTypes(meetingTypes))
       .catch(console.log)
+
+    this.service.choiceOptions$.subscribe(console.log)
   }
 
   ngOnDestroy() : void

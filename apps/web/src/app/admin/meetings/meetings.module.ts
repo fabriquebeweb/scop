@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router'
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card'
 import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatExpansionModule } from '@angular/material/expansion'
@@ -36,6 +37,7 @@ import { AdminMeetingsChaptersDetailsComponent } from '@scop/web/admin/meetings/
     MatIconModule,
     MatCardModule,
     MatInputModule,
+    MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
     MatFormFieldModule,

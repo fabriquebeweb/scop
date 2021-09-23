@@ -108,13 +108,16 @@ export class AdminMeetingsService {
   async getChoiceOptions(payload: ChoiceOptionDTO)
   {
     return await Choice.find({
-      where: {
-        enterprise: [
-          IsNull(),
-          payload.enterprise
-        ],
-        title: ILike(`%${payload.title}%`)
-      },
+      where: [
+        {
+          enterprise: IsNull(),
+          title: ILike(`%${payload.title}%`)
+        },
+        {
+          enterprise: payload.enterprise,
+          title: ILike(`%${payload.title}%`)
+        }
+      ],
       skip: 0,
       take: 3,
       cache: true

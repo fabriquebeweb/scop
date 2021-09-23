@@ -97,7 +97,8 @@ export class AdminMeetingsService {
 
     question.details.result = question.choices
       .filter(choice => choice.details != null)
-      .reduce((prev, current) => (prev.count > current.count) ? prev : current).details
+      .reduce((prev, current) => (prev.count > current.count) ? prev : current)
+      .details
 
     question.details.state = false
 
@@ -108,8 +109,10 @@ export class AdminMeetingsService {
   {
     return await Choice.find({
       where: {
-        enterprise: IsNull(),
-        //   payload.enterprise,
+        enterprise: [
+          IsNull(),
+          payload.enterprise
+        ],
         title: ILike(`%${payload.title}%`)
       },
       skip: 0,

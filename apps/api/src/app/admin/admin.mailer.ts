@@ -14,13 +14,12 @@ export class AdminMailer {
   {
     const participations = await Participation.find({
       where: { meeting: { id: meetingId } },
-      relations: ['member'],
-      take: 2
+      relations: ['member']
     })
 
     participations.forEach(invite => {
       this.mailer.sendMail({
-        to: { name: `${invite.member.firstName} ${invite.member.lastName}`, address: 'hilasix463@tinilalo.com' },
+        to: { name: `${invite.member.firstName} ${invite.member.lastName}`, address: invite.member.email },
         subject: 'WeSCOP - Invitation Réunion',
         template: 'invitation',
         context: {

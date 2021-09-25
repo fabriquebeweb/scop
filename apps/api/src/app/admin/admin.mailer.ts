@@ -13,7 +13,6 @@ export class AdminMailer {
   async sendMeetingInvitations(meetingId: number) : Promise<any>
   {
     const participations = await Participation.find({
-      select: ['code'],
       where: { meeting: { id: meetingId } },
       relations: ['member'],
       take: 2

@@ -43,13 +43,10 @@
   </section>
 
   <section *ngIf="meeting.state == true" class="w-6/8 flex justify-between items-center h-3/20">
-    <button mat-raised-button (click)="onSubmit()" class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
+    <button mat-raised-button [routerLink]="'/meeting?meeting=' + meeting.id" class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
       REJOINDRE
     </button>
-    <!-- <button mat-raised-button [routerLink]="'/meeting?meeting=' + meeting.id" class="h-9/20 w-7/20 tracking-widest text-gray-900" color="primary">
-      REJOINDRE
-    </button> -->
-    <button mat-raised-button class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
+    <button mat-raised-button (click)="invite()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="accent">
       INVITER
     </button>
     <button mat-raised-button (click)="onClose()" class="h-9/20 w-6/20 tracking-widest text-gray-900" color="warn">

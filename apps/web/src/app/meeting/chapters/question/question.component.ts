@@ -5,7 +5,7 @@ import { NewQuestionDTO, Question } from '@scop/interfaces'
   selector: 'chapter-question',
   templateUrl: './question.component.html'
 })
-export class MeetingQuestionComponent implements OnInit {
+export class MeetingChaptersQuestionComponent implements OnInit {
 
   @Input() question!: Question | NewQuestionDTO
 

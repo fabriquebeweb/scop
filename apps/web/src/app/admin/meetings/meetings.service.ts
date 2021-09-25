@@ -42,6 +42,11 @@ export class AdminMeetingsService {
     return this.http.delete<DeleteResult>(`${API.PATH}/admin/meetings/${id}`, API.OPTIONS).toPromise()
   }
 
+  sendInvitations(meetingId: number) : Promise<any>
+  {
+    return this.http.post<any>(`${API.PATH}/admin/meetings/${meetingId}/invite`, null, API.OPTIONS).toPromise()
+  }
+
   getChapter(meetingId: number, chapterId: number) : Promise<Chapter>
   {
     return this.http.get<Chapter>(`${API.PATH}/admin/meetings/${meetingId}/chapters/${chapterId}`, API.OPTIONS).toPromise()

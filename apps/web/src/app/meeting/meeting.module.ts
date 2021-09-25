@@ -20,7 +20,7 @@ import { MeetingDialogFormComponent } from '@scop/web/meeting/dialog/form/form.c
 import { MeetingDocumentsComponent } from '@scop/web/meeting/documents/documents.component'
 import { MeetingDialogResultComponent } from '@scop/web/meeting/dialog/result/result.component'
 import { MeetingChaptersDetailsComponent } from '@scop/web/meeting/chapters/details/details.component'
-import { MeetingQuestionComponent } from '@scop/config/apps/web/src/app/meeting/chapters/question/question.component'
+import { MeetingChaptersQuestionComponent } from '@scop/web/meeting/chapters/question/question.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { MeetingQuestionComponent } from '@scop/config/apps/web/src/app/meeting/
     MeetingDocumentsComponent,
     MeetingChaptersComponent,
     MeetingChaptersDetailsComponent,
-    MeetingQuestionComponent,
+    MeetingChaptersQuestionComponent,
     MeetingPresenceComponent,
     MeetingDialogComponent,
     MeetingDialogResultComponent,

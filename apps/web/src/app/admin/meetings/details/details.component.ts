@@ -88,6 +88,11 @@ export class AdminMeetingsDetailsComponent implements OnInit, OnDestroy {
     this.service.meetings = this.service.meetings.filter(meeting => meeting.id != this.meeting.id)
   }
 
+  invite() : void
+  {
+    this.service.sendInvitations(this.meeting.id)
+  }
+
   onChaptersUpdate(chapters: Chapter[]) : void
   {
     this.meeting.chapters = chapters

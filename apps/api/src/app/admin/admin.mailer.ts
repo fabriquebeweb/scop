@@ -12,30 +12,23 @@ export class AdminMailer {
 
   async sendMeetingInvitations(meetingId: number) : Promise<any>
   {
-    console.log(await Participation.find({
-      // select: ['code'],
+    const participations = await Participation.find({
+      select: ['code'],
       where: { meeting: { id: meetingId } },
       relations: ['member'],
       take: 2
-    }))
+    })
 
-    // const participations = await Participation.find({
-    //   // select: ['code'],
-    //   where: { meeting: { id: meetingId } },
-    //   relations: ['member'],
-    //   take: 2
-    // })
-
-    // participations.forEach(invite => {
-    //   this.mailer.sendMail({
-    //     to: { name: `${invite.member.firstName} ${invite.member.lastName}`, address: 'hilasix463@tinilalo.com' },
-    //     subject: 'WeSCOP - Invitation Réunion',
-    //     template: 'invitation',
-    //     context: {
-    //       link: `https://${process.env.APP_HOST}/meeting=${meetingId}&code=${invite.code}`
-    //     }
-    //   })
-    // })
+    participations.forEach(invite => {
+      this.mailer.sendMail({
+        to: { name: `${invite.member.firstName} ${invite.member.lastName}`, address: 'hilasix463@tinilalo.com' },
+        subject: 'WeSCOP - Invitation Réunion',
+        template: 'invitation',
+        context: {
+          link: `https://${process.env.APP_HOST}/meeting=${meetingId}&code=${invite.code}`
+        }
+      })
+    })
   }
 
 }

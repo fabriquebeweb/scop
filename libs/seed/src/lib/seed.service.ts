@@ -150,7 +150,6 @@ export class SeedService {
 
               await this.save({
 
-                code: Faker.internet.password(),
                 isPresent: Faker.datatype.boolean(),
                 procuration: null,
                 member: MEMBER,

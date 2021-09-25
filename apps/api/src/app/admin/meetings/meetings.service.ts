@@ -1,4 +1,4 @@
-import { Chapter, Choice, Meeting, MeetingType, Member, Question } from '@scop/entities'
+import { Chapter, Choice, Meeting, MeetingType, Member, Question, Participation } from '@scop/entities'
 import { ChoiceOptionDTO, QuestionResultDTO } from '@scop/interfaces'
 import { DeleteResult, ILike, InsertResult, IsNull } from 'typeorm'
 import { MeetingService } from '@scop/api/meeting/meeting.service'
@@ -45,7 +45,23 @@ export class AdminMeetingsService {
 
   async setMeeting(meeting: Meeting) : Promise<InsertResult>
   {
-    return await Meeting.insert(meeting)
+    const insert = await Meeting.insert(meeting)
+    const members = await Member.find({
+      select: ['id'],
+      where: { enterprise: { id: meeting.enterprise.id ?? meeting.enterprise } }
+    })
+
+    for(const member of members)
+    {
+      await Participation.create({
+
+        meeting: insert.raw,
+        member: member,
+
+      }).save()
+    }
+
+    return insert
   }
 
   async resetMeeting(meeting: Meeting) : Promise<Meeting>

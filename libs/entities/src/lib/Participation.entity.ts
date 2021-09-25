@@ -1,4 +1,4 @@
-import { Entity, Column, BaseEntity, ManyToOne, } from 'typeorm'
+import { Entity, Column, BaseEntity, ManyToOne, Generated, } from 'typeorm'
 import { Meeting, Member } from '@scop/entities'
 
 @Entity()
@@ -11,8 +11,8 @@ export class Participation extends BaseEntity
   @ManyToOne(type => Member, member => member.participations, { primary: true, nullable: false, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
   member: Member
 
-  // @Column({ unique: true })
-  @Column()
+  @Column({ unique: true })
+  @Generated('uuid')
   code: string
 
   @Column({ nullable: true })

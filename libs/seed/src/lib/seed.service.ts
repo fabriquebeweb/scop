@@ -1,6 +1,6 @@
 import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, Member } from '@scop/entities'
-import { SEED } from '@scop/config/seed.config'
 import { Injectable } from '@nestjs/common'
+import { SEED } from '@scop/config/seed'
 import * as Faker from 'faker'
 
 @Injectable()

@@ -1,0 +1,6 @@
+{
+  "packages": [
+    "mjml-qr-code/lib/MjQrCode.js"
+  ],
+  "config": {}
+}

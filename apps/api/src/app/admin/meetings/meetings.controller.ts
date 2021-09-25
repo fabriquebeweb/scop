@@ -1,12 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { AdminMeetingsService } from '@scop/api/admin/meetings/meetings.service'
+import { AdminMailer } from '@scop/api/admin/admin.mailer'
 import { Chapter, Meeting } from '@scop/entities'
 
 @Controller('/meetings')
 export class AdminMeetingsController {
 
   constructor(
-    private readonly service: AdminMeetingsService
+    private readonly service: AdminMeetingsService,
+    private readonly mailer: AdminMailer
   ){}
 
   @Get()
@@ -45,10 +47,16 @@ export class AdminMeetingsController {
     return this.service.unsetMeeting(id)
   }
 
-  @Post('/:meeting/chapters')
-  newChapter( @Param('meeting') meetingId: number, @Body() Chapter: Chapter )
+  @Post('/:meeting/invite')
+  invite( @Param('meeting') meetingId: number )
   {
-    return this.service.setChapter(Chapter)
+    return this.mailer.sendMeetingInvitations(meetingId)
+  }
+
+  @Post('/:meeting/chapters')
+  newChapter( @Param('meeting') meetingId: number, @Body() chapter: Chapter )
+  {
+    return this.service.setChapter(chapter)
   }
 
   @Get('/:meeting/chapters/:chapter')

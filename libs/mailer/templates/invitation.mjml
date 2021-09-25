@@ -1,0 +1,69 @@
+<mjml>
+
+  <mj-head>
+    <mj-font name="Roboto" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500"></mj-font>
+    <mj-attributes>
+      <mj-all font-family="Montserrat, Helvetica, Arial, sans-serif"></mj-all>
+      <mj-text font-weight="400" font-size="16px" color="#000000" line-height="24px"></mj-text>
+      <mj-section padding="0px"></mj-section>
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#F2F2F2">
+    <mj-section padding="10px 0 10px 0"></mj-section>
+
+    <mj-section padding="30px 30px 20px 30px" background-color="#FFFFFF">
+      <mj-column>
+        <mj-text align="center" font-size="30px" font-weight="500">WeSCOP</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding="0px 20px 0 20px" background-color="#FFFFFF">
+      <mj-column>
+        <mj-text align="center" font-weight="300" padding="30px 40px 10px 40px" font-size="20px" line-height="40px" color="#009688">Vous êtes invités à participer à la réunion de</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding="0 20px 75px 20px" background-color="#FFFFFF">
+      <mj-column width="80%">
+        <mj-text align="center" font-size="30px" padding-top="10px" font-weight="500" padding="0px">Fondespierre RH</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#009688">
+      <mj-column width="100%">
+        <mj-image src="http://nimus.de/share/tpl-card/lineshadow.png" alt="" align="center" border="none" padding="0px"></mj-image>
+        <mj-button align="center" background-color="#FFFFFF" color="#009688" border-radius="10px" href="{{ link }}" inner-padding="20px 50px" padding-bottom="80px" padding-top="50px" font-weight="600" font-size="20px">REJOINDRE LA RÉUNION</mj-button>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#009688">
+      <mj-column width="80%">
+        <mj-text align="center" font-size="15px" font-weight="300" line-height="0">
+          Le bouton ne fonctionne pas ?
+        </mj-text>
+        <mj-text align="center" font-size="15px" font-weight="300" line-height="0">
+          Scannez le QR Code ou copiez le lien ci-dessous
+        </mj-text>
+        <mj-text color="#FFFFFF" align="center" font-size="15px" font-weight="300">
+          <a>{{ link }}</a>
+        </mj-text>
+        <mj-qr-code
+          width="150px" color="#009688" background-color="#FFFFFF"
+          border-radius="10px" align="center"
+          padding-bottom="50px" padding-top="20px" value="{{ link }}"
+        >
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding="10px 0 10px 0">
+      <mj-column>
+        <mj-text align="center" color="#9B9B9B" font-size="11px" padding-bottom="20px">
+          <!-- <a href="#">Unsubscribe</a> from this newsletter -->
+          <p>Conçu avec &#9829; par <a href="https://fondespierre.com">Fondespierre RH</a></p>
+          <p>291 Chem. de Fondespierre, 34160 Castries</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

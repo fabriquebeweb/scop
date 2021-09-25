@@ -1,5 +1,5 @@
-import { HYDRATE } from '@scop/config/hydrate.config'
 import { HydrateConfigOption } from '@scop/hydrate'
+import { HYDRATE } from '@scop/config/hydrate'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

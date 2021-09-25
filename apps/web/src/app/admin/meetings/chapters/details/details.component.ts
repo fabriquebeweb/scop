@@ -31,7 +31,6 @@ export class AdminMeetingsChaptersDetailsComponent implements OnInit {
     this.chapterArchive = { ...this.chapter }
     this.questionArchive = (this.chapter.question) ? { ...this.chapter.question } : null
     this.choicesArchive = (this.chapter.question?.choices) ? [ ...this.chapter.question?.choices ] : []
-    // if (this.chapter.question?.choices) this.choicesArchive = [ ...this.chapter.question.choices ]
   }
 
   startVote() : void

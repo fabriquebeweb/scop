@@ -1,4 +1,4 @@
-import { Answer, Chapter, Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Question, Status, Member } from '@scop/entities'
+import { Choice, Document, Enterprise, Meeting, MeetingType, Participation, Provider, Status, Member } from '@scop/entities'
 import { HydrateConfigOptions } from '@scop/hydrate'
 
 export const HYDRATE: HydrateConfigOptions = {

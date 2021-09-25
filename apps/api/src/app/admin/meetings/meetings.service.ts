@@ -1,7 +1,7 @@
-import { MeetingService } from '@scop/api/meeting/meeting.service'
-import { Chapter, Choice, Meeting, MeetingType, Question } from '@scop/entities'
+import { Chapter, Choice, Meeting, MeetingType, Member, Question } from '@scop/entities'
 import { ChoiceOptionDTO, QuestionResultDTO } from '@scop/interfaces'
 import { DeleteResult, ILike, InsertResult, IsNull } from 'typeorm'
+import { MeetingService } from '@scop/api/meeting/meeting.service'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

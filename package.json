@@ -68,6 +68,7 @@
     "@angular/language-service": "^12.2.0",
     "@capacitor/android": "^2.4.5",
     "@capacitor/ios": "^2.4.5",
+    "@ionic/angular-toolkit": "^4.0.0",
     "@nestjs/cli": "^8.1.1",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",

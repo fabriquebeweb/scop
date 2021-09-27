@@ -1,20 +1,25 @@
+import { MeetingPage } from '@scop/mobile/meeting/meeting.page'
+import { ErrorPage } from '@scop/mobile/error/error.page'
+import { HomePage } from '@scop/mobile/home/home.page'
 import { Routes } from '@angular/router'
-import { HomePage } from './home/home.page'
 
 export const ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    component: HomePage
   },
   {
-    path: 'home',
-    loadChildren: () => import('@scop/mobile/home/home.module').then(m => m.HomePageModule),
-    component: HomePage,
-    // children: [
-    //   {
-    //     path: '',
-    //   }
-    // ]
+    path: 'meeting',
+    component: MeetingPage,
+    loadChildren: () => import('@scop/mobile/meeting/meeting.module').then(m => m.MeetingModule)
+  },
+  {
+    path: 'error',
+    component: ErrorPage
+  },
+  {
+    path: '**',
+    redirectTo: '/error'
   }
 ]

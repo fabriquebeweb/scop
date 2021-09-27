@@ -6,7 +6,7 @@ import 'dotenv'
 
 async function bootstrap()
 {
-  (await NestFactory.create(AppModule, { cors: true }))
+  (await NestFactory.create(AppModule, API.CORS))
     .setGlobalPrefix(API.PREFIX)
     .listen(API.PORT)
 }

@@ -1,9 +1,9 @@
 import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
 import { MeetingDialogDTO } from '@scop/interfaces'
+import { API, EVENTS } from '@scop/globals'
 import { Server, Socket } from 'socket.io'
-import { EVENTS } from '@scop/globals'
 
-@WebSocketGateway()
+@WebSocketGateway(API.CORS)
 export class MeetingGateway {
 
   @WebSocketServer() server: Server

@@ -259,8 +259,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/mobile/src/environments/environment.ts",
-                  "with": "apps/mobile/src/environments/environment.prod.ts"
+                  "replace": "libs/environment/src/lib/environment.ts",
+                  "with": "libs/environment/src/lib/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"

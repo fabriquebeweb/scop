@@ -25,6 +25,7 @@
       "@scop/interfaces": ["libs/interfaces/src/index.ts"],
       "@scop/mailer": ["libs/mailer/src/index.ts"],
       "@scop/migrations": ["libs/migrations/src/index.ts"],
+      "@scop/mobile/*": ["apps/mobile/src/app/*"],
       "@scop/seed": ["libs/seed/src/index.ts"],
       "@scop/subscribers": ["libs/subscribers/src/index.ts"],
       "@scop/web/*": ["apps/web/src/app/*"]

@@ -45,6 +45,9 @@
     "migrations": {
       "tags": []
     },
+    "mobile": {
+      "tags": []
+    },
     "subscribers": {
       "tags": []
     },

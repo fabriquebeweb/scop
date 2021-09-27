@@ -23,7 +23,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   ngOnInit() : void
   {
-    // this.service.getMeeting(this.route.snapshot.queryParams.meeting)
+    // this.service.getMeeting(this.route.snapshot.queryParams.id)
     this.service.getMeeting(1)
       .then(meeting => this.setMeeting(meeting))
       .catch(() => this.onError())

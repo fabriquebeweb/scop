@@ -26,7 +26,7 @@
 
     <mj-section padding="0 20px 75px 20px" background-color="#FFFFFF">
       <mj-column width="80%">
-        <mj-text align="center" font-size="30px" padding-top="10px" font-weight="500" padding="0px">Fondespierre RH</mj-text>
+        <mj-text align="center" font-size="30px" padding-top="10px" font-weight="500" padding="0px">{{ enterprise }}</mj-text>
       </mj-column>
     </mj-section>
 

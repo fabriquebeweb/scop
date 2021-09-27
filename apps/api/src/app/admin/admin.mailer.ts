@@ -1,5 +1,5 @@
 import { Address } from '@nestjs-modules/mailer/dist/interfaces/send-mail-options.interface'
-import { Participation } from '@scop/entities'
+import { Meeting, Participation } from '@scop/entities'
 import { MailerService } from '@nestjs-modules/mailer'
 import { Injectable } from '@nestjs/common'
 
@@ -12,18 +12,20 @@ export class AdminMailer {
 
   async sendMeetingInvitations(meetingId: number) : Promise<any>
   {
-    const participations = await Participation.find({
-      where: { meeting: { id: meetingId } },
+    const MEETING = await Meeting.findOne(meetingId, { relations: ['enterprise'] })
+    const INVITES = await Participation.find({
+      where: { meeting: { id: MEETING.id } },
       relations: ['member']
     })
 
-    participations.forEach(invite => {
+    INVITES.forEach(invite => {
       this.mailer.sendMail({
         to: { name: `${invite.member.firstName} ${invite.member.lastName}`, address: invite.member.email },
-        subject: 'WeSCOP - Invitation Réunion',
+        subject: `${MEETING.enterprise.name} - Invitation Réunion`,
         template: 'invitation',
         context: {
-          link: `https://${process.env.APP_HOST}/meeting=${meetingId}&code=${invite.code}`
+          enterprise: MEETING.enterprise.name,
+          link: `https://${process.env.APP_HOST}/meeting?id=${MEETING.id}&code=${invite.code}`
         }
       })
     })

@@ -12,7 +12,7 @@ export class Choice extends BaseEntity
   title: string
 
   @ManyToMany(type => Question, { cascade: true, onDelete: 'CASCADE', orphanedRowAction: 'delete' })
-  chapters: Question[]
+  questions: Question[]
 
   @OneToMany(type => Question, question => question.result, { orphanedRowAction: 'nullify' })
   results: Question[]

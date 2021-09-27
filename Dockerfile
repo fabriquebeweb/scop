@@ -1,4 +1,4 @@
-FROM node:lts
+FROM beevelop/ionic:latest
 EXPOSE 4200
 VOLUME /root/scop
 WORKDIR /root/scop
@@ -11,7 +11,7 @@ RUN apt-add-repository https://cli.github.com/packages
 RUN apt update
 RUN apt install -y gh
 
-RUN npm i -g @angular/cli @nestjs/cli nx ts-node tsconfig-paths typeorm typescript
+RUN npm i -g npm @angular/cli @nestjs/cli nx ts-node tsconfig-paths typeorm typescript
 RUN git clone https://github.com/fabriquebeweb/scop.git /root/scop
 
 RUN git clone -b docker --single-branch https://github.com/fabriquebeweb/scop.git /root/tmp

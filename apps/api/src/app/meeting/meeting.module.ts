@@ -11,6 +11,9 @@ import { MeetingService } from '@scop/api/meeting/meeting.service'
   providers: [
     MeetingGateway,
     MeetingService
+  ],
+  exports: [
+    MeetingService
   ]
 })
 export class MeetingModule {}

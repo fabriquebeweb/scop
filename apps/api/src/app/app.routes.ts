@@ -1,4 +1,4 @@
-import { Routes } from 'nest-router'
+import { Routes } from '@nestjs/core'
 import { AdminModule } from '@scop/api/admin/admin.module'
 import { MeetingModule } from '@scop/api/meeting/meeting.module'
 

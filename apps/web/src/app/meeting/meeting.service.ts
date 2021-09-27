@@ -4,6 +4,7 @@ import { API, EVENTS } from '@scop/globals'
 import { Injectable } from '@angular/core'
 import { InsertResult } from 'typeorm'
 import { Socket } from 'ngx-socket-io'
+import { lastValueFrom } from 'rxjs'
 
 @Injectable()
 export class MeetingService
@@ -24,32 +25,34 @@ export class MeetingService
 
   getMeeting(id: number) : Promise<Meeting>
   {
-    return this.http.get<Meeting>(`${API.PATH}/meeting/${id}`, API.OPTIONS).toPromise()
+    return lastValueFrom(this.http.get<Meeting>(`${API.PATH}/meeting/${id}`, API.OPTIONS))
   }
 
   getMeetingChapters() : Promise<Chapter[]>
   {
-    return this.http.get<Chapter[]>(`${API.PATH}/meeting/${this.meeting.id}/chapters`, API.OPTIONS).toPromise()
+    return lastValueFrom(this.http.get<Chapter[]>(`${API.PATH}/meeting/${this.meeting.id}/chapters`, API.OPTIONS))
   }
 
   getMeetingChapter(id: number) : Promise<Chapter>
   {
-    return this.http.get<Chapter>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${id}`, API.OPTIONS).toPromise()
+    return lastValueFrom(this.http.get<Chapter>(`${API.PATH}/meeting/${this.meeting.id}/chapter/${id}`, API.OPTIONS))
   }
 
   getQuestion(id: number) : Promise<Question>
   {
-    return this.http.get<Question>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}`, API.OPTIONS).toPromise()
+    return lastValueFrom(this.http.get<Question>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}`, API.OPTIONS))
   }
 
   postAnswer(answer: QuestionAnswerDTO) : Promise<InsertResult>
   {
-    return this.http.post<InsertResult>(`${API.PATH}/meeting/${this.meeting.id}/question/${answer.question}`, answer, API.OPTIONS).toPromise()
+    return lastValueFrom(
+      this.http.post<InsertResult>(`${API.PATH}/meeting/${this.meeting.id}/question/${answer.question}`, answer, API.OPTIONS)
+    )
   }
 
   getQuestionResult(id: number) : Promise<QuestionResultDTO>
   {
-    return this.http.get<QuestionResultDTO>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}/results`, API.OPTIONS).toPromise()
+    return lastValueFrom(this.http.get<QuestionResultDTO>(`${API.PATH}/meeting/${this.meeting.id}/question/${id}/results`, API.OPTIONS))
   }
 
 }

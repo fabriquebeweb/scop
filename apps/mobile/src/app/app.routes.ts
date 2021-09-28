@@ -1,5 +1,5 @@
+import { ErrorComponent } from '@scop/mobile/error/error.component'
 import { MeetingPage } from '@scop/mobile/meeting/meeting.page'
-import { ErrorPage } from '@scop/mobile/error/error.page'
 import { HomePage } from '@scop/mobile/home/home.page'
 import { Routes } from '@angular/router'
 
@@ -7,7 +7,12 @@ export const ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomePage
+    redirectTo: '/home'
+  },
+  {
+    path: 'home',
+    component: HomePage,
+    loadChildren: () => import('@scop/mobile/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'meeting',
@@ -16,7 +21,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'error',
-    component: ErrorPage
+    component: ErrorComponent
   },
   {
     path: '**',

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-error',
-  templateUrl: './error.page.html'
+  templateUrl: './error.component.html'
 })
-export class ErrorPage implements OnInit {
+export class ErrorComponent implements OnInit {
 
   constructor(){}
 

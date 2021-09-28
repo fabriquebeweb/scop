@@ -1,7 +1,7 @@
-import { MeetingService } from '@scop/web/meeting/meeting.service'
 import { Chapter, MeetingDialogDTO } from '@scop/interfaces'
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { ActivatedRoute, Params, Router } from '@angular/router'
+import { MeetingService } from '@scop/services'
 import { Subscription } from 'rxjs'
 
 @Component({

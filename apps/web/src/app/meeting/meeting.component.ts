@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { MeetingDialogComponent } from './dialog/dialog.component'
 import { Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { MatDialog } from '@angular/material/dialog'
-import { MeetingService } from './meeting.service'
+import { MeetingService } from '@scop/services'
 import { Subscription } from 'rxjs'
 
 @Component({

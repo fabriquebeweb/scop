@@ -1,0 +1,16 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title> ORDRE DU JOUR </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-nav #Navigation>
+    <ion-list>
+      <ion-item *ngFor="let chapter of chapters; index as i" (click)="pushNav({ chapter: chapter })">
+        <!-- <ion-icon name="" size="large"></ion-icon> -->
+        <p>{{ i + 1 }}. {{ chapter.title }}</p>    
+      </ion-item>
+    </ion-list>
+  </ion-nav>
+</ion-content>

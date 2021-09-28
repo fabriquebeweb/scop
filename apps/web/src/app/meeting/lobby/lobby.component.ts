@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { MeetingService } from '../meeting.service'
+import { MeetingService } from '@scop/services'
 
 @Component({
   selector: 'meeting-lobby',

@@ -1,27 +1,22 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title> HOME </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content [fullscreen]="true">
+<ion-content fullscreen>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <h1>Welcome to mobile!</h1>
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
-    </p>
-  </div>
+  <section routerLink="/">HOME</section>
+  <section routerLink="/error">ERROR</section>
+  <section routerLink="/meeting">MEETING</section>
+  <a
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://ionicframework.com/docs/components"
+  >UI Components</a>
 </ion-content>

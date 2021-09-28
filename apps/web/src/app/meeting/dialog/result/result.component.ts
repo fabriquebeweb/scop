@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Question, QuestionResultDTO } from '@scop/interfaces'
-import { MeetingService } from '../../meeting.service'
+import { MeetingService } from '@scop/services'
 
 @Component({
   selector: 'dialog-result',

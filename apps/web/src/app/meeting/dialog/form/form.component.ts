@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { MeetingService } from '@scop/web/meeting/meeting.service'
 import { QuestionAnswerDTO, Question } from '@scop/interfaces'
+import { MeetingService } from '@scop/services'
 import { InsertResult } from 'typeorm'
 
 @Component({

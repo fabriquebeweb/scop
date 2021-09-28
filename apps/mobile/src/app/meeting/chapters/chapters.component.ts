@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { MeetingChaptersDetailsComponent } from '@scop/mobile/meeting/chapters/details/details.component'
+import { Chapter, MeetingNavigationDTO } from '@scop/interfaces'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { MeetingService } from '@scop/services'
 import { Router } from '@angular/router'
-import { Chapter } from '@scop/interfaces'
+import { IonNav } from '@ionic/angular'
 
 @Component({
   selector: 'meeting-chapters',
@@ -9,12 +11,13 @@ import { Chapter } from '@scop/interfaces'
 })
 export class MeetingChaptersComponent implements OnInit {
 
+  @ViewChild('Navigation', { static: true }) nav!: IonNav
   chapters!: Chapter[]
 
   constructor(
     private readonly service: MeetingService,
     private readonly router: Router
-  ) {}
+  ){}
 
   ngOnInit() : void
   {
@@ -26,12 +29,21 @@ export class MeetingChaptersComponent implements OnInit {
   setChapters(chapters: Chapter[]) : void
   {
     this.chapters = chapters
-    if (this.chapters.length) this.router.navigateByUrl(`/meeting/chapters/${this.chapters[0].id}`)
   }
 
   onError() : void
   {
     this.router.navigateByUrl('/meeting/error')
+  }
+
+  pushNav(chapter: MeetingNavigationDTO) : void
+  {
+    this.nav.push(MeetingChaptersDetailsComponent, chapter)
+  }
+
+  popNav() : void
+  {
+    this.nav.pop()
   }
 
 }

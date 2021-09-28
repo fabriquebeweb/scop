@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Question, MeetingDialogDTO } from '@scop/interfaces';
-import { MeetingService } from '../meeting.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Question, MeetingDialogDTO } from '@scop/interfaces'
+import { Component, Inject, OnInit } from '@angular/core'
+import { MeetingService } from '@scop/services'
 
 @Component({
   selector: 'meeting-dialog',

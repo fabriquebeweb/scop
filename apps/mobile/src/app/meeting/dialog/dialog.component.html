@@ -1,0 +1,19 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dialog.dismiss()">Fermer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen *ngIf="question" class="ion-padding">
+
+  <ng-container *ngIf="question.state == false; else Form">
+    <dialog-result [question]="question" (close)="dialog.dismiss()"></dialog-result>
+  </ng-container>
+
+  <ng-template #Form>
+    <dialog-form [question]="question" (close)="dialog.dismiss()"></dialog-form>
+  </ng-template>
+  
+</ion-content>

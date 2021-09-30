@@ -1,4 +1,4 @@
-<section *ngIf="questionResult; else Loading" class="flex flex-col w-full h-full items-center">
+<section *ngIf="questionResult" class="flex flex-col w-full h-full items-center">
 
   <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
   <section *ngIf="questionResult.details.result" class="h-1/10 w-full sticky top-0 z-40 flex justify-center">
@@ -18,7 +18,7 @@
             {{ choice.details != null ? choice.details.title : 'Abstention' }}
           </section>
           <section class="w-2/20 text-right">
-            {{ ( choice.count / questionResult.count ) * 100 | number:'1.0-0' }} %
+            {{ ( choice.count / questionResult.count ) | number:'1.0-0' }} %
           </section>
           <section class="w-2/20 text-right">
             {{ choice.count }} vote{{ choice.count > 1 ? 's' : '' }}
@@ -26,7 +26,7 @@
       </section>
 
       <!-- Graph sous forme de barre horizontale et récupération du nombre de votes dans value -->
-      <mat-progress-bar mode="determinate" [value]="( choice.count / questionResult.count ) * 100"></mat-progress-bar>
+      <ion-progress-bar color="primary" [value]="( choice.count / questionResult.count ) * 100"></ion-progress-bar>
 
     </section>
 
@@ -38,9 +38,3 @@
   </section>
 
 </section>
-
-<ng-template #Loading>
-  <section class="h-full w-full">
-    <mat-spinner></mat-spinner>
-  </section>
-</ng-template>

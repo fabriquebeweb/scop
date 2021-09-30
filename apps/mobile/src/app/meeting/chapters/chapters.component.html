@@ -4,13 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-nav #Navigation>
-    <ion-list>
-      <ion-item *ngFor="let chapter of chapters; index as i" (click)="pushNav({ chapter: chapter })">
-        <!-- <ion-icon name="" size="large"></ion-icon> -->
-        <p>{{ i + 1 }}. {{ chapter.title }}</p>    
-      </ion-item>
-    </ion-list>
-  </ion-nav>
+<ion-content fullscreen *ngIf="service.meeting.chapters" class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let chapter of service.meeting.chapters; index as i" [routerLink]="'/meeting/chapters/' + chapter.id">
+      <p class="w-full truncate">{{ i + 1 }}. {{ chapter.title }}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

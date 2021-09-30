@@ -128,7 +128,7 @@ export const HYDRATE: HydrateConfigOptions = {
             description: 'Cette année, nous avons 3 candidats : J.S. BACH, J.B. POQUELIN, J.P. RAMEAU.',
             question: {
               title: 'Qui souhaitez-vous élire ?',
-              state: true,
+              state: false,
               choices: [ { id: 1 }, { id: 2 } ],
               answers: [
                 { member: 1, choice: null },
@@ -138,7 +138,7 @@ export const HYDRATE: HydrateConfigOptions = {
                 { member: 5, choice: null },
                 { member: 6, choice: null }
               ],
-              result: null
+              result: { id: 1 }
             }
           },
           {

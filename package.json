@@ -12,7 +12,7 @@
     "build": "nx build",
     "build:watch": "nx build --watch --configuration development",
     "build:prod": "cross-env NODE_ENV=production nx build --configuration production",
-    "deploy": "ng deploy --baseHref=\"https://fabriquebeweb.github.io/scop/\"",
+    "deploy": "nx run web:deploy --base-href=/scop/ --repo=https://github.com/fabriquebeweb/scop.git --cname=''",
     "orm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "db:drop": "npm run orm schema:drop",
     "db:seed": "npm run db:drop && ts-node -r tsconfig-paths/register ./libs/seed/src/lib/seed.ts",

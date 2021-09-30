@@ -2,5 +2,8 @@
   "name": "mobile",
   "devDependencies": {
     "@capacitor/cli": "^2.4.5"
+  },
+  "dependencies": {
+    "rxjs": "^7.3.0"
   }
 }

@@ -1,8 +1,10 @@
+import { Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Component, OnInit } from '@angular/core'
+import { ModalController } from '@ionic/angular'
 import { MeetingService } from '@scop/services'
-import { Meeting, MeetingDialogDTO } from '@scop/interfaces'
 import { Subscription } from 'rxjs'
+import { MeetingDialogComponent } from './dialog/dialog.component'
 
 @Component({
   selector: 'app-meeting',
@@ -16,6 +18,7 @@ export class MeetingPage implements OnInit {
     public readonly service: MeetingService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    public dialog: ModalController
   ){}
 
   ngOnInit() : void
@@ -33,10 +36,14 @@ export class MeetingPage implements OnInit {
     this.dialog$.unsubscribe()
   }
 
-  onDialog(payload: MeetingDialogDTO)
+  async onDialog(payload: MeetingDialogDTO)
   {
-    console.log(payload)
-    // this.dialog.open(MeetingDialogComponent, { maxHeight: '80vh', minWidth: '50vw', maxWidth: '80vw', data: payload })
+    const modal = await this.dialog.create({
+      component: MeetingDialogComponent,
+      componentProps: { payload: payload },
+      swipeToClose: true
+    })
+    return await modal.present()
   }
 
   setMeeting(meeting: Meeting) : void

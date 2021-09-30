@@ -1,6 +1,21 @@
-<p>{{ chapter.id }}</p>
-<p>{{ chapter.title }}</p>
-<p>{{ chapter.description }}</p>
-<p>{{ chapter.meeting }}</p>
-<p>{{ chapter.question }}</p>
-<p>{{ chapter.summary }}</p>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/meeting/chapters"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ chapter.title }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <p class="px-3 py-5">{{ chapter.description }}</p>
+  <ion-button
+    *ngIf="chapter.question"
+    (click)="service.emitDialog({ question: chapter.question.id! })"
+    [color]="chapter.question.state ? 'primary' : 'light'"
+    expand="block"
+  >
+    <p class="w-7/8 truncate">{{ chapter.question.title }}</p>
+    <ion-icon slot="end" [name]="chapter.question.state == false ? 'stats-chart' : 'chatbubbles'"></ion-icon>
+  </ion-button>
+</ion-content>

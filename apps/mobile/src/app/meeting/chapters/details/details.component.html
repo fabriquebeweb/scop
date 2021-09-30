@@ -1,4 +1,4 @@
-<ion-header translucent>
+<ion-header translucent *ngIf="chapter">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/meeting/chapters"></ion-back-button>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen class="ion-padding">
+<ion-content fullscreen *ngIf="chapter" class="ion-padding">
   <p class="px-3 py-5">{{ chapter.description }}</p>
   <ion-button
     *ngIf="chapter.question"

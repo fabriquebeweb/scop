@@ -1,40 +1,31 @@
-<section *ngIf="questionResult" class="flex flex-col w-full h-full items-center">
+<ion-content fullscreen *ngIf="questionResult">
 
   <!-- Récupération de l'état de la mention : adoptée ou rejetée -->
-  <section *ngIf="questionResult.details.result" class="h-1/10 w-full sticky top-0 z-40 flex justify-center">
-    <a class="w-full flex justify-center items-center p-5 bg-primary-100 rounded-lg truncate">
-      <span class="truncate uppercase font-bold">{{ questionResult.details.result?.title }}</span>
-    </a>
-  </section>
+  <ion-button *ngIf="questionResult.details.result" expand="block">
+    <span class="truncate uppercase font-bold">{{ questionResult.details.result?.title }}</span>
+  </ion-button>
 
-  <section class="overflow-y-scroll w-full px-10 py-5 max-h-5/10">
+  <ion-list>
 
     <!-- Boucle sur l'entité chapter afin de récupérer les choix -->
-    <section class="mt-5" *ngFor="let choice of questionResult.choices">
+    <ion-item *ngFor="let choice of questionResult.choices" class="ion-padding">
 
       <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
-      <section class="flex flex-row justify-between w-full mb-4">
-          <section class="w-16/20 truncate" [title]="choice.details != null ? choice.details.title : 'Abstention'">
-            {{ choice.details != null ? choice.details.title : 'Abstention' }}
-          </section>
-          <section class="w-2/20 text-right">
-            {{ ( choice.count / questionResult.count ) | number:'1.0-0' }} %
-          </section>
-          <section class="w-2/20 text-right">
-            {{ choice.count }} vote{{ choice.count > 1 ? 's' : '' }}
-          </section>
-      </section>
+      <ion-label position="stacked">
+        <span> {{ choice.count / questionResult.count | number:'1.0-0' }} % </span>
+        <span> {{ choice.details != null ? choice.details.title : 'Abstention' }} </span>
+      </ion-label>
 
       <!-- Graph sous forme de barre horizontale et récupération du nombre de votes dans value -->
-      <ion-progress-bar color="primary" [value]="( choice.count / questionResult.count ) * 100"></ion-progress-bar>
+      <ion-progress-bar color="primary" [value]="choice.count / questionResult.count"></ion-progress-bar>
 
-    </section>
+    </ion-item>
 
-  </section>
+  </ion-list>
 
   <!-- Récupération du nombre total de votes par chapitre -->
-  <section class="flex w-full h-1/10 p-2 mt-5 bg-basic justify-center items-center text-center uppercase font-bold">
+  <ion-button expand="block">
     Nombre total de votants : {{ questionResult.count }}
-  </section>
+  </ion-button>
 
-</section>
+</ion-content>

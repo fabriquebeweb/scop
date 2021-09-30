@@ -1,9 +1,9 @@
 import { MeetingChaptersDetailsComponent } from '@scop/mobile/meeting/chapters/details/details.component'
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { Chapter, MeetingNavigationDTO } from '@scop/interfaces'
-import { MeetingService } from '@scop/services'
 import { Router, ActivatedRoute } from '@angular/router'
-import { IonNav } from '@ionic/angular'
+import { LoadingController } from '@ionic/angular'
+import { MeetingService } from '@scop/services'
 
 @Component({
   selector: 'meeting-chapters',
@@ -12,6 +12,7 @@ import { IonNav } from '@ionic/angular'
 export class MeetingChaptersComponent implements OnInit, OnDestroy {
 
   constructor(
+    private readonly loading: LoadingController,
     public readonly service: MeetingService,
     private readonly router: Router
   ){}

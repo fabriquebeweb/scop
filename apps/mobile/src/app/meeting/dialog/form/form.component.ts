@@ -26,7 +26,7 @@ export class MeetingDialogFormComponent implements OnInit {
       .catch(console.error)
   }
 
-  setQuestion(question: Question) : void
+  async setQuestion(question: Question) : Promise<void>
   {
     this.question = question
 
@@ -35,8 +35,6 @@ export class MeetingDialogFormComponent implements OnInit {
       member : 1,
       choice : null
     }
-
-    this.loading.dismiss()
   }
 
   saveAbstention() : void
@@ -54,8 +52,6 @@ export class MeetingDialogFormComponent implements OnInit {
 
   onSave(result: InsertResult) : void
   {
-    console.log(result)
-
     this.onClose()
   }
 

@@ -28,8 +28,6 @@ export class MeetingDialogResultComponent implements OnInit {
   setChapterResult(result: QuestionResultDTO) : void
   {
     this.questionResult = result
-
-    this.loading.dismiss()
   }
 
   onClose() : void

@@ -21,7 +21,11 @@ export class MeetingDialogComponent implements OnInit {
   ngOnInit() : void
   {
     this.presentLoading()
+      .finally(() => this.getQuestion())
+  }
 
+  getQuestion() : void
+  {
     this.service.getQuestion(this.payload.question)
       .then(question => this.setQuestion(question))
       .catch(console.log)
@@ -30,6 +34,8 @@ export class MeetingDialogComponent implements OnInit {
   setQuestion(question: Question) : void
   {
     this.question = question
+
+    this.loading.dismiss()
   }
 
   async presentLoading() : Promise<void>

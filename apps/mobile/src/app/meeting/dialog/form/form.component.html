@@ -1,67 +1,53 @@
-<ng-container *ngIf="question">
-  <form #form="ngForm" *ngIf="question.state == true; else Pending" class="flex flex-col justify-center items-center">
+<ng-container *ngIf="question && answer">
+  <form #form="ngForm" *ngIf="question.state; else Pending">
 
-    <!-- <mat-card-header class="my-2 flex flex-col justify-center items-center">
-      <mat-card-title class="text-center">{{ question.title }}</mat-card-title>
-    </mat-card-header>
+    <ion-list>
+      <ion-radio-group name="choice" [(ngModel)]="answer.choice">
+        <ion-list-header>
+          <ion-label>{{ question.title }}</ion-label>
+        </ion-list-header>
+    
+        <ion-item *ngFor="let choice of question.choices">
+          <ion-label>{{ choice.title }}</ion-label>
+          <ion-radio slot="start" name="choice" [value]="choice"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
 
-    <mat-card-content *ngIf="answer" class="overflow-y-scroll my-6 w-9/10">
-      <mat-radio-group class="flex flex-col justify-evenly items-start" name="answer" [(ngModel)]="answer.choice">
-        <mat-radio-button class="m-2 p-2 truncate" *ngFor="let choice of question.choices" [value]="choice" [title]="choice.title" name="answer">
-          {{ choice.title }}
-        </mat-radio-button>
-      </mat-radio-group>
-    </mat-card-content>
+    <ion-button color="primary" [disabled]="!answer.choice" expand="block" (click)="saveAnswer()">
+      VALIDER
+    </ion-button>
 
-    <mat-card-footer class="w-5/6 sticky bottom-0" *ngIf="answer">
-      <footer class="my-6 w-full flex justify-evenly items-center space-x-5">
-
-        <button mat-raised-button *ngIf="answer.choice; else NoChoice" (click)="saveAnswer()" class="w-64 tracking-widest" color="primary">
-          VALIDER
-        </button>
-        <button mat-raised-button (click)="saveAbstention()" class="w-60 tracking-widest" color="accent">
-          ABSTENTION
-        </button>
-
-        <ng-template #NoChoice>
-          <button mat-raised-button class="w-64 tracking-widest" disabled>
-            VALIDER
-          </button>
-        </ng-template>
-
-      </footer>
-    </mat-card-footer> -->
+    <ion-button color="warning" expand="block" (click)="saveAbstention()">
+      ABSTENTION
+    </ion-button>
 
   </form>
 </ng-container>
 
 <ng-template #Pending>
+  <form>
 
-  <form class="flex flex-col justify-center items-center">
+    <ion-list>
+      <ion-radio-group>
+        <ion-list-header>
+          <ion-label>{{ question.title }}</ion-label>
+        </ion-list-header>
+    
+        <ion-item *ngFor="let choice of question.choices">
+          <ion-label>{{ choice.title }}</ion-label>
+          <ion-radio slot="start" [value]="choice" disabled></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
 
-  <!-- <mat-card-header class="my-2 flex flex-col justify-center items-center">
-    <mat-card-title class="text-center">{{ question.title }}</mat-card-title>
-  </mat-card-header>
+    <ion-button expand="block" disabled>
+      VALIDER
+    </ion-button>
 
-  <mat-card-content class="overflow-y-scroll my-6 w-9/10">
-    <mat-radio-group *ngIf="answer" class="flex flex-col justify-evenly items-start" name="answer">
-      <mat-radio-button class="m-2 p-2 truncate" *ngFor="let choice of question.choices" [title]="choice.title" selected="false" name="answer" disabled>
-        {{ choice.title }}
-      </mat-radio-button>
-    </mat-radio-group>
-  </mat-card-content>
-
-  <mat-card-footer class="w-5/6 sticky bottom-0">
-    <footer class="my-6 w-full flex justify-evenly items-center space-x-5">
-      <button mat-raised-button class="w-64 tracking-widest" disabled>
-        VALIDER
-      </button>
-      <button mat-raised-button class="w-60 tracking-widest" disabled>
-        ABSTENTION
-      </button>
-    </footer>
-  </mat-card-footer> -->
+    <ion-button expand="block" disabled>
+      ABSTENTION
+    </ion-button>
 
   </form>
-
 </ng-template>

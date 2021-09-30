@@ -43,15 +43,14 @@ export class MeetingDialogFormComponent implements OnInit {
 
   saveAnswer() : void
   {
-    this.service.postAnswer(this.answer)
-      .then(result => this.onSave(result))
-      .catch(console.log)
+    console.log(this.answer)
+    // this.service.postAnswer(this.answer)
+    //   .then(result => this.onSave(result))
+    //   .catch(console.log)
   }
 
   onSave(result: InsertResult) : void
   {
-    console.log(result)
-
     this.onClose()
   }
 

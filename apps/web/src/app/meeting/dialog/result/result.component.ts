@@ -26,7 +26,6 @@ export class MeetingDialogResultComponent implements OnInit {
   setChapterResult(result: QuestionResultDTO) : void
   {
     this.questionResult = result
-    console.log(this.questionResult.details.result)
   }
 
   onClose() : void

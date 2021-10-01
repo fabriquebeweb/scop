@@ -12,8 +12,8 @@
 
       <!-- Nombre de votes en % et nombre absolu pour chaque choix -->
       <ion-label position="stacked">
-        <span> {{ choice.count / questionResult.count | number:'1.0-0' }} % </span>
-        <span> {{ choice.details != null ? choice.details.title : 'Abstention' }} </span>
+        <span>{{ choice.count / questionResult.count * 100 | number:'1.0-0' }} %</span>
+        <span>{{ choice.details != null ? choice.details.title : 'Abstention' }}</span>
       </ion-label>
 
       <!-- Graph sous forme de barre horizontale et récupération du nombre de votes dans value -->
